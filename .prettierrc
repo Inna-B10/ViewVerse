@@ -22,12 +22,10 @@
 		"^@/utils/(.*)$",
 		"^@/api/(.*)$",
 		"^@/server/(.*)$",
-		"^(?!.*\\.(scss|css|sass))$)(../.*)$",
-		"^(?!.*\\.(scss|css|sass))$)(./.*)$",
-		".*\\.(scss|css|sass))$"
+		"^(?!.*\\.scss$)(../.*)$",
+		"^(?!.*\\.scss$)(./.*)$",
+		".*\\.scss$"
 	],
 	"importOrderSortSpecifiers": true,
-	"plugins": [
-		"@trivago/prettier-plugin-sort-imports"
-	]
+	"plugins": ["@trivago/prettier-plugin-sort-imports"]
 }

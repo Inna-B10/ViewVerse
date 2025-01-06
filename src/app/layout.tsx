@@ -1,21 +1,20 @@
 import type { Metadata } from 'next'
 import { Noto_Sans } from 'next/font/google'
-
 import { Layout } from '@/components/layout/layout'
 import './globals.scss'
 
 const notoSans = Noto_Sans({
 	// variable: '--font-noto-sans',
-	subsets: ['latin'],
+	subsets: ['latin']
 })
 
 export const metadata: Metadata = {
-	title: 'Video Next.js 15',
-	description: 'App for video watching (youtube mod)',
+	title: 'FUN Video - Next.js 15',
+	description: 'App for video watching (youtube mod)'
 }
 
 export default function RootLayout({
-	children,
+	children
 }: Readonly<{
 	children: React.ReactNode
 }>) {
