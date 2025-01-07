@@ -12,7 +12,7 @@ export function MenuItem({ item }: Props) {
 				href={item.link}
 				className='group flex items-center gap-5 py-2 '
 			>
-				<item.icon className='group-hover:text-primary transition group-hover:rotate-6' />
+				<item.icon className='group-hover:text-primary transition group-hover:rotate-6 min-w-6' />
 				<span>{item.label}</span>
 			</Link>
 			{item.isBottomBorder && <hr className='h-[1px] my-5 w-full block sidebar' />}
