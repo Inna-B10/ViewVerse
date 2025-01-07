@@ -4,7 +4,7 @@ import { Sidebar } from './sidebar/Sidebar'
 
 export function Layout({ children }: PropsWithChildren<unknown>) {
 	return (
-		<main>
+		<main className='flex min-h-screen'>
 			<Sidebar />
 			<Content>{children}</Content>
 		</main>

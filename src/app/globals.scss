@@ -2,6 +2,38 @@
 @tailwind components;
 @tailwind utilities;
 
+html,
 body {
-  @apply text-white bg-bg text-lg;
+  @apply text-white bg-bg text-base;
+}
+
+hr.sidebar {
+  border: 0;
+  // height: 1px;
+  // width: 100%;
+  background-image: -webkit-linear-gradient(left,
+      #2A3439,
+      #2A3439,
+      rgba(42, 52, 57, 0.5),
+      rgba(42, 52, 57, 0.3));
+  background-image: -moz-linear-gradient(left,
+      #2A3439,
+      #2A3439,
+      rgba(42, 52, 57, 0.5),
+      rgba(42, 52, 57, 0.3));
+  background-image: -ms-linear-gradient(left,
+      #2A3439,
+      #2A3439,
+      rgba(42, 52, 57, 0.5),
+      rgba(42, 52, 57, 0.3));
+  background-image: -o-linear-gradient(left,
+      #2A3439,
+      #2A3439,
+      rgba(42, 52, 57, 0.5),
+      rgba(42, 52, 57, 0.3));
+  background-image: linear-gradient(left,
+      #2A3439,
+      #2A3439,
+      rgba(42, 52, 57, 0.5),
+      rgba(42, 52, 57, 0.3));
 }

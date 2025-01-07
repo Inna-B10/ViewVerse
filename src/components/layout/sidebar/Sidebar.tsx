@@ -5,11 +5,14 @@ import { MORE_SIDEBAR_DATA, SIDEBAR_DATA } from './sidebar.data'
 
 export function Sidebar() {
 	return (
-		<aside>
+		<aside className='w-60 p-layout border-r border-border'>
 			<SidebarHeader />
 			<SidebarMenu menu={SIDEBAR_DATA} />
 			<SidebarSubscriptions />
-			<SidebarMenu menu={MORE_SIDEBAR_DATA} />
+			<SidebarMenu
+				title='More from youtube'
+				menu={MORE_SIDEBAR_DATA}
+			/>
 		</aside>
 	)
 }
