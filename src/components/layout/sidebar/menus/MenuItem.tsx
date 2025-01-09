@@ -13,6 +13,7 @@ export function MenuItem({ item, isActive, isShowedSidebar }: Props) {
 		<li>
 			<Link
 				href={item.link}
+				title={item.label}
 				className={cn('group flex items-center gap-5 py-2 ', {
 					'hover:text-primary transition-colors': !isActive,
 					'hover: cursor-default': isActive
