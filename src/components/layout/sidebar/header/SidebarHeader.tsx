@@ -5,7 +5,7 @@ import { PUBLIC_PAGE } from '@/config/public-page.config'
 
 export function SidebarHeader({ toggleSidebar }: { toggleSidebar: () => void }) {
 	return (
-		<div className='flex items-center gap-6 mb-12'>
+		<div className='flex items-center gap-5 mb-12'>
 			<button
 				className='opacity-85 hover:opacity-100 transition-opacity'
 				onClick={toggleSidebar}

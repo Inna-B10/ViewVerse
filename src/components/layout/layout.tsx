@@ -10,7 +10,6 @@ export function Layout({ children }: PropsWithChildren<unknown>) {
 	const [isShowedSidebar, setIsShowedSidebar] = useState(true)
 
 	const toggleSidebar = () => {
-		console.log('header clicked')
 		setIsShowedSidebar(!isShowedSidebar)
 	}
 
@@ -21,7 +20,10 @@ export function Layout({ children }: PropsWithChildren<unknown>) {
 				isShowedSidebar ? styles.showedSidebar : styles.hidedSidebar
 			)}
 		>
-			<Sidebar toggleSidebar={toggleSidebar} />
+			<Sidebar
+				toggleSidebar={toggleSidebar}
+				isShowedSidebar={isShowedSidebar}
+			/>
 			<Content>{children}</Content>
 		</main>
 	)
