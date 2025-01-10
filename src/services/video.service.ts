@@ -1,6 +1,7 @@
 import axios from 'axios'
 import type { IVideo } from '@/types/video.types'
 
+//[TODO] clean
 // class VideoService {
 // 	async getExploreVideos() {
 // 		const data = await axios.get<IVideo[]>('http://localhost:4200/api/videos/explore')

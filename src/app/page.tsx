@@ -1,6 +1,7 @@
 'use client'
 
 import { useQuery } from '@tanstack/react-query'
+import { Flame } from 'lucide-react'
 import { VideoCard } from '@/ui/video-card/VideoCard'
 import { videoService } from '@/services/video.service'
 
@@ -10,8 +11,9 @@ export default function Home() {
 		queryFn: () => videoService.getExploreVideos()
 	})
 
+	//[FIXME] videos  interface
 	return (
-		<div>
+		<div className='grid grid-cols-5 gap-4'>
 			{isLoading ? (
 				'Loading...'
 			) : data?.data.videos.length ? (
@@ -19,6 +21,7 @@ export default function Home() {
 					<VideoCard
 						key={video.id}
 						video={video}
+						Icon={Flame}
 					/>
 				))
 			) : (
