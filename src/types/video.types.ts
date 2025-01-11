@@ -12,3 +12,6 @@ export interface IVideo {
 	channel: IChannel
 	createdAt: string
 }
+export interface IApiResponseVideos {
+	videos: IVideo[]
+}

@@ -23,10 +23,9 @@ export function VideoCard({ video, Icon }: Props) {
 						src={video.thumbnailUrl}
 						width={250}
 						height={140}
-						objectFit='cover'
 						sizes='100vw, (min-width: 768px) 33vw, (min-width: 1024px) 20vw'
 						alt={video.title}
-						className='rounded-md w-dvw'
+						className='rounded-md w-dvw object-cover'
 					/>
 				</Link>
 				<Link
