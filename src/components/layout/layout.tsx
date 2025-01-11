@@ -20,10 +20,12 @@ export function Layout({ children }: PropsWithChildren<unknown>) {
 				isShowedSidebar ? styles.showedSidebar : styles.hidedSidebar
 			)}
 		>
+			{/* --------------------------------- Sidebar -------------------------------- */}
 			<Sidebar
 				toggleSidebar={toggleSidebar}
 				isShowedSidebar={isShowedSidebar}
 			/>
+			{/* --------------------------------- Content -------------------------------- */}
 			<Content>{children}</Content>
 		</main>
 	)

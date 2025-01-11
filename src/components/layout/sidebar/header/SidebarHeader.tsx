@@ -6,12 +6,15 @@ import { PAGE } from '@/config/public-page.config'
 export function SidebarHeader({ toggleSidebar }: { toggleSidebar: () => void }) {
 	return (
 		<div className='flex items-center gap-5 mb-12'>
+			{/* ------------------------------ Toggle Button ----------------------------- */}
 			<button
 				className='opacity-85 hover:opacity-100 transition-opacity'
 				onClick={toggleSidebar}
 			>
 				<Menu />
 			</button>
+
+			{/* ---------------------------------- Logo ---------------------------------- */}
 			<Link
 				href={PAGE.HOME}
 				className='flex items-center gap-1.5'

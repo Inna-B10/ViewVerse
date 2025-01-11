@@ -15,6 +15,7 @@ export function VideoCard({ video, Icon }: Props) {
 	return (
 		<div className='mb-3 w-fit'>
 			<div className='relative mb-1.5'>
+				{/* ------------------------------- Video Img ------------------------------- */}
 				<Link
 					href={PAGE.VIDEO(video.publicId)}
 					title={video.title}
@@ -28,6 +29,8 @@ export function VideoCard({ video, Icon }: Props) {
 						className='rounded-md w-dvw object-cover'
 					/>
 				</Link>
+
+				{/* ------------------------------ Channel Img ------------------------------ */}
 				<Link
 					href={PAGE.CHANNEL(video.channel.slug)}
 					title={video.channel.slug}
@@ -42,6 +45,8 @@ export function VideoCard({ video, Icon }: Props) {
 					/>
 				</Link>
 			</div>
+
+			{/* ------------------------------ Views / Date ------------------------------ */}
 			<div className='mb-1.5 flex flex-col xl:flex-row xl:items-center xl:justify-between'>
 				<div className='flex gap-0.5 items-end'>
 					{Icon && (
@@ -60,6 +65,8 @@ export function VideoCard({ video, Icon }: Props) {
 					</span>
 				</div>
 			</div>
+
+			{/* ------------------------------- Video Title ------------------------------ */}
 			<div className='mb-1'>
 				<Link
 					href={PAGE.VIDEO(video.publicId)}
@@ -68,6 +75,8 @@ export function VideoCard({ video, Icon }: Props) {
 					{video.title}
 				</Link>
 			</div>
+
+			{/* ------------------------------ Channel Name ------------------------------ */}
 			<div>
 				<Link
 					href={PAGE.CHANNEL(video.channel.slug)}

@@ -12,11 +12,16 @@ export function Sidebar({ toggleSidebar, isShowedSidebar }: SidebarProps) {
 	return (
 		<aside className=' p-layout border-r border-border whitespace-nowrap overflow-hidden'>
 			<SidebarHeader toggleSidebar={toggleSidebar} />
+			{/*----------------------------------- Nav ---------------------------------- */}
 			<SidebarMenu
 				menu={SIDEBAR_DATA}
 				isShowedSidebar={isShowedSidebar}
 			/>
+
+			{/* ------------------------------ Subscriptions ----------------------------- */}
 			<SidebarSubscriptions />
+
+			{/* ---------------------------- More From Youtube --------------------------- */}
 			<SidebarMenu
 				title='More from youtube'
 				menu={MORE_SIDEBAR_DATA}

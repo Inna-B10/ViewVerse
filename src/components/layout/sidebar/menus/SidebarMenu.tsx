@@ -12,6 +12,7 @@ interface Props {
 export function SidebarMenu({ title, menu, isShowedSidebar }: Props) {
 	const pathname = usePathname()
 
+	/* ----------------------------------- Nav ---------------------------------- */
 	return (
 		<nav>
 			{title && <div className='opacity-30 uppercase font-medium text-xs mb-3'>{title}</div>}

@@ -17,6 +17,7 @@ export default async function Home() {
 	return (
 		<>
 			<section>
+				{/* -------------------------------- Trending videos -------------------------------- */}
 				<h2>Trending</h2>
 				<div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-5'>
 					{trendingVideos.length &&
@@ -29,6 +30,7 @@ export default async function Home() {
 						))}
 				</div>
 			</section>
+			{/* --------------------------------- Explore videos -------------------------------- */}
 			<Explore />
 		</>
 	)

@@ -9,6 +9,7 @@ interface Props {
 }
 
 export function MenuItem({ item, isActive, isShowedSidebar }: Props) {
+	/* --------------------------------- Nav li --------------------------------- */
 	return (
 		<li>
 			<Link
