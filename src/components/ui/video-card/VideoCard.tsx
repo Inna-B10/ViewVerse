@@ -13,7 +13,7 @@ interface Props {
 
 export function VideoCard({ video, Icon }: Props) {
 	return (
-		<div>
+		<div className='mb-3 w-fit'>
 			<div className='relative mb-1.5'>
 				<Link
 					href={PAGE.VIDEO(video.publicId)}
@@ -23,8 +23,10 @@ export function VideoCard({ video, Icon }: Props) {
 						src={video.thumbnailUrl}
 						width={250}
 						height={140}
+						objectFit='cover'
+						sizes='100vw, (min-width: 768px) 33vw, (min-width: 1024px) 20vw'
 						alt={video.title}
-						className='rounded-md'
+						className='rounded-md w-dvw'
 					/>
 				</Link>
 				<Link
@@ -34,30 +36,50 @@ export function VideoCard({ video, Icon }: Props) {
 				>
 					<Image
 						src={video.channel.avatarUrl}
-						width={35}
-						height={35}
+						width={18}
+						height={18}
 						alt={video.channel.slug}
-						className='rounded-full border border-orange-600'
+						className='rounded-full shadow-orange h-auto xl:w-[32px]'
 					/>
 				</Link>
 			</div>
-			<div className='mb-1.5 flex items-center justify-between'>
-				<div className='flex items-center gap-1'>
-					{Icon && <Icon />}
-					<span>{transformViews(video.viewsCount)}</span>
+			<div className='mb-1.5 flex flex-col xl:flex-row xl:items-center xl:justify-between'>
+				<div className='flex gap-0.5 items-end'>
+					{Icon && (
+						<Icon
+							className='text-orange-400 h-auto lg:w-[18px]'
+							size={14}
+						/>
+					)}
+					<span className='text-gray-400 text-xs text-nowrap'>
+						{transformViews(video.viewsCount)}
+					</span>
 				</div>
-				<div>
-					<span>{transformDate(video.createdAt)}</span>
+				<div className='flex items-end'>
+					<span className='text-gray-400 text-xs text-nowrap  pl-[16px] xl:pl-0'>
+						{transformDate(video.createdAt)}
+					</span>
 				</div>
 			</div>
-			<div>
-				<Link href={PAGE.VIDEO(video.publicId)}>{video.title}</Link>
+			<div className='mb-1'>
+				<Link
+					href={PAGE.VIDEO(video.publicId)}
+					className='line-clamp-2 leading-[1.3]'
+				>
+					{video.title}
+				</Link>
 			</div>
 			<div>
-				<Link href={PAGE.CHANNEL(video.channel.slug)}>
-					<span>{video.channel.slug}</span>
+				<Link
+					href={PAGE.CHANNEL(video.channel.slug)}
+					className='flex items-center gap-1'
+				>
+					<span className='text-gray-400 text-sm'>{video.channel.slug}</span>
 					<span>
-						<BadgeCheck className='text-green-500' />
+						<BadgeCheck
+							className='text-orange-400 h-auto lg:w-[12px]'
+							size={10}
+						/>
 					</span>
 				</Link>
 			</div>
