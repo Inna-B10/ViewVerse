@@ -17,6 +17,10 @@ bun add sass
 bun add -D @trivago/prettier-plugin-sort-imports prettier
 bun add lucide-react
 bun add clsx
+bun add path-to-regexp
+bun add axios
+bun add @tanstack/react-query
+bun add dayjs
 ```
 
 ### ToDo
@@ -24,9 +28,12 @@ bun add clsx
 ---
 
 - [x] root layout
-- [ ] menu/nav/sidebar
+- [x] menu/nav/sidebar
 - [ ] header
-- [ ]
+- [x] UI video card
+- [ ] fonts (b.a VideoCard title)
+- [ ] sideBar на мобилах изначально скрыт, при открытии - поверх контента, убрать flex column у
+      просмотров и даты
 
 <!--
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
