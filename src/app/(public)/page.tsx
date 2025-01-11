@@ -1,6 +1,8 @@
-import { Flame } from 'lucide-react'
+import { Compass, Flame } from 'lucide-react'
+import type { Metadata } from 'next'
+import { Heading } from '@/ui/Heading'
 import { VideoCard } from '@/ui/video-card/VideoCard'
-import { Explore } from './explore/Explore'
+import { Explore } from '../explore/Explore'
 import { videoService } from '@/services/video.service'
 
 //NB ISR - Incremental Static Regeneration
@@ -10,6 +12,19 @@ import { videoService } from '@/services/video.service'
 export const revalidate = 100
 export const dynamic = 'force-static'
 
+export const metadata: Metadata = {
+	title: 'Home',
+	description: 'FUN video platform',
+	alternates: {
+		canonical: '/'
+	},
+	openGraph: {
+		type: 'website',
+		url: '/',
+		title: 'FUN Video'
+	}
+}
+
 export default async function Home() {
 	const data = await videoService.getTrendingVideos()
 	const trendingVideos = data.slice(0, 5)
@@ -18,7 +33,7 @@ export default async function Home() {
 		<>
 			<section>
 				{/* -------------------------------- Trending videos -------------------------------- */}
-				<h2>Trending</h2>
+				<Heading Icon={Flame}>Trending</Heading>
 				<div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-5'>
 					{trendingVideos.length &&
 						trendingVideos.map(video => (
@@ -31,7 +46,10 @@ export default async function Home() {
 				</div>
 			</section>
 			{/* --------------------------------- Explore videos -------------------------------- */}
-			<Explore />
+			<section>
+				<Heading Icon={Compass}>Explore</Heading>
+				<Explore />
+			</section>
 		</>
 	)
 }

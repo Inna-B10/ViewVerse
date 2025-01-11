@@ -1,50 +1,71 @@
-@keyframes hideSidebar {
-  from {
-    transform: translateX(0);
-    width: var(--sidebar-width);
-  }
+// @keyframes hideSidebar {
+//   from {
+//     transform: translateX(0);
+//     width: var(--sidebar-width);
+//   }
+// 
+//   to {
+//     @apply w-[3.8rem];
+//   }
+// }
+// 
+// @keyframes showSidebar {
+//   from {
+//     @apply w-[3.8rem];
+//   }
+// 
+//   to {
+//     transform: translateX(0);
+//     width: var(--sidebar-width);
+//   }
+// }
+// 
+// .hidedSidebar {
+//   > aside {
+//     animation: hideSidebar 0.35s forwards;
+//     flex-grow: 0;
+// 
+//     > nav {
+//       > div:first-child {
+//         @apply transition-opacity;
+//         opacity: 0;
+//       }
+//     }
+// 
+//     hr {
+//       width: 150%;
+//     }
+//   }
+// 
+//   > div {
+//     @apply w-full;
+//   }
+// }
+// 
+// .showedSidebar {
+//   > aside {
+//     animation: showSidebar 0.3s forwards;
+//     width: var(--sidebar-width);
+//   }
+// }
+.hidedSidebar > aside {
+  width: 3.8rem;
+  flex-grow: 0;
 
-  to {
-    @apply w-[3.8rem];
+  > nav > div:first-child {
+    opacity: 0;
+    transition: opacity 0.35s;
   }
 }
 
-@keyframes showSidebar {
-  from {
-    @apply w-[3.8rem];
-  }
-
-  to {
-    transform: translateX(0);
-    width: var(--sidebar-width);
-  }
+.hidedSidebar > div {
+  width: 100%;
 }
 
-.hidedSidebar {
-  > aside {
-    animation: hideSidebar 0.35s forwards;
-    flex-grow: 0;
-
-    > nav {
-      > div:first-child {
-        @apply transition-opacity;
-        opacity: 0;
-      }
-    }
-
-    hr {
-      width: 150%;
-    }
-  }
-
-  > div {
-    @apply w-full;
-  }
+.showedSidebar > aside {
+  width: var(--sidebar-width);
 }
 
-.showedSidebar {
-  > aside {
-    animation: showSidebar 0.3s forwards;
-    width: var(--sidebar-width);
-  }
+.initialSidebar > aside {
+  transition: width 0.35s;
 }
