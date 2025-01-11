@@ -7,12 +7,18 @@ Uses Next.js v15, React+React-dom v19, tailwind, sass, typescript.
 This is a [Next.js](https://nextjs.org) project bootstrapped with
 [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Dependencies
+### Start
 
-First, run the development server:
+First, install and run the development server:
 
 ```bash
+powershell -c "irm bun.sh/install.ps1|iex"
 bun dev
+```
+
+### Dependencies
+
+```
 bun add sass
 bun add -D @trivago/prettier-plugin-sort-imports prettier
 bun add lucide-react
@@ -21,6 +27,7 @@ bun add path-to-regexp
 bun add axios
 bun add @tanstack/react-query
 bun add dayjs
+bun add tailwind-merge
 ```
 
 ### ToDo
@@ -28,12 +35,22 @@ bun add dayjs
 ---
 
 - [x] root layout
-- [x] menu/nav/sidebar
-- [ ] header
+- [x] UI menu/nav/sidebar
+- [ ] UI block's heading/loader
+  - [x] heading
+  - [ ] SkeletonLoader:
+    - [x] static count
+    - [ ] count depends on @media
+- [ ] metadata
+  - [ ] проверить в будущем нужно ли переносить page.tsx в папку public
 - [x] UI video card
 - [ ] fonts (b.a VideoCard title)
 - [ ] sideBar на мобилах изначально скрыт, при открытии - поверх контента, убрать flex column у
       просмотров и даты
+- [x] Home page (ISR):
+  - [x] trending videos
+  - [x] explore(recommended) videos
+- [ ] Search
 
 <!--
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
