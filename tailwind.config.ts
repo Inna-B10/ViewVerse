@@ -18,10 +18,14 @@ export default {
 			},
 			transitionDuration: {
 				DEFAULT: '150ms'
+			},
+			screens: {
+				xs: '540px'
 			}
 		}
 	},
 	plugins: [
+		//VideoCard -> video title
 		// plugin(function ({ addUtilities }) {
 		// 	addUtilities({
 		// 		'.line-clamp-2': {

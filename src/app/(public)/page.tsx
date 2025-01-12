@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { Heading } from '@/ui/Heading'
 import { VideoCard } from '@/ui/video-card/VideoCard'
 import { Explore } from '../explore/Explore'
+// import { GetMediaQuery } from '@/utils/get-media-query'
 import { videoService } from '@/services/video.service'
 
 //NB ISR - Incremental Static Regeneration
@@ -27,6 +28,23 @@ export const metadata: Metadata = {
 
 export default async function Home() {
 	const data = await videoService.getTrendingVideos()
+	//could not use because TrendingVideos randers on server
+
+	// let count = GetMediaQuery()
+	// switch (count) {
+	// 	case 1:
+	// 		count = 3
+	// 		break
+	// 	case 2:
+	// 		count = 4
+	// 		break
+	// 	case 3:
+	// 		count = 3
+	// 		break
+	// 	case 5:
+	// 		count = 5
+	// 		break
+	// }
 	const trendingVideos = data.slice(0, 5)
 
 	return (
@@ -34,7 +52,7 @@ export default async function Home() {
 			<section>
 				{/* -------------------------------- Trending videos -------------------------------- */}
 				<Heading Icon={Flame}>Trending</Heading>
-				<div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-5'>
+				<div className='grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3'>
 					{trendingVideos.length &&
 						trendingVideos.map(video => (
 							<VideoCard
