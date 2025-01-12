@@ -3,7 +3,7 @@ import { PAGE } from '@/config/public-page.config'
 
 export const metadata: Metadata = {
 	title: 'Trending',
-	description: 'Best videos in trends.',
+	description: "Top Trending Videos You Don't Want to Miss!",
 	alternates: {
 		canonical: PAGE.TRENDING
 	},

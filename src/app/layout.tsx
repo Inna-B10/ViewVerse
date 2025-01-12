@@ -11,10 +11,11 @@ const notoSans = Noto_Sans({
 
 export const metadata: Metadata = {
 	title: {
-		absolute: 'FUN Video - Next.js 15',
-		template: `%s | FUN Video`
+		absolute: 'ViewVerse - Next.js 15',
+		template: `%s | ViewVerse`
 	},
-	description: 'App for video watching (youtube mod)'
+	description:
+		'ViewVerse — a new universe of videos where everyone can watch, create, and share content.'
 }
 
 export default function RootLayout({

@@ -13,7 +13,7 @@ interface Props {
 
 export function VideoCard({ video, Icon }: Props) {
 	return (
-		<div className='mb-3 w-fit'>
+		<div className='mb-5 w-fit'>
 			<div className='relative mb-1.5'>
 				{/* ------------------------------- Video Img ------------------------------- */}
 				<Link

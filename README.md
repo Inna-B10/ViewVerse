@@ -1,6 +1,8 @@
-# Project name: FUN Video
+# Project name: ViewVerse
 
-The app to watching videos (similar youtube)
+<!--VideoVibe (ViewVibe), VideoVerse (ViewVerse), StreamSpark, Tubex, Vidberry  -->
+
+The video platform (kind of like YouTube).
 
 Uses Next.js v15, React+React-dom v19, tailwind, sass, typescript.
 

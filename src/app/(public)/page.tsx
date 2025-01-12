@@ -14,14 +14,14 @@ export const dynamic = 'force-static'
 
 export const metadata: Metadata = {
 	title: 'Home',
-	description: 'FUN video platform',
+	description: 'ViewVerse  — your go-to place for a world of videos!',
 	alternates: {
 		canonical: '/'
 	},
 	openGraph: {
 		type: 'website',
 		url: '/',
-		title: 'FUN Video'
+		title: 'ViewVerse'
 	}
 }
 
@@ -31,7 +31,7 @@ export default async function Home() {
 
 	return (
 		<>
-			<section>
+			<section className='mb-10'>
 				{/* -------------------------------- Trending videos -------------------------------- */}
 				<Heading Icon={Flame}>Trending</Heading>
 				<div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-5'>
