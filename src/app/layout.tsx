@@ -1,11 +1,25 @@
 import { type Metadata } from 'next'
-import { Noto_Sans } from 'next/font/google'
+import { M_PLUS_Rounded_1c, Philosopher } from 'next/font/google'
 import { Layout } from '@/components/layout/Layout'
 import { Providers } from '@/providers/Providers'
 import './globals.scss'
 
-const notoSans = Noto_Sans({
-	// variable: '--font-noto-sans',
+/* ------------------------------ Default Font  */
+const mplus = M_PLUS_Rounded_1c({
+	weight: ['400', '700'],
+	variable: '--font-mplus',
+	subsets: ['latin']
+})
+// const overpass = Overpass({
+// 	weight: ['400', '700'],
+// 	variable: '--font-overpass',
+// 	subsets: ['latin']
+// })
+
+/* ------------------------------ Heading Font  */
+const philosopher = Philosopher({
+	weight: ['400', '700'],
+	variable: '--font-philosopher',
 	subsets: ['latin']
 })
 
@@ -25,7 +39,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang='en'>
-			<body className={`${notoSans.className}  antialiased`}>
+			<body className={`${mplus.className} ${philosopher.variable} antialiased`}>
 				<Providers>
 					<Layout>{children}</Layout>
 				</Providers>

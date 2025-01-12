@@ -18,6 +18,10 @@ export default {
 			},
 			transitionDuration: {
 				DEFAULT: '150ms'
+			},
+			fontFamily: {
+				philosopher: 'var(--font-philosopher)',
+				mplus: 'var(--font-mplus)'
 			}
 		}
 	},
