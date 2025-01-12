@@ -47,12 +47,12 @@ export function VideoCard({ video, Icon }: Props) {
 			</div>
 
 			{/* ------------------------------ Views / Date ------------------------------ */}
-			<div className='mb-1.5 flex flex-col xl:flex-row xl:items-center xl:justify-between'>
+			<div className='mb-1.5 flex  items-center justify-between'>
 				<div className='flex gap-0.5 items-end'>
 					{Icon && (
 						<Icon
-							className='text-orange-400 h-auto lg:w-[18px]'
-							size={14}
+							className='text-orange-400 h-auto'
+							size={18}
 						/>
 					)}
 					<span className='text-gray-400 text-xs text-nowrap'>
@@ -60,7 +60,7 @@ export function VideoCard({ video, Icon }: Props) {
 					</span>
 				</div>
 				<div className='flex items-end'>
-					<span className='text-gray-400 text-xs text-nowrap  pl-[16px] xl:pl-0'>
+					<span className='text-gray-400 text-xs text-nowrap'>
 						{transformDate(video.createdAt)}
 					</span>
 				</div>

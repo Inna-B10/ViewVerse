@@ -52,7 +52,7 @@ export default async function Home() {
 			<section>
 				{/* -------------------------------- Trending videos -------------------------------- */}
 				<Heading Icon={Flame}>Trending</Heading>
-				<div className='grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3'>
+				<div className='grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3'>
 					{trendingVideos.length &&
 						trendingVideos.map(video => (
 							<VideoCard
