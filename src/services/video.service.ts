@@ -13,6 +13,21 @@ class VideoService {
 		const { data } = await axios.get<IApiResponseVideos>('http://localhost:4200/api/videos/explore')
 		return data
 	}
+
+	/* --------------------------------- Search --------------------------------- */
+	async filterVideos(searchTerm?: string | null) {
+		const { data } = await axios.get<IApiResponseVideos>(
+			'http://localhost:4200/api/videos',
+			searchTerm
+				? {
+						params: {
+							searchTerm
+						}
+					}
+				: {}
+		)
+		return data
+	}
 }
 
 export const videoService = new VideoService()
