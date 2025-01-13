@@ -24,7 +24,7 @@ export function VideoCard({ video, Icon }: Props) {
 						src={video.thumbnailUrl}
 						width={250}
 						height={140}
-						sizes='100vw, (min-width: 768px) 33vw, (min-width: 1024px) 20vw'
+						// sizes='100vw, (min-width: 768px) 50vw, (min-width: 1024px) 33vw, (min-width:1440) 25vw'
 						alt={video.title}
 						className='rounded-md w-dvw object-cover'
 					/>
@@ -38,21 +38,21 @@ export function VideoCard({ video, Icon }: Props) {
 				>
 					<Image
 						src={video.channel.avatarUrl}
-						width={18}
-						height={18}
+						width={32}
+						height={32}
 						alt={video.channel.slug}
-						className='rounded-full shadow-orange h-auto xl:w-[32px]'
+						className='rounded-full shadow-orange h-auto'
 					/>
 				</Link>
 			</div>
 
 			{/* ------------------------------ Views / Date ------------------------------ */}
-			<div className='mb-1.5 flex flex-col xl:flex-row xl:items-center xl:justify-between'>
+			<div className='mb-1.5 flex items-center justify-between'>
 				<div className='flex gap-0.5 items-end'>
 					{Icon && (
 						<Icon
-							className='text-orange-400 h-auto lg:w-[18px]'
-							size={14}
+							className='text-orange-400 h-auto'
+							size={18}
 						/>
 					)}
 					<span className='text-gray-400 text-xs text-nowrap'>
@@ -60,7 +60,7 @@ export function VideoCard({ video, Icon }: Props) {
 					</span>
 				</div>
 				<div className='flex items-end'>
-					<span className='text-gray-400 text-xs text-nowrap  pl-[16px] xl:pl-0'>
+					<span className='text-gray-400 text-xs text-nowrap'>
 						{transformDate(video.createdAt)}
 					</span>
 				</div>
@@ -85,8 +85,8 @@ export function VideoCard({ video, Icon }: Props) {
 					<span className='text-gray-400 text-sm'>{video.channel.slug}</span>
 					<span>
 						<BadgeCheck
-							className='text-orange-400 h-auto lg:w-[12px]'
-							size={10}
+							className='text-orange-400 h-auto '
+							size={12}
 						/>
 					</span>
 				</Link>

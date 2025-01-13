@@ -53,6 +53,13 @@ bun add tailwind-merge
   - [x] trending videos
   - [x] explore(recommended) videos
 - [ ] Search
+- [ ] media query:
+  - [ ] меню скрыто, 1 колонка
+  - [ ] 540 - меню скрыто, 2 колонки
+  - [ ] 768 - меню скрыто, 3 колонки
+  - [ ] 1024 - меню открыто, 3 колонки
+  - [ ] 1280 - меню открыто, 4 колонки
+- [ ] сократить название канала, если слишком длинное
 
 <!--
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.

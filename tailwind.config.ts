@@ -22,10 +22,14 @@ export default {
 			fontFamily: {
 				philosopher: 'var(--font-philosopher)',
 				mplus: 'var(--font-mplus)'
+			},
+			screens: {
+				xs: '540px'
 			}
 		}
 	},
 	plugins: [
+		//fot lang video title
 		// plugin(function ({ addUtilities }) {
 		// 	addUtilities({
 		// 		'.line-clamp-2': {
