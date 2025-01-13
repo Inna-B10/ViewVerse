@@ -52,7 +52,9 @@ export function SearchClientPage() {
 						/>
 					))
 				) : (
-					<div>Nothing was found for your request.</div>
+					<div>
+						<p>Nothing was found for your request.</p>
+					</div>
 				)}
 			</div>
 		</section>

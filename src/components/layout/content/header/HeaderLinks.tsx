@@ -4,7 +4,7 @@ import { STUDIO_PAGE } from '@/config/studio-page.config'
 
 export function HeaderLinks() {
 	return (
-		<div className='flex items-center gap-2'>
+		<div className='flex items-center gap-2 lg:gap-4'>
 			<Link
 				href={STUDIO_PAGE.UPLOAD_VIDEO}
 				className='transition-opacity opacity-50 hover:opacity-100'

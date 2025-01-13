@@ -12,6 +12,12 @@ interface Props {
 }
 
 export function VideoCard({ video, Icon }: Props) {
+	//if channel name is too long
+	let channelName = video.channel.slug
+	if (channelName.length >= 25) {
+		channelName = channelName.slice(0, 22).concat('..')
+	}
+
 	return (
 		<div className='mb-5 w-fit'>
 			<div className='relative mb-1.5'>
@@ -82,13 +88,15 @@ export function VideoCard({ video, Icon }: Props) {
 					href={PAGE.CHANNEL(video.channel.slug)}
 					className='flex items-center gap-1'
 				>
-					<span className='text-gray-400 text-sm'>{video.channel.slug}</span>
-					<span>
-						<BadgeCheck
-							className='text-green-500 h-auto '
-							size={14}
-						/>
-					</span>
+					<span className='text-gray-400 text-sm'>{channelName}</span>
+					{video.channel.isVerified && (
+						<span>
+							<BadgeCheck
+								className='text-green-500 h-auto '
+								size={14}
+							/>
+						</span>
+					)}
 				</Link>
 			</div>
 		</div>

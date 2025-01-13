@@ -38,28 +38,26 @@ bun add tailwind-merge
 
 - [x] root layout
 - [x] UI menu/nav/sidebar
+- [x] metadata
+- [x] UI video card
+- [x] fonts (b.a VideoCard title)
+- [x] Home page (ISR):
+  - [x] trending videos
+  - [x] explore(recommended) videos
+- [x] Search
+- [x] сократить название канала, если слишком длинное
+- [ ] Page 404
 - [ ] UI block's heading/loader
   - [x] heading
   - [ ] SkeletonLoader:
     - [x] static count
     - [ ] count depends on @media
-- [ ] metadata
-  - [ ] проверить в будущем нужно ли переносить page.tsx в папку public
-- [x] UI video card
-- [ ] fonts (b.a VideoCard title)
-- [ ] sideBar на мобилах изначально скрыт, при открытии - поверх контента, убрать flex column у
-      просмотров и даты
-- [x] Home page (ISR):
-  - [x] trending videos
-  - [x] explore(recommended) videos
-- [ ] Search
-- [ ] media query:
-  - [ ] меню скрыто, 1 колонка
+- [ ] media query:sideBar на мобилах изначально скрыт, при открытии - поверх контента
+  - [ ] меню кнопка?, 1 колонка
   - [ ] 540 - меню скрыто, 2 колонки
   - [ ] 768 - меню скрыто, 3 колонки
   - [ ] 1024 - меню открыто, 3 колонки
   - [ ] 1280 - меню открыто, 4 колонки
-- [ ] сократить название канала, если слишком длинное
 
 <!--
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
