@@ -85,8 +85,8 @@ export function VideoCard({ video, Icon }: Props) {
 					<span className='text-gray-400 text-sm'>{video.channel.slug}</span>
 					<span>
 						<BadgeCheck
-							className='text-orange-400 h-auto '
-							size={12}
+							className='text-green-500 h-auto '
+							size={14}
 						/>
 					</span>
 				</Link>
