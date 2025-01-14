@@ -46,7 +46,9 @@ bun add tailwind-merge
   - [x] explore(recommended) videos
 - [x] Search
 - [x] сократить название канала, если слишком длинное
-- [ ] Page 404
+- [x] Page 404
+- [x] game videos
+- [ ] animations
 - [ ] UI block's heading/loader
   - [x] heading
   - [ ] SkeletonLoader:
@@ -58,6 +60,7 @@ bun add tailwind-merge
   - [ ] 768 - меню скрыто, 3 колонки
   - [ ] 1024 - меню открыто, 3 колонки
   - [ ] 1280 - меню открыто, 4 колонки
+- [ ] getTrendingVideos (2раза, на главной + трендинг). Так это серверный компонент?
 
 <!--
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
