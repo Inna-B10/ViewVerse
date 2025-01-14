@@ -12,7 +12,7 @@ export function Explore() {
 	})
 
 	return (
-		<div className='grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-5'>
+		<div className='grid-cols'>
 			{isLoading ? (
 				<SkeletonLoader
 					count={4}
@@ -26,7 +26,9 @@ export function Explore() {
 					/>
 				))
 			) : (
-				<div>Error fetching data</div>
+				<div>
+					<p>Trends are temporarily unavailable.</p>
+				</div>
 			)}
 		</div>
 	)

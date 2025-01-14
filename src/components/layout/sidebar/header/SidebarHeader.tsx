@@ -23,7 +23,7 @@ export function SidebarHeader({ toggleSidebar }: { toggleSidebar: () => void }) 
 					color={COLORS.primary}
 					size={26}
 				/>
-				<span className='font-philosopher font-bold text-2xl text-primary'>ViewVerse</span>
+				<h1 className='font-philosopher font-bold text-2xl text-primary'>ViewVerse</h1>
 			</Link>
 		</div>
 	)

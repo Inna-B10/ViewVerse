@@ -26,7 +26,7 @@ export function SearchField({}: Props) {
 			<input
 				type='search'
 				placeholder='Search...'
-				className='py-2 px-4 w-full rounded bg-slate-800/50 outline-none border-none shadow-none'
+				className='py-2 px-4 w-full rounded bg-[#252836] outline-none border-none shadow-none'
 				value={searchTerm}
 				onChange={e => setSearchTerm(e.target.value)}
 				onKeyDown={handleKeyDown}

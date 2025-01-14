@@ -13,6 +13,12 @@ body {
         @apply text-white bg-bg text-base;
 }
 
+@layer utilities {
+        .grid-cols {
+                @apply grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-5
+        }
+}
+
 hr.sidebar {
         border: none;
         background-image: -webkit-linear-gradient(left,
