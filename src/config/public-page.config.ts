@@ -1,7 +1,8 @@
 class PublicPage {
 	HOME = './'
 	TRENDING = './trending'
-	VIDEO_GAMES = './video-games'
+	GAME_VIDEOS = './game-videos'
+	// GAME_VIDEOS = './gameplay'
 
 	MY_CHANNEL = './my-channel'
 	SUBSCRIPTIONS = './subscriptions'

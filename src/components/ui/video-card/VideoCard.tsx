@@ -54,7 +54,7 @@ export function VideoCard({ video, Icon }: Props) {
 
 			{/* ------------------------------ Views / Date ------------------------------ */}
 			<div className='mb-1.5 flex items-center justify-between'>
-				<div className='flex gap-0.5 items-end'>
+				<div className='flex gap-1 items-end'>
 					{Icon && (
 						<Icon
 							className='text-orange-400 h-auto'

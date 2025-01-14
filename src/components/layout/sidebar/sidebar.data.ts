@@ -26,8 +26,8 @@ export const SIDEBAR_DATA: ISidebarItem[] = [
 	},
 	{
 		icon: Gamepad2,
-		label: 'Video games',
-		link: PAGE.VIDEO_GAMES,
+		label: 'Game videos',
+		link: PAGE.GAME_VIDEOS,
 		isBottomBorder: true
 	},
 	{
