@@ -1,23 +1,24 @@
-import axios from 'axios'
+import { axiosClassic } from '@/api/axios'
 import type { IApiResponseVideos, IVideo } from '@/types/video.types'
 
 class VideoService {
+	private _VIDEOS = '/videos'
 	/* -------------------------------- Trending -------------------------------- */
 	async getTrendingVideos() {
-		const { data } = await axios.get<IVideo[]>('http://localhost:4200/api/videos/trending')
+		const { data } = await axiosClassic.get<IVideo[]>(`${this._VIDEOS}/trending`)
 		return data
 	}
 
 	/* --------------------------------- Explore -------------------------------- */
 	async getExploreVideos() {
-		const { data } = await axios.get<IApiResponseVideos>('http://localhost:4200/api/videos/explore')
+		const { data } = await axiosClassic.get<IApiResponseVideos>(`${this._VIDEOS}/explore`)
 		return data
 	}
 
 	/* --------------------------------- Search --------------------------------- */
 	async filterVideos(searchTerm?: string | null) {
-		const { data } = await axios.get<IApiResponseVideos>(
-			'http://localhost:4200/api/videos',
+		const { data } = await axiosClassic.get<IApiResponseVideos>(
+			this._VIDEOS,
 			searchTerm
 				? {
 						params: {

@@ -27,7 +27,7 @@ export function Explore() {
 				))
 			) : (
 				<div>
-					<p>Trends are temporarily unavailable.</p>
+					<p>Explore videos are temporarily unavailable.</p>
 				</div>
 			)}
 		</div>
