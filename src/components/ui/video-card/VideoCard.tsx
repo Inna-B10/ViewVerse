@@ -1,3 +1,4 @@
+import * as m from 'framer-motion/m'
 import { BadgeCheck, type LucideIcon } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -19,7 +20,11 @@ export function VideoCard({ video, Icon }: Props) {
 	}
 
 	return (
-		<div className='mb-5 w-fit'>
+		<m.div
+			className='mb-5 w-fit'
+			whileHover={{ scale: 1.03, y: -5 }}
+			transition={{ type: 'spring', stiffness: 500, damping: 30 }}
+		>
 			<div className='relative mb-1.5'>
 				{/* ------------------------------- Video Img ------------------------------- */}
 				<Link
@@ -99,6 +104,6 @@ export function VideoCard({ video, Icon }: Props) {
 					)}
 				</Link>
 			</div>
-		</div>
+		</m.div>
 	)
 }
