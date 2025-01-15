@@ -30,6 +30,8 @@ bun add axios
 bun add @tanstack/react-query
 bun add dayjs
 bun add tailwind-merge
+bun add framer-motion
+bun add react-hook-form
 ```
 
 ### ToDo
@@ -48,18 +50,24 @@ bun add tailwind-merge
 - [x] сократить название канала, если слишком длинное
 - [x] Page 404
 - [x] game videos
-- [ ] animations
+- [x] VideoCard animations
+- [x] UI field, button
+- [x] UI login/registration form
+
+---
+
+- [ ] Integrate recaptcha
 - [ ] UI block's heading/loader
   - [x] heading
   - [ ] SkeletonLoader:
     - [x] static count
     - [ ] count depends on @media
 - [ ] media query:sideBar на мобилах изначально скрыт, при открытии - поверх контента
-  - [ ] меню кнопка?, 1 колонка
-  - [ ] 540 - меню скрыто, 2 колонки
-  - [ ] 768 - меню скрыто, 3 колонки
-  - [ ] 1024 - меню открыто, 3 колонки
-  - [ ] 1280 - меню открыто, 4 колонки
+<!-- - [ ] меню кнопка?, 1 колонка
+- [ ] 540 - меню скрыто, 2 колонки
+- [ ] 768 - меню скрыто, 3 колонки
+- [ ] 1024 - меню открыто, 3 колонки
+- [ ] 1280 - меню открыто, 4 колонки -->
 - [ ] getTrendingVideos (2раза, на главной + трендинг). Так это серверный компонент?
 
 <!--
