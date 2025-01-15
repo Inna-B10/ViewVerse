@@ -1,6 +1,5 @@
 import { type Metadata } from 'next'
 import { M_PLUS_Rounded_1c, Philosopher } from 'next/font/google'
-import { Layout } from '@/components/layout/Layout'
 import { Providers } from '@/providers/Providers'
 import './globals.scss'
 
@@ -40,9 +39,7 @@ export default function RootLayout({
 	return (
 		<html lang='en'>
 			<body className={`${mplus.className} ${philosopher.variable} antialiased`}>
-				<Providers>
-					<Layout>{children}</Layout>
-				</Providers>
+				<Providers>{children}</Providers>
 			</body>
 		</html>
 	)
