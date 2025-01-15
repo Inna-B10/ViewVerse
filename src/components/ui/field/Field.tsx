@@ -12,11 +12,11 @@ export function Field({ label, error, registration, ...props }: Props) {
 	return (
 		<div className='mb-4'>
 			<label>
-				<span className='block text-grey-400 font-semibold mb-2'>{label}</span>
+				<span className='block text-grey-400 font-medium mb-2'>{label}</span>
 				<input
 					className={cn(
-						'w-full px-3 py-2 border rounded shadow-sm transition-colors focus:outline-none focus:ring-0 focus: border-primary',
-						error ? 'border-red-600' : 'border-transparent '
+						'w-full px-3 py-2 bg-field text-sm border rounded shadow-sm transition-colors focus:outline-none focus:ring-0 focus:border-primary',
+						error ? 'border-red-600' : 'border-border '
 					)}
 					{...registration}
 					{...props}
