@@ -5,12 +5,8 @@ import { type SubmitHandler, useForm } from 'react-hook-form'
 import { Logo } from '@/components/layout/sidebar/header/Logo'
 import { Button } from '@/ui/button/Button'
 import { Field } from '@/ui/field/Field'
+import type { IAuthForm } from '../../types/auth.form.types'
 
-interface IAuthForm {
-	email: string
-	password: string
-	confirmPassword?: string
-}
 export function Auth() {
 	const [isLogin, setIsLogin] = useState(true)
 	const {
