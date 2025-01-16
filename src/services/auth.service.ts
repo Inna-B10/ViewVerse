@@ -61,7 +61,7 @@ class AuthService {
 	}
 
 	/* ------------------------------- Save Token ------------------------------- */
-	//NB change domain for production
+	//[!] change domain for production
 	private _saveTokenStorage(accessToken: string) {
 		Cookies.set(EnumTokens.ACCESS_TOKEN, accessToken, {
 			domain: 'localhost',

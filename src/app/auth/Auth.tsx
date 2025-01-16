@@ -39,9 +39,6 @@ export function Auth() {
 				border-border
 				rounded'
 			>
-				{/* <div className='text-center mb-4'>
-					<Logo />
-				</div> */}
 				<div className='flex justify-center mb-6'>
 					<button
 						type='button'

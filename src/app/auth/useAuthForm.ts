@@ -36,7 +36,7 @@ export function useAuthForm(type: 'login' | 'register', reset: UseFormReset<IAut
 				})
 				return 'Success! You are logged in.'
 			},
-			error: e => {
+			error: (e: object) => {
 				if (axios.isAxiosError(e)) {
 					return e.response?.data?.message
 				}
