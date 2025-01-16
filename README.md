@@ -32,6 +32,11 @@ bun add dayjs
 bun add tailwind-merge
 bun add framer-motion
 bun add react-hook-form
+bun add js-cookie
+bun add -D @types/js-cookie
+bun add react-google-recaptcha
+bun add -D @types/react-google-recaptcha
+bun add react-hot-toast
 ```
 
 ### ToDo
