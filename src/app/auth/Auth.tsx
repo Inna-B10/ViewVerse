@@ -1,18 +1,22 @@
 'use client'
 
-import { useState } from 'react'
+import { useRouter } from 'next/navigation'
+import { useEffect, useState } from 'react'
 import ReCAPTCHA from 'react-google-recaptcha'
 import { useForm } from 'react-hook-form'
 import { Logo } from '@/components/layout/sidebar/header/Logo'
 import { SkeletonLoader } from '@/ui/SkeletonLoader'
 import { Button } from '@/ui/button/Button'
 import { Field } from '@/ui/field/Field'
-import type { IAuthForm } from '../../types/auth.form.types'
+import { PAGE } from '@/config/public-page.config'
+import type { IAuthForm } from '../../types/auth-form.types'
 import { useAuthForm } from './useAuthForm'
+import { useTypedSelector } from '@/store'
 import styles from './captcha.module.scss'
 
 export function Auth() {
 	const [isLogin, setIsLogin] = useState(true)
+
 	const {
 		register,
 		handleSubmit,
@@ -26,6 +30,16 @@ export function Auth() {
 	const { isLoading, recaptchaRef, onSubmit } = useAuthForm(isLogin ? 'login' : 'register', reset)
 
 	const password = watch('password')
+
+	const accessToken = useTypedSelector(state => state.auth.accessToken)
+
+	const router = useRouter()
+
+	// if user is loget in (has accessToken) => do not show auth page (redirect to home)
+	useEffect(() => {
+		if (!accessToken) return
+		router.push(PAGE.HOME)
+	}, [accessToken, router])
 
 	return (
 		<section className='w-screen h-screen flex flex-col justify-center items-center'>
@@ -56,7 +70,10 @@ export function Auth() {
 					</button>
 				</div>
 
-				<form onSubmit={handleSubmit(onSubmit)}>
+				<form
+					onSubmit={handleSubmit(onSubmit)}
+					name='auth'
+				>
 					{isLoading ? (
 						<SkeletonLoader count={3} />
 					) : (
@@ -65,6 +82,7 @@ export function Auth() {
 								label='Email'
 								placeholder='Your email'
 								type='email'
+								name='email'
 								registration={register('email', { required: 'Email is required!' })}
 								error={errors.email?.message}
 							/>
@@ -72,6 +90,7 @@ export function Auth() {
 								label='Password'
 								placeholder='Your password'
 								type='password'
+								name='password'
 								registration={register('password', { required: 'Password is required!' })}
 								error={errors.password?.message}
 							/>
@@ -80,6 +99,7 @@ export function Auth() {
 									label='Confirm password'
 									placeholder='Password confirmation'
 									type='password'
+									name='confirm-pass'
 									registration={register('confirmPassword', {
 										validate: value => value === password || 'Passwords don`t match!'
 									})}

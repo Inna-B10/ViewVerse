@@ -2,9 +2,7 @@ import { useRouter } from 'next/navigation'
 import { type KeyboardEvent, useState } from 'react'
 import { PAGE } from '@/config/public-page.config'
 
-interface Props {}
-
-export function SearchField({}: Props) {
+export function SearchField() {
 	const [searchTerm, setSearchTerm] = useState('')
 	const router = useRouter()
 
@@ -26,6 +24,7 @@ export function SearchField({}: Props) {
 			<input
 				type='search'
 				placeholder='Search...'
+				name='search'
 				className='py-2 px-4 w-full rounded bg-field outline-none border border-transparent transition-colors focus:outline-none focus:ring-0 focus:border-border shadow-none'
 				value={searchTerm}
 				onChange={e => setSearchTerm(e.target.value)}
