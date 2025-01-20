@@ -37,6 +37,7 @@ bun add -D @types/js-cookie
 bun add react-google-recaptcha
 bun add -D @types/react-google-recaptcha
 bun add react-hot-toast
+bun add @reduxjs/toolkit react-redux
 ```
 
 ### ToDo
@@ -58,10 +59,16 @@ bun add react-hot-toast
 - [x] VideoCard animations
 - [x] UI field, button
 - [x] UI login/registration form
+- [x] Integrate recaptcha
+- [x] log out button
+- [x] user's avatar (channel avatar || default)
+- [x] email confirmation
 
 ---
 
-- [ ] Integrate recaptcha
+- [ ] axios interceptors
+- [ ] test tokens
+- [ ] user profile page
 - [ ] UI block's heading/loader
   - [x] heading
   - [ ] SkeletonLoader:
