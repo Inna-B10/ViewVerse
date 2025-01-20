@@ -99,9 +99,8 @@ export function Auth() {
 									label='Confirm password'
 									placeholder='Password confirmation'
 									type='password'
-									name='confirm-pass'
+									name='confirmPassword'
 									registration={register('confirmPassword', {
-										required: 'Password confirmation is required!',
 										validate: value => {
 											console.log('pass: ', password, 'val: ', value)
 											return value === password || 'Passwords don`t match!'
