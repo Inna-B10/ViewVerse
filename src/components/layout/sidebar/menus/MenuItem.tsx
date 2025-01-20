@@ -23,8 +23,7 @@ export function MenuItem({ item, isActive, isShowedSidebar }: Props) {
 				<item.icon
 					className={cn('min-w-6 pb-[3px]', {
 						' group-hover:rotate-6': !isActive,
-						'border-b border-white': !isShowedSidebar && isActive,
-						' border-b border-transparent': isShowedSidebar
+						'text-primary': !isShowedSidebar && isActive
 					})}
 				/>
 				<span

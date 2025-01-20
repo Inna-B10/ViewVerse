@@ -6,9 +6,7 @@ import ReCAPTCHA from 'react-google-recaptcha'
 import type { SubmitHandler, UseFormReset } from 'react-hook-form'
 import toast from 'react-hot-toast'
 import { PAGE } from '@/config/public-page.config'
-import { clearAuthData } from '@/store/auth.slice'
 import { authService } from '@/services/auth.service'
-import { useAppDispatch } from '@/store'
 import type { IAuthData, IAuthForm } from '@/types/auth-form.types'
 
 export function useAuthForm(type: 'login' | 'register', reset: UseFormReset<IAuthForm>) {
@@ -23,15 +21,13 @@ export function useAuthForm(type: 'login' | 'register', reset: UseFormReset<IAut
 		mutationFn: (data: IAuthData) => authService.main(type, data, recaptchaRef.current?.getValue())
 	})
 
-	const dispatch = useAppDispatch()
-
-	const onSubmit: SubmitHandler<IAuthForm> = data => {
+	const onSubmit: SubmitHandler<IAuthForm> = ({ email, password }) => {
 		const token = recaptchaRef.current?.getValue()
 		if (!token) {
 			toast.error('Pass the captcha!', { id: 'recaptcha' })
 			return
 		}
-		toast.promise(mutateAsync(data), {
+		toast.promise(mutateAsync({ email, password }), {
 			loading: 'Loading...',
 			success: () => {
 				startTransition(() => {
@@ -42,8 +38,6 @@ export function useAuthForm(type: 'login' | 'register', reset: UseFormReset<IAut
 			},
 			error: (e: object) => {
 				if (axios.isAxiosError(e)) {
-					// @ts-ignore
-					dispatch(clearAuthData())
 					return e.response?.data?.message
 				}
 			}

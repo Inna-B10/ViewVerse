@@ -101,7 +101,11 @@ export function Auth() {
 									type='password'
 									name='confirm-pass'
 									registration={register('confirmPassword', {
-										validate: value => value === password || 'Passwords don`t match!'
+										required: 'Password confirmation is required!',
+										validate: value => {
+											console.log('pass: ', password, 'val: ', value)
+											return value === password || 'Passwords don`t match!'
+										}
 									})}
 									error={errors.confirmPassword?.message}
 								/>
