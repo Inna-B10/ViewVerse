@@ -5,7 +5,7 @@ import './globals.scss'
 
 /* ------------------------------ Default Font  */
 const mplus = M_PLUS_Rounded_1c({
-	weight: ['400', '700'],
+	weight: ['400', '500', '700'],
 	variable: '--font-mplus',
 	subsets: ['latin']
 })
