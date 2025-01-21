@@ -12,7 +12,7 @@ interface IAuthResponse {
 }
 
 class AuthService {
-	private _AUTH = './auth'
+	private _AUTH = '/auth'
 
 	async main(type: 'login' | 'register', data: IAuthData, recaptchaToken?: string | null) {
 		const response = await axiosClassic.post<IAuthResponse>(`${this._AUTH}/${type}`, data, {
@@ -20,24 +20,39 @@ class AuthService {
 		})
 
 		if (response.data.accessToken) {
-			this._saveTokenStorage(response.data.accessToken) //save token in cookies
+			this._saveTokenToStorage(response.data.accessToken) //save token in cookies
 			store.dispatch(setAuthData(response.data)) // save user's data to our global store
 		}
 		return response
 	}
 
-	/* -------------------------- GetNewTokens (Client) ------------------------- */
+	/* ----------------------------- InitializeAuth / Re-login----------------------------- */
+	//in cases when an accessToken (client) expired, try to get new using refreshToken (server), if unsuccessfully - clear all user data from store and all cookies
+
+	async initializeAuth() {
+		const accessToken = Cookies.get(EnumTokens.ACCESS_TOKEN)
+
+		if (accessToken) return
+		try {
+			await this.getNewTokens() // try to get new tokens
+		} catch (error) {
+			// console.log(error)
+			store.dispatch(clearAuthData()) //delete user's data from global store
+		}
+	}
+
+	/* -------------------------- GetNewTokens (Client cookie) ------------------------- */
 	async getNewTokens() {
 		const response = await axiosClassic.post<IAuthResponse>(`${this._AUTH}/access-token`)
 
 		if (response.data.accessToken) {
-			this._saveTokenStorage(response.data.accessToken)
+			this._saveTokenToStorage(response.data.accessToken)
 			store.dispatch(setAuthData(response.data))
 		}
 		return response
 	}
 
-	/* --------------------- GetNewTokensByRefresh (Server) --------------------- */
+	/* --------------------- GetNewTokensByRefresh (Server cookie) --------------------- */
 	async getNewTokensByRefresh(refreshToken: string) {
 		const response = await axiosClassic.post<IAuthResponse>(
 			`${this._AUTH}/access-token`,
@@ -56,8 +71,7 @@ class AuthService {
 		const response = await axiosClassic.post<boolean>(`${this._AUTH}/logout`)
 
 		if (response.data) {
-			this._removeTokenStorage()
-			store.dispatch(clearAuthData()) // remove user's data from global store
+			this.removeTokenFromStorage()
 		}
 
 		return response
@@ -65,17 +79,19 @@ class AuthService {
 
 	/* ------------------------------- Save Token ------------------------------- */
 	//[!] change domain for production
-	private _saveTokenStorage(accessToken: string) {
+	private _saveTokenToStorage(accessToken: string) {
 		Cookies.set(EnumTokens.ACCESS_TOKEN, accessToken, {
 			domain: 'localhost',
 			sameSite: 'strict',
-			expires: 1
+			expires: 1 / 24 //1h
+			// secure: true
 		})
 	}
 
 	/* ------------------------------ Remove Token ------------------------------ */
-	private _removeTokenStorage() {
+	removeTokenFromStorage() {
 		Cookies.remove(EnumTokens.ACCESS_TOKEN)
+		store.dispatch(clearAuthData())
 	}
 }
 

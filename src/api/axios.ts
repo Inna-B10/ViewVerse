@@ -2,6 +2,8 @@ import type { CreateAxiosDefaults } from 'axios'
 import axios from 'axios'
 import Cookies from 'js-cookie'
 import { API_URL } from '@/constants/constants'
+import { errorCatch } from './api.helper'
+import { authService } from '@/services/auth.service'
 import { EnumTokens } from '@/types/auth.types'
 
 const options: CreateAxiosDefaults = {
@@ -28,3 +30,33 @@ instance.interceptors.request.use(config => {
 
 	return config
 })
+
+instance.interceptors.response.use(
+	config => config,
+	async error => {
+		const originalRequest = error.config
+
+		if (
+			(error?.response?.status === 401 ||
+				errorCatch(error) === 'jwt expired' ||
+				errorCatch(error) === 'jwt must be provided') &&
+			originalRequest &&
+			!originalRequest._isRetry
+		) {
+			originalRequest._isRetry = true
+			try {
+				await authService.getNewTokens()
+				return instance.request(originalRequest)
+			} catch (error) {
+				if (
+					errorCatch(error) === 'jwt expired' ||
+					errorCatch(error) === 'Refresh token not passed'
+				) {
+					authService.removeTokenFromStorage()
+					throw error
+				}
+			}
+		}
+		throw error
+	}
+)
