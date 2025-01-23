@@ -7,18 +7,21 @@ export function HeaderLinks() {
 		<div className='flex items-center gap-2 lg:gap-4'>
 			<Link
 				href={STUDIO_PAGE.UPLOAD_VIDEO}
+				title='upload video'
 				className='transition-opacity opacity-50 hover:opacity-100'
 			>
 				<PlusSquare size={20} />
 			</Link>
 			<Link
 				href={STUDIO_PAGE.HOME}
+				title='studio'
 				className='transition-opacity opacity-50 hover:opacity-100'
 			>
 				<LayoutGrid size={20} />
 			</Link>
 			<Link
 				href={STUDIO_PAGE.HOME}
+				title='notifications'
 				className='transition-opacity opacity-50 hover:opacity-100'
 			>
 				<Bell size={20} />

@@ -73,7 +73,7 @@ class AuthService {
 		if (response.data) {
 			this.removeTokenFromStorage()
 		}
-
+		//[TODO] redirect to home if current page requed auth
 		return response
 	}
 
