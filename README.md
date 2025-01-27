@@ -38,6 +38,7 @@ bun add react-google-recaptcha
 bun add -D @types/react-google-recaptcha
 bun add react-hot-toast
 bun add @reduxjs/toolkit react-redux
+bun add jose
 ```
 
 ### ToDo
@@ -63,12 +64,17 @@ bun add @reduxjs/toolkit react-redux
 - [x] log out button
 - [x] user's avatar (channel avatar || default)
 - [x] email confirmation
+- [x] axios interceptors
+- [x] test tokens
+- [x] Middleware / verify token
+- [x] FIX! redirect after logout(special on pages with auth)
 
 ---
 
-- [ ] axios interceptors
-- [ ] test tokens
-- [ ] user profile page
+- [ ] Profile settings
+  - [ ] UI form
+  - [ ] functions: update text, upload file
+  - [ ] header
 - [ ] UI block's heading/loader
   - [x] heading
   - [ ] SkeletonLoader:
