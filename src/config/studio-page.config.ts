@@ -3,7 +3,7 @@ class StudioPage {
 	// HOME = './studio'
 
 	//local
-	HOME = '/studio'
+	HOME = './studio'
 
 	SETTINGS = `${this.HOME}/settings`
 

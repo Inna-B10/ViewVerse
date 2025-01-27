@@ -1,12 +1,12 @@
 import {
 	CircleAlert,
 	CirclePlay,
+	Cog,
 	Compass,
 	Flame,
 	FolderHeart,
 	Gamepad2,
 	History,
-	Settings,
 	TvMinimalPlay
 } from 'lucide-react'
 import { PAGE } from '@/config/public-page.config'
@@ -55,7 +55,7 @@ export const SIDEBAR_DATA: ISidebarItem[] = [
 
 export const MORE_SIDEBAR_DATA: ISidebarItem[] = [
 	{
-		icon: Settings,
+		icon: Cog,
 		label: 'Settings',
 		link: STUDIO_PAGE.SETTINGS
 	},

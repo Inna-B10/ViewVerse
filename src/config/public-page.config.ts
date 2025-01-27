@@ -1,9 +1,9 @@
 class PublicPage {
 	//online
-	// HOME = '.'
+	// HOME = './'
 
 	//local
-	HOME = ''
+	HOME = './'
 	AUTH = `${this.HOME}/auth`
 	TRENDING = `${this.HOME}/trending`
 	GAME_VIDEOS = `${this.HOME}/game-videos`
