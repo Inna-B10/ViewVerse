@@ -10,5 +10,5 @@ export async function protectLogin(request: NextRequest) {
 
 	const verifiedData = await jwtVerifyServer(tokens.accessToken)
 	if (!verifiedData) return NextResponse.next()
-	return nextRedirect(STUDIO_PAGE.HOME, request.url)
+	return nextRedirect(STUDIO_PAGE.STUDIO_HOME, request.url)
 }

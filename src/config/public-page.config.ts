@@ -1,20 +1,16 @@
 class PublicPage {
-	//online
-	// HOME = './'
+	AUTH = '/auth'
 
-	//local
-	HOME = './'
-	AUTH = `${this.HOME}/auth`
-	TRENDING = `${this.HOME}/trending`
-	GAME_VIDEOS = `${this.HOME}/game-videos`
-	// GAME_VIDEOS = '/gameplay'
+	HOME = '/'
+	TRENDING = '/trending'
+	GAME_VIDEOS = '/game-videos'
 
-	MY_CHANNEL = `${this.HOME}/my-channel`
-	SUBSCRIPTIONS = `${this.HOME}/subscriptions`
-	HISTORY = `${this.HOME}/history`
-	LIKED_VIDEOS = `${this.HOME}/liked-videos`
+	MY_CHANNEL = '/my-channel'
+	SUBSCRIPTIONS = '/subscriptions'
+	HISTORY = '/history'
+	LIKED_VIDEOS = '/liked-videos'
 
-	FEEDBACK = `${this.HOME}/feedback`
+	FEEDBACK = '/feedback'
 
 	VIDEO(path: string) {
 		return `/v/${path}`
@@ -24,7 +20,7 @@ class PublicPage {
 	}
 
 	SEARCH(searchTerm: string) {
-		return `${this.HOME}/search?term=${searchTerm}`
+		return `/search?term=${searchTerm}`
 	}
 }
 

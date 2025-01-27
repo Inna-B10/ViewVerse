@@ -6,7 +6,7 @@ import { Textarea } from '@/ui/field/Textarea'
 import { useSettings } from './useSettings'
 
 export function SettingsForm() {
-	//NB if without destructuring: const { formObject, isLoading, onSubmit } = useSettings()
+	//NB in case without destructuring: const { formObject, isLoading, onSubmit } = useSettings()
 	const {
 		formObject: {
 			handleSubmit,
@@ -14,12 +14,16 @@ export function SettingsForm() {
 			formState: { errors }
 		},
 		isLoading,
+		isProfileLoading,
 		onSubmit
 	} = useSettings()
+
+	if (isProfileLoading) return <div>Loading...</div>
+
 	return (
 		<div className='w-3/5'>
 			<form
-				//NB if without destructuring: onSubmit={formObject.handleSubmit(onSubmit)}
+				//NB in case without destructuring: onSubmit={formObject.handleSubmit(onSubmit)}
 				onSubmit={handleSubmit(onSubmit)}
 				name='auth'
 			>

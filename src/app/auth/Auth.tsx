@@ -1,17 +1,14 @@
 'use client'
 
-import { useRouter } from 'next/navigation'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import ReCAPTCHA from 'react-google-recaptcha'
 import { useForm } from 'react-hook-form'
 import { Logo } from '@/components/layout/sidebar/header/Logo'
 import { SkeletonLoader } from '@/ui/SkeletonLoader'
 import { Button } from '@/ui/button/Button'
 import { Field } from '@/ui/field/Field'
-import { PAGE } from '@/config/public-page.config'
 import type { IAuthForm } from '../../types/auth-form.types'
 import { useAuthForm } from './useAuthForm'
-import { useTypedSelector } from '@/store'
 import styles from './captcha.module.scss'
 
 export function Auth() {
@@ -30,16 +27,6 @@ export function Auth() {
 	const { isLoading, recaptchaRef, onSubmit } = useAuthForm(isLogin ? 'login' : 'register', reset)
 
 	const password = watch('password')
-
-	const accessToken = useTypedSelector(state => state.auth.accessToken)
-
-	const router = useRouter()
-
-	// if user is loget in (has accessToken) => do not show auth page (redirect to home)
-	useEffect(() => {
-		if (!accessToken) return
-		router.push(PAGE.HOME)
-	}, [accessToken, router])
 
 	return (
 		<section className='w-screen h-screen flex flex-col justify-center items-center'>

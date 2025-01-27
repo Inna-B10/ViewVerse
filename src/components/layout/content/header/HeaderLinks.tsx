@@ -13,14 +13,14 @@ export function HeaderLinks() {
 				<PlusSquare size={20} />
 			</Link>
 			<Link
-				href={STUDIO_PAGE.HOME}
+				href={STUDIO_PAGE.STUDIO_HOME}
 				title='studio'
 				className='transition-opacity opacity-50 hover:opacity-100'
 			>
 				<LayoutGrid size={20} />
 			</Link>
 			<Link
-				href={STUDIO_PAGE.HOME}
+				href={STUDIO_PAGE.STUDIO_HOME}
 				title='notifications'
 				className='transition-opacity opacity-50 hover:opacity-100'
 			>

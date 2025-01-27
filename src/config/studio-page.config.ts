@@ -1,13 +1,9 @@
 class StudioPage {
-	//online
-	// HOME = './studio'
+	STUDIO_HOME = '/studio'
 
-	//local
-	HOME = './studio'
+	SETTINGS = `${this.STUDIO_HOME}/settings`
 
-	SETTINGS = `${this.HOME}/settings`
-
-	UPLOAD_VIDEO = `${this.HOME}/upload`
+	UPLOAD_VIDEO = `${this.STUDIO_HOME}/upload`
 
 	EDIT_VIDEO(path: string) {
 		return `/edit/v/${path}`
