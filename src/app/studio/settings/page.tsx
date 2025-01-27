@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function SettingsPage() {
 	return (
-		<div className='flex items-center gap-1.5 opacity-90 mb-4'>
+		<div>
 			<Heading
 				Icon={Cog}
 				isPageHeading
