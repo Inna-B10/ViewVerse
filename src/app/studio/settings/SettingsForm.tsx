@@ -1,8 +1,10 @@
 'use client'
 
+import { Controller } from 'react-hook-form'
 import { Button } from '@/ui/button/Button'
 import { Field } from '@/ui/field/Field'
 import { Textarea } from '@/ui/field/Textarea'
+import { UploadField } from '@/ui/upload-field/UploadField'
 import { useSettings } from './useSettings'
 
 export function SettingsForm() {
@@ -11,7 +13,8 @@ export function SettingsForm() {
 		formObject: {
 			handleSubmit,
 			register,
-			formState: { errors }
+			formState: { errors },
+			control
 		},
 		isLoading,
 		isProfileLoading,
@@ -42,7 +45,7 @@ export function SettingsForm() {
 							placeholder='Your password'
 							type='password'
 							name='password'
-							registration={register('password', { required: 'Password is required!' })}
+							registration={register('password')}
 							error={errors.password?.message}
 						/>
 						<Field
@@ -70,9 +73,39 @@ export function SettingsForm() {
 							error={errors.channel?.description?.message}
 						/>
 					</div>
-					<div></div>
+					<div>
+						<Controller
+							control={control}
+							name='channel.avatarUrl'
+							render={({ field: { onChange, value }, fieldState: { error } }) => (
+								<UploadField
+									label='Avatar: '
+									onChange={onChange}
+									value={value}
+									error={error}
+									folder='avatars'
+									className='mb-4'
+								/>
+							)}
+						/>
+						<Controller
+							control={control}
+							name='channel.bannerUrl'
+							render={({ field: { onChange, value }, fieldState: { error } }) => (
+								<UploadField
+									label='Banner: '
+									onChange={onChange}
+									value={value}
+									error={error}
+									folder='banners'
+									aspectRation='16:9'
+									overlay='/overlay.png'
+								/>
+							)}
+						/>
+					</div>
 				</div>
-				<div className='text-center mt-[1.1rem]'>
+				<div className='text-center mt-12'>
 					<Button
 						type='submit'
 						isLoading={isLoading}
