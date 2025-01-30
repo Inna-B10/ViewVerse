@@ -12,7 +12,7 @@ export function Heading({ children, Icon, isPageHeading = false }: Props) {
 	return (
 		<div
 			className={cn(
-				'text-primary flex items-center opacity-90',
+				'text-primary flex items-center',
 				isPageHeading ? 'gap-2.5 mb-6' : 'gap-1.5 mb-4'
 			)}
 		>
