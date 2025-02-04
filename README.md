@@ -68,13 +68,14 @@ bun add jose
 - [x] test tokens
 - [x] Middleware / verify token
 - [x] FIX! redirect after logout(special on pages with auth)
+- [x] Profile settings
+  - [x] UI form
+  - [x] functions: update text fields, upload avatar/header
 
 ---
 
-- [ ] Profile settings
-  - [ ] UI form
-  - [ ] functions: update text, upload file
-  - [ ] header
+- [ ] FIXME logout on ChannelPage
+- [ ] channel page
 - [ ] UI block's heading/loader
   - [x] heading
   - [ ] SkeletonLoader:
