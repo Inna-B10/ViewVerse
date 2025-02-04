@@ -1,14 +1,8 @@
 import cn from 'clsx'
 import Link from 'next/link'
-import type { ISidebarItem } from '../sidebar.types'
+import type { IMenuItemProps } from '@/types/menu.types'
 
-interface Props {
-	item: ISidebarItem
-	isActive: boolean
-	isShowedSidebar: boolean
-}
-
-export function MenuItem({ item, isActive, isShowedSidebar }: Props) {
+export function MenuItem({ item, isActive, isShowedSidebar }: IMenuItemProps) {
 	/* --------------------------------- Nav li --------------------------------- */
 	return (
 		<li>
