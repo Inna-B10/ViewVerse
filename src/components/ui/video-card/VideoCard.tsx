@@ -14,7 +14,7 @@ interface Props {
 
 export function VideoCard({ video, Icon }: Props) {
 	//if channel name is too long
-	let channelName = video.channel.slug
+	let channelName = video?.channel?.user?.name || ''
 	if (channelName.length >= 25) {
 		channelName = channelName.slice(0, 22).concat('..')
 	}
@@ -51,7 +51,7 @@ export function VideoCard({ video, Icon }: Props) {
 						src={video.channel.avatarUrl}
 						width={32}
 						height={32}
-						alt={video.channel.slug}
+						alt={channelName}
 						className='rounded-full shadow-orange h-auto'
 					/>
 				</Link>

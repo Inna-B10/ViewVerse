@@ -5,6 +5,9 @@ import { VideoCard } from '@/ui/video-card/VideoCard'
 import { Explore } from '../explore/Explore'
 import { videoService } from '@/services/video.service'
 
+export const revalidate = 100
+export const dynamic = 'force-static'
+
 export const metadata: Metadata = {
 	title: 'Home',
 	description: 'ViewVerse  — your go-to place for a world of videos!',

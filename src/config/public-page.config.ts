@@ -13,10 +13,10 @@ class PublicPage {
 	FEEDBACK = '/feedback'
 
 	VIDEO(path: string) {
-		return `/v/${path}`
+		return `/video/${path}`
 	}
 	CHANNEL(path: string) {
-		return `/c/${path}`
+		return `/channel/${path}`
 	}
 
 	SEARCH(searchTerm: string) {
