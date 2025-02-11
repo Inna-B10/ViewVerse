@@ -1,10 +1,11 @@
 import * as m from 'framer-motion/m'
-import { BadgeCheck, type LucideIcon } from 'lucide-react'
+import { type LucideIcon } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { PAGE } from '@/config/public-page.config'
+import { transformCount } from '@/utils/transform-count'
 import { transformDate } from '@/utils/transform-date'
-import { transformViews } from '@/utils/transform-views'
+import { VerifiedBadge } from './VerifiedBadge'
 import type { IVideo } from '@/types/video.types'
 
 interface Props {
@@ -67,7 +68,7 @@ export function VideoCard({ video, Icon }: Props) {
 						/>
 					)}
 					<span className='text-gray-400 text-xs text-nowrap'>
-						{transformViews(video.viewsCount)}
+						{transformCount(video.viewsCount)} views
 					</span>
 				</div>
 				<div className='flex items-end'>
@@ -94,14 +95,7 @@ export function VideoCard({ video, Icon }: Props) {
 					className='flex items-center gap-1'
 				>
 					<span className='text-gray-400 text-sm'>{channelName}</span>
-					{video.channel.isVerified && (
-						<span>
-							<BadgeCheck
-								className='text-green-500 h-auto '
-								size={14}
-							/>
-						</span>
-					)}
+					{video.channel.isVerified && <VerifiedBadge />}
 				</Link>
 			</div>
 		</m.div>
