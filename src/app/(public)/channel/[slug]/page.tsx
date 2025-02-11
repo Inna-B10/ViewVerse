@@ -1,4 +1,5 @@
 import { ListVideo } from 'lucide-react'
+import type { Metadata } from 'next'
 import { Heading } from '@/ui/Heading'
 import { VideoCard } from '@/ui/video-card/VideoCard'
 import { channelService } from '@/services/channel.service'
@@ -7,10 +8,30 @@ import type { TPageSlugProp } from '@/types/page.types'
 export const revalidate = 100
 export const dynamic = 'force-static'
 
-// [TODO] dynamic metadata
+export async function generateMetadata({ params: { slug } }: TPageSlugProp): Promise<Metadata> {
+	const channel = await channelService.bySlug(slug)
+
+	return {
+		title: channel.data.user.name,
+		description: channel.data.description,
+		openGraph: {
+			type: 'profile',
+			images: [channel.data.bannerUrl]
+		}
+	}
+}
+
+export async function generateStaticParams() {
+	const { data } = await channelService.getAll()
+
+	return data.map(channel => ({
+		slug: channel.slug
+	}))
+}
 
 export default async function ChannelPage({ params: { slug } }: TPageSlugProp) {
-	const channel = await channelService.bySlug(slug)
+	const data = await channelService.bySlug(slug)
+	const channel = data.data
 
 	return (
 		<>
