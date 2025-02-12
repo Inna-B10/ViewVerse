@@ -71,11 +71,16 @@ bun add jose
 - [x] Profile settings
   - [x] UI form
   - [x] functions: update text fields, upload avatar/header
+- [x] channel page:
+  - [x] subscribe button
+  - [x] banner
+  - [x] section my subscriptions
 
 ---
 
-- [ ] FIXME logout on ChannelPage
-- [ ] channel page
+- [ ] FIXME logout on ChannelPage, Subscriptions (should redirect to home/auth)
+- [ ] sort/group videos on SubscriptionsPage
+- [ ] button colors
 - [ ] UI block's heading/loader
   - [x] heading
   - [ ] SkeletonLoader:

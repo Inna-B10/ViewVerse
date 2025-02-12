@@ -36,6 +36,7 @@ export function VideoCard({ video, Icon }: Props) {
 						src={video.thumbnailUrl}
 						width={250}
 						height={140}
+						quality={90}
 						// sizes='100vw, (min-width: 768px) 50vw, (min-width: 1024px) 33vw, (min-width:1440) 25vw'
 						alt={video.title}
 						className='rounded-md w-dvw object-cover'

@@ -11,7 +11,11 @@ import type { TPageSlugProp } from '@/types/page.types'
 
 const DynamicSubscribeButton = dynamicNext(
 	() => import('@/components/SubscribeButton').then(mod => mod.SubscribeButton),
-	{ loading: () => <SkeletonLoader className='w-36 h-10 rounded-md' /> }
+	{
+		//[FIXME]
+		// ssr: false,
+		loading: () => <SkeletonLoader className='w-36 h-10 rounded-md' />
+	}
 )
 
 export const revalidate = 100
@@ -39,7 +43,8 @@ export async function generateStaticParams() {
 	}))
 }
 
-export default async function ChannelPage({ params: { slug } }: TPageSlugProp) {
+export default async function ChannelPage({ params }: TPageSlugProp) {
+	const { slug } = await params
 	const data = await channelService.bySlug(slug)
 	const channel = data.data
 
