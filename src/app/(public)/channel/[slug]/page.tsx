@@ -1,25 +1,32 @@
 import type { Metadata } from 'next'
+import dynamicNext from 'next/dynamic'
 import Image from 'next/image'
 import { Heading } from '@/ui/Heading'
-import { Button } from '@/ui/button/Button'
+import { SkeletonLoader } from '@/ui/SkeletonLoader'
 import { VerifiedBadge } from '@/ui/video-card/VerifiedBadge'
 import { transformCount } from '@/utils/transform-count'
 import { ChannelVideos } from './ChannelVideos'
 import { channelService } from '@/services/channel.service'
 import type { TPageSlugProp } from '@/types/page.types'
 
+const DynamicSubscribeButton = dynamicNext(
+	() => import('@/components/SubscribeButton').then(mod => mod.SubscribeButton),
+	{ loading: () => <SkeletonLoader className='w-36 h-10 rounded-md' /> }
+)
+
 export const revalidate = 100
 export const dynamic = 'force-static'
 
 export async function generateMetadata({ params: { slug } }: TPageSlugProp): Promise<Metadata> {
-	const channel = await channelService.bySlug(slug)
+	const data = await channelService.bySlug(slug)
+	const channel = data.data
 
 	return {
-		title: channel.data.user.name,
-		description: channel.data.description,
+		title: channel.user.name,
+		description: channel.description,
 		openGraph: {
 			type: 'profile',
-			images: [channel.data.bannerUrl]
+			images: [channel.bannerUrl]
 		}
 	}
 }
@@ -39,14 +46,17 @@ export default async function ChannelPage({ params: { slug } }: TPageSlugProp) {
 	return (
 		<section className='mb-10'>
 			<div>
-				<Image
-					alt={channel.user.name || ''}
-					//[TODO] default banner
-					src={channel.bannerUrl || '/overlay.png'}
-					width={1284}
-					height={207}
-					className='rounded-3xl'
-				/>
+				<div className='relative w-full h-[249px] rounded-lg overflow-hidden shadow-md'>
+					<Image
+						alt={channel.user.name || ''}
+						//[TODO] default banner
+						src={channel.bannerUrl || '/overlay.png'}
+						layout='fill'
+						objectFit='cover'
+						quality={90}
+						priority
+					/>
+				</div>
 			</div>
 			<div className='flex gap-5 mt-7 mb-12 w-1/2'>
 				<Image
@@ -54,7 +64,9 @@ export default async function ChannelPage({ params: { slug } }: TPageSlugProp) {
 					src={channel.avatarUrl}
 					width={185}
 					height={185}
-					className='rounded-xl flex-shrink-0'
+					quality={90}
+					priority
+					className='rounded-lg flex-shrink-0 shadow-md'
 				/>
 				<div className='flex flex-col justify-between'>
 					<Heading>
@@ -71,8 +83,7 @@ export default async function ChannelPage({ params: { slug } }: TPageSlugProp) {
 					<article className='mb-4 text-gray-400 text-sm leading-snug'>
 						{channel.description}
 					</article>
-					{/* //[TODO] subscribe button*/}
-					<Button>Subscribe</Button>
+					<DynamicSubscribeButton slug={slug} />
 				</div>
 			</div>
 			{!!channel.videos.length && <ChannelVideos videos={channel.videos} />}

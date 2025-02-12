@@ -53,6 +53,7 @@ export function VideoCard({ video, Icon }: Props) {
 						width={32}
 						height={32}
 						alt={channelName}
+						quality={90}
 						className='rounded-full shadow-orange h-auto'
 					/>
 				</Link>
