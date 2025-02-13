@@ -7,7 +7,9 @@ import {
 	FolderHeart,
 	Gamepad2,
 	History,
-	TvMinimalPlay
+	LayoutGrid,
+	TvMinimalPlay,
+	Upload
 } from 'lucide-react'
 import { PAGE } from '@/config/public-page.config'
 import { STUDIO_PAGE } from '@/config/studio-page.config'
@@ -53,12 +55,26 @@ export const SIDEBAR_DATA: ISidebarItem[] = [
 	}
 ]
 
-export const MORE_SIDEBAR_DATA: ISidebarItem[] = [
+export const STUDIO_SIDEBAR_DATA: ISidebarItem[] = [
+	{
+		icon: LayoutGrid,
+		label: 'Studio',
+		link: STUDIO_PAGE.STUDIO_HOME
+	},
 	{
 		icon: Cog,
 		label: 'Settings',
 		link: STUDIO_PAGE.SETTINGS
 	},
+	{
+		icon: Upload,
+		label: 'Upload a video',
+		link: STUDIO_PAGE.UPLOAD_VIDEO,
+		isBottomBorder: true
+	}
+]
+
+export const MORE_SIDEBAR_DATA: ISidebarItem[] = [
 	{
 		icon: CircleAlert,
 		label: 'Send feedback',

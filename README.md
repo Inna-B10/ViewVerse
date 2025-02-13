@@ -79,8 +79,11 @@ bun add jose
 ---
 
 - [ ] FIXME logout on ChannelPage, Subscriptions (should redirect to home/auth)
+- [ ] [FIXME] SUBSCRIPTIONS/STUDIO linkS do not see/remember isShowedSidebar
+- [ ] [FIXME] no SUBSCRIPTIONS link not logged in (or disabled)
 - [ ] sort/group videos on SubscriptionsPage
 - [ ] button colors
+- [ ] ?component SidebarSubscriptions is needed?
 - [ ] UI block's heading/loader
   - [x] heading
   - [ ] SkeletonLoader:

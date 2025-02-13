@@ -1,8 +1,10 @@
 import dynamic from 'next/dynamic'
+import { usePathname } from 'next/navigation'
+import { STUDIO_PAGE } from '@/config/studio-page.config'
 import { SidebarHeader } from './header/SidebarHeader'
 import { SidebarMenu } from './menus/SidebarMenu'
 import { SidebarSubscriptions } from './menus/subscriptions/SidebarSubscriptions'
-import { MORE_SIDEBAR_DATA, SIDEBAR_DATA } from './sidebar.data'
+import { MORE_SIDEBAR_DATA, SIDEBAR_DATA, STUDIO_SIDEBAR_DATA } from './sidebar.data'
 
 const DynamicLogout = dynamic(() => import('./menus/Logout').then(mod => mod.Logout), {
 	ssr: false
@@ -14,6 +16,8 @@ interface SidebarProps {
 }
 
 export function Sidebar({ toggleSidebar, isShowedSidebar }: SidebarProps) {
+	const pathname = usePathname()
+
 	return (
 		<aside className=' p-layout border-r border-border whitespace-nowrap overflow-hidden'>
 			<SidebarHeader toggleSidebar={toggleSidebar} />
@@ -25,10 +29,17 @@ export function Sidebar({ toggleSidebar, isShowedSidebar }: SidebarProps) {
 
 			{/* ------------------------------ Subscriptions ----------------------------- */}
 			<SidebarSubscriptions />
-
+			{/* --------------------------------- Studio --------------------------------- */}
+			{!!pathname.includes(STUDIO_PAGE.STUDIO_HOME) && (
+				<SidebarMenu
+					title='Studio'
+					menu={STUDIO_SIDEBAR_DATA}
+					isShowedSidebar={isShowedSidebar}
+				/>
+			)}
 			{/* ---------------------------- More From Youtube --------------------------- */}
 			<SidebarMenu
-				title='More from youtube'
+				title='More from ViewVerse'
 				menu={MORE_SIDEBAR_DATA}
 				isShowedSidebar={isShowedSidebar}
 			/>
