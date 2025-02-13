@@ -1,6 +1,7 @@
 import { type Metadata } from 'next'
 import { M_PLUS_Rounded_1c, Philosopher } from 'next/font/google'
 import { Providers } from '@/providers/Providers'
+import { SITE_URL } from '@/constants/constants'
 import './globals.scss'
 
 /* ------------------------------ Default Font  */
@@ -28,7 +29,8 @@ export const metadata: Metadata = {
 		template: `%s | ViewVerse`
 	},
 	description:
-		'ViewVerse — a new universe of videos where everyone can watch, create, and share content.'
+		'ViewVerse — a new universe of videos where everyone can watch, create, and share content.',
+	metadataBase: new URL(SITE_URL)
 }
 
 export default function RootLayout({

@@ -1,6 +1,6 @@
 'use server'
 
-import { jwtVerify } from 'jose'
+import * as jose from 'jose'
 
 // in more advanced projects can be added
 // role?:string
@@ -13,7 +13,7 @@ interface ITokenInside {
 
 export async function jwtVerifyServer(accessToken: string) {
 	try {
-		const { payload }: { payload: ITokenInside } = await jwtVerify(
+		const { payload }: { payload: ITokenInside } = await jose.jwtVerify(
 			accessToken,
 			new TextEncoder().encode(`${process.env.JWT_SECRET}`)
 		)

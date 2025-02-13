@@ -25,7 +25,7 @@ export function SidebarMenu({ title, menu, isShowedSidebar }: Props) {
 			<ul>
 				{menu.map(menuItem => {
 					const props = {
-						item:  menuItem,
+						item: menuItem,
 						isActive: !!match(menuItem.link)(pathname),
 						isShowedSidebar
 					}

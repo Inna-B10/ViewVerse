@@ -56,8 +56,8 @@ export default async function ChannelPage({ params }: TPageSlugProp) {
 						alt={channel.user.name || ''}
 						//[TODO] default banner
 						src={channel.bannerUrl || '/overlay.png'}
-						layout='fill'
-						objectFit='cover'
+						fill
+						style={{ objectFit: 'cover' }}
 						quality={90}
 						priority
 					/>
