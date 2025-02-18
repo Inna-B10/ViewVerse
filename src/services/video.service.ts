@@ -1,12 +1,12 @@
 import { axiosClassic } from '@/api/axios'
-import type { IApiResponseVideos, IVideo } from '@/types/video.types'
+import type { IApiResponseVideos, ISingleVideoResponse, IVideo } from '@/types/video.types'
 
 class VideoService {
 	private _VIDEOS = '/videos'
 
 	/* ---------------------------- Get All / Search ---------------------------- */
 	async filterVideos(searchTerm?: string | null) {
-		const { data } = await axiosClassic.get<IApiResponseVideos>(
+		const { data } = await axiosClassic.get<IApiResponseVideos[]>(
 			this._VIDEOS,
 			searchTerm
 				? {
@@ -16,6 +16,22 @@ class VideoService {
 					}
 				: {}
 		)
+		return data
+	}
+	// 	return axiosClassic.get<IVideo[]>(
+	// 		this._VIDEOS,
+	// 		searchTerm
+	// 			? {
+	// 					params: {
+	// 						searchTerm
+	// 					}
+	// 				}
+	// 			: {}
+	// 	)
+	// }
+	/* ------------------------- Get Video By PublicId -------------------------- */
+	byPublicId(publicId?: string | null) {
+		const data = axiosClassic.get<ISingleVideoResponse>(`${this._VIDEOS}/by-publicId/${publicId}`)
 		return data
 	}
 

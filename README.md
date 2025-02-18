@@ -39,6 +39,7 @@ bun add -D @types/react-google-recaptcha
 bun add react-hot-toast
 bun add @reduxjs/toolkit react-redux
 bun add jose
+bun add html-react-parser
 ```
 
 ### ToDo
@@ -83,6 +84,11 @@ bun add jose
 - [ ] [FIXME] no SUBSCRIPTIONS link not logged in (or disabled)
 - [ ] sort/group videos on SubscriptionsPage
 - [ ] button colors
+- [ ] videoPage:
+  - [x] similar videos block
+  - [ ] styling
+  - [ ] collapse description of video
+  - [ ] player
 - [ ] ?component SidebarSubscriptions is needed?
 - [ ] UI block's heading/loader
   - [x] heading

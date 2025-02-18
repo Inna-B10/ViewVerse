@@ -12,6 +12,14 @@ export interface IVideo {
 	channel: IChannel
 	createdAt: string
 }
-export interface IApiResponseVideos {
+
+export interface IFullVideo extends IVideo {
+	likes: []
+}
+export interface IApiResponseVideos extends IFullVideo {
 	videos: IVideo[]
+}
+
+export interface ISingleVideoResponse extends IFullVideo {
+	similarVideos: IVideo[]
 }
