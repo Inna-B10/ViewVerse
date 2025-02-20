@@ -67,8 +67,8 @@ export default async function ChannelPage({ params }: TPageSlugProp) {
 				<Image
 					alt={channel.slug}
 					src={channel.avatarUrl}
-					width={185}
-					height={185}
+					width={150}
+					height={150}
 					quality={90}
 					priority
 					className='rounded-lg flex-shrink-0 shadow-md'
