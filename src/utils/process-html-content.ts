@@ -27,10 +27,23 @@ export function processHtmlContent(htmlContent: string, limit: number) {
 		isShouldShowToggle = remainingContent.trim().length > 0
 	} else {
 		// If there are no <p> tags, we limit the number of characters
-		const charLimit = 150
-		if (htmlContent.length > charLimit) {
-			initialContent = htmlContent.slice(0, charLimit + 1) + '... '
-			remainingContent = htmlContent.slice(charLimit)
+		const charLimit = 200
+		if (htmlContent.length <= charLimit || htmlContent.length - charLimit <= 50) {
+			initialContent = htmlContent
+		} else {
+			const truncated = htmlContent.slice(0, charLimit + 1)
+
+			const lastSpaceIndex = truncated.lastIndexOf(' ')
+
+			if (lastSpaceIndex === -1) {
+				initialContent = truncated.slice(0, charLimit)
+				remainingContent = truncated.slice(charLimit + 1)
+			} else {
+				initialContent = truncated.slice(0, lastSpaceIndex + 1)
+				remainingContent =
+					truncated.slice(lastSpaceIndex + 1).concat(htmlContent.slice(charLimit + 1)) + ' '
+			}
+
 			isShouldShowToggle = true
 		}
 	}
