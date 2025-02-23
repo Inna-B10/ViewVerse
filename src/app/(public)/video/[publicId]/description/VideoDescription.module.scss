@@ -1,0 +1,15 @@
+.article {
+  @apply text-gray-200 text-[0.9rem] leading-snug overflow-hidden;
+
+  > p {
+    @apply py-2;
+  }
+
+  a {
+    @apply transition-colors text-blue-400 hover:border-b-blue-400 border-b border-b-transparent;
+  }
+
+  > button {
+    @apply inline;
+  }
+}
