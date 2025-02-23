@@ -3,6 +3,7 @@ import Link from 'next/link'
 import type { IMenuItemProps } from '@/types/menu.types'
 
 export function MenuItem({ item, isActive, isShowedSidebar }: IMenuItemProps) {
+	console.log(item.label, isActive, isShowedSidebar)
 	/* --------------------------------- Nav li --------------------------------- */
 	return (
 		<li>

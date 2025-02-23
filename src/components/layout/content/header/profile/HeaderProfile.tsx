@@ -10,7 +10,10 @@ export function HeaderProfile() {
 	return isLoggedIn ? (
 		<HeaderAvatar />
 	) : (
-		<LinkButton href={PAGE.AUTH}>
+		<LinkButton
+			href={PAGE.AUTH}
+			title='Please authorize first!'
+		>
 			<LogIn size={20} />
 			Auth
 		</LinkButton>

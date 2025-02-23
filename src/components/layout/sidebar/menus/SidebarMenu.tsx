@@ -16,6 +16,7 @@ interface Props {
 
 export function SidebarMenu({ title, menu, isShowedSidebar }: Props) {
 	const pathname = usePathname()
+	console.log('isShowedSidebar: ', isShowedSidebar)
 	const { isLoggedIn } = useTypedSelector(state => state.auth)
 
 	/* ----------------------------------- Nav ---------------------------------- */
@@ -27,9 +28,9 @@ export function SidebarMenu({ title, menu, isShowedSidebar }: Props) {
 					const props = {
 						item: menuItem,
 						isActive: !!match(menuItem.link)(pathname),
-						isShowedSidebar
+						isShowedSidebar: isShowedSidebar
 					}
-
+					console.log(props)
 					const isMyChannel = menuItem.link === PAGE.MY_CHANNEL
 					const isMyChannelItem = isMyChannel && isLoggedIn
 					return isMyChannelItem ? (

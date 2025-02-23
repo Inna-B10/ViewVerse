@@ -1,6 +1,6 @@
 import {
+	Bell,
 	CircleAlert,
-	CirclePlay,
 	Cog,
 	Compass,
 	Flame,
@@ -38,7 +38,7 @@ export const SIDEBAR_DATA: ISidebarItem[] = [
 		link: PAGE.MY_CHANNEL
 	},
 	{
-		icon: CirclePlay,
+		icon: Bell,
 		label: 'Subscription',
 		link: PAGE.SUBSCRIPTIONS
 	},

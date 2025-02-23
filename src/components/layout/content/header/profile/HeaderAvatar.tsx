@@ -14,6 +14,7 @@ export function HeaderAvatar() {
 			<Link
 				href={STUDIO_PAGE.SETTINGS}
 				className='shrink-0'
+				title='Settings'
 			>
 				<Image
 					src={profile?.channel?.avatarUrl || '/avatar.png'}

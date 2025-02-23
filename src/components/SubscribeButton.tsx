@@ -1,6 +1,7 @@
 'use client'
 
 import { useMutation } from '@tanstack/react-query'
+import { Bell } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import { PAGE } from '@/config/public-page.config'
 import { useProfile } from '@/hooks/useProfile'
@@ -34,7 +35,23 @@ export function SubscribeButton({ slug }: { slug: string }) {
 			onClick={clickHandler}
 			variant={isSubscribed ? 'secondary' : 'primary'}
 		>
-			{isPending ? 'Processing...' : isSubscribed ? 'Subscribed' : 'Subscribe'}
+			{isSubscribed ? (
+				<>
+					<Bell
+						className='mr-1 inline  fill-[#fff]'
+						size={18}
+					/>
+					Subscribed
+				</>
+			) : (
+				<div style={{ ['paddingRight' as string]: '0.65rem' }}>
+					<Bell
+						className='mr-1 inline'
+						size={18}
+					/>
+					Subscribe
+				</div>
+			)}
 		</Button>
 	)
 }
