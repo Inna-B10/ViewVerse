@@ -14,11 +14,9 @@ export function VideoDescription({ description }: { description: string }) {
 		description,
 		3
 	)
-	console.log(initialContent)
-	console.log(remainingContent)
 
 	return (
-		<div className='relative mb-4'>
+		<div className='relative mb-4 bg-gray-800 px-3  py-1.5 rounded'>
 			<article className={styles.article}>
 				{parse(initialContent)}
 				{isShouldShowToggle && (
@@ -37,7 +35,7 @@ export function VideoDescription({ description }: { description: string }) {
 
 						<button
 							onClick={() => setIsExpanded(prev => !prev)}
-							className='text-sm text-primary transition-colors hover:text-gray-200'
+							className='text-sm text-primary  transition-colors hover:text-gray-200'
 						>
 							{isExpanded ? '[Hide]' : '[Show more]'}
 						</button>
