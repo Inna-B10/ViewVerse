@@ -15,6 +15,13 @@ export interface IFullUser extends IUser {
 	verificationToken?: string | null
 }
 
+export interface IVideoLike {
+	id: string
+	videoId: string
+	userId: string
+}
+
 export interface IProfileResponse extends IFullUser {
+	likes: IVideoLike[]
 	subscribedVideos?: IVideo[]
 }
