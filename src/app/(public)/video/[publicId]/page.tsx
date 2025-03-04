@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Heading } from '@/ui/Heading'
+import { VideoPlayer } from '@/ui/video-player/VideoPlayer'
 import { stripHtml } from '@/utils/strip-html'
 import { SimilarVideos } from './SimilarVideos'
 import { VideoDescription } from './description/VideoDescription'
@@ -42,8 +43,8 @@ export default async function VideoPage({ params: { publicId } }: TPagePublicIdP
 	return (
 		<section className='grid grid-cols-[3fr_.8fr] gap-10'>
 			<div>
-				<div className='relative w-full h-[249px] rounded-lg overflow-hidden shadow-md mb-6'>
-					{/*//[TODO]Video player */}
+				<div className='relative w-full rounded-lg overflow-hidden mb-6'>
+					<VideoPlayer fileName={video.videoFileName} />
 				</div>
 
 				<div className='flex justify-between items-start pb-6 mb-6 border-b border-border'>

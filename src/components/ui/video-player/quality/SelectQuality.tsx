@@ -3,7 +3,7 @@
 import { AnimatePresence, m } from 'framer-motion'
 import { twMerge } from 'tailwind-merge'
 import { useOutside } from '@/hooks/useOutside'
-import { VIDEO_QUALITIES } from './quality/quality.data'
+import { VIDEO_QUALITIES } from './quality.data'
 import type { EnumVideoPlayerQuality } from '@/types/video-player.types'
 
 interface Props {
@@ -29,7 +29,7 @@ export function SelectQuality({ currentValue, onChange }: Props) {
 			<AnimatePresence>
 				{isShow && (
 					<m.ul
-						className='bg-white/10 py-2 px-4 rounded absolute bottom-full right-0 z-10 shadow'
+						className='bg-bg/80 py-2 px-4 rounded absolute bottom-[160%] -left-4 z-10 shadow'
 						initial={{ opacity: 0, y: 10 }}
 						animate={{ opacity: 1, y: 0 }}
 						exit={{ opacity: 0, y: 10 }}
@@ -47,8 +47,9 @@ export function SelectQuality({ currentValue, onChange }: Props) {
 									}}
 									className={twMerge(
 										'transition-colors hover:text-primary',
-										quality === currentValue && 'underline'
+										quality === currentValue && ' text-primary'
 									)}
+									disabled={quality === currentValue ? true : false}
 								>
 									{quality}
 								</button>
