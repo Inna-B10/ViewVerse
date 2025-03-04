@@ -13,7 +13,7 @@ import {
 } from 'lucide-react'
 import { PAGE } from '@/config/public-page.config'
 import { STUDIO_PAGE } from '@/config/studio-page.config'
-import type { ISidebarItem } from '../../../types/sidebar.types'
+import type { ISidebarItem } from '@/types/sidebar.types'
 
 export const SIDEBAR_DATA: ISidebarItem[] = [
 	{

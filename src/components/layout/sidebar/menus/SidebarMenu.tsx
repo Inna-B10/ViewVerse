@@ -3,10 +3,10 @@
 import { usePathname } from 'next/navigation'
 import { match } from 'path-to-regexp'
 import { PAGE } from '@/config/public-page.config'
-import type { ISidebarItem } from '../../../../types/sidebar.types'
 import { MenuItem } from './MenuItem'
 import { MyChannelMenuItem } from './MyChannelMenuItem'
 import { useTypedSelector } from '@/store'
+import type { ISidebarItem } from '@/types/sidebar.types'
 
 interface Props {
 	title?: string

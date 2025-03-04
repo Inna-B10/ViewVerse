@@ -1,12 +1,18 @@
 import { axiosClassic } from '@/api/axios'
-import type { IApiResponseVideos, ISingleVideoResponse, IVideo } from '@/types/video.types'
+import type {
+	IApiResponseVideos,
+	ISingleVideoResponse,
+	IVideo,
+	IVideosPagination
+} from '@/types/video.types'
 
 class VideoService {
 	private _VIDEOS = '/videos'
 
 	/* ---------------------------- Get All / Search ---------------------------- */
 	async filterVideos(searchTerm?: string | null) {
-		const { data } = await axiosClassic.get<IApiResponseVideos[]>(
+		// const { data } = await axiosClassic.get<IApiResponseVideos[]>(
+		const { data } = await axiosClassic.get<IVideosPagination>(
 			this._VIDEOS,
 			searchTerm
 				? {

@@ -1,4 +1,5 @@
 import type { IChannel } from './channel.types'
+import type { IPagination } from './pagination.types'
 
 export interface IVideo {
 	id: string
@@ -22,4 +23,8 @@ export interface IApiResponseVideos extends IFullVideo {
 
 export interface ISingleVideoResponse extends IFullVideo {
 	similarVideos: IVideo[]
+}
+
+export interface IVideosPagination extends IPagination {
+	videos: IVideo[]
 }

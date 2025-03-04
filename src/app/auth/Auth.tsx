@@ -7,8 +7,8 @@ import { Logo } from '@/components/layout/sidebar/header/Logo'
 import { SkeletonLoader } from '@/ui/SkeletonLoader'
 import { Button } from '@/ui/button/Button'
 import { Field } from '@/ui/field/Field'
-import type { IAuthForm } from '../../types/auth-form.types'
 import { useAuthForm } from './useAuthForm'
+import type { IAuthForm } from '@/types/auth-form.types'
 import styles from './captcha.module.scss'
 
 export function Auth() {
