@@ -84,11 +84,17 @@ bun add html-react-parser
 - [ ] [FIXME] no SUBSCRIPTIONS link not logged in (or disabled)
 - [ ] sort/group videos on SubscriptionsPage
 - [ ] button colors
+- [ ] password reset option
 - [ ] videoPage:
   - [x] similar videos block
   - [ ] styling
-  - [ ] collapse description of video
-  - [ ] player
+  - [x] collapse description of video
+  - [ ] player:
+    - [ ] current time
+    - [ ] make progress bar clickable
+    - [ ] video may not have quality options
+    - [ ] volume button
+    - [ ] implement theater mode
 - [ ] ?component SidebarSubscriptions is needed?
 - [ ] UI block's heading/loader
   - [x] heading

@@ -9,7 +9,7 @@ import { EnumVideoPlayerQuality } from '@/types/video-player.types'
 export function VideoPlayer({ fileName }: { fileName: string }) {
 	const { fn, playerRef, state } = useVideoPlayer({ fileName })
 
-	//[TODO] not every video has all quality options
+	//[FIXME] not every video has all quality options
 	return (
 		<div className='relative rounded-lg overflow-hidden'>
 			<video
