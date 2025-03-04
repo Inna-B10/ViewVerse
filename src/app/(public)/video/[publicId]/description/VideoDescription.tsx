@@ -1,7 +1,6 @@
 'use client'
 
-import { AnimatePresence } from 'framer-motion'
-import * as m from 'framer-motion/m'
+import { AnimatePresence, m } from 'framer-motion'
 import parse from 'html-react-parser'
 import { useState } from 'react'
 import { processHtmlContent } from '@/utils/process-html-content'
