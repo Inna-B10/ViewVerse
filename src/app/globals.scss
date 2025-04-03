@@ -47,3 +47,29 @@ hr.sidebar {
                         rgba(42, 52, 57, 0.5),
                         rgba(42, 52, 57, 0.3));
 }
+
+/* ------------------------------ Volume Slider ----------------------------- */
+.volume-slider::-webkit-slider-thumb {
+        appearance: none;
+        width: 10.5px;
+        height: 10.5px;
+        background-color: white;
+        border-radius: 50%;
+        cursor: pointer;
+}
+
+.volume-slider::-moz-range-thumb {
+        width: 10.5px;
+        height: 10.5px;
+        background-color: white;
+        border-radius: 50%;
+        cursor: pointer;
+}
+
+.volume-slider::-ms-thumb {
+        width: 10.5px;
+        height: 10.5px;
+        background-color: white;
+        border-radius: 50%;
+        cursor: pointer;
+}

@@ -43,9 +43,7 @@ export default async function VideoPage({ params: { publicId } }: TPagePublicIdP
 	return (
 		<section className='grid grid-cols-[3fr_.8fr] gap-10'>
 			<div>
-				<div className='relative w-full rounded-lg overflow-hidden mb-6'>
-					<VideoPlayer fileName={video.videoFileName} />
-				</div>
+				<VideoPlayer fileName={video.videoFileName} />
 
 				<div className='flex justify-between items-start pb-6 mb-6 border-b border-border'>
 					{/*  ------------------------------- Video Title ------------------------------  */}
