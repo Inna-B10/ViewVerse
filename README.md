@@ -93,8 +93,9 @@ bun add html-react-parser
     - [ ] current time
     - [ ] make progress bar clickable
     - [ ] video may not have quality options
-    - [ ] volume button
-    - [ ] implement theater mode
+    - [x] volume button
+    - [x] implement theater mode
+    - [ ] style @media: theater mode+open side bar
 - [ ] ?component SidebarSubscriptions is needed?
 - [ ] UI block's heading/loader
   - [x] heading

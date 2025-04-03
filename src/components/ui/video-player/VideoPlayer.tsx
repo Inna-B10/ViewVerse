@@ -1,6 +1,6 @@
 'use client'
 
-import { Maximize, Pause, Play } from 'lucide-react'
+import { Maximize, Pause, Play, RectangleHorizontal } from 'lucide-react'
 import { useVideoPlayer } from '@/ui/video-player/use-video-player/useVideoPlayer'
 import { PlayerProgressBar } from './progress-bar/PlayerProgressBar'
 import { SelectQuality } from './quality/SelectQuality'
@@ -8,9 +8,14 @@ import { getTime } from './video-player.utils'
 import { VolumeControl } from './volume/VolumeControl'
 import { EnumVideoPlayerQuality } from '@/types/video-player.types'
 
-export function VideoPlayer({ fileName }: { fileName: string }) {
+export function VideoPlayer({
+	fileName,
+	toggleTheaterMode
+}: {
+	fileName: string
+	toggleTheaterMode: () => void
+}) {
 	const { fn, playerRef, state } = useVideoPlayer({ fileName })
-	console.log(state)
 
 	//[FIXME] not every video has all quality options
 	//[FIXME] not valid video duration on first loading
@@ -54,12 +59,13 @@ export function VideoPlayer({ fileName }: { fileName: string }) {
 						currentValue={state.quality}
 						onChange={fn.changeQuality}
 					/>
-					{/* <button
+					{/* ------------------------------ Theater Mode ------------------------------ */}
+					<button
 						className='transition-colors hover:text-primary'
 						onClick={toggleTheaterMode}
 					>
 						<RectangleHorizontal />
-					</button> */}
+					</button>
 					{/* ----------------------------- Btn Full Screen ---------------------------- */}
 					<button
 						onClick={fn.toggleFullScreen}
