@@ -1,5 +1,6 @@
 import { useRef } from 'react'
 import { useFullScreen } from './useFullScreen'
+import { useOnSeek } from './useOnSeek'
 import { usePlayPause } from './usePlayPause'
 import { useSkipTime } from './useSkipTime'
 import { useVideoHotkeys } from './useVideoHotkeys'
@@ -18,7 +19,7 @@ export function useVideoPlayer({ fileName, toggleTheaterMode }: Props) {
 
 	const { isPlaying, togglePlayPause, setIsPlaying } = usePlayPause(playerRef)
 	const { currentTime, progress, videoTime, setCurrentTime } = useVideoProgress(playerRef)
-	const { changeQuality, quality } = useVideoQuality(playerRef, {
+	const { quality, changeQuality } = useVideoQuality(playerRef, {
 		fileName,
 		currentTime,
 		setIsPlaying
@@ -27,7 +28,7 @@ export function useVideoPlayer({ fileName, toggleTheaterMode }: Props) {
 	const { skipTime } = useSkipTime(playerRef)
 
 	const { changeVolume, isMuted, toggleMute, volume } = useVideoVolume(playerRef)
-	// const { onSeek } = useOnSeek(playerRef, setCurrentTime)
+	const { onSeek } = useOnSeek(playerRef, setCurrentTime)
 
 	const fn = {
 		togglePlayPause,
@@ -35,8 +36,8 @@ export function useVideoPlayer({ fileName, toggleTheaterMode }: Props) {
 		toggleFullScreen,
 		skipTime,
 		changeVolume,
-		toggleMute
-		// onSeek
+		toggleMute,
+		onSeek
 	}
 
 	useVideoHotkeys({ volume, toggleTheaterMode, ...fn })
@@ -48,8 +49,8 @@ export function useVideoPlayer({ fileName, toggleTheaterMode }: Props) {
 			currentTime,
 			videoTime,
 			quality,
-			volume,
-			isMuted
+			isMuted,
+			volume
 		},
 		fn,
 		playerRef

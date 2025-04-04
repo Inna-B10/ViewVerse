@@ -29,7 +29,7 @@ export function VideoPlayer({ fileName, toggleTheaterMode, maxResolution }: Prop
 				preload='metadata'
 			/>
 
-			<div className='flex items-center justify-between absolute  bottom-5 left-5 right-5'>
+			<div className='grid grid-cols-[7fr_1fr] gap-7 absolute  bottom-5 left-5 right-5'>
 				<div className='flex items-center gap-4'>
 					{/* -------------------------------- Btn Play -------------------------------- */}
 					<button
@@ -39,7 +39,11 @@ export function VideoPlayer({ fileName, toggleTheaterMode, maxResolution }: Prop
 						{state.isPlaying ? <Pause /> : <Play />}
 					</button>
 					{/* ------------------------------- ProgressBar ------------------------------ */}
-					<PlayerProgressBar progress={state.progress} />
+					<PlayerProgressBar
+						currentTime={state.currentTime}
+						duration={state.videoTime}
+						onSeek={fn.onSeek}
+					/>
 
 					<div>
 						<span>{getTime(state.videoTime)}</span>

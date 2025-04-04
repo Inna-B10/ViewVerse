@@ -11,7 +11,6 @@ export function useVideoProgress(playerRef: RefObject<HTMLCustomVideoElement>) {
 		if (!playerRef?.current) return
 
 		const { currentTime, progress, originalTime } = getVideoInfo(playerRef.current)
-		//console.log('playerRef: ', playerRef)
 
 		setVideoTime(originalTime)
 		setCurrentTime(currentTime)
@@ -36,5 +35,11 @@ export function useVideoProgress(playerRef: RefObject<HTMLCustomVideoElement>) {
 			player?.removeEventListener('timeupdate', updateProgress)
 		}
 	}, [playerRef])
-	return { currentTime, progress, videoTime }
+
+	return {
+		currentTime,
+		setCurrentTime,
+		progress,
+		videoTime
+	}
 }

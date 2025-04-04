@@ -17,8 +17,8 @@ interface Props {
 
 export function SingleVideo({ video }: Props) {
 	const { isShowedSidebar } = useSidebar()
-	console.log('single bar: ', isShowedSidebar)
 	const [isTheaterMode, setIsTheaterMode] = useState(false)
+
 	return (
 		<section className='grid grid-cols-[3fr_.8fr] gap-10 relative'>
 			<div>

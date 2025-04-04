@@ -41,6 +41,8 @@ bun add @reduxjs/toolkit react-redux
 bun add jose
 bun add html-react-parser
 bun add react-hotkeys-hook
+bun add rc-slider
+bun add rc-tooltip
 ```
 
 ### ToDo
@@ -77,11 +79,11 @@ bun add react-hotkeys-hook
   - [x] subscribe button
   - [x] banner
   - [x] section my subscriptions
+- [x] [FIXME] SUBSCRIPTIONS/STUDIO linkS do not see/remember isShowedSidebar
 
 ---
 
 - [ ] FIXME logout on ChannelPage, Subscriptions (should redirect to home/auth)
-- [ ] [FIXME] SUBSCRIPTIONS/STUDIO linkS do not see/remember isShowedSidebar
 - [ ] [FIXME] no SUBSCRIPTIONS link not logged in (or disabled)
 - [ ] sort/group videos on SubscriptionsPage
 - [ ] button colors
@@ -91,12 +93,13 @@ bun add react-hotkeys-hook
   - [ ] styling
   - [x] collapse description of video
   - [ ] player:
-    - [ ] current time
-    - [ ] make progress bar clickable
-    - [ ] video may not have quality options
+    - [x] current time
+    - [x] make progress bar clickable
+    - [x] video may not have quality options
     - [x] volume button
     - [x] implement theater mode
-    - [ ] style @media: when side bar is open/collapsed in theater mode
+    - [x] style @media: when side bar is open/collapsed in theater mode
+    - [ ] [FIXME] not valid video duration on first loading
 - [ ] ?component SidebarSubscriptions is needed?
 - [ ] UI block's heading/loader
   - [x] heading
