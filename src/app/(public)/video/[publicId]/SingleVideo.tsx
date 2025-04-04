@@ -4,6 +4,7 @@ import cn from 'clsx'
 import { useState } from 'react'
 import { Heading } from '@/ui/Heading'
 import { VideoPlayer } from '@/ui/video-player/VideoPlayer'
+import { useSidebar } from '@/providers/SidebarContext'
 import { SimilarVideos } from './SimilarVideos'
 import { VideoDescription } from './description/VideoDescription'
 import { VideoActions } from './video-actions/VideoActions'
@@ -15,6 +16,8 @@ interface Props {
 }
 
 export function SingleVideo({ video }: Props) {
+	const { isShowedSidebar } = useSidebar()
+	console.log('single bar: ', isShowedSidebar)
 	const [isTheaterMode, setIsTheaterMode] = useState(false)
 	return (
 		<section className='grid grid-cols-[3fr_.8fr] gap-10 relative'>
@@ -33,7 +36,8 @@ export function SingleVideo({ video }: Props) {
 
 				<div
 					className={cn('flex justify-between items-start pb-6 mb-6 border-b border-border', {
-						'pt-[52rem]': isTheaterMode
+						'pt-[58rem]': isTheaterMode && !isShowedSidebar,
+						'pt-[52rem]': isTheaterMode && isShowedSidebar
 					})}
 				>
 					{/*  ------------------------------- Video Title ------------------------------  */}
@@ -62,7 +66,12 @@ export function SingleVideo({ video }: Props) {
 
 			{/*  ----------------------------- Similar Videos -----------------------------  */}
 			{!!video.similarVideos.length && (
-				<div className={cn({ 'pt-[52rem]': isTheaterMode })}>
+				<div
+					className={cn({
+						'pt-[58rem]': isTheaterMode && !isShowedSidebar,
+						'pt-[52rem]': isTheaterMode && isShowedSidebar
+					})}
+				>
 					<SimilarVideos videos={video.similarVideos} />
 				</div>
 			)}

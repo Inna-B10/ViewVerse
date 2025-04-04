@@ -1,5 +1,8 @@
+'use client'
+
 import dynamic from 'next/dynamic'
 import { usePathname } from 'next/navigation'
+import { useSidebar } from '@/providers/SidebarContext'
 import { STUDIO_PAGE } from '@/config/studio-page.config'
 import { SidebarHeader } from './header/SidebarHeader'
 import { SidebarMenu } from './menus/SidebarMenu'
@@ -10,12 +13,9 @@ const DynamicLogout = dynamic(() => import('./menus/Logout').then(mod => mod.Log
 	ssr: false
 })
 
-interface SidebarProps {
-	toggleSidebar: () => void
-	isShowedSidebar: boolean
-}
+export function Sidebar() {
+	const { isShowedSidebar, toggleSidebar } = useSidebar()
 
-export function Sidebar({ toggleSidebar, isShowedSidebar }: SidebarProps) {
 	const pathname = usePathname()
 
 	return (
