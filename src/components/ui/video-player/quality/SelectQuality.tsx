@@ -4,15 +4,18 @@ import { AnimatePresence, m } from 'framer-motion'
 import { twMerge } from 'tailwind-merge'
 import { useOutside } from '@/hooks/useOutside'
 import { VIDEO_QUALITIES } from './quality.data'
-import type { EnumVideoPlayerQuality } from '@/types/video-player.types'
+import { EnumVideoPlayerQuality } from '@/types/video-player.types'
 
 interface Props {
 	currentValue: EnumVideoPlayerQuality
 	onChange: (quality: EnumVideoPlayerQuality) => void
+	maxResolution: EnumVideoPlayerQuality
 }
 
-export function SelectQuality({ currentValue, onChange }: Props) {
+export function SelectQuality({ currentValue, onChange, maxResolution }: Props) {
 	const { isShow, ref, setIsShow } = useOutside(false)
+
+	const availableQualities = VIDEO_QUALITIES.slice(VIDEO_QUALITIES.indexOf(maxResolution))
 
 	return (
 		<div
@@ -35,7 +38,7 @@ export function SelectQuality({ currentValue, onChange }: Props) {
 						exit={{ opacity: 0, y: 10 }}
 						transition={{ duration: 0.3 }}
 					>
-						{VIDEO_QUALITIES.map(quality => (
+						{availableQualities.map(quality => (
 							<li
 								key={quality}
 								className='mb-1'

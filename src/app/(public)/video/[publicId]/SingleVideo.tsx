@@ -10,21 +10,24 @@ import { VideoActions } from './video-actions/VideoActions'
 import { VideoChannel } from './video-channel/VideoChannel'
 import type { ISingleVideoResponse } from '@/types/video.types'
 
-interface ISingleVideo {
+interface Props {
 	video: ISingleVideoResponse
 }
 
-export function SingleVideo({ video }: ISingleVideo) {
+export function SingleVideo({ video }: Props) {
 	const [isTheaterMode, setIsTheaterMode] = useState(false)
 	return (
 		<section className='grid grid-cols-[3fr_.8fr] gap-10 relative'>
 			<div>
 				<div
-					className={cn(isTheaterMode ? 'absolute top-0 left-0 max-h-screen-screen' : 'relative')}
+					className={cn(isTheaterMode ? 'absolute top-0 left-0 max-h-svh w-full z-50' : 'relative')}
 				>
 					<VideoPlayer
 						fileName={video.videoFileName}
-						toggleTheaterMode={() => setIsTheaterMode(!isTheaterMode)}
+						toggleTheaterMode={() => {
+							setIsTheaterMode(!isTheaterMode)
+						}}
+						maxResolution={video.maxResolution}
 					/>
 				</div>
 
@@ -42,7 +45,7 @@ export function SingleVideo({ video }: ISingleVideo) {
 							{video.title}
 						</Heading>
 						<div className='text-gray-400 text-xs text-nowrap'>
-							{video.viewsCount.toLocaleString()} views
+							{video.viewsCount.toLocaleString('no-NO')} views
 						</div>
 					</div>
 

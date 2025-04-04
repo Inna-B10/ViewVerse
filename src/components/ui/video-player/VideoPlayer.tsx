@@ -1,30 +1,29 @@
 'use client'
 
 import { Maximize, Pause, Play, RectangleHorizontal } from 'lucide-react'
-import { useVideoPlayer } from '@/ui/video-player/use-video-player/useVideoPlayer'
 import { PlayerProgressBar } from './progress-bar/PlayerProgressBar'
 import { SelectQuality } from './quality/SelectQuality'
+import { useVideoPlayer } from './use-video-player/useVideoPlayer'
 import { getTime } from './video-player.utils'
 import { VolumeControl } from './volume/VolumeControl'
 import { EnumVideoPlayerQuality } from '@/types/video-player.types'
 
-export function VideoPlayer({
-	fileName,
-	toggleTheaterMode
-}: {
+interface Props {
 	fileName: string
 	toggleTheaterMode: () => void
-}) {
+	maxResolution: EnumVideoPlayerQuality
+}
+
+export function VideoPlayer({ fileName, toggleTheaterMode, maxResolution }: Props) {
 	const { fn, playerRef, state } = useVideoPlayer({ fileName, toggleTheaterMode })
 
-	//[FIXME] not every video has all quality options
 	//[FIXME] not valid video duration on first loading
 	return (
 		<div className='relative rounded-2xl overflow-hidden mb-5'>
 			{/* ---------------------------------- Video --------------------------------- */}
 			<video
 				ref={playerRef}
-				className='aspect-video'
+				className='aspect-video w-full'
 				controls={false}
 				src={`/uploads/videos/${EnumVideoPlayerQuality['1080p']}/${fileName}`}
 				preload='metadata'
@@ -58,6 +57,7 @@ export function VideoPlayer({
 					<SelectQuality
 						currentValue={state.quality}
 						onChange={fn.changeQuality}
+						maxResolution={maxResolution}
 					/>
 					{/* ------------------------------ Theater Mode ------------------------------ */}
 					<button
@@ -69,7 +69,7 @@ export function VideoPlayer({
 					{/* ----------------------------- Btn Full Screen ---------------------------- */}
 					<button
 						onClick={fn.toggleFullScreen}
-						className='hoverPrimary'
+						className='transition-colors hover:text-primary'
 					>
 						<Maximize />
 					</button>
