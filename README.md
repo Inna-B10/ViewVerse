@@ -40,6 +40,7 @@ bun add react-hot-toast
 bun add @reduxjs/toolkit react-redux
 bun add jose
 bun add html-react-parser
+bun add react-hotkeys-hook
 ```
 
 ### ToDo
@@ -95,7 +96,7 @@ bun add html-react-parser
     - [ ] video may not have quality options
     - [x] volume button
     - [x] implement theater mode
-    - [ ] style @media: theater mode+open side bar
+    - [ ] style @media: when side bar is open/collapsed in theater mode
 - [ ] ?component SidebarSubscriptions is needed?
 - [ ] UI block's heading/loader
   - [x] heading

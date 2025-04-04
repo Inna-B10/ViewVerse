@@ -15,7 +15,7 @@ export function VideoPlayer({
 	fileName: string
 	toggleTheaterMode: () => void
 }) {
-	const { fn, playerRef, state } = useVideoPlayer({ fileName })
+	const { fn, playerRef, state } = useVideoPlayer({ fileName, toggleTheaterMode })
 
 	//[FIXME] not every video has all quality options
 	//[FIXME] not valid video duration on first loading
