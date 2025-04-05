@@ -1,12 +1,10 @@
 import { type Dispatch, type RefObject, type SetStateAction } from 'react'
 import type { HTMLCustomVideoElement } from '@/types/video-player.types'
 
-// const SKIP_TIME_SECONDS = 10
-
 export type TSkipTime = 'forward' | 'backward'
 
 export function useOnSeek(
-	playerRef: RefObject<HTMLCustomVideoElement>,
+	playerRef: RefObject<HTMLCustomVideoElement | null>,
 	setCurrentTime: Dispatch<SetStateAction<number>>
 ) {
 	const onSeek = (time: number) => {

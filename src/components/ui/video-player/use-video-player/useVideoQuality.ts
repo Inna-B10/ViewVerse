@@ -8,7 +8,7 @@ interface Props {
 }
 
 export function useVideoQuality(
-	playerRef: RefObject<HTMLCustomVideoElement>,
+	playerRef: RefObject<HTMLCustomVideoElement | null>,
 	{ currentTime, fileName, setIsPlaying }: Props
 ) {
 	const [quality, setQuality] = useState(EnumVideoPlayerQuality['1080p'])

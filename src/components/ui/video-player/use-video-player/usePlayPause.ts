@@ -1,7 +1,7 @@
 import { type RefObject, useState } from 'react'
 import type { HTMLCustomVideoElement } from '@/types/video-player.types'
 
-export function usePlayPause(playerRef: RefObject<HTMLCustomVideoElement>) {
+export function usePlayPause(playerRef: RefObject<HTMLCustomVideoElement | null>) {
 	const [isPlaying, setIsPlaying] = useState(false)
 
 	const togglePlayPause = () => {

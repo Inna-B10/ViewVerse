@@ -6,7 +6,7 @@ import { NO_INDEX_PAGE } from '@/constants/seo.constants'
 const DynamicSubscriptionsPage = dynamic(
 	() => import('./SubscriptionsPage').then(mod => mod.SubscriptionsPage),
 	{
-		//[FIXME]
+		//[FIXME]?
 		// ssr: false,
 		loading: () => <SkeletonLoader className='w-10 mb-0 rounded-md' />
 	}

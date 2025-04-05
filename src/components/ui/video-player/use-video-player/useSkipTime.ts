@@ -4,7 +4,7 @@ import type { HTMLCustomVideoElement } from '@/types/video-player.types'
 const SKIP_TIME_SECONDS = 10
 export type TSkipTime = 'forward' | 'backward'
 
-export function useSkipTime(playerRef: RefObject<HTMLCustomVideoElement>) {
+export function useSkipTime(playerRef: RefObject<HTMLCustomVideoElement | null>) {
 	const skipTime = (type?: TSkipTime) => {
 		if (!playerRef.current?.currentTime) return
 

@@ -12,7 +12,7 @@ import type { TPageSlugProp } from '@/types/page.types'
 const DynamicSubscribeButton = dynamicNext(
 	() => import('@/components/SubscribeButton').then(mod => mod.SubscribeButton),
 	{
-		//[FIXME]
+		//[FIXME]?
 		// ssr: false,
 		loading: () => <SkeletonLoader className='w-36 h-10 rounded-md' />
 	}
@@ -21,7 +21,8 @@ const DynamicSubscribeButton = dynamicNext(
 export const revalidate = 100
 export const dynamic = 'force-static'
 
-export async function generateMetadata({ params: { slug } }: TPageSlugProp): Promise<Metadata> {
+export async function generateMetadata(props: TPageSlugProp): Promise<Metadata> {
+	const { slug } = await props.params
 	const data = await channelService.bySlug(slug)
 	const channel = data.data
 
@@ -43,8 +44,8 @@ export async function generateStaticParams() {
 	}))
 }
 
-export default async function ChannelPage({ params }: TPageSlugProp) {
-	const { slug } = await params
+export default async function ChannelPage(props: TPageSlugProp) {
+	const { slug } = await props.params
 	const data = await channelService.bySlug(slug)
 	const channel = data.data
 
@@ -67,11 +68,12 @@ export default async function ChannelPage({ params }: TPageSlugProp) {
 				<Image
 					alt={channel.slug}
 					src={channel.avatarUrl}
-					width={150}
-					height={150}
+					width={100}
+					height={100}
+					style={{ objectFit: 'cover' }}
 					quality={90}
 					priority
-					className='rounded-lg flex-shrink-0 shadow-md'
+					className='rounded-lg flex-shrink-0 shadow-md object-cover w-[150px] h-auto'
 				/>
 				<div className='flex flex-col justify-between'>
 					<Heading>

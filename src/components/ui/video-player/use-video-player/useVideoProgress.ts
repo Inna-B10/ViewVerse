@@ -2,7 +2,7 @@ import { type RefObject, useEffect, useState } from 'react'
 import { getVideoInfo } from '../video-player.utils'
 import { type HTMLCustomVideoElement } from '@/types/video-player.types'
 
-export function useVideoProgress(playerRef: RefObject<HTMLCustomVideoElement>) {
+export function useVideoProgress(playerRef: RefObject<HTMLCustomVideoElement | null>) {
 	const [currentTime, setCurrentTime] = useState(0)
 	const [videoTime, setVideoTime] = useState(0) //total video length
 	const [progress, setProgress] = useState(0)

@@ -1,4 +1,4 @@
-import dynamicNext from 'next/dynamic'
+import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Heading } from '@/ui/Heading'
@@ -8,11 +8,10 @@ import { PAGE } from '@/config/public-page.config'
 import { transformCount } from '@/utils/transform-count'
 import type { ISingleVideoResponse } from '@/types/video.types'
 
-const DynamicSubscribeButton = dynamicNext(
+const DynamicSubscribeButton = dynamic(
 	() => import('@/components/SubscribeButton').then(mod => mod.SubscribeButton),
 	{
-		//[FIXME]
-		// ssr: false,
+		ssr: false,
 		loading: () => <SkeletonLoader className='w-36 h-10 rounded-md' />
 	}
 )

@@ -7,9 +7,8 @@ import type { TPagePublicIdProp } from '@/types/page.types'
 export const revalidate = 100
 export const dynamic = 'force-static'
 
-export async function generateMetadata({
-	params: { publicId }
-}: TPagePublicIdProp): Promise<Metadata> {
+export async function generateMetadata(props: TPagePublicIdProp): Promise<Metadata> {
+	const { publicId } = await props.params
 	const data = await videoService.byPublicId(publicId)
 	const video = data.data
 
@@ -31,7 +30,8 @@ export async function generateStaticParams() {
 	}))
 }
 
-export default async function VideoPage({ params: { publicId } }: TPagePublicIdProp) {
+export default async function VideoPage(props: TPagePublicIdProp) {
+	const { publicId } = await props.params
 	const data = await videoService.byPublicId(publicId)
 	const video = data.data
 
