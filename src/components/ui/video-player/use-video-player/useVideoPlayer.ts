@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import { useFullScreen } from './useFullScreen'
 import { useOnSeek } from './useOnSeek'
 import { usePlayPause } from './usePlayPause'
@@ -16,8 +16,10 @@ interface Props {
 
 export function useVideoPlayer({ fileName, toggleTheaterMode }: Props) {
 	const playerRef = useRef<HTMLCustomVideoElement>(null)
+	const bgRef = useRef<HTMLCustomVideoElement>(null)
 
-	const { isPlaying, togglePlayPause, setIsPlaying } = usePlayPause(playerRef)
+	const [isBacklightMode, setIsBacklightMode] = useState(true)
+	const { isPlaying, togglePlayPause, setIsPlaying } = usePlayPause(playerRef, bgRef)
 	const { currentTime, progress, videoTime, setCurrentTime } = useVideoProgress(playerRef)
 	const { quality, changeQuality } = useVideoQuality(playerRef, {
 		fileName,
@@ -25,10 +27,10 @@ export function useVideoPlayer({ fileName, toggleTheaterMode }: Props) {
 		setIsPlaying
 	})
 	const { toggleFullScreen } = useFullScreen(playerRef)
-	const { skipTime } = useSkipTime(playerRef)
+	const { skipTime } = useSkipTime(playerRef, bgRef)
 
 	const { changeVolume, isMuted, toggleMute, volume } = useVideoVolume(playerRef)
-	const { onSeek } = useOnSeek(playerRef, setCurrentTime)
+	const { onSeek } = useOnSeek(playerRef, bgRef, setCurrentTime)
 
 	const fn = {
 		togglePlayPause,
@@ -37,7 +39,8 @@ export function useVideoPlayer({ fileName, toggleTheaterMode }: Props) {
 		skipTime,
 		changeVolume,
 		toggleMute,
-		onSeek
+		onSeek,
+		toggleBacklightMode: () => setIsBacklightMode(!isBacklightMode)
 	}
 
 	useVideoHotkeys({ volume, toggleTheaterMode, ...fn })
@@ -50,9 +53,11 @@ export function useVideoPlayer({ fileName, toggleTheaterMode }: Props) {
 			videoTime,
 			quality,
 			isMuted,
-			volume
+			volume,
+			isBacklightMode
 		},
 		fn,
-		playerRef
+		playerRef,
+		bgRef
 	}
 }

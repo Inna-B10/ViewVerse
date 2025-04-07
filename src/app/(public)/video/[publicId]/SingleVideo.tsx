@@ -23,7 +23,13 @@ export function SingleVideo({ video }: Props) {
 		<section className='grid grid-cols-[3fr_.8fr] gap-10 relative'>
 			<div>
 				<div
-					className={cn(isTheaterMode ? 'absolute top-0 left-0 max-h-svh w-full z-50' : 'relative')}
+					className={cn(
+						isTheaterMode
+							? 'absolute top-0 left-0 max-h-screen z-50'
+							: isShowedSidebar
+								? 'relative '
+								: 'relative max-h-[90%]'
+					)}
 				>
 					<VideoPlayer
 						fileName={video.videoFileName}

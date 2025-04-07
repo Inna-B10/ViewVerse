@@ -100,6 +100,7 @@ bun add rc-tooltip
     - [x] implement theater mode
     - [x] style @media: when side bar is open/collapsed in theater mode
     - [ ] [FIXME] not valid video duration on first loading
+    - [ ] [FIXME] btn pause does not changes to play at the end of video
 - [ ] ?component SidebarSubscriptions is needed?
 - [ ] UI block's heading/loader
   - [x] heading
@@ -108,10 +109,12 @@ bun add rc-tooltip
     - [ ] count depends on @media
 - [ ] media query:sideBar на мобилах изначально скрыт, при открытии - поверх контента
 <!-- - [ ] меню кнопка?, 1 колонка
-- [ ] 540 - меню скрыто, 2 колонки
-- [ ] 768 - меню скрыто, 3 колонки
-- [ ] 1024 - меню открыто, 3 колонки
-- [ ] 1280 - меню открыто, 4 колонки -->
+- [ ] xs 540 - меню скрыто, 2 колонки
+- [ ] sm 640
+- [ ] md 768 - меню скрыто, 3 колонки
+- [ ] lg 1024 - меню открыто, 3 колонки
+- [ ] xl 1280 - меню открыто, 4 колонки
+- [ ] 2xl 1536 -->
 - [ ] getTrendingVideos (2раза, на главной + трендинг). Так это серверный компонент?
 
 <!--
