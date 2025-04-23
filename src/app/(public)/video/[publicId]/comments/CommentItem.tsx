@@ -4,6 +4,7 @@ import { Heading } from '@/ui/Heading'
 import { VerifiedBadge } from '@/ui/video-card/VerifiedBadge'
 import { PAGE } from '@/config/public-page.config'
 import { transformDate } from '@/utils/transform-date'
+import { CommentActions } from './CommentActions'
 import type { ISingleVideoResponse } from '@/types/video.types'
 
 interface ICommentItem {
@@ -59,7 +60,9 @@ export function CommentItem({ comment }: ICommentItem) {
 						</div>
 					</div>
 					<div className='text-gray-200 text-[0.9rem]  leading-normal'>{comment.text}</div>
-					{/* <CommentActions /> */}
+
+					{/* ---------------------------- Edit/delete Btns ---------------------------- */}
+					<CommentActions />
 				</div>
 			</div>
 		</div>
