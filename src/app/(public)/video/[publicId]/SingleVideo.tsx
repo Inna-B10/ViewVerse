@@ -6,6 +6,7 @@ import { Heading } from '@/ui/Heading'
 import { VideoPlayer } from '@/ui/video-player/VideoPlayer'
 import { useSidebar } from '@/providers/SidebarContext'
 import { SimilarVideos } from './SimilarVideos'
+import { Comments } from './comments/Comments'
 import { VideoDescription } from './description/VideoDescription'
 import { VideoActions } from './video-actions/VideoActions'
 import { VideoChannel } from './video-channel/VideoChannel'
@@ -20,7 +21,7 @@ export function SingleVideo({ video }: Props) {
 	const [isTheaterMode, setIsTheaterMode] = useState(false)
 
 	return (
-		<section className='grid grid-cols-[3fr_.8fr] gap-10 relative'>
+		<section className='grid grid-cols-[3fr_.8fr] gap-6 relative'>
 			<div>
 				<div
 					className={cn(
@@ -42,8 +43,9 @@ export function SingleVideo({ video }: Props) {
 
 				<div
 					className={cn('flex justify-between items-start pb-6 mb-6 border-b border-border', {
-						'pt-[58rem]': isTheaterMode && !isShowedSidebar,
-						'pt-[52rem]': isTheaterMode && isShowedSidebar
+						'pt-8': !isTheaterMode,
+						'pt-[51rem]': isTheaterMode && !isShowedSidebar,
+						'pt-[45rem]': isTheaterMode && isShowedSidebar
 					})}
 				>
 					{/*  ------------------------------- Video Title ------------------------------  */}
@@ -54,7 +56,7 @@ export function SingleVideo({ video }: Props) {
 						>
 							{video.title}
 						</Heading>
-						<div className='text-gray-400 text-xs text-nowrap'>
+						<div className='text-gray-400 text-xs whitespace-nowrap'>
 							{video.viewsCount.toLocaleString('no-NO')} views
 						</div>
 					</div>
@@ -67,15 +69,17 @@ export function SingleVideo({ video }: Props) {
 				<VideoChannel video={video} />
 				{/* ---------------------------- Video Description --------------------------- */}
 				<VideoDescription description={video.description} />
+
+				{/* -------------------------------- Comments -------------------------------- */}
+				<Comments video={video} />
 			</div>
-			{/*//[TODO] comments */}
 
 			{/*  ----------------------------- Similar Videos -----------------------------  */}
 			{!!video.similarVideos.length && (
 				<div
 					className={cn({
-						'pt-[58rem]': isTheaterMode && !isShowedSidebar,
-						'pt-[52rem]': isTheaterMode && isShowedSidebar
+						'pt-[51rem]': isTheaterMode && !isShowedSidebar,
+						'pt-[45rem]': isTheaterMode && isShowedSidebar
 					})}
 				>
 					<SimilarVideos videos={video.similarVideos} />
