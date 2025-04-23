@@ -25,7 +25,7 @@ export function HeaderAvatar() {
 				/>
 			</Link>
 			{profile?.verificationToken && (
-				<div className='absolute -left-4 -bottom-3.5 bg-red-600 rounded text-nowrap text-xs w-max px-1'>
+				<div className='absolute -left-4 -bottom-3.5 bg-red-600 rounded whitespace-nowrap text-xs w-max px-1'>
 					Not verified!
 				</div>
 			)}

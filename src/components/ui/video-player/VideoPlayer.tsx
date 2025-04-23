@@ -19,18 +19,18 @@ export function VideoPlayer({ fileName, toggleTheaterMode, maxResolution }: Prop
 
 	//[FIXME] not valid video duration on first loading
 	return (
-		<div className='relative rounded-2xl mb-5'>
+		<div className='relative rounded-2xl'>
 			{state.isBacklightMode && (
 				<video
 					ref={bgRef}
-					className='absolute top-0 mx-auto max-h-[95vh] object-center object-cover filter blur-3xl scale-[1.02] brightness-90 contrast-125 saturate-150 rounded-xl'
+					className='absolute top-0 mx-auto width-full object-center object-cover filter blur-3xl scale-[1.02] brightness-90 contrast-125 saturate-150 rounded-xl'
 					src={`/uploads/videos/${EnumVideoPlayerQuality['720p']}/${fileName}`}
 					muted
 				/>
 			)}
 			<video
 				ref={playerRef}
-				className='aspect-video max-h-[95vh] mx-auto relative z-[1] rounded-xl'
+				className='aspect-video width-full mx-auto relative z-[1] rounded-xl'
 				controls={false}
 				src={`/uploads/videos/${EnumVideoPlayerQuality['1080p']}/${fileName}`}
 				preload='metadata'

@@ -80,7 +80,7 @@ export default async function ChannelPage(props: TPageSlugProp) {
 						{channel.user.name} {channel.isVerified && <VerifiedBadge size={16} />}
 					</Heading>
 
-					<div className='mb-2 text-gray-400 text-xs text-nowrap flex items-center gap-1'>
+					<div className='mb-2 text-gray-400 text-xs whitespace-nowrap flex items-center gap-1'>
 						<span>@{channel.slug}</span>
 						<span>♦</span>
 						<span>{transformCount(channel.subscribers.length)} subscribers</span>

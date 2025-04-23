@@ -69,12 +69,12 @@ export function VideoCard({ video, Icon }: Props) {
 							size={18}
 						/>
 					)}
-					<span className='text-gray-400 text-xs text-nowrap'>
+					<span className='text-gray-400 text-xs whitespace-nowrap'>
 						{transformCount(video.viewsCount)} views
 					</span>
 				</div>
 				<div className='flex items-end'>
-					<span className='text-gray-400 text-xs text-nowrap'>
+					<span className='text-gray-400 text-xs whitespace-nowrap'>
 						{transformDate(video.createdAt)}
 					</span>
 				</div>
