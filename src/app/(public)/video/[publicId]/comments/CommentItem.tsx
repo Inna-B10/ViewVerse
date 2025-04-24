@@ -1,24 +1,33 @@
+import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useState } from 'react'
 import { Heading } from '@/ui/Heading'
 import { VerifiedBadge } from '@/ui/video-card/VerifiedBadge'
 import { PAGE } from '@/config/public-page.config'
 import { transformDate } from '@/utils/transform-date'
-import { CommentActions } from './CommentActions'
 import type { ISingleVideoResponse } from '@/types/video.types'
 
-interface ICommentItem {
+const DynamicCommentActions = dynamic(
+	() => import('./CommentActions').then(mod => mod.CommentActions),
+	{ ssr: false }
+)
+
+interface Props {
 	comment: ISingleVideoResponse['comments'][0]
+	refetch: () => void
 }
 
-export function CommentItem({ comment }: ICommentItem) {
+export function CommentItem({ comment, refetch }: Props) {
+	const [text, setText] = useState(comment.text)
+
 	return (
 		<div className='even:bg-bgSecondary px-4  pt-7 even:pt-5 pb-5 rounded-md'>
 			<div className='flex gap-4 items-start  pt-1'>
 				{comment.user?.channel ? (
 					<Link
 						href={PAGE.CHANNEL(comment.user.channel?.slug || '')}
-						title={`${comment.user.channel?.user.name} channel`}
+						title={`${comment.user.name} channel` || ''}
 					>
 						<Image
 							alt={comment.user.name || ''}
@@ -41,7 +50,7 @@ export function CommentItem({ comment }: ICommentItem) {
 						/>
 					</div>
 				)}
-				<div>
+				<div className='w-full'>
 					<div className='flex items-center gap-3'>
 						<Heading
 							hTag='h3'
@@ -59,10 +68,27 @@ export function CommentItem({ comment }: ICommentItem) {
 							{transformDate(comment.createdAt)} subscribers
 						</div>
 					</div>
+					{/* <div>
+						<textarea
+							className='text-gray-300 text-sm leading-snug  resize-y bg-transparent outline-none border border-transparent focus:border-border w-full'
+							value={text}
+							//onChange={e => setText(e.target.value)}
+							onChange={e => {
+								setText(e.target.value)
+								e.target.style.height = 'auto' // сбрасываем
+								e.target.style.height = `${e.target.scrollHeight}px` // выставляем нужную высоту
+							}}
+							rows={1}
+						/>
+					</div> */}
 					<div className='text-gray-200 text-[0.9rem]  leading-normal'>{comment.text}</div>
 
 					{/* ---------------------------- Edit/delete Btns ---------------------------- */}
-					<CommentActions />
+					<DynamicCommentActions
+					// comment={comment}
+					// refetch={refetch}
+					// newText={text}
+					/>
 				</div>
 			</div>
 		</div>

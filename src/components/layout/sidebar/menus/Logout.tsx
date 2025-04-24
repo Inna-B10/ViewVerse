@@ -4,8 +4,8 @@ import { LogOut } from 'lucide-react'
 import { usePathname, useRouter } from 'next/navigation'
 import { PAGE } from '@/config/public-page.config'
 import { STUDIO_PAGE } from '@/config/studio-page.config'
+import { useAuth } from '@/hooks/useAuth'
 import { authService } from '@/services/auth.service'
-import { useTypedSelector } from '@/store'
 
 export function Logout() {
 	const router = useRouter()
@@ -21,7 +21,7 @@ export function Logout() {
 		}
 	})
 
-	const { isLoggedIn } = useTypedSelector(state => state.auth)
+	const { isLoggedIn } = useAuth()
 
 	if (!isLoggedIn) return null
 

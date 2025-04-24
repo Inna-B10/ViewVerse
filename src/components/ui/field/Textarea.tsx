@@ -3,7 +3,7 @@ import type { TextareaHTMLAttributes } from 'react'
 import type { UseFormRegisterReturn } from 'react-hook-form'
 
 interface Props extends TextareaHTMLAttributes<HTMLTextAreaElement> {
-	label: string
+	label?: string
 	error?: string
 	registration: UseFormRegisterReturn
 }
@@ -12,7 +12,7 @@ export function Textarea({ label, error, registration, ...props }: Props) {
 	return (
 		<div className='mb-4'>
 			<label>
-				<span className='block text-grey-400 font-medium mb-2'>{label}</span>
+				{label && <span className='block text-grey-400 font-medium mb-2'>{label}</span>}
 				<textarea
 					className={cn(
 						'w-full px-3 py-2 bg-field text-xs border rounded shadow-sm transition-colors  resize-none focus:outline-none focus:ring-0 focus:border-primary',

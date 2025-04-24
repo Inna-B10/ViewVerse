@@ -8,6 +8,7 @@ export interface IComment {
 	user: IUser & {
 		channel?: IChannel
 	}
+	videoId: string
 }
 
 export interface ICommentData {
