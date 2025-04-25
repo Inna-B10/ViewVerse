@@ -1,3 +1,5 @@
+'use client'
+
 import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -65,10 +67,10 @@ export function CommentItem({ comment, refetch }: Props) {
 						</Heading>
 
 						<div className='text-gray-500 text-xs whitespace-nowrap'>
-							{transformDate(comment.createdAt)} subscribers
+							{transformDate(comment.createdAt)}
 						</div>
 					</div>
-					{/* <div>
+					<div>
 						<textarea
 							className='text-gray-300 text-sm leading-snug  resize-y bg-transparent outline-none border border-transparent focus:border-border w-full'
 							value={text}
@@ -80,14 +82,14 @@ export function CommentItem({ comment, refetch }: Props) {
 							}}
 							rows={1}
 						/>
-					</div> */}
-					<div className='text-gray-200 text-[0.9rem]  leading-normal'>{comment.text}</div>
+					</div>
+					{/* <div className='text-gray-200 text-[0.9rem]  leading-normal'>{text}</div> */}
 
 					{/* ---------------------------- Edit/delete Btns ---------------------------- */}
 					<DynamicCommentActions
-					// comment={comment}
-					// refetch={refetch}
-					// newText={text}
+						comment={comment}
+						refetch={refetch}
+						newText={text}
 					/>
 				</div>
 			</div>

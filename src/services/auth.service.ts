@@ -30,9 +30,9 @@ class AuthService {
 	//in cases when an accessToken (client) expired, try to get new using refreshToken (server), if unsuccessfully - clear all user data from store and all cookies
 
 	async initializeAuth() {
-		const accessToken = Cookies.get(EnumTokens.ACCESS_TOKEN)
+		const initialStore = store.getState().auth
+		if (initialStore.user) return
 
-		if (accessToken) return
 		try {
 			await this.getNewTokens() // try to get new tokens
 		} catch (error) {

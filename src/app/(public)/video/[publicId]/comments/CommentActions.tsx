@@ -1,19 +1,54 @@
+'use client'
+
+import { useMutation } from '@tanstack/react-query'
 import { useAuth } from '@/hooks/useAuth'
+import { commentService } from '@/services/comment.service'
+import type { IComment } from '@/types/comment.types'
 
-interface Props {}
+interface Props {
+	comment: IComment
+	refetch: () => void
+	newText: string
+}
 
-export function CommentActions({}: Props) {
-	const { isLoggedIn } = useAuth()
+export function CommentActions({ comment, refetch, newText }: Props) {
+	const { isLoggedIn, user } = useAuth()
+
+	const { mutate: update, isPending } = useMutation({
+		mutationKey: ['update comment'],
+		mutationFn: () =>
+			commentService.update(comment.id, { text: newText, videoId: comment.videoId }),
+		onSuccess: () => {
+			refetch()
+		}
+	})
+
+	const { mutate: deleteComment, isPending: isDeletePending } = useMutation({
+		mutationKey: ['delete comment'],
+		mutationFn: () => commentService.delete(comment.id),
+		onSuccess: () => {
+			refetch()
+		}
+	})
 
 	if (!isLoggedIn) return
+	if (user?.id !== comment.user.id) return
 
 	return (
 		<div className='flex items-center gap-3 mt-4'>
-			<button className='relative text-gray-500 text-xs whitespace-nowrap  transition-all duration-300 hover:text-gray-400 after:content-[""] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:h-[0.7px] after:w-0 after:bg-current after:transition-all after:duration-300 hover:after:w-full'>
+			<button
+				className='relative text-gray-500 text-xs whitespace-nowrap  transition-all duration-300 hover:text-gray-400 after:content-[""] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:h-[0.7px] after:w-0 after:bg-current after:transition-all after:duration-300 hover:after:w-full'
+				disabled={isPending}
+				onClick={() => update()}
+			>
 				Edit
 			</button>
 
-			<button className='relative text-gray-500 text-xs whitespace-nowrap transition-all duration-300 hover:text-gray-400 after:content-[""] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:h-[0.7px] after:w-0 after:bg-current after:transition-all after:duration-300 hover:after:w-full'>
+			<button
+				className='relative text-gray-500 text-xs whitespace-nowrap transition-all duration-300 hover:text-gray-400 after:content-[""] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:h-[0.7px] after:w-0 after:bg-current after:transition-all after:duration-300 hover:after:w-full'
+				disabled={isDeletePending}
+				onClick={() => deleteComment()}
+			>
 				Delete
 			</button>
 		</div>
