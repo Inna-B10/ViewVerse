@@ -9,22 +9,35 @@ interface Props {
 	comment: IComment
 	refetch: () => void
 	newText: string
-	isFocused: boolean
+	isEditing: boolean
+	resetEdited: () => void
+	textareaRef: React.RefObject<HTMLTextAreaElement | null>
 }
 
-export function CommentActions({ comment, refetch, newText, isFocused }: Props) {
-	console.log(isFocused)
+export function CommentActions({
+	comment,
+	refetch,
+	newText,
+	isEditing,
+	resetEdited,
+	textareaRef
+}: Props) {
 	const { isLoggedIn, user } = useAuth()
 
+	/* ----------------------------- Update Comment ----------------------------- */
 	const { mutate: update, isPending } = useMutation({
 		mutationKey: ['update comment'],
 		mutationFn: () =>
-			commentService.update(comment.id, { text: newText, videoId: comment.videoId }),
+			commentService.update(comment.id, { text: newText.trim(), videoId: comment.videoId }),
 		onSuccess: () => {
-			refetch()
+			setTimeout(() => {
+				refetch()
+				resetEdited()
+			}, 2000)
 		}
 	})
 
+	/* ------------------------------ Delete Comment ----------------------------- */
 	const { mutate: deleteComment, isPending: isDeletePending } = useMutation({
 		mutationKey: ['delete comment'],
 		mutationFn: () => commentService.delete(comment.id),
@@ -48,9 +61,19 @@ export function CommentActions({ comment, refetch, newText, isFocused }: Props) 
 			<button
 				className='relative text-gray-500 text-xs whitespace-nowrap  transition-all duration-300 hover:text-gray-400 after:content-[""] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:h-[0.7px] after:w-0 after:bg-current after:transition-all after:duration-300 hover:after:w-full'
 				disabled={isPending}
-				onClick={() => (newText.trim() === '' ? deleteComment() : update())}
+				onClick={() => {
+					if (newText.trim() === '') {
+						deleteComment()
+					} else {
+						if (!isEditing && textareaRef.current) {
+							textareaRef.current.focus()
+						} else {
+							update()
+						}
+					}
+				}}
 			>
-				{isFocused ? 'Save' : 'Edit'}
+				{isEditing ? 'Save' : 'Edit'}
 			</button>
 		</div>
 	)

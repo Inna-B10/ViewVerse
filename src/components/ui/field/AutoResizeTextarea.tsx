@@ -1,6 +1,6 @@
 'use client'
 
-import { type TextareaHTMLAttributes, useEffect, useRef } from 'react'
+import { type Ref, type TextareaHTMLAttributes, forwardRef, useEffect, useRef } from 'react'
 
 interface Props extends TextareaHTMLAttributes<HTMLTextAreaElement> {
 	value: string
@@ -9,34 +9,46 @@ interface Props extends TextareaHTMLAttributes<HTMLTextAreaElement> {
 	onBlur?: () => void
 }
 
-export default function AutoResizeTextarea({
-	value,
-	onChange,
-	className = '',
-	onFocus,
-	onBlur,
-	...props
-}: Props) {
-	const textareaRef = useRef<HTMLTextAreaElement | null>(null)
+/* -------- The Height Of The Textarea Changes According To The Text -------- */
 
-	useEffect(() => {
-		const textarea = textareaRef.current
-		if (textarea instanceof HTMLTextAreaElement) {
-			textarea.style.height = 'auto'
-			textarea.style.height = `${textarea.scrollHeight}px`
-		}
-	}, [value]) // triggered when mounting and changing value
+const AutoResizeTextarea = forwardRef<HTMLTextAreaElement, Props>(
+	(
+		{ value, onChange, className = '', onFocus, onBlur, ...props }: Props,
+		ref: Ref<HTMLTextAreaElement>
+	) => {
+		const internalRef = useRef<HTMLTextAreaElement | null>(null)
 
-	return (
-		<textarea
-			ref={textareaRef}
-			className={`overflow-hidden resize-none ${className}`}
-			value={value}
-			onChange={onChange}
-			onFocus={onFocus}
-			onBlur={onBlur}
-			rows={1}
-			{...props}
-		/>
-	)
-}
+		useEffect(() => {
+			const textarea = internalRef.current
+
+			if (textarea) {
+				textarea.style.height = 'auto'
+				textarea.style.height = `${textarea.scrollHeight}px`
+			}
+		}, [value]) // triggered when mounting and changing value
+
+		return (
+			<textarea
+				ref={el => {
+					internalRef.current = el
+					if (typeof ref === 'function') {
+						ref(el)
+					} else if (ref && typeof ref === 'object') {
+						;(ref as React.RefObject<HTMLTextAreaElement | null>).current = el
+					}
+				}}
+				className={`overflow-hidden resize-none ${className}`}
+				value={value}
+				onChange={onChange}
+				onFocus={onFocus}
+				onBlur={onBlur}
+				rows={1}
+				{...props}
+			/>
+		)
+	}
+)
+
+AutoResizeTextarea.displayName = 'AutoResizeTextarea'
+
+export default AutoResizeTextarea

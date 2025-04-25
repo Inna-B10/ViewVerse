@@ -3,7 +3,7 @@
 import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import Link from 'next/link'
-import { type SetStateAction, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Heading } from '@/ui/Heading'
 import AutoResizeTextarea from '@/ui/field/AutoResizeTextarea'
 import { VerifiedBadge } from '@/ui/video-card/VerifiedBadge'
@@ -26,6 +26,13 @@ export function CommentItem({ comment, refetch }: Props) {
 	const [text, setText] = useState(comment.text)
 	const { isLoggedIn, user } = useAuth()
 	const [isFocused, setIsFocused] = useState(false)
+	const [isEdited, setIsEdited] = useState(false)
+
+	const textareaRef = useRef<HTMLTextAreaElement | null>(null)
+
+	useEffect(() => {
+		setIsEdited(text !== comment.text)
+	}, [text, comment.text])
 
 	return (
 		<div className='even:bg-bgSecondary px-4  pt-7 even:pt-5 pb-5 rounded-md'>
@@ -76,28 +83,31 @@ export function CommentItem({ comment, refetch }: Props) {
 					</div>
 					<div>
 						{isLoggedIn && user?.id === comment.user.id ? (
+							/* --------------------------- If Editable Comment  */
 							<AutoResizeTextarea
+								ref={textareaRef}
+								onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => {
+									setText(e.target.value.replace(/^[\r\n]+|[\r\n]+$/g, ''))
+								}}
 								value={text}
-								onChange={(e: { target: { value: SetStateAction<string> } }) =>
-									setText(e.target.value)
-								}
 								onFocus={() => setIsFocused(true)}
 								onBlur={() => setIsFocused(false)}
 								className='w-full text-gray-300 text-sm leading-snug rounded resize-none bg-transparent outline-none border border-transparent py-1 focus:border-border  focus:bg-field'
 							/>
 						) : (
-							<div className='text-gray-200 text-[0.9rem]  leading-normal'>{text}</div>
+							/* ------------------------- If Unchangeable Comment  */
+							<div className='text-gray-200 text-[0.9rem]  leading-normal'>{text.trim()}</div>
 						)}
 					</div>
-					{/* <div className='text-gray-200 text-[0.9rem]  leading-normal'>{text}</div> */}
 
 					{/* ---------------------------- Edit/delete Btns ---------------------------- */}
 					<DynamicCommentActions
 						comment={comment}
 						refetch={refetch}
 						newText={text}
-						isFocused={isFocused}
-						setIsFocused={() => setIsFocused(true)}
+						isEditing={isFocused || isEdited}
+						resetEdited={() => setIsEdited(false)}
+						textareaRef={textareaRef}
 					/>
 				</div>
 			</div>
