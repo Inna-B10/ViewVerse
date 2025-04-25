@@ -3,10 +3,12 @@
 import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useState } from 'react'
+import { type SetStateAction, useState } from 'react'
 import { Heading } from '@/ui/Heading'
+import AutoResizeTextarea from '@/ui/field/AutoResizeTextarea'
 import { VerifiedBadge } from '@/ui/video-card/VerifiedBadge'
 import { PAGE } from '@/config/public-page.config'
+import { useAuth } from '@/hooks/useAuth'
 import { transformDate } from '@/utils/transform-date'
 import type { ISingleVideoResponse } from '@/types/video.types'
 
@@ -22,6 +24,8 @@ interface Props {
 
 export function CommentItem({ comment, refetch }: Props) {
 	const [text, setText] = useState(comment.text)
+	const { isLoggedIn, user } = useAuth()
+	const [isFocused, setIsFocused] = useState(false)
 
 	return (
 		<div className='even:bg-bgSecondary px-4  pt-7 even:pt-5 pb-5 rounded-md'>
@@ -71,17 +75,19 @@ export function CommentItem({ comment, refetch }: Props) {
 						</div>
 					</div>
 					<div>
-						<textarea
-							className='text-gray-300 text-sm leading-snug  resize-y bg-transparent outline-none border border-transparent focus:border-border w-full'
-							value={text}
-							//onChange={e => setText(e.target.value)}
-							onChange={e => {
-								setText(e.target.value)
-								e.target.style.height = 'auto' // сбрасываем
-								e.target.style.height = `${e.target.scrollHeight}px` // выставляем нужную высоту
-							}}
-							rows={1}
-						/>
+						{isLoggedIn && user?.id === comment.user.id ? (
+							<AutoResizeTextarea
+								value={text}
+								onChange={(e: { target: { value: SetStateAction<string> } }) =>
+									setText(e.target.value)
+								}
+								onFocus={() => setIsFocused(true)}
+								onBlur={() => setIsFocused(false)}
+								className='w-full text-gray-300 text-sm leading-snug rounded resize-none bg-transparent outline-none border border-transparent py-1 focus:border-border  focus:bg-field'
+							/>
+						) : (
+							<div className='text-gray-200 text-[0.9rem]  leading-normal'>{text}</div>
+						)}
 					</div>
 					{/* <div className='text-gray-200 text-[0.9rem]  leading-normal'>{text}</div> */}
 
@@ -90,6 +96,8 @@ export function CommentItem({ comment, refetch }: Props) {
 						comment={comment}
 						refetch={refetch}
 						newText={text}
+						isFocused={isFocused}
+						setIsFocused={() => setIsFocused(true)}
 					/>
 				</div>
 			</div>

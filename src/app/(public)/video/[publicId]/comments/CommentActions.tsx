@@ -9,9 +9,11 @@ interface Props {
 	comment: IComment
 	refetch: () => void
 	newText: string
+	isFocused: boolean
 }
 
-export function CommentActions({ comment, refetch, newText }: Props) {
+export function CommentActions({ comment, refetch, newText, isFocused }: Props) {
+	console.log(isFocused)
 	const { isLoggedIn, user } = useAuth()
 
 	const { mutate: update, isPending } = useMutation({
@@ -37,19 +39,18 @@ export function CommentActions({ comment, refetch, newText }: Props) {
 	return (
 		<div className='flex items-center gap-3 mt-4'>
 			<button
-				className='relative text-gray-500 text-xs whitespace-nowrap  transition-all duration-300 hover:text-gray-400 after:content-[""] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:h-[0.7px] after:w-0 after:bg-current after:transition-all after:duration-300 hover:after:w-full'
-				disabled={isPending}
-				onClick={() => update()}
-			>
-				Edit
-			</button>
-
-			<button
 				className='relative text-gray-500 text-xs whitespace-nowrap transition-all duration-300 hover:text-gray-400 after:content-[""] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:h-[0.7px] after:w-0 after:bg-current after:transition-all after:duration-300 hover:after:w-full'
 				disabled={isDeletePending}
 				onClick={() => deleteComment()}
 			>
 				Delete
+			</button>
+			<button
+				className='relative text-gray-500 text-xs whitespace-nowrap  transition-all duration-300 hover:text-gray-400 after:content-[""] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:h-[0.7px] after:w-0 after:bg-current after:transition-all after:duration-300 hover:after:w-full'
+				disabled={isPending}
+				onClick={() => (newText.trim() === '' ? deleteComment() : update())}
+			>
+				{isFocused ? 'Save' : 'Edit'}
 			</button>
 		</div>
 	)
