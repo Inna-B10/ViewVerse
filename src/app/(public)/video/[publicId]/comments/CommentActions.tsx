@@ -1,6 +1,7 @@
 'use client'
 
 import { useMutation } from '@tanstack/react-query'
+import cn from 'clsx'
 import { useAuth } from '@/hooks/useAuth'
 import { commentService } from '@/services/comment.service'
 import type { IComment } from '@/types/comment.types'
@@ -52,14 +53,17 @@ export function CommentActions({
 	return (
 		<div className='flex items-center gap-3 mt-4'>
 			<button
-				className='relative text-gray-500 text-xs whitespace-nowrap transition-all duration-300 hover:text-gray-400 after:content-[""] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:h-[0.7px] after:w-0 after:bg-current after:transition-all after:duration-300 hover:after:w-full'
+				className='relative text-gray-500 text-xs whitespace-nowrap transition-all duration-300 hover:text-gray-300'
 				disabled={isDeletePending}
 				onClick={() => deleteComment()}
 			>
 				Delete
 			</button>
 			<button
-				className='relative text-gray-500 text-xs whitespace-nowrap  transition-all duration-300 hover:text-gray-400 after:content-[""] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:h-[0.7px] after:w-0 after:bg-current after:transition-all after:duration-300 hover:after:w-full'
+				className={cn(
+					'relative text-xs whitespace-nowrap  transition-all duration-300',
+					isEditing ? 'text-primary' : 'text-gray-500 hover:text-gray-300'
+				)}
 				disabled={isPending}
 				onClick={() => {
 					if (newText.trim() === '') {

@@ -25,13 +25,12 @@ interface Props {
 export function CommentItem({ comment, refetch }: Props) {
 	const [text, setText] = useState(comment.text)
 	const { isLoggedIn, user } = useAuth()
-	const [isFocused, setIsFocused] = useState(false)
 	const [isEdited, setIsEdited] = useState(false)
 
 	const textareaRef = useRef<HTMLTextAreaElement | null>(null)
 
 	useEffect(() => {
-		setIsEdited(text !== comment.text)
+		setIsEdited(text.trim() !== comment.text.trim())
 	}, [text, comment.text])
 
 	return (
@@ -90,8 +89,6 @@ export function CommentItem({ comment, refetch }: Props) {
 									setText(e.target.value.replace(/^[\r\n]+|[\r\n]+$/g, ''))
 								}}
 								value={text}
-								onFocus={() => setIsFocused(true)}
-								onBlur={() => setIsFocused(false)}
 								className='w-full text-gray-300 text-sm leading-snug rounded resize-none bg-transparent outline-none border border-transparent py-1 focus:border-border  focus:bg-field'
 							/>
 						) : (
@@ -105,7 +102,7 @@ export function CommentItem({ comment, refetch }: Props) {
 						comment={comment}
 						refetch={refetch}
 						newText={text}
-						isEditing={isFocused || isEdited}
+						isEditing={isEdited}
 						resetEdited={() => setIsEdited(false)}
 						textareaRef={textareaRef}
 					/>
