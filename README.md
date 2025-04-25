@@ -84,14 +84,19 @@ bun add rc-tooltip
 ---
 
 - [ ] FIXME logout on ChannelPage, Subscriptions (should redirect to home/auth)
-- [ ] [FIXME] no SUBSCRIPTIONS link not logged in (or disabled)
+- [ ] [FIXME] SUBSCRIPTIONS (after log out still available info about user's
+      subscriptions(page,buttons) + no redirect onClick subscribe)
 - [ ] sort/group videos on SubscriptionsPage
 - [ ] button colors
 - [ ] password reset option
 - [ ] videoPage:
   - [x] similar videos block
-  - [ ] styling
   - [x] collapse description of video
+  - [x] styling
+  - [x] comments:
+    - [x] display comments
+    - [x] form to add comment
+    - [x] actions: edit/delete !only own comments
   - [ ] player:
     - [x] current time
     - [x] make progress bar clickable
