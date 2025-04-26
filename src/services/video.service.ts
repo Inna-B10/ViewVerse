@@ -11,7 +11,6 @@ class VideoService {
 
 	/* ---------------------------- Get All / Search ---------------------------- */
 	async filterVideos(searchTerm?: string | null) {
-		// const { data } = await axiosClassic.get<IApiResponseVideos[]>(
 		const { data } = await axiosClassic.get<IVideosPagination>(
 			this._VIDEOS,
 			searchTerm
@@ -24,17 +23,7 @@ class VideoService {
 		)
 		return data
 	}
-	// 	return axiosClassic.get<IVideo[]>(
-	// 		this._VIDEOS,
-	// 		searchTerm
-	// 			? {
-	// 					params: {
-	// 						searchTerm
-	// 					}
-	// 				}
-	// 			: {}
-	// 	)
-	// }
+
 	/* ------------------------- Get Video By PublicId -------------------------- */
 	byPublicId(publicId?: string | null) {
 		const data = axiosClassic.get<ISingleVideoResponse>(`${this._VIDEOS}/by-publicId/${publicId}`)
@@ -54,8 +43,12 @@ class VideoService {
 	}
 
 	/* --------------------------------- Explore -------------------------------- */
-	async getExploreVideos() {
-		const { data } = await axiosClassic.get<IApiResponseVideos>(`${this._VIDEOS}/explore`)
+	async getExploreVideos(userId?: string) {
+		const { data } = await axiosClassic.get<IApiResponseVideos>(`${this._VIDEOS}/explore`, {
+			params: {
+				userId
+			}
+		})
 		return data
 	}
 }
