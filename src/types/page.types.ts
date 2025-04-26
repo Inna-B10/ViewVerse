@@ -1,5 +1,5 @@
 export interface IPageProps<T> {
-	params: T
+	params: Promise<T>
 }
 
 export type TPageSlugProp = IPageProps<{ slug: string }>

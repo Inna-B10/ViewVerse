@@ -5,7 +5,6 @@ import { videoService } from '@/services/video.service'
 import type { TPagePublicIdProp } from '@/types/page.types'
 
 export const revalidate = 100
-export const dynamic = 'force-static'
 
 export async function generateMetadata(props: TPagePublicIdProp): Promise<Metadata> {
 	const { publicId } = await props.params

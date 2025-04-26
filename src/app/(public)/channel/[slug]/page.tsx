@@ -19,7 +19,6 @@ const DynamicSubscribeButton = dynamicNext(
 )
 
 export const revalidate = 100
-export const dynamic = 'force-static'
 
 export async function generateMetadata(props: TPageSlugProp): Promise<Metadata> {
 	const { slug } = await props.params

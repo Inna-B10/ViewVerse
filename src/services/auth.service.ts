@@ -36,7 +36,7 @@ class AuthService {
 		try {
 			await this.getNewTokens() // try to get new tokens
 		} catch (error) {
-			console.log(error)
+			// console.log(error)
 			store.dispatch(clearAuthData()) //delete user's data from global store
 		}
 	}
