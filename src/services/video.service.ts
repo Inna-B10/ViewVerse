@@ -44,7 +44,7 @@ class VideoService {
 
 	/* --------------------------------- Explore -------------------------------- */
 	async getExploreVideos(userId?: string) {
-		const { data } = await axiosClassic.get<IApiResponseVideos>(`${this._VIDEOS}/explore`, {
+		const { data } = await axiosClassic.get<IVideosPagination>(`${this._VIDEOS}/explore`, {
 			params: {
 				userId
 			}
