@@ -2,7 +2,7 @@ import type { CreateAxiosDefaults } from 'axios'
 import axios from 'axios'
 import Cookies from 'js-cookie'
 import { API_URL } from '@/constants/constants'
-import { errorCatch } from './api.helper'
+import { type ErrorResponse, errorCatch } from './api.helper'
 import { authService } from '@/services/auth.service'
 import { EnumTokens } from '@/types/auth.types'
 
@@ -38,8 +38,8 @@ instance.interceptors.response.use(
 
 		if (
 			(error?.response?.status === 401 ||
-				errorCatch(error) === 'jwt expired' ||
-				errorCatch(error) === 'jwt must be provided') &&
+				errorCatch(error as ErrorResponse) === 'jwt expired' ||
+				errorCatch(error as ErrorResponse) === 'jwt must be provided') &&
 			originalRequest &&
 			!originalRequest._isRetry
 		) {
@@ -49,8 +49,8 @@ instance.interceptors.response.use(
 				return instance.request(originalRequest)
 			} catch (error) {
 				if (
-					errorCatch(error) === 'jwt expired' ||
-					errorCatch(error) === 'Refresh token not passed'
+					errorCatch(error as ErrorResponse) === 'jwt expired' ||
+					errorCatch(error as ErrorResponse) === 'Refresh token not passed'
 				) {
 					authService.removeTokenFromStorage()
 					throw error

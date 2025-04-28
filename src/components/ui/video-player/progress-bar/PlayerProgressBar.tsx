@@ -48,6 +48,8 @@ export function PlayerProgressBar({ currentTime, duration, onSeek }: Props) {
 					}
 				}}
 				handleRender={handleRender}
+				ariaLabelForHandle='Volume slider handle'
+				ariaLabelledByForHandle='Volume slider'
 				styles={{
 					track: { backgroundColor: COLORS.primary, height: 5 },
 					rail: { backgroundColor: 'rbg(196 196 96 /60%)', height: 5 },

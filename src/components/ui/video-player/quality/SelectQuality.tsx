@@ -13,7 +13,11 @@ interface Props {
 }
 
 export function SelectQuality({ currentValue, onChange, maxResolution }: Props) {
-	const { isShow, ref, setIsShow } = useOutside(false)
+	const { isShow, ref, setIsShow } = useOutside(false) as {
+		isShow: boolean
+		ref: React.RefObject<HTMLDivElement>
+		setIsShow: (value: boolean) => void
+	}
 
 	const availableQualities = VIDEO_QUALITIES.slice(VIDEO_QUALITIES.indexOf(maxResolution))
 

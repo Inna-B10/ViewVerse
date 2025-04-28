@@ -12,6 +12,7 @@ export function VolumeControl({ changeVolume, isMuted, toggleMute, value }: IVol
 		<div className='flex items-center gap-2'>
 			<button
 				name='volume'
+				title={isMuted ? 'Unmute' : 'Mute'}
 				onClick={toggleMute}
 				className='transition-colors hover:text-primary'
 			>
