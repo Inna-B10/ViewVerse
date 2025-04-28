@@ -17,7 +17,6 @@ interface Props {
 export function VideoPlayer({ fileName, toggleTheaterMode, maxResolution }: Props) {
 	const { fn, playerRef, bgRef, state } = useVideoPlayer({ fileName, toggleTheaterMode })
 
-	//[FIXME] not valid video duration on first loading
 	return (
 		<div className='relative rounded-2xl'>
 			{state.isBacklightMode && (
@@ -30,6 +29,9 @@ export function VideoPlayer({ fileName, toggleTheaterMode, maxResolution }: Prop
 			)}
 			<video
 				ref={playerRef}
+				onEnded={() => {
+					fn.setIsPlaying(false)
+				}}
 				className='aspect-video width-full mx-auto relative z-[1] rounded-xl'
 				controls={false}
 				src={`/uploads/videos/${EnumVideoPlayerQuality['1080p']}/${fileName}`}
@@ -38,7 +40,6 @@ export function VideoPlayer({ fileName, toggleTheaterMode, maxResolution }: Prop
 
 			<div className='grid grid-cols-[7fr_1fr] gap-7 absolute bottom-5 left-5 right-5 z-[1]'>
 				<div className='flex items-center gap-4 w-full'>
-					{/* //[FIXME] pause btn not changes to play btn at the end of video */}
 					{/* -------------------------------- Btn Play -------------------------------- */}
 					<button
 						onClick={fn.togglePlayPause}

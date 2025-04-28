@@ -104,8 +104,9 @@ bun add rc-tooltip
     - [x] volume button
     - [x] implement theater mode
     - [x] style @media: when side bar is open/collapsed in theater mode
-    - [ ] [FIXME] not valid video duration on first loading
-    - [ ] [FIXME] btn pause does not changes to play at the end of video
+    - [x] [FIXME] not valid video duration on first loading
+    - [x] [FIXME] btn pause does not changes to play at the end of video
+    - [ ] styles for @media
 - [ ] ?component SidebarSubscriptions is needed?
 - [ ] UI block's heading/loader
   - [x] heading
