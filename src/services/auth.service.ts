@@ -36,7 +36,7 @@ class AuthService {
 		try {
 			await this.getNewTokens() // try to get new tokens
 		} catch (error) {
-			// console.log(error)
+			console.log(error)
 			store.dispatch(clearAuthData()) //delete user's data from global store
 		}
 	}
@@ -50,20 +50,6 @@ class AuthService {
 			store.dispatch(setAuthData(response.data))
 		}
 		return response
-	}
-
-	/* --------------------- GetNewTokensByRefresh (Server cookie) --------------------- */
-	async getNewTokensByRefresh(refreshToken: string) {
-		const response = await axiosClassic.post<IAuthResponse>(
-			`${this._AUTH}/access-token`,
-			{},
-			{
-				headers: {
-					Cookie: `refreshToken=${refreshToken}`
-				}
-			}
-		)
-		return response.data
 	}
 
 	/* --------------------------------- Logout -------------------------------- */
@@ -82,8 +68,8 @@ class AuthService {
 		Cookies.set(EnumTokens.ACCESS_TOKEN, accessToken, {
 			domain: 'localhost',
 			sameSite: 'strict',
-			expires: 1 / 24 //1h
-			// secure: true
+			expires: 1 / 24, //1h
+			secure: true
 		})
 	}
 
