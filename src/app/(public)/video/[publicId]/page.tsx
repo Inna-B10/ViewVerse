@@ -24,9 +24,13 @@ export async function generateMetadata(props: TPagePublicIdProp): Promise<Metada
 export async function generateStaticParams() {
 	const data = await videoService.filterVideos()
 
-	return data.videos.map(video => ({
-		publicId: video.publicId
-	}))
+	if (!data || data.totalCount === 0) return []
+
+	return data.videos
+		.filter((video: { publicId: string }) => video.publicId && video.publicId.trim() !== '')
+		.map((video: { publicId: string }) => ({
+			publicId: video.publicId
+		}))
 }
 
 export default async function VideoPage(props: TPagePublicIdProp) {

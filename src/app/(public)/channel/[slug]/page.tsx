@@ -24,7 +24,9 @@ export async function generateMetadata(props: TPageSlugProp): Promise<Metadata> 
 export async function generateStaticParams() {
 	const { data } = await channelService.getAll()
 
-	return data.map(channel => ({
+	if (!data || data.length === 0) return []
+
+	return data.map((channel: { slug: string }) => ({
 		slug: channel.slug
 	}))
 }
