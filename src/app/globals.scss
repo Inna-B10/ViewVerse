@@ -83,21 +83,21 @@ hr.sidebar {
 
 .tooltip-simple-text.rc-slider-tooltip .rc-slider-tooltip-inner {
         @apply text-base;
-        background: none !important;
-        border: none !important;
-        box-shadow: none !important;
-        padding: 0 !important;
-        color: #fff !important;
-        height: 16px;
+        font-size: small !important;
+        font-weight: bolder !important;
+        line-height: 1 !important;
+        color: #222 !important;
+        height: auto !important;
 }
 
 .tooltip-simple-text.rc-slider-tooltip .rc-slider-tooltip-arrow {
-        display: none !important;
-        /* remove arrow tooltip */
+        border-top-color: #474747 !important;
 }
 
-.tooltip-simple-text.rc-slider-tooltip {
-        background: none !important;
-        border: none !important;
-        box-shadow: none !important;
+.rc-slider-tooltip-inner {
+        min-width: fit-content !important;
+        padding: 4px 8px !important;
+        background-color: #dddddd !important;
+        border-radius: 6px !important;
+        box-shadow: inset 0 0 2px 1px #6e6e6e !important;
 }
