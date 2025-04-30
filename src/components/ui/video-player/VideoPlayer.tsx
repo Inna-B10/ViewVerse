@@ -38,7 +38,7 @@ export function VideoPlayer({ fileName, toggleTheaterMode, maxResolution }: Prop
 				preload='metadata'
 			/>
 
-			<div className='grid grid-cols-[7fr_1fr] gap-7 absolute bottom-5 left-5 right-5 z-[1]'>
+			<div className='grid grid-cols-[7fr_1fr] gap-7 absolute bottom-5 left-5 right-5 z-[1] py-1  px-2 hover:rounded hover:bg-[#9c9c9c70]'>
 				<div className='flex items-center gap-4 w-full'>
 					{/* -------------------------------- Btn Play -------------------------------- */}
 					<button

@@ -20,7 +20,7 @@ const handleRender = (node: ReactElement, props: IHandleProps) => {
 		<Tooltip
 			prefixCls='rc-slider-tooltip'
 			overlay={getTime(value)}
-			visible={true}
+			visible={dragging}
 			placement='top'
 			key={index}
 			zIndex={1}

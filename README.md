@@ -107,7 +107,6 @@ bun add rc-tooltip
     - [x] [FIXME] not valid video duration on first loading
     - [x] [FIXME] btn pause does not changes to play at the end of video
     - [ ] styles for @media
-- [ ] ?component SidebarSubscriptions is needed?
 - [ ] UI block's heading/loader
   - [x] heading
   - [ ] SkeletonLoader:
@@ -121,7 +120,9 @@ bun add rc-tooltip
 - [ ] lg 1024 - меню открыто, 3 колонки
 - [ ] xl 1280 - меню открыто, 4 колонки
 - [ ] 2xl 1536 -->
-- [ ] getTrendingVideos (2раза, на главной + трендинг). Так это серверный компонент?
+- [?] change rc-slider and rc-tooltip to native input? (lesson 40)
+- [?] component SidebarSubscriptions is needed?
+- [?] getTrendingVideos (2раза, на главной + трендинг). Так это серверный компонент?
 
 <!--
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
