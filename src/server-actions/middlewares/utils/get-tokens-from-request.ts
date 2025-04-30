@@ -1,6 +1,5 @@
-import { AxiosError } from 'axios'
 import type { NextRequest } from 'next/server'
-import { authService } from '@/services/auth.service'
+import { getNewTokensByRefresh } from './get-new-tokens-by-refresh'
 import { EnumTokens } from '@/types/auth.types'
 
 export async function getTokensFromRequest(request: NextRequest) {
@@ -14,10 +13,10 @@ export async function getTokensFromRequest(request: NextRequest) {
 
 	if (!accessToken) {
 		try {
-			const data = await authService.getNewTokensByRefresh(refreshToken)
+			const data = await getNewTokensByRefresh(refreshToken)
 			accessToken = data.accessToken
 		} catch (error) {
-			if (error instanceof AxiosError) {
+			if (error instanceof Error) {
 				if (error.message === 'invalid token') {
 					console.log('invalid token')
 					request.cookies.delete(EnumTokens.ACCESS_TOKEN)

@@ -34,6 +34,7 @@ export function useVideoPlayer({ fileName, toggleTheaterMode }: Props) {
 
 	const fn = {
 		togglePlayPause,
+		setIsPlaying,
 		changeQuality,
 		toggleFullScreen,
 		skipTime,

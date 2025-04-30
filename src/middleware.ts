@@ -1,10 +1,10 @@
-import type { NextRequest, NextResponse } from 'next/server'
+import type { NextRequest } from 'next/server'
 import { PAGE } from './config/public-page.config'
 import { STUDIO_PAGE } from './config/studio-page.config'
 import { protectLogin } from './server-actions/middlewares/protect-login.middleware'
 import { protectStudio } from './server-actions/middlewares/protect-studio.middleware'
 
-export async function middleware(request: NextRequest, response: NextResponse) {
+export async function middleware(request: NextRequest) {
 	const url = new URL(request.url)
 	const pathname = url.pathname
 

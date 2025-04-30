@@ -10,7 +10,6 @@ import { videoService } from '@/services/video.service'
 // videos in the Trending block are the same for all users, so a static page is loaded (but with revalidation).
 // videos in the Explore block depend on a specific user, so they are loaded on the client side and with a little delay
 export const revalidate = 100
-export const dynamic = 'force-static'
 
 export const metadata: Metadata = {
 	title: 'Trending',

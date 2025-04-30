@@ -23,6 +23,8 @@ const philosopher = Philosopher({
 	subsets: ['latin']
 })
 
+export const fetchCache = 'default-cache'
+
 export const metadata: Metadata = {
 	title: {
 		absolute: 'ViewVerse - Next.js 15',

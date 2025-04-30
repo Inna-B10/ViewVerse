@@ -12,7 +12,7 @@ export function SubscribeButton({ slug }: { slug: string }) {
 	const router = useRouter()
 	const { profile, refetch } = useProfile()
 
-	const { mutate, isPending } = useMutation({
+	const { mutate } = useMutation({
 		mutationKey: ['subscribe'],
 		mutationFn: () => channelService.toggleSubscribe(slug),
 		onSuccess: () => {

@@ -1,7 +1,7 @@
 import { UploadCloud } from 'lucide-react'
 import { useId } from 'react'
 import type { FieldError } from 'react-hook-form'
-import { ImagePreview } from './imagePreview'
+import { ImagePreview } from './ImagePreview'
 import { useUpload } from './useUpload'
 
 interface Props {
@@ -27,7 +27,10 @@ export function UploadField({
 	aspectRation = '1:1',
 	overlay
 }: Props) {
-	const { isLoading, uploadFile } = useUpload({ folder, onChange })
+	const { isLoading, uploadFile } = useUpload({
+		folder,
+		onChange: (...event) => onChange(event[0] as string)
+	})
 	const inputId = useId()
 
 	return (

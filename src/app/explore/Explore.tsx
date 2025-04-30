@@ -3,12 +3,15 @@
 import { useQuery } from '@tanstack/react-query'
 import { SkeletonLoader } from '@/ui/SkeletonLoader'
 import { VideoCard } from '@/ui/video-card/VideoCard'
+import { useAuth } from '@/hooks/useAuth'
 import { videoService } from '@/services/video.service'
 
 export function Explore() {
+	const { user } = useAuth()
+
 	const { data, isLoading } = useQuery({
 		queryKey: ['explore'],
-		queryFn: () => videoService.getExploreVideos()
+		queryFn: () => videoService.getExploreVideos(user?.id)
 	})
 
 	return (

@@ -11,6 +11,8 @@ export function VolumeControl({ changeVolume, isMuted, toggleMute, value }: IVol
 	return (
 		<div className='flex items-center gap-2'>
 			<button
+				name='volume'
+				title={isMuted ? 'Unmute' : 'Mute'}
 				onClick={toggleMute}
 				className='transition-colors hover:text-primary'
 			>
@@ -21,6 +23,7 @@ export function VolumeControl({ changeVolume, isMuted, toggleMute, value }: IVol
 				min='0'
 				max='1'
 				step='0.05'
+				aria-label='volume-slider'
 				value={value}
 				onChange={e => changeVolume(parseFloat(e.target.value))}
 				className='volume-slider w-20 h-[0.2rem] appearance-none bg-white rounded-lg cursor-pointer transition-all opacity-80 hover:opacity-100'

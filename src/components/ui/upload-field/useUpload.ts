@@ -3,7 +3,7 @@ import { type ChangeEvent, useCallback } from 'react'
 import toast from 'react-hot-toast'
 import { fileService } from '@/services/file.service'
 
-type TUseUpload = (props: { onChange: (...event: any[]) => void; folder?: string }) => {
+type TUseUpload = (props: { onChange: (...event: unknown[]) => void; folder?: string }) => {
 	uploadFile: (e: ChangeEvent<HTMLInputElement>) => void
 	isLoading: boolean
 }

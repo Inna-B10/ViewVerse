@@ -3,6 +3,7 @@
 import Slider from 'rc-slider'
 import 'rc-slider/assets/index.css'
 import Tooltip from 'rc-tooltip'
+import 'rc-tooltip/assets/bootstrap_white.css'
 import type { ReactElement } from 'react'
 import { COLORS } from '@/constants/colors.constants'
 import { getTime } from '../video-player.utils'
@@ -22,7 +23,7 @@ const handleRender = (node: ReactElement, props: IHandleProps) => {
 			visible={dragging}
 			placement='top'
 			key={index}
-			// overlayClassName='tooltip-simple-text'
+			zIndex={1}
 			classNames={{ root: 'tooltip-simple-text' }}
 		>
 			{node}
@@ -37,7 +38,10 @@ interface Props {
 
 export function PlayerProgressBar({ currentTime, duration, onSeek }: Props) {
 	return (
-		<div className='w-full'>
+		<div
+			className='w-full'
+			id='Progress-slider'
+		>
 			<Slider
 				min={0}
 				max={duration}
@@ -48,6 +52,8 @@ export function PlayerProgressBar({ currentTime, duration, onSeek }: Props) {
 					}
 				}}
 				handleRender={handleRender}
+				ariaLabelForHandle='Progress slider handle'
+				ariaLabelledByForHandle='Progress-slider'
 				styles={{
 					track: { backgroundColor: COLORS.primary, height: 5 },
 					rail: { backgroundColor: 'rbg(196 196 96 /60%)', height: 5 },
@@ -55,8 +61,6 @@ export function PlayerProgressBar({ currentTime, duration, onSeek }: Props) {
 						borderColor: 'transparent',
 						height: 16,
 						width: 16,
-						// marginLeft: -8,
-						// marginTop: -4,
 						backgroundColor: 'transparent',
 						outline: 'none',
 						boxShadow: 'none'

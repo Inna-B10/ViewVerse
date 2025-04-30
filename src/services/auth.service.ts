@@ -52,20 +52,6 @@ class AuthService {
 		return response
 	}
 
-	/* --------------------- GetNewTokensByRefresh (Server cookie) --------------------- */
-	async getNewTokensByRefresh(refreshToken: string) {
-		const response = await axiosClassic.post<IAuthResponse>(
-			`${this._AUTH}/access-token`,
-			{},
-			{
-				headers: {
-					Cookie: `refreshToken=${refreshToken}`
-				}
-			}
-		)
-		return response.data
-	}
-
 	/* --------------------------------- Logout -------------------------------- */
 	async logout() {
 		const response = await axiosClassic.post<boolean>(`${this._AUTH}/logout`)
@@ -82,8 +68,8 @@ class AuthService {
 		Cookies.set(EnumTokens.ACCESS_TOKEN, accessToken, {
 			domain: 'localhost',
 			sameSite: 'strict',
-			expires: 1 / 24 //1h
-			// secure: true
+			expires: 1 / 24, //1h
+			secure: true
 		})
 	}
 
