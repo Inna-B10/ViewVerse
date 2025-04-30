@@ -52,6 +52,7 @@ export function VideoPlayer({ fileName, toggleTheaterMode, maxResolution }: Prop
 					<PlayerProgressBar
 						currentTime={state.currentTime}
 						duration={state.videoTime}
+						progress={state.progress}
 						onSeek={fn.onSeek}
 					/>
 

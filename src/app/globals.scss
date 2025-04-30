@@ -73,31 +73,3 @@ hr.sidebar {
         border-radius: 50%;
         cursor: pointer;
 }
-
-/* -------------------- Video Duration Slider And Tooltip ------------------- */
-.rc-slider-handle:focus,
-.rc-slider-handle:active {
-        outline: none;
-        box-shadow: none;
-}
-
-.tooltip-simple-text.rc-slider-tooltip .rc-slider-tooltip-inner {
-        @apply text-base;
-        font-size: small !important;
-        font-weight: bolder !important;
-        line-height: 1 !important;
-        color: #222 !important;
-        height: auto !important;
-}
-
-.tooltip-simple-text.rc-slider-tooltip .rc-slider-tooltip-arrow {
-        border-top-color: #474747 !important;
-}
-
-.rc-slider-tooltip-inner {
-        min-width: fit-content !important;
-        padding: 4px 8px !important;
-        background-color: #dddddd !important;
-        border-radius: 6px !important;
-        box-shadow: inset 0 0 2px 1px #6e6e6e !important;
-}

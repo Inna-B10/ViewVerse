@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { useHotkeys } from 'react-hotkeys-hook'
 import type { TSkipTime } from './useSkipTime'
 import type { EnumVideoPlayerQuality } from '@/types/video-player.types'
@@ -9,15 +10,23 @@ interface Props {
 	skipTime: (type?: TSkipTime) => void
 	changeVolume: (value: number) => void
 	toggleMute: () => void
-	volume: number
 	toggleTheaterMode: () => void
+	volume: number
 }
 
 export function useVideoHotkeys({ volume, ...fn }: Props) {
-	useHotkeys('space', e => {
-		e.preventDefault()
-		fn.togglePlayPause()
-	})
+	useEffect(() => {
+		const handleKeyDown = (event: KeyboardEvent) => {
+			if (event.code === 'Space' || event.key === ' ') {
+				event.preventDefault()
+				fn.togglePlayPause()
+			}
+		}
+		window.addEventListener('keydown', handleKeyDown)
+		return () => {
+			window.removeEventListener('keydown', handleKeyDown)
+		}
+	}, [fn])
 	useHotkeys('left', () => {
 		fn.skipTime('backward')
 	})

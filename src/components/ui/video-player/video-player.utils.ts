@@ -7,7 +7,7 @@ export const getVideoInfo = (video: HTMLCustomVideoElement | null) => {
 	return {
 		currentTime,
 		originalTime,
-		progress: (currentTime / originalTime) * 100
+		progress: originalTime > 0 ? (currentTime / originalTime) * 100 : 0 //avoid division by 0
 	}
 }
 
