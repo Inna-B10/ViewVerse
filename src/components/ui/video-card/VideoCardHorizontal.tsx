@@ -15,15 +15,16 @@ interface Props {
 export function VideoCardHorizontal({ video }: Props) {
 	return (
 		<m.div
-			className='mb-5 w-full p-5 rounded-md even:bg-bgSecondary'
-			whileHover={{ scale: 1.03, y: -5 }}
+			className='w-3/4 mb-8 rounded-md'
+			whileHover={{ scale: 1.01, y: -3 }}
 			transition={{ type: 'spring', stiffness: 500, damping: 30 }}
 		>
-			<div className='mb-1.5 flex items-start gap-6'>
+			<div className='flex items-stretch gap-6 '>
 				{/* ------------------------------- Video Img ------------------------------- */}
 				<Link
 					href={PAGE.VIDEO(video.publicId)}
 					title={video.title}
+					className='flex-shrink-0'
 				>
 					<Image
 						src={video.thumbnailUrl}
@@ -35,23 +36,29 @@ export function VideoCardHorizontal({ video }: Props) {
 						className='rounded-md object-cover'
 					/>
 				</Link>
-				<div className='w-full'>
-					{/* ------------------------------- Video Title ------------------------------ */}
-					<div className='mb-1'>
-						<VideoCardTitle video={video} />
+				<div className='flex flex-col justify-between'>
+					<div>
+						{/* ------------------------------- Video Title ------------------------------ */}
+						<div className='mb-1 text-lg'>
+							<VideoCardTitle video={video} />
+						</div>
+
+						{/* ------------------------------ Channel Name ------------------------------ */}
+						<div>
+							<VideoChannelName
+								channel={video.channel}
+								spanClassName='text-base mb-1'
+							/>
+						</div>
 					</div>
 
-					{/* ------------------------------ Channel Name ------------------------------ */}
-					<div>
-						<VideoChannelName channel={video.channel} />
-					</div>
-					{/* ------------------------------ Views / Date ------------------------------ */}
-					<div className='mb-1.5 flex items-center justify-between'>
-						<span className='text-gray-400 text-xs whitespace-nowrap'>
+					{/* ---------------------------------- Views --------------------------------- */}
+					<div className='flex items-center gap-2'>
+						<span className='text-gray-400 text-sm whitespace-nowrap'>
 							{transformCount(video.viewsCount)} views
 						</span>
-
-						<span className='text-gray-400 text-xs whitespace-nowrap'>
+						<span className='text-gray-400 text-xs mt-1'>♦</span>
+						<span className='text-gray-400 text-sm whitespace-nowrap'>
 							{transformDate(video.createdAt)}
 						</span>
 					</div>

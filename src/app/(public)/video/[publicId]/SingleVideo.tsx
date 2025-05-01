@@ -5,6 +5,7 @@ import { useState } from 'react'
 import { Heading } from '@/ui/Heading'
 import { VideoPlayer } from '@/ui/video-player/VideoPlayer'
 import { useSidebar } from '@/providers/SidebarContext'
+import { useUpdateViews } from '@/hooks/useUpdateViews'
 import { SimilarVideos } from './SimilarVideos'
 import { Comments } from './comments/Comments'
 import { VideoDescription } from './description/VideoDescription'
@@ -19,6 +20,8 @@ interface Props {
 export function SingleVideo({ video }: Props) {
 	const { isShowedSidebar } = useSidebar()
 	const [isTheaterMode, setIsTheaterMode] = useState(false)
+
+	useUpdateViews({ video })
 
 	return (
 		<section className='grid grid-cols-[3fr_.8fr] gap-6 relative'>
