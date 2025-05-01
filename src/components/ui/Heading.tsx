@@ -34,7 +34,7 @@ export function Heading({
 				className={twMerge(
 					'font-philosopher font-bold',
 					classNameHeading,
-					Tag == 'h2' && !hSize ? 'text-2xl' : hSize
+					Tag == 'h2' && !hSize ? 'text-3xl' : hSize
 				)}
 			>
 				{children}

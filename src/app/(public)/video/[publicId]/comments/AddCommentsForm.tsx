@@ -1,5 +1,6 @@
 import { useMutation } from '@tanstack/react-query'
 import { type SubmitHandler, useForm } from 'react-hook-form'
+import { Button } from '@/ui/button/Button'
 import { Textarea } from '@/ui/field/Textarea'
 import { useAuth } from '@/hooks/useAuth'
 import { commentService } from '@/services/comment.service'
@@ -52,12 +53,12 @@ export function AddCommentsForm({ refetch, videoId }: IAddComments) {
 					registration={register('text', { required: true })}
 					error={errors.text?.message}
 				/>
-				<button
-					className='bg-field border border-border rounded font-medium h-fit py-[0.25rem] text-gray-500 transition-color duration-300 hover:text-gray-400 '
+				<Button
+					variant='simple'
 					disabled={isPending}
 				>
 					{isPending ? 'Saving...' : 'Comment'}
-				</button>
+				</Button>
 			</form>
 		</div>
 	)
