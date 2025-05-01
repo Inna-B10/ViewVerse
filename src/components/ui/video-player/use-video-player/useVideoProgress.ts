@@ -21,6 +21,7 @@ export function useVideoProgress(playerRef: RefObject<HTMLCustomVideoElement | n
 
 		player?.addEventListener('loadedmetadata', handleLoadedMetadata)
 
+		//if the metadata is already loaded, call the handler immediately
 		if (player.readyState >= 1) {
 			handleLoadedMetadata()
 		}

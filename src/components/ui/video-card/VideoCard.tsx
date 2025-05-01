@@ -5,7 +5,8 @@ import Link from 'next/link'
 import { PAGE } from '@/config/public-page.config'
 import { transformCount } from '@/utils/transform-count'
 import { transformDate } from '@/utils/transform-date'
-import { VerifiedBadge } from './VerifiedBadge'
+import { VideoCardTitle } from './VideoCardTitle'
+import { VideoChannelName } from './VideoChannelName'
 import type { IVideo } from '@/types/video.types'
 
 interface Props {
@@ -37,7 +38,7 @@ export function VideoCard({ video, Icon }: Props) {
 						width={250}
 						height={140}
 						quality={90}
-						// sizes='100vw, (min-width: 768px) 50vw, (min-width: 1024px) 33vw, (min-width:1440) 25vw'
+						//? sizes='100vw, (min-width: 768px) 50vw, (min-width: 1024px) 33vw, (min-width:1440) 25vw'
 						alt={video.title}
 						className='rounded-md w-dvw object-cover'
 					/>
@@ -82,23 +83,12 @@ export function VideoCard({ video, Icon }: Props) {
 
 			{/* ------------------------------- Video Title ------------------------------ */}
 			<div className='mb-1'>
-				<Link
-					href={PAGE.VIDEO(video.publicId)}
-					className='line-clamp-2 leading-[1.3]'
-				>
-					{video.title}
-				</Link>
+				<VideoCardTitle video={video} />
 			</div>
 
 			{/* ------------------------------ Channel Name ------------------------------ */}
 			<div>
-				<Link
-					href={PAGE.CHANNEL(video.channel.slug)}
-					className='flex items-center gap-1'
-				>
-					<span className='text-gray-400 text-sm'>{channelName}</span>
-					{video.channel.isVerified && <VerifiedBadge />}
-				</Link>
+				<VideoChannelName channel={video.channel} />
 			</div>
 		</m.div>
 	)
