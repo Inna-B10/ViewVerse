@@ -11,7 +11,7 @@ import type { ISingleVideoResponse } from '@/types/video.types'
 
 export function VideoActions({ video }: { video: ISingleVideoResponse }) {
 	const { profile, refetch } = useProfile()
-	const isLiked = profile?.likes.some(like => like.videoId === video.id) || false
+	const isLiked = profile?.likes.some(like => like.video.id === video.id) || false
 
 	const [isLikedLocal, setIsLikedLocal] = useState(isLiked)
 

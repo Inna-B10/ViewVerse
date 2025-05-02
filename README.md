@@ -80,16 +80,7 @@ bun add rc-tooltip
   - [x] banner
   - [x] section my subscriptions
 - [x] [FIXME] SUBSCRIPTIONS/STUDIO linkS do not see/remember isShowedSidebar
-
----
-
-- [ ] FIXME logout on ChannelPage, Subscriptions (should redirect to home/auth)
-- [ ] [FIXME] SUBSCRIPTIONS (after log out still available info about user's
-      subscriptions(page,buttons) + no redirect onClick subscribe)
-- [ ] sort/group videos on SubscriptionsPage
-- [ ] button colors
-- [ ] password reset option
-- [ ] videoPage:
+- [x] videoPage:
   - [x] similar videos block
   - [x] collapse description of video
   - [x] styling
@@ -97,7 +88,7 @@ bun add rc-tooltip
     - [x] display comments
     - [x] form to add comment
     - [x] actions: edit/delete !only own comments
-  - [ ] player:
+  - [x] player:
     - [x] current time
     - [x] make progress bar clickable
     - [x] video may not have quality options
@@ -106,7 +97,19 @@ bun add rc-tooltip
     - [x] style @media: when side bar is open/collapsed in theater mode
     - [x] [FIXME] not valid video duration on first loading
     - [x] [FIXME] btn pause does not changes to play at the end of video
-    - [ ] styles for @media
+- [x] sort/group videos on SubscriptionsPage
+
+---
+
+- [ ] FIXME logout on ChannelPage, Subscriptions (should redirect to home/auth)
+- [ ] [FIXME] SUBSCRIPTIONS (after log out still available info about user's
+      subscriptions(page,buttons) + no redirect onClick subscribe)
+- [ ] button colors
+- [ ] password reset option
+- [ ] video player styles for @media
+- [ ] btn delete video from liked list
+- [ ] views updating (on refresh/play?)
+- [ ] history updating (on play?)
 - [ ] UI block's heading/loader
   - [x] heading
   - [ ] SkeletonLoader:

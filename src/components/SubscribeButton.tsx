@@ -34,6 +34,7 @@ export function SubscribeButton({ slug }: { slug: string }) {
 		<Button
 			onClick={clickHandler}
 			variant={isSubscribed ? 'secondary' : 'primary'}
+			title={isSubscribed ? 'Unsubscribe' : 'Subscribe'}
 		>
 			{isSubscribed ? (
 				<>
