@@ -12,6 +12,6 @@ const DynamicSubscriptionsPage = dynamic(
 	}
 )
 
-export function SubscriptionsSubPage() {
+export function SubscriptionsDynPage() {
 	return <DynamicSubscriptionsPage />
 }

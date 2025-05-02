@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { NO_INDEX_PAGE } from '@/constants/seo.constants'
-import { SubscriptionsSubPage } from './SubscriptionsSubPage'
+import { SubscriptionsDynPage } from './SubscriptionsDynPage'
 
 export const metadata: Metadata = {
 	title: 'Subscriptions',
@@ -8,5 +8,5 @@ export const metadata: Metadata = {
 }
 
 export default function Subscriptions() {
-	return <SubscriptionsSubPage />
+	return <SubscriptionsDynPage />
 }

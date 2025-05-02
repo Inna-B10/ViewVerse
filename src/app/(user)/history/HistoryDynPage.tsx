@@ -15,6 +15,6 @@ const DynamicHistoryPage = dynamic(() => import('./HistoryPage').then(mod => mod
 	)
 })
 
-export function HistorySubPage() {
+export function HistoryDynPage() {
 	return <DynamicHistoryPage />
 }
