@@ -53,7 +53,7 @@ export function VideoCardHorizontal({ video }: Props) {
 					</div>
 
 					{/* ---------------------------------- Views --------------------------------- */}
-					<div className='flex items-center gap-2'>
+					<div className='flex items-center gap-2 mb-2'>
 						<span className='text-gray-400 text-sm whitespace-nowrap'>
 							{transformCount(video.viewsCount)} views
 						</span>
