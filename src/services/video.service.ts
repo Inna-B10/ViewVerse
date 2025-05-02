@@ -1,10 +1,5 @@
 import { axiosClassic } from '@/api/axios'
-import type {
-	IApiResponseVideos,
-	ISingleVideoResponse,
-	IVideo,
-	IVideosPagination
-} from '@/types/video.types'
+import type { ISingleVideoResponse, IVideo, IVideosPagination } from '@/types/video.types'
 
 class VideoService {
 	private _VIDEOS = '/videos'
@@ -32,7 +27,7 @@ class VideoService {
 
 	/* ------------------------------- Game Videos ------------------------------ */
 	async getGameVideos() {
-		const { data } = await axiosClassic.get<IApiResponseVideos>(`${this._VIDEOS}/games`)
+		const { data } = await axiosClassic.get<IVideosPagination>(`${this._VIDEOS}/games`)
 		return data
 	}
 

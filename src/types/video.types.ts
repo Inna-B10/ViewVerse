@@ -21,10 +21,6 @@ export interface IFullVideo extends IVideo {
 	likes: []
 	comments: IComment[]
 }
-export interface IApiResponseVideos extends IFullVideo {
-	videos: IVideo[]
-}
-
 export interface ISingleVideoResponse extends IFullVideo {
 	similarVideos: IVideo[]
 }
