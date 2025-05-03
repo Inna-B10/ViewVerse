@@ -2,7 +2,6 @@
 
 import cn from 'clsx'
 import { type PropsWithChildren, useEffect } from 'react'
-import { SkeletonLoader } from '@/ui/SkeletonLoader'
 import { useSidebar } from '@/providers/SidebarContext'
 import { Content } from './content/Content'
 import { Sidebar } from './sidebar/Sidebar'
@@ -18,7 +17,7 @@ export function Layout({ children }: PropsWithChildren<unknown>) {
 	useEffect(() => {
 		authService.initializeAuth()
 	})
-	if (!authReady) return <SkeletonLoader count={1} />
+	if (!authReady) return null
 
 	return (
 		<main

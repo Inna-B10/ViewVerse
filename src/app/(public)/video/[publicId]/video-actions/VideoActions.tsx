@@ -3,7 +3,9 @@
 import { useMutation } from '@tanstack/react-query'
 import cn from 'clsx'
 import { Heart, ListPlus } from 'lucide-react'
+import { useRouter } from 'next/navigation'
 import { startTransition, useEffect, useState } from 'react'
+import { PAGE } from '@/config/public-page.config'
 import { useProfile } from '@/hooks/useProfile'
 import { transformCount } from '@/utils/transform-count'
 import { userService } from '@/services/user.service'
@@ -11,6 +13,7 @@ import type { ISingleVideoResponse } from '@/types/video.types'
 
 export function VideoActions({ video }: { video: ISingleVideoResponse }) {
 	const { profile, refetch } = useProfile()
+	const router = useRouter()
 	const isLiked = profile?.likes.some(like => like.video.id === video.id) || false
 
 	const [isLikedLocal, setIsLikedLocal] = useState(isLiked)
@@ -43,6 +46,14 @@ export function VideoActions({ video }: { video: ISingleVideoResponse }) {
 		}
 	})
 
+	const clickHandler = () => {
+		if (profile) {
+			mutate()
+		} else {
+			router.push(PAGE.AUTH)
+		}
+	}
+
 	return (
 		<div className='flex justify-end items-center gap-5'>
 			<button
@@ -55,7 +66,7 @@ export function VideoActions({ video }: { video: ISingleVideoResponse }) {
 			<button
 				className='text-primary text-lg flex items-center gap-1.5 transition-opacity opacity-80 hover:opacity-100'
 				title='Likes'
-				onClick={() => mutate()}
+				onClick={clickHandler}
 			>
 				<Heart
 					size={19}

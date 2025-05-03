@@ -8,7 +8,13 @@ export async function middleware(request: NextRequest) {
 	const url = new URL(request.url)
 	const pathname = url.pathname
 
-	if (pathname.includes(STUDIO_PAGE.STUDIO_HOME) || pathname.includes(PAGE.SUBSCRIPTIONS)) {
+	if (
+		pathname.includes(STUDIO_PAGE.STUDIO_HOME) ||
+		pathname.includes(PAGE.SUBSCRIPTIONS) ||
+		pathname.includes(PAGE.LIKED_VIDEOS) ||
+		pathname.includes(PAGE.HISTORY) ||
+		pathname.includes(PAGE.MY_CHANNEL)
+	) {
 		return protectStudio(request)
 	}
 
@@ -20,7 +26,11 @@ export async function middleware(request: NextRequest) {
 export const config = {
 	matcher: [
 		'/studio/:path*',
-		'/auth/:path*'
+		'/auth/:path*',
+		'/subscriptions',
+		'/liked-videos',
+		'/history'
+		// '/playlists/:path*',
 		//[FIXME] redirect to auth
 		// , '/subscriptions/:path*'
 	]
