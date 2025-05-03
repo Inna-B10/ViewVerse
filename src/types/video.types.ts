@@ -15,6 +15,7 @@ export interface IVideo {
 	isPublic: boolean
 	channel: IChannel
 	createdAt: string
+	updatedAt: string
 }
 
 export interface IFullVideo extends IVideo {

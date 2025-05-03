@@ -1,7 +1,7 @@
 'use client'
 
 import { useMutation, useQuery } from '@tanstack/react-query'
-import { History } from 'lucide-react'
+import { History, Trash2 } from 'lucide-react'
 import { Heading } from '@/ui/Heading'
 import { SkeletonLoader } from '@/ui/SkeletonLoader'
 import { Button } from '@/ui/button/Button'
@@ -17,6 +17,14 @@ export function HistoryPage() {
 	const { mutate, isPending } = useMutation({
 		mutationKey: ['clear-history'],
 		mutationFn: () => watchHistoryService.clearHistory(),
+		onSuccess() {
+			refetch()
+		}
+	})
+
+	const { mutate: remove } = useMutation({
+		mutationKey: ['remove-from-history'],
+		mutationFn: (videoId: string) => watchHistoryService.removeFromHistory(videoId),
 		onSuccess() {
 			refetch()
 		}
@@ -47,11 +55,23 @@ export function HistoryPage() {
 						className='h-36 rounded-md mb-8'
 					/>
 				) : data?.length ? (
-					data?.map(history => (
-						<VideoCardHorizontal
-							key={history.video.id}
-							video={history.video}
-						/>
+					data?.map(item => (
+						<div
+							key={item.video.id}
+							className='flex items-start gap-4 mb-8'
+						>
+							<VideoCardHorizontal
+								key={item.video.id}
+								video={item.video}
+							/>
+							<button
+								title='Remove from history'
+								onClick={() => remove(item.video.id)}
+								className='ml-4 text-gray-500 transition-opacity duration-300 hover:text-gray-400'
+							>
+								<Trash2 size={19} />
+							</button>
+						</div>
 					))
 				) : (
 					<div>

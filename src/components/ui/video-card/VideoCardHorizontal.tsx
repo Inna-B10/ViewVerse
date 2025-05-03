@@ -50,16 +50,17 @@ export function VideoCardHorizontal({ video }: Props) {
 								spanClassName='text-base mb-1'
 							/>
 						</div>
+						<div>
+							<span className='text-gray-400 text-sm whitespace-nowrap'>
+								{transformCount(video.viewsCount)} views
+							</span>
+						</div>
 					</div>
 
 					{/* ---------------------------------- Views --------------------------------- */}
-					<div className='flex items-center gap-2 mb-2'>
+					<div className='flex items-center gap-2'>
 						<span className='text-gray-400 text-sm whitespace-nowrap'>
-							{transformCount(video.viewsCount)} views
-						</span>
-						<span className='text-gray-400 text-xs mt-1'>♦</span>
-						<span className='text-gray-400 text-sm whitespace-nowrap'>
-							{transformDate(video.createdAt)}
+							Last visited: {transformDate(video.updatedAt)}
 						</span>
 					</div>
 				</div>

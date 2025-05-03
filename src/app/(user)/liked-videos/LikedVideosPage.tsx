@@ -1,13 +1,23 @@
 'use client'
 
-import { FolderHeart } from 'lucide-react'
+import { useMutation } from '@tanstack/react-query'
+import { FolderHeart, Trash2 } from 'lucide-react'
 import { Heading } from '@/ui/Heading'
 import { SkeletonLoader } from '@/ui/SkeletonLoader'
 import { VideoCardHorizontal } from '@/ui/video-card/VideoCardHorizontal'
 import { useProfile } from '@/hooks/useProfile'
+import { userService } from '@/services/user.service'
 
 export function LikedVideosPage() {
-	const { profile, isLoading } = useProfile()
+	const { profile, isLoading, refetch } = useProfile()
+
+	const { mutate } = useMutation({
+		mutationKey: ['like'],
+		mutationFn: (videoId: string) => userService.toggleLike(videoId),
+		onSuccess() {
+			refetch()
+		}
+	})
 
 	return (
 		<section className='w-3/4'>
@@ -31,10 +41,19 @@ export function LikedVideosPage() {
 					/>
 				) : profile?.likes?.length ? (
 					profile.likes.map(item => (
-						<VideoCardHorizontal
+						<div
 							key={item.video.id}
-							video={item.video}
-						/>
+							className='flex items-start gap-4 mb-8'
+						>
+							<VideoCardHorizontal video={item.video} />
+							<button
+								title='Remove from liked videos'
+								onClick={() => mutate(item.video.id)}
+								className='ml-4 text-gray-500 transition-opacity duration-300 hover:text-gray-400'
+							>
+								<Trash2 size={19} />
+							</button>
+						</div>
 					))
 				) : (
 					<div>

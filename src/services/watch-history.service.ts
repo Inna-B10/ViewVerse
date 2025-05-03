@@ -16,6 +16,12 @@ class WatchHistoryService {
 		return data
 	}
 
+	/* --------------------------------- Remove --------------------------------- */
+	async removeFromHistory(videoId: string) {
+		const { data } = await instance.delete(`${this._WATCH_HISTORY}/${videoId}`)
+		return data
+	}
+
 	/* -------------------------------- Clear All ------------------------------- */
 	async clearHistory() {
 		const { data } = await instance.delete(this._WATCH_HISTORY)
