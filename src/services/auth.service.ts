@@ -1,5 +1,5 @@
 import Cookies from 'js-cookie'
-import { clearAuthData, setAuthData } from '@/store/auth.slice'
+import { clearAuthData, setAuthData, setAuthReady } from '@/store/auth.slice'
 import { axiosClassic } from '@/api/axios'
 import { store } from '@/store'
 import type { IAuthData } from '@/types/auth-form.types'
@@ -33,11 +33,24 @@ class AuthService {
 		const initialStore = store.getState().auth
 		if (initialStore.user) return
 
+		const hasRefreshToken = !!Cookies.get('refreshToken')
+		if (!hasRefreshToken) {
+			//to avoid unauthorized error in console
+			// if there is no refreshToken in cookies, user is guest, no needs newTokens
+			store.dispatch(setAuthReady(true))
+			return
+		}
+
 		try {
 			await this.getNewTokens() // try to get new tokens
-		} catch (error) {
-			console.log(error)
+		} catch (error: unknown) {
+			if (process.env.NODE_ENV === 'development') {
+				console.warn('Unexpected error in getNewTokens:', error)
+			}
+
 			store.dispatch(clearAuthData()) //delete user's data from global store
+		} finally {
+			store.dispatch(setAuthReady(true)) // always call even if there is an error
 		}
 	}
 
@@ -49,6 +62,7 @@ class AuthService {
 			this._saveTokenToStorage(response.data.accessToken)
 			store.dispatch(setAuthData(response.data))
 		}
+		store.dispatch(setAuthReady(true))
 		return response
 	}
 

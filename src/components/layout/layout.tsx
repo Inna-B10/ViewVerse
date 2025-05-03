@@ -2,19 +2,23 @@
 
 import cn from 'clsx'
 import { type PropsWithChildren, useEffect } from 'react'
+import { SkeletonLoader } from '@/ui/SkeletonLoader'
 import { useSidebar } from '@/providers/SidebarContext'
 import { Content } from './content/Content'
 import { Sidebar } from './sidebar/Sidebar'
 import { authService } from '@/services/auth.service'
+import { useTypedSelector } from '@/store'
 import styles from './Layout.module.scss'
 
 export function Layout({ children }: PropsWithChildren<unknown>) {
 	const { isShowedSidebar } = useSidebar()
+	const authReady = useTypedSelector(state => state.auth.authReady)
 
 	//Check if user has/needs accessToken
 	useEffect(() => {
 		authService.initializeAuth()
 	})
+	if (!authReady) return <SkeletonLoader count={1} />
 
 	return (
 		<main
@@ -25,6 +29,7 @@ export function Layout({ children }: PropsWithChildren<unknown>) {
 			)}
 		>
 			{/* --------------------------------- Sidebar -------------------------------- */}
+
 			<Sidebar />
 			{/* --------------------------------- Content -------------------------------- */}
 			<Content>{children}</Content>

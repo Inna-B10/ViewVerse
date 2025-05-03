@@ -23,7 +23,7 @@ export function SubscriptionsPage() {
 			return acc
 		}, {})
 	}
-	console.log(groupedByChannel)
+
 	return (
 		<section>
 			<Heading

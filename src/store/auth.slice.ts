@@ -7,12 +7,14 @@ interface IAuthState {
 	user: IUser | null
 	isLoggedIn: boolean
 	accessToken: string | null
+	authReady: boolean
 }
 
 const initialState: IAuthState = {
 	user: null,
 	isLoggedIn: !!Cookies.get(EnumTokens.ACCESS_TOKEN),
-	accessToken: Cookies.get(EnumTokens.ACCESS_TOKEN) || null
+	accessToken: Cookies.get(EnumTokens.ACCESS_TOKEN) || null,
+	authReady: false
 }
 
 export const authSlice = createSlice({
@@ -30,6 +32,9 @@ export const authSlice = createSlice({
 			state.isLoggedIn = true
 			state.accessToken = action.payload.accessToken
 		},
+		setAuthReady(state, action: PayloadAction<boolean>) {
+			state.authReady = action.payload
+		},
 		clearAuthData(state) {
 			state.user = null
 			state.isLoggedIn = false
@@ -38,4 +43,4 @@ export const authSlice = createSlice({
 	}
 })
 
-export const { setAuthData, clearAuthData } = authSlice.actions
+export const { setAuthData, setAuthReady, clearAuthData } = authSlice.actions

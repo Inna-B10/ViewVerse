@@ -31,11 +31,13 @@ export const SIDEBAR_DATA: ISidebarItem[] = [
 		label: 'Game videos',
 		link: PAGE.GAME_VIDEOS,
 		isBottomBorder: true
-	},
+	}
+]
+export const AUTH_USER_SIDEBAR_DATA: ISidebarItem[] = [
 	{
-		icon: TvMinimalPlay,
-		label: 'My channel',
-		link: PAGE.MY_CHANNEL
+		icon: FolderHeart,
+		label: 'Liked videos',
+		link: PAGE.LIKED_VIDEOS
 	},
 	{
 		icon: Bell,
@@ -43,14 +45,14 @@ export const SIDEBAR_DATA: ISidebarItem[] = [
 		link: PAGE.SUBSCRIPTIONS
 	},
 	{
-		icon: History,
-		label: 'History',
-		link: PAGE.HISTORY
+		icon: TvMinimalPlay,
+		label: 'My channel',
+		link: PAGE.MY_CHANNEL
 	},
 	{
-		icon: FolderHeart,
-		label: 'Liked videos',
-		link: PAGE.LIKED_VIDEOS,
+		icon: History,
+		label: 'History',
+		link: PAGE.HISTORY,
 		isBottomBorder: true
 	}
 ]
