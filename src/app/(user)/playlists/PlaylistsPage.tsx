@@ -18,7 +18,7 @@ export function PlaylistsPage() {
 	})
 
 	return (
-		<section className='w-3/4'>
+		<section className='w-full'>
 			<div className='flex justify-between items-center mb-14'>
 				<Heading
 					Icon={ListVideo}
@@ -35,11 +35,12 @@ export function PlaylistsPage() {
 					Create a new playlist
 				</Button>
 			</div>
-			<div>
+
+			<div className='grid grid-cols-1  md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-14'>
 				{isLoading ? (
 					<SkeletonLoader
-						count={3}
-						className='h-36 rounded-md mb-8'
+						count={4}
+						className='h-36 rounded-md'
 					/>
 				) : data?.length ? (
 					data?.map(item => (

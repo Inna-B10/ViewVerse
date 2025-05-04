@@ -11,32 +11,60 @@ interface Props {
 export function PlaylistItem({ playlist }: Props) {
 	return (
 		<m.div
-			className='w-3/4 mb-8 rounded-md'
-			whileHover={{ scale: 1.01, y: -3 }}
-			transition={{ type: 'spring', stiffness: 500, damping: 30 }}
+			className='mb-5 w-fit'
+			whileHover='hover'
+			initial='rest'
+			animate='rest'
 		>
 			<div>
-				{/* ------------------------------- Playlist Img ------------------------------- */}
 				<Link
 					href={PAGE.PLAYLISTS(playlist.id)}
 					title={playlist.title}
-					className='flex-shrink-0 rounded-md relative'
+					className='relative block group'
 				>
+					{/* ------------------------------ Dark Overlay ------------------------------ */}
+					<m.div
+						variants={{
+							rest: { opacity: 0 },
+							hover: { opacity: 0.6 }
+						}}
+						transition={{ duration: 0.3 }}
+						className='absolute inset-0 bg-black rounded-md z-10 pointer-events-none'
+					/>
+
+					{/* ------------------------------- Back Cards ------------------------------- */}
+					<div
+						className='rounded-lg shadow-lg absolute h-full left-3 right-3 -top-[7px] bg-gray-500/50'
+						style={{ width: 'calc(100% - 24px)' }}
+					/>
+					<div
+						className='rounded-md shadow-lg absolute h-full left-2 right-2 -top-[3px] bg-gray-500'
+						style={{
+							marginTop: '-1px',
+							borderTop: '2px solid #191B28',
+							width: 'calc(100% - 16px)'
+						}}
+					/>
+
+					{/* ------------------------------- Main Image ------------------------------- */}
 					<Image
-						src={playlist.videos[0].thumbnailUrl} //[TODO] add default image
+						src={playlist.videos[0].thumbnailUrl}
 						width={250}
 						height={140}
-						quality={90}
-						//?sizes='100vw, (min-width: 768px) 50vw, (min-width: 1024px) 33vw, (min-width:1440) 25vw'
+						quality={100}
 						alt={playlist.title}
-						className='object-cover'
+						className='rounded-md shadow-lg object-cover w-dvw relative z-0'
+						style={{ borderTop: '2px solid #191B28' }}
 					/>
-					<div className='absolute bottom-1 right-1 p-0.5 text-xs'>
+
+					{/* ------------------------------- Count Badge ------------------------------ */}
+					<div className='absolute bottom-1 right-1 py-[1px] text-xs font-medium bg-amber-700/90 rounded text-white px-1 text-nowrap z-20'>
 						{playlist.videos.length} videos
 					</div>
 				</Link>
-				{/* ------------------------------- Playlist Title ------------------------------ */}
-				<div className='mb-1 text-lg'>
+
+				{/* ---------------------------------- Title --------------------------------- */}
+				<div className='mt-2 pl-2 font-medium'>
 					<Link
 						href={PAGE.PLAYLISTS(playlist.id)}
 						className='line-clamp-2 leading-[1.3]'

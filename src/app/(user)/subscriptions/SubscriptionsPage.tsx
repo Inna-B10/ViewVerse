@@ -33,7 +33,7 @@ export function SubscriptionsPage() {
 				Subscriptions
 			</Heading>
 			{isLoading ? (
-				<div className='grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-5'>
+				<div className='grid-cols'>
 					<SkeletonLoader
 						count={4}
 						className='h-36 rounded-md'
@@ -46,7 +46,7 @@ export function SubscriptionsPage() {
 						className='mb-4'
 					>
 						<Heading hSize='text-xl'>{group[0].channel.user.name}</Heading>
-						<div className='grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-5'>
+						<div className='grid-cols'>
 							{group.map(video => (
 								<VideoCard
 									key={video.id}
