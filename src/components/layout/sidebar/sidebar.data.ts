@@ -8,6 +8,7 @@ import {
 	Gamepad2,
 	History,
 	LayoutGrid,
+	ListVideo,
 	TvMinimalPlay,
 	Upload
 } from 'lucide-react'
@@ -38,6 +39,11 @@ export const AUTH_USER_SIDEBAR_DATA: ISidebarItem[] = [
 		icon: FolderHeart,
 		label: 'Liked videos',
 		link: PAGE.LIKED_VIDEOS
+	},
+	{
+		icon: ListVideo,
+		label: 'Playlists',
+		link: PAGE.PLAYLISTS()
 	},
 	{
 		icon: Bell,
