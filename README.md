@@ -98,16 +98,23 @@ bun add rc-tooltip
     - [x] [FIXME] not valid video duration on first loading
     - [x] [FIXME] btn pause does not changes to play at the end of video
 - [x] sort/group videos on SubscriptionsPage
+- [x] btn delete video from liked list
+- [x] btn delete video from history list
 
 ---
 
-- [ ] FIXME logout on ChannelPage, Subscriptions (should redirect to home/auth)
+- [ ] playlists:
+  - [ ] btn add to playList
+  - [ ] modal form, messages
+  - [ ] playlist page
+- [ ] FIXME logout on ChannelPage, History, Liked videos, Subscriptions (should redirect to
+      home/auth)
 - [ ] [FIXME] SUBSCRIPTIONS (after log out still available info about user's
       subscriptions(page,buttons) + no redirect onClick subscribe)
+- [ ] Subscribe btn should be disabled if channel owner
 - [ ] button colors
 - [ ] password reset option
 - [ ] video player styles for @media
-- [ ] btn delete video from liked list
 - [ ] views updating (on refresh/play?)
 - [ ] history updating (on play?)
 - [ ] UI block's heading/loader
