@@ -2,7 +2,7 @@ import { instance } from '@/api/axios'
 import type { IPlaylist, IPlaylistData } from '@/types/playlist.types'
 
 class PlaylistService {
-	private _PLAYLISTS = '/playlist'
+	private _PLAYLISTS = '/playlists'
 
 	/* ----------------------------------- Get ---------------------------------- */
 	async getUserPlaylists() {

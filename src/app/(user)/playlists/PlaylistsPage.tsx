@@ -2,14 +2,16 @@
 
 import { useQuery } from '@tanstack/react-query'
 import { ListVideo } from 'lucide-react'
-import { useState } from 'react'
 import { Heading } from '@/ui/Heading'
+import { SkeletonLoader } from '@/ui/SkeletonLoader'
 import { Button } from '@/ui/button/Button'
+import { useOutside } from '@/hooks/useOutside'
 import { CreatePlaylist } from './CreatePlaylist'
+import { PlaylistItem } from './PlaylistItem'
 import { playlistService } from '@/services/playlist.service'
 
 export function PlaylistsPage() {
-	const [isModalOpen, setIsModalOpen] = useState(false)
+	const { isShow, setIsShow, ref } = useOutside(false)
 	const { data, isLoading, refetch } = useQuery({
 		queryKey: ['playlists'],
 		queryFn: () => playlistService.getUserPlaylists()
@@ -27,47 +29,36 @@ export function PlaylistsPage() {
 				</Heading>
 				<Button
 					isLoading={isLoading}
-					onClick={() => setIsModalOpen(true)}
+					onClick={() => setIsShow(true)}
 					variant='simple'
 				>
 					Create a new playlist
 				</Button>
 			</div>
 			<div>
-				{/* {isLoading ? (
+				{isLoading ? (
 					<SkeletonLoader
 						count={3}
 						className='h-36 rounded-md mb-8'
 					/>
 				) : data?.length ? (
 					data?.map(item => (
-						<div
-							key={item.video.id}
-							className='flex items-start gap-4 mb-8'
-						>
-							<VideoCardHorizontal
-								key={item.video.id}
-								video={item.video}
-							/>
-							<button
-								title='Remove from history'
-								onClick={() => remove(item.video.id)}
-								className='ml-4 text-gray-500 transition-opacity duration-300 hover:text-gray-400'
-							>
-								<Trash2 size={19} />
-							</button>
-						</div>
+						<PlaylistItem
+							key={item.id}
+							playlist={item}
+						/>
 					))
 				) : (
 					<div>
-						<p>No items found in the history list.</p>
+						<p>No playlists found.</p>
 					</div>
-				)} */}
+				)}
 			</div>
-			{isModalOpen && (
+			{isShow && (
 				<CreatePlaylist
 					refetch={refetch}
-					onClose={() => setIsModalOpen(false)}
+					onClose={() => setIsShow(false)}
+					ref={ref}
 				/>
 			)}
 		</section>
