@@ -1,6 +1,7 @@
 import Cookies from 'js-cookie'
 import { clearAuthData, setAuthData, setAuthReady } from '@/store/auth.slice'
 import { axiosClassic } from '@/api/axios'
+import { userService } from './user.service'
 import { store } from '@/store'
 import type { IAuthData } from '@/types/auth-form.types'
 import { EnumTokens } from '@/types/auth.types'
@@ -26,6 +27,13 @@ class AuthService {
 		return response
 	}
 
+	// async getUserProfile() {
+	// 	const response = await axiosClassic.get<IUser>('/auth/profile')
+	// 	store.dispatch(
+	// 		setAuthData({ user: response.data, accessToken: Cookies.get(EnumTokens.ACCESS_TOKEN) || '' })
+	// 	)
+	// }
+
 	/* ----------------------------- InitializeAuth / Re-login----------------------------- */
 	//in cases when an accessToken (client) expired, try to get new using refreshToken (server), if unsuccessfully - clear all user data from store and all cookies
 
@@ -33,16 +41,23 @@ class AuthService {
 		const initialStore = store.getState().auth
 		if (initialStore.user) return
 
+		const hasAccessToken = !!Cookies.get(EnumTokens.ACCESS_TOKEN)
 		const hasRefreshToken = !!Cookies.get('refreshToken')
-		if (!hasRefreshToken) {
-			//to avoid unauthorized error in console
-			// if there is no refreshToken in cookies, user is guest, no needs newTokens
-			store.dispatch(setAuthReady(true))
-			return
-		}
 
 		try {
-			await this.getNewTokens() // try to get new tokens
+			if (hasAccessToken) {
+				const profile = await userService.getProfile() // try to get user from accessToken
+				store.dispatch(
+					setAuthData({
+						user: profile,
+						accessToken: Cookies.get(EnumTokens.ACCESS_TOKEN) || ''
+					})
+				)
+			} else if (hasRefreshToken) {
+				await this.getNewTokens() // try to get new tokens
+			} else {
+				store.dispatch(clearAuthData()) // guest - without errors
+			}
 		} catch (error: unknown) {
 			if (process.env.NODE_ENV === 'development') {
 				console.warn('Unexpected error in getNewTokens:', error)
