@@ -1,7 +1,7 @@
 import { type Dispatch, type SetStateAction, useEffect, useRef, useState } from 'react'
 
 type TypeOut = {
-	ref: React.RefObject<HTMLElement | null>
+	ref: React.RefObject<any | null>
 	isShow: boolean
 	setIsShow: Dispatch<SetStateAction<boolean>>
 }

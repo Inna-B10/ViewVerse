@@ -14,7 +14,7 @@ import type { IPlaylistData } from '@/types/playlist.types'
 interface ICreatePlaylist {
 	refetch: () => void
 	onClose: () => void
-	ref: React.RefObject<unknown | null>
+	ref: React.RefObject<any | null>
 }
 
 export function CreatePlaylist({ refetch, onClose, ref }: ICreatePlaylist) {

@@ -26,7 +26,7 @@ export function ChannelSubPage({ channel }: { channel: IChannel }) {
 						//[TODO] default banner
 						src={channel.bannerUrl || '/overlay.png'}
 						fill
-						style={{ objectFit: 'cover' }}
+						className='object-cover'
 						quality={90}
 						priority
 					/>
@@ -38,10 +38,9 @@ export function ChannelSubPage({ channel }: { channel: IChannel }) {
 					src={channel.avatarUrl}
 					width={100}
 					height={100}
-					style={{ objectFit: 'cover' }}
 					quality={90}
 					priority
-					className='rounded-lg flex-shrink-0 shadow-md object-cover w-[150px] h-auto'
+					className='object-cover rounded-lg flex-shrink-0 shadow-md w-[150px] h-auto'
 				/>
 				<div className='flex flex-col justify-between'>
 					<Heading>

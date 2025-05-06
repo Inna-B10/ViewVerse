@@ -34,20 +34,8 @@ export function PlaylistItem({ playlist }: Props) {
 					/>
 
 					{/* ------------------------------- Back Cards ------------------------------- */}
-					<div
-						className='rounded-lg shadow-lg absolute h-full -right-[8px] -top-[7px] bg-gray-500/30'
-						style={{ width: 'calc(100% - 4px)' }}
-					/>
-					<div
-						className='rounded-md shadow-lg absolute h-full -right-[2px] -top-[2px] bg-gray-500/50'
-						style={{
-							marginTop: '-2px',
-							marginRight: '-2px',
-							borderTop: '1px solid #191B28',
-							borderRight: '1px solid #191B28',
-							width: 'calc(100% - 2px)'
-						}}
-					/>
+					<div className='rounded-lg shadow-lg absolute h-full -right-[8px] -top-[7px] bg-gray-500/30 w-[calc(100%-4px)]' />
+					<div className='rounded-md shadow-lg absolute h-full -right-[2px] -top-[2px] bg-gray-500/50 mt-[-2px] mr-[-2px] border-t border-r border-[#191B28] w-[calc(100%-2px)]' />
 
 					{/* ------------------------------- Main Image ------------------------------- */}
 					<Image
@@ -56,8 +44,7 @@ export function PlaylistItem({ playlist }: Props) {
 						height={140}
 						quality={100}
 						alt={playlist.title}
-						className='rounded-md shadow-lg object-cover w-dvw relative z-0'
-						style={{ borderTop: '1px solid #191B28', borderRight: '1px solid #191B28' }}
+						className='rounded-md shadow-lg object-cover w-dvw relative z-0 border-t border-r border-[#191B28]'
 					/>
 
 					{/* ------------------------------- Count Badge ------------------------------ */}

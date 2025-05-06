@@ -45,7 +45,8 @@ export function SubscribeButton({ slug }: { slug: string }) {
 					Subscribed
 				</>
 			) : (
-				<div style={{ ['paddingRight' as string]: '0.65rem' }}>
+				// <div style={{ ['paddingRight' as string]: '0.65rem' }}>
+				<div className='pr-[0.65rem]'>
 					<Bell
 						className='mr-1 inline'
 						size={18}
