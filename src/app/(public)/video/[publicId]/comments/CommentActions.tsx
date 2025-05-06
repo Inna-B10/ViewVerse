@@ -34,7 +34,7 @@ export function CommentActions({
 			setTimeout(() => {
 				refetch()
 				resetEdited()
-			}, 2000)
+			}, 1000)
 		}
 	})
 

@@ -1,5 +1,6 @@
 import { type Metadata } from 'next'
 import { M_PLUS_Rounded_1c, Philosopher } from 'next/font/google'
+import { AuthInitializer } from '@/components/AuthInitializer'
 import { Providers } from '@/providers/Providers'
 import { SITE_URL } from '@/constants/constants'
 import './globals.scss'
@@ -43,7 +44,11 @@ export default function RootLayout({
 	return (
 		<html lang='en'>
 			<body className={`${mplus.className} ${philosopher.variable} antialiased`}>
-				<Providers>{children}</Providers>
+				<Providers>
+					{/* Check if user has/needs accessToken */}
+					<AuthInitializer />
+					{children}
+				</Providers>
 			</body>
 		</html>
 	)

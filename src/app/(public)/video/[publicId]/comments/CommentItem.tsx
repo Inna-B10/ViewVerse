@@ -33,6 +33,8 @@ export function CommentItem({ comment, refetch }: Props) {
 		setIsEdited(text.trim() !== comment.text.trim())
 	}, [text, comment.text])
 
+	console.log('user: ', user)
+
 	return (
 		<div className='even:bg-bgSecondary px-4  pt-7 even:pt-5 pb-5 rounded-md'>
 			<div className='flex gap-4 items-start  pt-1'>
@@ -81,7 +83,7 @@ export function CommentItem({ comment, refetch }: Props) {
 						</div>
 					</div>
 					<div>
-						{isLoggedIn && user?.id === comment.user.id ? (
+						{isLoggedIn && user?.id && user?.id === comment.user.id ? (
 							/* --------------------------- If Editable Comment  */
 							<AutoResizeTextarea
 								ref={textareaRef}
