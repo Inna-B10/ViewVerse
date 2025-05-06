@@ -40,7 +40,7 @@ export function PlaylistsPage() {
 				{isLoading ? (
 					<SkeletonLoader
 						count={4}
-						className='h-36 rounded-md'
+						className='h-44 rounded-md'
 					/>
 				) : data?.length ? (
 					data?.map(item => (

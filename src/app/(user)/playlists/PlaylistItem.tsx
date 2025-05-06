@@ -39,12 +39,12 @@ export function PlaylistItem({ playlist }: Props) {
 						style={{ width: 'calc(100% - 4px)' }}
 					/>
 					<div
-						className='rounded-md shadow-lg absolute h-full -right-[2px] -top-[2px] bg-gray-600/60'
+						className='rounded-md shadow-lg absolute h-full -right-[2px] -top-[2px] bg-gray-500/50'
 						style={{
-							marginTop: '-1px',
-							marginRight: '-1px',
-							// borderTop: '1px solid #191B28',
-							// borderRight: '1px solid #191B28',
+							marginTop: '-2px',
+							marginRight: '-2px',
+							borderTop: '1px solid #191B28',
+							borderRight: '1px solid #191B28',
 							width: 'calc(100% - 2px)'
 						}}
 					/>
@@ -57,7 +57,7 @@ export function PlaylistItem({ playlist }: Props) {
 						quality={100}
 						alt={playlist.title}
 						className='rounded-md shadow-lg object-cover w-dvw relative z-0'
-						// style={{ borderTop: '1px solid #191B28', borderRight: '1px solid #191B28' }}
+						style={{ borderTop: '1px solid #191B28', borderRight: '1px solid #191B28' }}
 					/>
 
 					{/* ------------------------------- Count Badge ------------------------------ */}
