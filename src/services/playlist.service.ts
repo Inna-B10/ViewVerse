@@ -15,10 +15,9 @@ class PlaylistService {
 		return data
 	}
 
-	async toggleVideoInPlaylist(playlistId: string, videoId: string, userId: string) {
+	async toggleVideoInPlaylist(playlistId: string, videoId: string) {
 		const { data } = await instance.post(`${this._PLAYLISTS}/${playlistId}/toggle-video`, {
-			videoId,
-			userId
+			videoId
 		})
 		return data
 	}

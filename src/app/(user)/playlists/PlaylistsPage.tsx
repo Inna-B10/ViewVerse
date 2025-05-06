@@ -1,21 +1,17 @@
 'use client'
 
-import { useQuery } from '@tanstack/react-query'
 import { ListVideo } from 'lucide-react'
 import { Heading } from '@/ui/Heading'
 import { SkeletonLoader } from '@/ui/SkeletonLoader'
 import { Button } from '@/ui/button/Button'
 import { useOutside } from '@/hooks/useOutside'
+import { useUserPlaylists } from '@/hooks/useUserPlaylists'
 import { CreatePlaylist } from './CreatePlaylist'
 import { PlaylistItem } from './PlaylistItem'
-import { playlistService } from '@/services/playlist.service'
 
 export function PlaylistsPage() {
 	const { isShow, setIsShow, ref } = useOutside(false)
-	const { data, isLoading, refetch } = useQuery({
-		queryKey: ['playlists'],
-		queryFn: () => playlistService.getUserPlaylists()
-	})
+	const { data, isLoading, refetch } = useUserPlaylists()
 
 	return (
 		<section className='w-full'>
