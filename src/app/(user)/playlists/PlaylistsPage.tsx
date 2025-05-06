@@ -3,19 +3,15 @@
 import { ListVideo } from 'lucide-react'
 import { Heading } from '@/ui/Heading'
 import { SkeletonLoader } from '@/ui/SkeletonLoader'
-import { Button } from '@/ui/button/Button'
-import { useOutside } from '@/hooks/useOutside'
 import { useUserPlaylists } from '@/hooks/useUserPlaylists'
-import { CreatePlaylist } from './CreatePlaylist'
 import { PlaylistItem } from './PlaylistItem'
 
 export function PlaylistsPage() {
-	const { isShow, setIsShow, ref } = useOutside(false)
-	const { data, isLoading, refetch } = useUserPlaylists()
+	const { data, isLoading } = useUserPlaylists()
 
 	return (
 		<section className='w-full'>
-			<div className='flex justify-between items-center mb-14'>
+			<div>
 				<Heading
 					Icon={ListVideo}
 					className='mb-0'
@@ -23,16 +19,9 @@ export function PlaylistsPage() {
 				>
 					Playlists
 				</Heading>
-				<Button
-					isLoading={isLoading}
-					onClick={() => setIsShow(true)}
-					variant='simple'
-				>
-					Create a new playlist
-				</Button>
 			</div>
 
-			<div className='grid grid-cols-1  md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-14 pr-4'>
+			<div className='grid grid-cols-1  md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-14 mt-14 pr-4'>
 				{isLoading ? (
 					<SkeletonLoader
 						count={4}
@@ -51,13 +40,6 @@ export function PlaylistsPage() {
 					</div>
 				)}
 			</div>
-			{isShow && (
-				<CreatePlaylist
-					refetch={refetch}
-					onClose={() => setIsShow(false)}
-					ref={ref}
-				/>
-			)}
 		</section>
 	)
 }
