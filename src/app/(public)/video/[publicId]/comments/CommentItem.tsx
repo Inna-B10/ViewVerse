@@ -81,7 +81,7 @@ export function CommentItem({ comment, refetch }: Props) {
 						</div>
 					</div>
 					<div>
-						{isLoggedIn && user?.id === comment.user.id ? (
+						{isLoggedIn && user?.id && user?.id === comment.user.id ? (
 							/* --------------------------- If Editable Comment  */
 							<AutoResizeTextarea
 								ref={textareaRef}

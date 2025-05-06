@@ -13,7 +13,8 @@ export async function middleware(request: NextRequest) {
 		pathname.includes(PAGE.SUBSCRIPTIONS) ||
 		pathname.includes(PAGE.LIKED_VIDEOS) ||
 		pathname.includes(PAGE.HISTORY) ||
-		pathname.includes(PAGE.MY_CHANNEL)
+		pathname.includes(PAGE.MY_CHANNEL) ||
+		pathname.includes(PAGE.PLAYLISTS())
 	) {
 		return protectStudio(request)
 	}
@@ -29,8 +30,9 @@ export const config = {
 		'/auth/:path*',
 		'/subscriptions',
 		'/liked-videos',
-		'/history'
-		// '/playlists/:path*',
+		'/history',
+		'/playlists/:path*',
+		'/playlists'
 		//[FIXME] redirect to auth
 		// , '/subscriptions/:path*'
 	]
