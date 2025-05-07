@@ -6,7 +6,7 @@
   }
 
   a {
-    @apply transition-colors text-blue-400 hover:border-b-blue-400 border-b border-b-transparent;
+    @apply transition-colors duration-200 text-blue-400 hover:border-b-blue-400 border-b border-b-transparent;
   }
 
   > button {

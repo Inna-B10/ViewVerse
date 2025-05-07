@@ -10,7 +10,7 @@ const DynamicPlaylistsPage = dynamic(
 		loading: () => (
 			<div className='grid grid-cols-1  md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-14 mt-24'>
 				<SkeletonLoader
-					count={4}
+					count={1}
 					className='h-44 rounded-md'
 				/>
 			</div>

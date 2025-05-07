@@ -8,10 +8,10 @@ const DynamicSinglePlaylist = dynamic(
 	{
 		ssr: false,
 		loading: () => (
-			<div className='grid grid-cols-1  md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-14 mt-20'>
+			<div className='w-3/4 mt-24'>
 				<SkeletonLoader
-					count={4}
-					className='h-36 rounded-md'
+					className='mb-8 rounded-md h-36'
+					count={3}
 				/>
 			</div>
 		)

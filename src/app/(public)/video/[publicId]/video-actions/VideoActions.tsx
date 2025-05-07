@@ -59,15 +59,15 @@ export function VideoActions({ video }: { video: ISingleVideoResponse }) {
 		<div className='flex justify-end items-center gap-5'>
 			<SaveToPlaylist video={video} />
 			<button
-				className='text-primary text-lg flex items-center gap-1.5 transition-opacity opacity-80 hover:opacity-100'
+				className='text-lg flex items-center gap-1.5 transition-colors duration-300 opacity-100 hover:text-primary'
 				title='Likes'
 				onClick={clickHandler}
 			>
 				<Heart
 					size={19}
-					className={cn('text-primary', { 'fill-primaryDark': isLiked })}
+					className={cn({ 'text-primary fill-primary': isLiked })}
 				/>
-				{transformCount(optimisticLike)}
+				<span className={cn({ 'text-primary': isLiked })}>{transformCount(optimisticLike)}</span>
 			</button>
 		</div>
 	)

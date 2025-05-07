@@ -29,13 +29,13 @@ export function SinglePlaylist() {
 				<div className='flex items-center gap-3'>
 					<button
 						title='Rename playlist'
-						className='opacity-70 hover:opacity-100 hover:text-primary transition-all'
+						className='opacity-70 hover:opacity-100 hover:text-primary transition-all duration-300'
 					>
 						<PenBox size={24} />
 					</button>
 					<button
 						title='Delete playlist'
-						className='opacity-70 hover:opacity-100 hover:text-primary transition-all'
+						className='opacity-70 hover:opacity-100 hover:text-primary transition-all duration-300'
 					>
 						<Trash2 size={24} />
 					</button>
@@ -51,7 +51,7 @@ export function SinglePlaylist() {
 					data?.videos?.map(video => (
 						<div
 							key={video.id}
-							className='flex items-start gap-4 mb-8 justify-between'
+							className='flex items-start gap-4 mb-8 justify-between rounded-md'
 						>
 							<VideoCardHorizontal video={video} />
 							<SaveToPlaylist

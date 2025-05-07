@@ -1,7 +1,8 @@
 import { useMutation } from '@tanstack/react-query'
+import cn from 'clsx'
 import { AnimatePresence } from 'framer-motion'
 import * as m from 'framer-motion/m'
-import { CheckSquare, ListPlus, PlusSquare, Square } from 'lucide-react'
+import { Bookmark, CheckSquare, ListPlus, PlusSquare, Square } from 'lucide-react'
 import toast from 'react-hot-toast'
 import { useOutside } from '@/hooks/useOutside'
 import { useUserPlaylists } from '@/hooks/useUserPlaylists'
@@ -49,16 +50,24 @@ export function SaveToPlaylist({ video, refetchSinglePlaylist }: ISaveToPlaylist
 		>
 			<button
 				onClick={() => setIsShowLists(!isShowLists)}
-				className='flex items-center gap-1 transition-opacity opacity-80 hover:opacity-100'
-				title='Save'
+				className='flex items-center gap-1 transition-all duration-200 opacity-80 hover:opacity-100 hover:text-primary'
+				title={refetchSinglePlaylist ? 'Toggle or remove from playlist' : 'Add to playlist'}
 			>
-				<ListPlus size={20} />
-				Save
+				{refetchSinglePlaylist ? (
+					<Bookmark size={24} />
+				) : (
+					<>
+						<ListPlus size={20} /> Playlists
+					</>
+				)}
 			</button>
 			<AnimatePresence>
 				{isShowLists && (
 					<m.ul
-						className='bg-bg py-2 px-3 rounded absolute bottom-8 right-0 shadow w-max max-w-80'
+						className={cn(
+							' py-2 px-3 rounded absolute bottom-[140%] right-0 shadow w-max max-w-80',
+							refetchSinglePlaylist ? 'bg-field' : 'bg-bg'
+						)}
 						initial={{ opacity: 0, y: 10 }}
 						animate={{ opacity: 1, y: 0 }}
 						exit={{ opacity: 0, y: 10 }}
@@ -89,7 +98,7 @@ export function SaveToPlaylist({ video, refetchSinglePlaylist }: ISaveToPlaylist
 						<li>
 							<button
 								onClick={createNewList}
-								className='text-nowrap flex items-center gap-2'
+								className='text-nowrap flex items-center gap-2 transition-colors hover:text-primary'
 							>
 								<PlusSquare size={16} /> create new list
 							</button>

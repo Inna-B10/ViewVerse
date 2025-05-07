@@ -34,7 +34,7 @@ export function VideoDescription({ description }: { description: string }) {
 
 						<button
 							onClick={() => setIsExpanded(prev => !prev)}
-							className='text-sm text-primary  transition-colors hover:text-gray-200'
+							className='text-sm text-primary transition-colors duration-200 hover:text-gray-200'
 						>
 							{isExpanded ? '[Hide]' : '[Show more]'}
 						</button>

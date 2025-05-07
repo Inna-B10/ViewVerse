@@ -43,7 +43,7 @@ export function UploadField({
 			</label>
 			<label
 				htmlFor={inputId}
-				className='flex items-center px-[1rem] py-2 bg-field border border-primary text-white text-xs rounded cursor-pointer hover:bg-primary hover:text-field font-bold transition-colors w-max'
+				className='flex items-center px-[1rem] py-2 bg-field border border-primary text-white text-xs rounded cursor-pointer hover:bg-primary hover:text-field font-bold transition-colors duration-300 w-max'
 			>
 				<UploadCloud
 					className='mr-2'

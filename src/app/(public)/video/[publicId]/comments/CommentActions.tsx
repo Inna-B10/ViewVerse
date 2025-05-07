@@ -53,7 +53,7 @@ export function CommentActions({
 	return (
 		<div className='flex items-center gap-3 mt-4'>
 			<button
-				className='relative text-gray-500 text-xs whitespace-nowrap transition-all duration-300 hover:text-gray-300'
+				className='relative text-gray-500 text-xs whitespace-nowrap transition-all duration-200 hover:text-gray-300'
 				disabled={isDeletePending}
 				onClick={() => deleteComment()}
 			>
@@ -61,7 +61,7 @@ export function CommentActions({
 			</button>
 			<button
 				className={cn(
-					'relative text-xs whitespace-nowrap  transition-all duration-300',
+					'relative text-xs whitespace-nowrap transition-all duration-200',
 					isEditing ? 'text-primary' : 'text-gray-500 hover:text-gray-300'
 				)}
 				disabled={isPending}

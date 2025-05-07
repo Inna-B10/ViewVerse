@@ -49,7 +49,7 @@ export function LikedVideosPage() {
 							<button
 								title='Remove from liked videos'
 								onClick={() => mutate(item.video.id)}
-								className='ml-4 text-gray-400 transition-opacity duration-300 hover:text-gray-300'
+								className='ml-4 text-gray-400 transition-colors duration-300 hover:text-gray-200'
 							>
 								<Trash2 size={19} />
 							</button>
