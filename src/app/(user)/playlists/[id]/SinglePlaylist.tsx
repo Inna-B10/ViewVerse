@@ -1,11 +1,12 @@
 'use client'
 
 import { useQuery } from '@tanstack/react-query'
-import { List, PenBox, Trash2 } from 'lucide-react'
+import { List } from 'lucide-react'
 import { useParams } from 'next/navigation'
 import { Heading } from '@/ui/Heading'
 import { SkeletonLoader } from '@/ui/SkeletonLoader'
 import { VideoCardHorizontal } from '@/ui/video-card/VideoCardHorizontal'
+import { SinglePlaylistActions } from './SinglePlaylistActions'
 import { SaveToPlaylist } from '@/app/(public)/video/[publicId]/video-actions/SaveToPlaylist'
 import { playlistService } from '@/services/playlist.service'
 
@@ -26,20 +27,7 @@ export function SinglePlaylist() {
 				>
 					{data?.title}
 				</Heading>
-				<div className='flex items-center gap-3'>
-					<button
-						title='Rename playlist'
-						className='opacity-70 hover:opacity-100 hover:text-primary transition-all duration-300'
-					>
-						<PenBox size={24} />
-					</button>
-					<button
-						title='Delete playlist'
-						className='opacity-70 hover:opacity-100 hover:text-primary transition-all duration-300'
-					>
-						<Trash2 size={24} />
-					</button>
-				</div>
+				{data && <SinglePlaylistActions playlist={data} />}
 			</div>
 			<div>
 				{isLoading ? (
