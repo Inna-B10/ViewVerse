@@ -45,11 +45,14 @@ export function SingleVideo({ video }: Props) {
 				</div>
 
 				<div
-					className={cn('flex justify-between items-start pb-6 mb-6 border-b border-border', {
-						'pt-8': !isTheaterMode,
-						'pt-[51rem]': isTheaterMode && !isShowedSidebar,
-						'pt-[45rem]': isTheaterMode && isShowedSidebar
-					})}
+					className={cn(
+						'flex justify-between  gap-4 items-start pb-6 mb-6 border-b border-border',
+						{
+							'pt-8': !isTheaterMode,
+							'pt-[51rem]': isTheaterMode && !isShowedSidebar,
+							'pt-[45rem]': isTheaterMode && isShowedSidebar
+						}
+					)}
 				>
 					{/*  ------------------------------- Video Title ------------------------------  */}
 					<div>

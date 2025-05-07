@@ -1,9 +1,9 @@
-import type { IVideo } from './video.types'
+import type { ISingleVideoResponse } from './video.types'
 
 export interface IPlaylist {
 	id: string
 	title: string
-	videos: IVideo[]
+	videos: ISingleVideoResponse[]
 	userId: string
 	createdAt: string
 }
