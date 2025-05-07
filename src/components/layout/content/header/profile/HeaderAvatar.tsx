@@ -17,7 +17,7 @@ export function HeaderAvatar() {
 				title='Settings'
 			>
 				<Image
-					src={profile?.channel?.avatarUrl || '/avatar.png'}
+					src={profile?.channel?.avatarUrl || '/default-avatar.png'}
 					alt=''
 					width={40}
 					height={40}

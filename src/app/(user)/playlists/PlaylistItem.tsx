@@ -39,7 +39,7 @@ export function PlaylistItem({ playlist }: Props) {
 
 					{/* ------------------------------- Main Image ------------------------------- */}
 					<Image
-						src={playlist.videos[0].thumbnailUrl}
+						src={playlist?.videos[0]?.thumbnailUrl || '/default-video.jpg'}
 						width={250}
 						height={140}
 						quality={100}

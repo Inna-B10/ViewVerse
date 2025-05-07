@@ -104,15 +104,19 @@ bun add rc-tooltip
 ---
 
 - [ ] playlists:
-  - [ ] btn add to playList
-  - [ ] modal form, messages
-  - [ ] playlist page
-- [ ] FIXME logout on ChannelPage, History, Liked videos, Subscriptions (should redirect to
-      home/auth)
+  - [x] btn add to playList
+  - [x] modal form, messages
+  - [x] playlist page
+  - [ ] delete video from list
+  - [ ] delete playlist
+  - [ ] rename playlist
+- [ ] FIXME logout on ChannelPage, History, Liked videos, Subscriptions, Playlists (should redirect
+      to home/auth)
 - [ ] [FIXME] SUBSCRIPTIONS (after log out still available info about user's
       subscriptions(page,buttons) + no redirect onClick subscribe)
 - [ ] Subscribe btn should be disabled if channel owner
 - [ ] button colors
+- [ ] replace Skeleton on Dynamic pages to <Loading /> or review style code (cols)
 - [ ] password reset option
 - [ ] video player styles for @media
 - [ ] views updating (on refresh/play?)
