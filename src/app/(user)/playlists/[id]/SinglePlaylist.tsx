@@ -22,7 +22,12 @@ export function SinglePlaylist() {
 	return (
 		<section className='w-3/4'>
 			<SinglePlaylistTitle
-				Icon={<List size={26} />}
+				Icon={
+					<List
+						size={24}
+						className='mt-1'
+					/>
+				}
 				playlist={data}
 				refetch={refetch}
 			/>

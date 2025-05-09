@@ -6,13 +6,14 @@ type TypeOut = {
 	setIsShow: Dispatch<SetStateAction<boolean>>
 }
 
-export const useOutside = (initialIsVisible: boolean): TypeOut => {
+export const useOutside = (initialIsVisible: boolean, onClose?: () => void): TypeOut => {
 	const [isShow, setIsShow] = useState(initialIsVisible)
 	const ref = useRef<HTMLElement>(null)
 
 	const handleClickOutside = (event: MouseEvent) => {
 		if (ref.current && !ref.current.contains(event.target as Node)) {
 			setIsShow(false)
+			onClose?.()
 		}
 	}
 
@@ -21,7 +22,7 @@ export const useOutside = (initialIsVisible: boolean): TypeOut => {
 		return () => {
 			document.removeEventListener('click', handleClickOutside, true)
 		}
-	})
+	}, [])
 
 	return { ref, isShow, setIsShow }
 }
