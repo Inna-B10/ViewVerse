@@ -15,12 +15,21 @@ export function Logout() {
 		mutationKey: ['logout'],
 		mutationFn: () => authService.logout(),
 		onSuccess: () => {
-			if (pathname.includes(STUDIO_PAGE.STUDIO_HOME) || pathname.includes(STUDIO_PAGE.SETTINGS)) {
+			const isPrivatePage =
+				pathname.includes(STUDIO_PAGE.STUDIO_HOME) ||
+				pathname.includes(STUDIO_PAGE.SETTINGS) ||
+				pathname.includes(PAGE.LIKED_VIDEOS) ||
+				pathname.includes(PAGE.PLAYLISTS()) ||
+				pathname.includes(PAGE.SUBSCRIPTIONS) ||
+				pathname.includes(PAGE.HISTORY)
+
+			const isChannelPage = pathname.startsWith('/channel/')
+
+			if (isPrivatePage || isChannelPage) {
 				router.push(PAGE.HOME)
 			}
 		}
 	})
-
 	const { isLoggedIn } = useAuth()
 
 	if (!isLoggedIn) return null
