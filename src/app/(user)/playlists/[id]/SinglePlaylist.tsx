@@ -3,10 +3,9 @@
 import { useQuery } from '@tanstack/react-query'
 import { List } from 'lucide-react'
 import { useParams } from 'next/navigation'
-import { Heading } from '@/ui/Heading'
 import { SkeletonLoader } from '@/ui/SkeletonLoader'
 import { VideoCardHorizontal } from '@/ui/video-card/VideoCardHorizontal'
-import { SinglePlaylistActions } from './SinglePlaylistActions'
+import { SinglePlaylistTitle } from './SinglePlaylistTitle'
 import { SaveToPlaylist } from '@/app/(public)/video/[publicId]/video-actions/SaveToPlaylist'
 import { playlistService } from '@/services/playlist.service'
 
@@ -18,17 +17,16 @@ export function SinglePlaylist() {
 		enabled: !!id
 	})
 
+	if (!data) return null
+
 	return (
 		<section className='w-3/4'>
-			<div className='flex justify-between items-center mb-14'>
-				<Heading
-					Icon={List}
-					isPageHeading
-				>
-					{data?.title}
-				</Heading>
-				{data && <SinglePlaylistActions playlist={data} />}
-			</div>
+			<SinglePlaylistTitle
+				Icon={<List size={26} />}
+				playlist={data}
+				refetch={refetch}
+			/>
+
 			<div>
 				{isLoading ? (
 					<SkeletonLoader
