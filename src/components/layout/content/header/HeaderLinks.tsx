@@ -8,21 +8,21 @@ export function HeaderLinks() {
 			<Link
 				href={STUDIO_PAGE.UPLOAD_VIDEO}
 				title='Upload video'
-				className='transition-opacity opacity-50 hover:opacity-100'
+				className='transition-opacity opacity-50 hover:opacity-100 duration-200'
 			>
 				<PlusSquare size={20} />
 			</Link>
 			<Link
 				href={STUDIO_PAGE.STUDIO_HOME}
 				title='Studio'
-				className='transition-opacity opacity-50 hover:opacity-100'
+				className='transition-opacity opacity-50 hover:opacity-100 duration-200'
 			>
 				<LayoutGrid size={20} />
 			</Link>
 			<Link
 				href={STUDIO_PAGE.STUDIO_HOME}
 				title='Notifications'
-				className='transition-opacity opacity-50 hover:opacity-100'
+				className='transition-opacity opacity-50 hover:opacity-100 duration-200'
 			>
 				<Info size={20} />
 			</Link>

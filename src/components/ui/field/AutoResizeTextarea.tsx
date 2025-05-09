@@ -5,17 +5,13 @@ import { type Ref, type TextareaHTMLAttributes, forwardRef, useEffect, useRef } 
 interface Props extends TextareaHTMLAttributes<HTMLTextAreaElement> {
 	value: string
 	onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void
-	onFocus?: () => void
-	onBlur?: () => void
+	onBlur?: (e: React.FocusEvent<HTMLTextAreaElement>) => void
 }
 
 /* -------- The Height Of The Textarea Changes According To The Text -------- */
 
 const AutoResizeTextarea = forwardRef<HTMLTextAreaElement, Props>(
-	(
-		{ value, onChange, className = '', onFocus, onBlur, ...props }: Props,
-		ref: Ref<HTMLTextAreaElement>
-	) => {
+	({ value, onChange, className = '', onBlur, ...props }: Props, ref: Ref<HTMLTextAreaElement>) => {
 		const internalRef = useRef<HTMLTextAreaElement | null>(null)
 
 		useEffect(() => {
@@ -40,7 +36,6 @@ const AutoResizeTextarea = forwardRef<HTMLTextAreaElement, Props>(
 				className={`overflow-hidden resize-none ${className}`}
 				value={value}
 				onChange={onChange}
-				onFocus={onFocus}
 				onBlur={onBlur}
 				rows={1}
 				{...props}

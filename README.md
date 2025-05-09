@@ -100,23 +100,28 @@ bun add rc-tooltip
 - [x] sort/group videos on SubscriptionsPage
 - [x] btn delete video from liked list
 - [x] btn delete video from history list
+- [x] FIXME logout on ChannelPage, History, Liked videos, Subscriptions, Playlists (should redirect
+      to home/auth)
+- [x] playlists:
+  - [x] btn add to playList
+  - [x] modal form, messages
+  - [x] playlist page
+  - [x] delete/toggle video from list
+  - [x] rename playlist
+  - [x] delete playlist
+- [x] Subscribe btn should be disabled if channel owner
 
 ---
 
-- [ ] playlists:
-  - [ ] btn add to playList
-  - [ ] modal form, messages
-  - [ ] playlist page
-- [ ] FIXME logout on ChannelPage, History, Liked videos, Subscriptions (should redirect to
-      home/auth)
-- [ ] [FIXME] SUBSCRIPTIONS (after log out still available info about user's
-      subscriptions(page,buttons) + no redirect onClick subscribe)
-- [ ] Subscribe btn should be disabled if channel owner
-- [ ] button colors
-- [ ] password reset option
-- [ ] video player styles for @media
 - [ ] views updating (on refresh/play?)
 - [ ] history updating (on play?)
+- [ ] disable like and views updating for video owner
+- [ ] found videos with user's comment
+
+- [ ] button colors
+- [ ] replace Skeleton on Dynamic pages to <Loading /> or review style code (cols)
+- [ ] password reset option
+- [ ] video player styles for @media
 - [ ] UI block's heading/loader
   - [x] heading
   - [ ] SkeletonLoader:

@@ -10,7 +10,7 @@ export function MenuItem({ item, isActive, isShowedSidebar }: IMenuItemProps) {
 				href={item.link}
 				title={item.label}
 				className={cn('group flex items-center gap-5 py-2 ', {
-					'hover:text-primary transition-colors': !isActive,
+					'hover:text-primary transition-colors duration-200': !isActive,
 					'hover: cursor-default': isActive
 				})}
 			>

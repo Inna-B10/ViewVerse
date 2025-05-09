@@ -11,7 +11,7 @@ import styles from './Layout.module.scss'
 
 export function Layout({ children }: PropsWithChildren<unknown>) {
 	const { isShowedSidebar } = useSidebar()
-	const authReady = useTypedSelector(state => state.auth.authReady)
+	const { authReady } = useTypedSelector(state => state.auth)
 
 	//Check if user has/needs accessToken
 	useEffect(() => {

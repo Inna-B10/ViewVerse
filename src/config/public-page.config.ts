@@ -18,6 +18,9 @@ class PublicPage {
 	CHANNEL(path: string) {
 		return `/channel/${path}`
 	}
+	PLAYLISTS(path?: string) {
+		return `/playlists${path ? `/${path}` : ''}`
+	}
 
 	SEARCH(searchTerm: string) {
 		return `/search?term=${searchTerm}`

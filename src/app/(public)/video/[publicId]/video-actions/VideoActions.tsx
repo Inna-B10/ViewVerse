@@ -2,12 +2,13 @@
 
 import { useMutation } from '@tanstack/react-query'
 import cn from 'clsx'
-import { Heart, ListPlus } from 'lucide-react'
+import { Heart } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import { startTransition, useEffect, useState } from 'react'
 import { PAGE } from '@/config/public-page.config'
 import { useProfile } from '@/hooks/useProfile'
 import { transformCount } from '@/utils/transform-count'
+import { SaveToPlaylist } from './SaveToPlaylist'
 import { userService } from '@/services/user.service'
 import type { ISingleVideoResponse } from '@/types/video.types'
 
@@ -56,23 +57,17 @@ export function VideoActions({ video }: { video: ISingleVideoResponse }) {
 
 	return (
 		<div className='flex justify-end items-center gap-5'>
+			<SaveToPlaylist video={video} />
 			<button
-				className='flex items-center gap-1 transition-opacity opacity-80 hover:opacity-100'
-				title='Save'
-			>
-				<ListPlus size={20} />
-				Save
-			</button>
-			<button
-				className='text-primary text-lg flex items-center gap-1.5 transition-opacity opacity-80 hover:opacity-100'
+				className='text-lg flex items-center gap-1.5 transition-colors duration-300 opacity-100 hover:text-primary'
 				title='Likes'
 				onClick={clickHandler}
 			>
 				<Heart
 					size={19}
-					className={cn('text-primary', { 'fill-primaryDark': isLiked })}
+					className={cn({ 'text-primary fill-primary': isLiked })}
 				/>
-				{transformCount(optimisticLike)}
+				<span className={cn({ 'text-primary': isLiked })}>{transformCount(optimisticLike)}</span>
 			</button>
 		</div>
 	)

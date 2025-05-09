@@ -31,7 +31,7 @@ export function SidebarMenu({ title, menu, isShowedSidebar, isLoggedIn }: Props)
 						isActive: !!match(menuItem.link)(pathname),
 						isShowedSidebar: isShowedSidebar
 					}
-					//? my-channel page
+					// my-channel page
 					const isMyChannel = menuItem.link === PAGE.MY_CHANNEL
 					const isMyChannelItem = isMyChannel && isLoggedIn
 					return isMyChannelItem ? (

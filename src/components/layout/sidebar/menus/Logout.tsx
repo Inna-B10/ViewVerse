@@ -15,12 +15,21 @@ export function Logout() {
 		mutationKey: ['logout'],
 		mutationFn: () => authService.logout(),
 		onSuccess: () => {
-			if (pathname.includes(STUDIO_PAGE.STUDIO_HOME) || pathname.includes(STUDIO_PAGE.SETTINGS)) {
+			const isPrivatePage =
+				pathname.includes(STUDIO_PAGE.STUDIO_HOME) ||
+				pathname.includes(STUDIO_PAGE.SETTINGS) ||
+				pathname.includes(PAGE.LIKED_VIDEOS) ||
+				pathname.includes(PAGE.PLAYLISTS()) ||
+				pathname.includes(PAGE.SUBSCRIPTIONS) ||
+				pathname.includes(PAGE.HISTORY)
+
+			const isChannelPage = pathname.startsWith('/channel/')
+
+			if (isPrivatePage || isChannelPage) {
 				router.push(PAGE.HOME)
 			}
 		}
 	})
-
 	const { isLoggedIn } = useAuth()
 
 	if (!isLoggedIn) return null
@@ -28,7 +37,9 @@ export function Logout() {
 	return (
 		<button
 			onClick={() => mutate()}
-			className={'group flex items-center gap-5 py-2 hover:text-primary transition-colors '}
+			className={
+				'group flex items-center gap-5 py-2 hover:text-primary transition-colors duration-200'
+			}
 			title='Logout'
 		>
 			<LogOut className={cn('min-w-6 pb-[3px] group-hover:rotate-6')} />

@@ -43,7 +43,7 @@ export function CommentItem({ comment, refetch }: Props) {
 					>
 						<Image
 							alt={comment.user.name || ''}
-							src={comment.user.channel?.avatarUrl || '/avatar.png'}
+							src={comment.user.channel?.avatarUrl || '/default-avatar.png'}
 							width={40}
 							height={40}
 							title={comment.user.name}
@@ -54,7 +54,7 @@ export function CommentItem({ comment, refetch }: Props) {
 					<div className='min-w-max h-10 pt-1'>
 						<Image
 							alt='Guest avatar'
-							src='/avatar.png'
+							src='/default-avatar.png'
 							width={40}
 							height={40}
 							className='rounded flex-shrink-0 shadow-md'
@@ -81,13 +81,16 @@ export function CommentItem({ comment, refetch }: Props) {
 						</div>
 					</div>
 					<div>
-						{isLoggedIn && user?.id === comment.user.id ? (
+						{isLoggedIn && user?.id && user?.id === comment.user.id ? (
 							/* --------------------------- If Editable Comment  */
 							<AutoResizeTextarea
 								ref={textareaRef}
 								onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => {
-									setText(e.target.value.replace(/^[\r\n]+|[\r\n]+$/g, ''))
+									setText(e.target.value)
 								}}
+								onBlur={(e: React.FocusEvent<HTMLTextAreaElement>) =>
+									setText(e.target.value.trim())
+								}
 								value={text}
 								className='w-full text-gray-300 text-sm leading-snug rounded resize-none bg-transparent outline-none border border-transparent py-1 focus:border-border  focus:bg-field'
 							/>

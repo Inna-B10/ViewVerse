@@ -38,7 +38,7 @@ export function SearchClientPage() {
 	return (
 		<section>
 			<Heading Icon={Search}>Search results for &quot;{searchTerm}&quot;</Heading>
-			<div className='grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-5'>
+			<div className='grid-cols'>
 				{isLoading ? (
 					<SkeletonLoader
 						count={4}

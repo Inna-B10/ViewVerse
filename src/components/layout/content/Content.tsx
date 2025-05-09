@@ -3,7 +3,8 @@ import { Header } from './header/Header'
 
 export function Content({ children }: PropsWithChildren<unknown>) {
 	return (
-		<div style={{ flex: '1 1 0%' }}>
+		<div className='flex-1'>
+			{/* <div style={{ flex: '1 1 0%' }}> */}
 			<Header />
 			<section className='p-layout'>{children}</section>
 		</div>

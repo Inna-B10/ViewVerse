@@ -6,7 +6,7 @@ export function SidebarHeader({ toggleSidebar }: { toggleSidebar: () => void }) 
 		<div className='flex items-center gap-5 mb-12'>
 			{/* ------------------------------ Toggle Button ----------------------------- */}
 			<button
-				className='opacity-85 hover:opacity-100 transition-opacity'
+				className='hover:text-primary transition-colors duration-200'
 				onClick={toggleSidebar}
 				title='Toggle sidebar'
 			>
