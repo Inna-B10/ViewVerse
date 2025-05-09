@@ -18,7 +18,7 @@ export function Explore() {
 		<div className='grid-cols'>
 			{isLoading ? (
 				<SkeletonLoader
-					count={4}
+					count={5}
 					className='h-36 rounded-md'
 				/>
 			) : data?.videos?.length ? (
