@@ -11,7 +11,7 @@ export function Button({ children, isLoading, variant = 'primary', ...props }: P
 	return (
 		<button
 			className={cn(
-				'py-2 px-10 w-fit font-semibold rounded transition-all duration-300 disabled:bg-gray-400',
+				'py-2 px-10 w-fit font-medium rounded transition-all duration-300 disabled:bg-gray-400 disabled:opacity-50',
 				{
 					'bg-primary hover:bg-primaryDark text-field': variant === 'primary',
 					'bg-gray-600 hover:bg-gray-500 text-white': variant === 'secondary',

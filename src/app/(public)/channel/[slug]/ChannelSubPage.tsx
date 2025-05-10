@@ -54,7 +54,7 @@ export function ChannelSubPage({ channel }: { channel: IChannel }) {
 						<span>♦</span>
 						<span>{channel.videos.length} videos</span>
 					</div>
-					<article className='mb-4 text-gray-400 text-sm leading-snug'>
+					<article className='mb-4 text-gray-200 text-sm leading-snug'>
 						{channel.description}
 					</article>
 					<DynamicSubscribeButton slug={channel.slug} />

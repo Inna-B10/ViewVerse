@@ -67,7 +67,7 @@ export function SingleVideo({ video }: Props) {
 						</div>
 					</div>
 
-					{/*  --------------------------- Save / Like Buttons --------------------------  */}
+					{/*  --------------------------- Playlists / Like Button --------------------------  */}
 					<VideoActions video={video} />
 				</div>
 
