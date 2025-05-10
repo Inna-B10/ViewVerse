@@ -8,7 +8,13 @@ import { useProfile } from '@/hooks/useProfile'
 import { Button } from './ui/button/Button'
 import { channelService } from '@/services/channel.service'
 
-export function SubscribeButton({ slug }: { slug: string }) {
+export function SubscribeButton({
+	slug,
+	videoChannelSlug
+}: {
+	slug: string
+	videoChannelSlug?: string
+}) {
 	const router = useRouter()
 	const { profile, refetch } = useProfile()
 	const pathname = usePathname()
@@ -29,7 +35,10 @@ export function SubscribeButton({ slug }: { slug: string }) {
 		}
 	}
 
-	const isUserChannel = profile?.channel?.slug === pathname.split('/')[2].trim()
+	const isOwner =
+		profile?.channel?.slug === pathname.split('/')[2].trim() ||
+		profile?.channel?.slug === videoChannelSlug
+
 	const isSubscribed = profile?.subscriptions.some(sub => sub.slug === slug)
 
 	return (
@@ -37,20 +46,20 @@ export function SubscribeButton({ slug }: { slug: string }) {
 			onClick={clickHandler}
 			variant={isSubscribed ? 'secondary' : 'primary'}
 			title={isSubscribed ? 'Unsubscribe' : 'Subscribe'}
-			disabled={isUserChannel}
+			disabled={isOwner}
 		>
 			{isSubscribed ? (
-				<>
+				<div className='fill-[#fff] transition-colors duration-200'>
 					<Bell
-						className='mr-1 inline  fill-[#fff]'
 						size={18}
+						className='inline mr-1'
 					/>
 					Subscribed
-				</>
+				</div>
 			) : (
-				<div className='pr-[0.65rem]'>
+				<div className='pr-[0.60rem]  transition-colors duration-200'>
 					<Bell
-						className='mr-1 inline'
+						className='inline mr-1'
 						size={18}
 					/>
 					Subscribe

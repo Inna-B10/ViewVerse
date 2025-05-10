@@ -57,7 +57,10 @@ export function VideoChannel({ video }: { video: ISingleVideoResponse }) {
 				</div>
 			</div>
 			{/*  ---------------------------- Button Subscribe ----------------------------  */}
-			<DynamicSubscribeButton slug={video.channel.slug} />
+			<DynamicSubscribeButton
+				slug={video.channel.slug}
+				videoChannelSlug={video.channel.slug}
+			/>
 		</div>
 	)
 }
