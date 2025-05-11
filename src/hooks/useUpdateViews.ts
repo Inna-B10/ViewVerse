@@ -1,5 +1,4 @@
 import { useMutation } from '@tanstack/react-query'
-import { useEffect } from 'react'
 import { videoService } from '@/services/video.service'
 import { watchHistoryService } from '@/services/watch-history.service'
 import { useTypedSelector } from '@/store'
@@ -18,8 +17,10 @@ export function useUpdateViews({ video }: { video: ISingleVideoResponse }) {
 		mutationFn: () => watchHistoryService.addToHistory(video.id)
 	})
 
-	useEffect(() => {
+	const runUpdateViews = () => {
 		updateViews()
 		if (isLoggedIn) updateWatchHistory()
-	}, [updateViews, updateWatchHistory, isLoggedIn])
+	}
+
+	return { runUpdateViews }
 }

@@ -1,26 +1,41 @@
 'use client'
 
 import { Lightbulb, LightbulbOff, Maximize, Pause, Play, RectangleHorizontal } from 'lucide-react'
+import { useRef } from 'react'
+import { useUpdateViews } from '@/hooks/useUpdateViews'
 import { PlayerProgressBar } from './progress-bar/PlayerProgressBar'
 import { SelectQuality } from './quality/SelectQuality'
 import { useVideoPlayer } from './use-video-player/useVideoPlayer'
 import { getTime } from './video-player.utils'
 import { VolumeControl } from './volume/VolumeControl'
 import { EnumVideoPlayerQuality } from '@/types/video-player.types'
+import type { ISingleVideoResponse } from '@/types/video.types'
 
 interface Props {
-	fileName: string
+	isVideoOwner: boolean
+	video: ISingleVideoResponse
 	toggleTheaterMode: () => void
 	maxResolution: EnumVideoPlayerQuality
 }
 
-export function VideoPlayer({ fileName, toggleTheaterMode, maxResolution }: Props) {
+export function VideoPlayer({ video, isVideoOwner, toggleTheaterMode, maxResolution }: Props) {
+	const fileName = video.videoFileName
 	const { fn, playerRef, bgRef, state } = useVideoPlayer({ fileName, toggleTheaterMode })
+
+	const { runUpdateViews } = useUpdateViews({ video })
+
+	const hasPlayedRef = useRef(false)
 
 	return (
 		<div className='relative rounded-2xl'>
 			{state.isBacklightMode && (
 				<video
+					onPlay={() => {
+						if (!isVideoOwner && !hasPlayedRef.current) {
+							hasPlayedRef.current = true
+							runUpdateViews() // safe hook call
+						}
+					}}
 					ref={bgRef}
 					className='absolute top-0 mx-auto width-full object-center object-cover filter blur-3xl scale-[1.02] brightness-90 contrast-125 saturate-150 rounded-xl'
 					src={`/uploads/videos/${EnumVideoPlayerQuality['720p']}/${fileName}`}

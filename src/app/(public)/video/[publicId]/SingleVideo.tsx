@@ -5,7 +5,7 @@ import { useState } from 'react'
 import { Heading } from '@/ui/Heading'
 import { VideoPlayer } from '@/ui/video-player/VideoPlayer'
 import { useSidebar } from '@/providers/SidebarContext'
-import { useUpdateViews } from '@/hooks/useUpdateViews'
+import { useProfile } from '@/hooks/useProfile'
 import { SimilarVideos } from './SimilarVideos'
 import { Comments } from './comments/Comments'
 import { VideoDescription } from './description/VideoDescription'
@@ -20,8 +20,9 @@ interface Props {
 export function SingleVideo({ video }: Props) {
 	const { isShowedSidebar } = useSidebar()
 	const [isTheaterMode, setIsTheaterMode] = useState(false)
+	const { profile } = useProfile()
 
-	useUpdateViews({ video })
+	const isVideoOwner = profile?.channel?.slug === video.channel.slug
 
 	return (
 		<section className='grid grid-cols-[3fr_.8fr] gap-6 relative'>
@@ -36,7 +37,8 @@ export function SingleVideo({ video }: Props) {
 					)}
 				>
 					<VideoPlayer
-						fileName={video.videoFileName}
+						isVideoOwner={isVideoOwner}
+						video={video}
 						toggleTheaterMode={() => {
 							setIsTheaterMode(!isTheaterMode)
 						}}
@@ -68,7 +70,10 @@ export function SingleVideo({ video }: Props) {
 					</div>
 
 					{/*  --------------------------- Playlists / Like Button --------------------------  */}
-					<VideoActions video={video} />
+					<VideoActions
+						video={video}
+						isVideoOwner={isVideoOwner}
+					/>
 				</div>
 
 				{/*  ----------------------------- Channel Details ----------------------------  */}

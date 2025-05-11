@@ -3,7 +3,9 @@ import cn from 'clsx'
 import { AnimatePresence } from 'framer-motion'
 import * as m from 'framer-motion/m'
 import { Bookmark, CheckSquare, ListPlus, PlusSquare, Square } from 'lucide-react'
+import { useRouter } from 'next/navigation'
 import toast from 'react-hot-toast'
+import { PAGE } from '@/config/public-page.config'
 import { useOutside } from '@/hooks/useOutside'
 import { useUserPlaylists } from '@/hooks/useUserPlaylists'
 import { CreatePlaylist } from '@/app/(user)/playlists/CreatePlaylist'
@@ -17,6 +19,7 @@ interface ISaveToPlaylist {
 
 export function SaveToPlaylist({ video, refetchSinglePlaylist }: ISaveToPlaylist) {
 	const { data, refetch: refetchPlaylistsList } = useUserPlaylists()
+	const router = useRouter()
 	const { isShow: isShowLists, ref: refLists, setIsShow: setIsShowLists } = useOutside(false)
 	const { isShow: isShowNewList, ref: refNewList, setIsShow: setIsShowNewList } = useOutside(false)
 
@@ -49,7 +52,7 @@ export function SaveToPlaylist({ video, refetchSinglePlaylist }: ISaveToPlaylist
 			ref={refLists}
 		>
 			<button
-				onClick={() => setIsShowLists(!isShowLists)}
+				onClick={() => (data ? setIsShowLists(!isShowLists) : router.push(PAGE.AUTH))}
 				className='flex items-center gap-1 transition-all duration-200 opacity-80 hover:opacity-100 hover:text-primary'
 				title={refetchSinglePlaylist ? 'Toggle or remove from playlist' : 'Add to playlist'}
 			>

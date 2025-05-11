@@ -12,7 +12,13 @@ import { SaveToPlaylist } from './SaveToPlaylist'
 import { userService } from '@/services/user.service'
 import type { ISingleVideoResponse } from '@/types/video.types'
 
-export function VideoActions({ video }: { video: ISingleVideoResponse }) {
+export function VideoActions({
+	video,
+	isVideoOwner
+}: {
+	video: ISingleVideoResponse
+	isVideoOwner: boolean
+}) {
 	const { profile, refetch } = useProfile()
 	const router = useRouter()
 	const isLiked = profile?.likes.some(like => like.video.id === video.id) || false
@@ -59,13 +65,17 @@ export function VideoActions({ video }: { video: ISingleVideoResponse }) {
 		<div className='flex justify-end items-center gap-5'>
 			<SaveToPlaylist video={video} />
 			<button
-				className='text-lg flex items-center gap-1.5 transition-colors duration-300 opacity-100 hover:text-primary'
+				className={cn(
+					'text-lg flex items-center gap-1.5 transition-colors duration-300 opacity-100',
+					isVideoOwner ? 'opacity-40' : 'hover:text-primary'
+				)}
 				title='Likes'
 				onClick={clickHandler}
+				disabled={isVideoOwner}
 			>
 				<Heart
 					size={19}
-					className={cn({ 'text-primary fill-primary': isLiked })}
+					className={isLiked ? 'text-primary fill-primary' : ''}
 				/>
 				<span className={cn({ 'text-primary': isLiked })}>{transformCount(optimisticLike)}</span>
 			</button>
