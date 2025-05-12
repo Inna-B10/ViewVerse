@@ -1,7 +1,7 @@
 import { useMutation } from '@tanstack/react-query'
 import { type ChangeEvent, useCallback } from 'react'
 import toast from 'react-hot-toast'
-import { fileService } from '@/services/file.service'
+import { fileService } from '@/services/studio/file.service'
 
 type TUseUpload = (props: { onChange: (...event: unknown[]) => void; folder?: string }) => {
 	uploadFile: (e: ChangeEvent<HTMLInputElement>) => void

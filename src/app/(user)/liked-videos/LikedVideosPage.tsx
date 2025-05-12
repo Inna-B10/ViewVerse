@@ -6,7 +6,7 @@ import { Heading } from '@/ui/Heading'
 import { SkeletonLoader } from '@/ui/SkeletonLoader'
 import { VideoCardHorizontal } from '@/ui/video-card/VideoCardHorizontal'
 import { useProfile } from '@/hooks/useProfile'
-import { userService } from '@/services/user.service'
+import { userService } from '@/services/studio/user.service'
 
 export function LikedVideosPage() {
 	const { profile, isLoading, refetch } = useProfile()
