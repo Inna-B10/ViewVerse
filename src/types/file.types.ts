@@ -5,3 +5,8 @@ export interface IFileResponse {
 	name: string
 	maxResolution?: EnumVideoPlayerQuality
 }
+
+export interface IProgressProcessingResponse {
+	fileName: string
+	status: number
+}
