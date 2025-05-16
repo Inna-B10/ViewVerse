@@ -1,4 +1,5 @@
 import { useMutation } from '@tanstack/react-query'
+import { isAxiosError } from 'axios'
 import { type ChangeEvent, useCallback } from 'react'
 import toast from 'react-hot-toast'
 import { validateFileSize } from './validate-file-size'
@@ -27,8 +28,18 @@ export const useUpload: TUseUpload = ({ onChange, folder, onSuccess, onError, ma
 			if (onChange) onChange(data[0].url)
 			if (onSuccess) onSuccess(data)
 		},
-		onError: error => {
-			toast.error(error.message)
+
+		onError: (error: unknown) => {
+			let message = 'Something went wrong'
+
+			if (isAxiosError(error)) {
+				// axios defined that it is his error
+				message = error.response?.data?.message || error.message || message
+			} else if (error instanceof Error) {
+				message = error.message || message
+			}
+
+			toast.error(message)
 			if (onError) onError()
 		}
 	})

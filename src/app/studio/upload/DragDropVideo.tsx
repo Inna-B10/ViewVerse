@@ -2,7 +2,7 @@
 
 import * as m from 'framer-motion/m'
 import { Upload } from 'lucide-react'
-import { type DragEvent, useState } from 'react'
+import { type ChangeEvent, type DragEvent, useState } from 'react'
 import type { UseFormReset } from 'react-hook-form'
 import toast from 'react-hot-toast'
 import { twMerge } from 'tailwind-merge'
@@ -39,6 +39,7 @@ export function DragDropVideo({ reset }: Props) {
 	})
 
 	const [isDragging, setIsDragging] = useState(false)
+
 	const handleDragOver = (event: DragEvent) => {
 		event.preventDefault()
 		setIsDragging(true)
@@ -52,7 +53,7 @@ export function DragDropVideo({ reset }: Props) {
 		setIsDragging(false)
 		const file = event.dataTransfer?.files?.[0]
 		if (file) {
-			uploadFile({ target: { files: [file] } } as unknown as React.ChangeEvent<HTMLInputElement>)
+			uploadFile({ target: { files: [file] } } as unknown as ChangeEvent<HTMLInputElement>)
 		}
 	}
 	return isUploading ? (
@@ -81,13 +82,14 @@ export function DragDropVideo({ reset }: Props) {
 			onDragLeave={handleDragLeave}
 			onDrop={handleDrop}
 		>
+			<span>Supported file formats: .mp4 and .av</span>
 			<Upload size={40} />
 			<span>
 				{isDragging ? 'Drop file here' : 'Drag and drop your video file here, or click to select'}
 			</span>
 			<input
 				type='file'
-				accept='video/*'
+				accept='video/mp4, video/avi'
 				className='hidden'
 				onChange={uploadFile}
 			/>
