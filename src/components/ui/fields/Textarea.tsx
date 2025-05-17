@@ -1,16 +1,18 @@
 import cn from 'clsx'
 import type { TextareaHTMLAttributes } from 'react'
 import type { UseFormRegisterReturn } from 'react-hook-form'
+import { twMerge } from 'tailwind-merge'
 
 interface Props extends TextareaHTMLAttributes<HTMLTextAreaElement> {
 	label?: string
 	error?: string
 	registration: UseFormRegisterReturn
+	className?: string
 }
 
-export function Textarea({ label, error, registration, ...props }: Props) {
+export function Textarea({ label, error, registration, className, ...props }: Props) {
 	return (
-		<div className='mb-4'>
+		<div className={twMerge('mb-4', className)}>
 			<label>
 				{label && <span className='block text-gray-200 font-medium mb-2'>{label}</span>}
 				<textarea
