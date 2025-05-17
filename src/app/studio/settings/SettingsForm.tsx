@@ -68,7 +68,7 @@ export function SettingsForm() {
 							label='Description'
 							placeholder='Enter description'
 							name='description'
-							rows={4}
+							rows={9}
 							registration={register('channel.description')}
 							error={errors.channel?.description?.message}
 						/>
@@ -98,7 +98,7 @@ export function SettingsForm() {
 									value={value}
 									error={error}
 									folder='banners'
-									sizePreview={[446, 250]}
+									sizePreview={[458, 258]}
 									overlay='/overlay.png'
 								/>
 							)}

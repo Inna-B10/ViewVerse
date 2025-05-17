@@ -51,7 +51,7 @@ export function VideoCard({ video, Icon }: Props) {
 					className='absolute left-1.5 bottom-2'
 				>
 					<Image
-						src={video.channel.avatarUrl}
+						src={video.channel.avatarUrl || '/default-avatar.png'}
 						width={32}
 						height={32}
 						alt={channelName}

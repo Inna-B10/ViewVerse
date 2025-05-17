@@ -35,7 +35,7 @@ export function ChannelSubPage({ channel }: { channel: IChannel }) {
 			<div className='flex gap-5 mt-7 mb-12 w-1/2'>
 				<Image
 					alt={channel.slug}
-					src={channel.avatarUrl}
+					src={channel.avatarUrl || '/default-avatar.png'}
 					width={100}
 					height={100}
 					quality={90}

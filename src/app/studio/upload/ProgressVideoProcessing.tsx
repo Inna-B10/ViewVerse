@@ -64,17 +64,6 @@ export function ProgressVideoProcessing({
 				className='flex items-center justify-center w-full py-0.5 relative rounded overflow-hidden mb-8'
 				style={{ backgroundColor: 'rgba(196,196,196,0.3)' }}
 			>
-				{/* <m.div
-					initial={{ width: 0 }}
-					animate={{ width: `${progress}%` }}
-					style={{
-						height: '100%',
-						// backgroundColor: COLORS.primary,
-						backgroundImage: `linear-gradient(to right, #05DF72, #016630)`,
-						position: 'absolute',
-						inset: 0
-					}}
-				/> */}
 				<div
 					className={cn(
 						'absolute inset-0 h-full bg-gradient-to-r from-[#05df72] to-[#016630] transition-all',
