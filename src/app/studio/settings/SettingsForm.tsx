@@ -2,8 +2,8 @@
 
 import { Controller } from 'react-hook-form'
 import { Button } from '@/ui/button/Button'
-import { Field } from '@/ui/field/Field'
-import { Textarea } from '@/ui/field/Textarea'
+import { Field } from '@/ui/fields/Field'
+import { Textarea } from '@/ui/fields/Textarea'
 import { UploadField } from '@/ui/upload-field/UploadField'
 import { useSettings } from './useSettings'
 
