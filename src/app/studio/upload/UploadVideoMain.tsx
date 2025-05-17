@@ -39,8 +39,9 @@ export function UploadVideoMain() {
 					{!fileName && <DragDropVideo reset={form.reset} />}
 
 					<ProgressVideoProcessing
-						setIsReadyToPublish={setIsReadyToPublish}
 						fileName={fileName}
+						isReadyToPublish={isReadyToPublish}
+						setIsReadyToPublish={setIsReadyToPublish}
 					/>
 
 					{!!fileName && (

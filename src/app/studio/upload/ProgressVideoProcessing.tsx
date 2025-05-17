@@ -6,10 +6,15 @@ import { fileService } from '@/services/studio/file.service'
 
 interface Props {
 	fileName: string
+	isReadyToPublish: boolean
 	setIsReadyToPublish: Dispatch<SetStateAction<boolean>>
 }
 
-export function ProgressVideoProcessing({ fileName, setIsReadyToPublish }: Props) {
+export function ProgressVideoProcessing({
+	fileName,
+	isReadyToPublish,
+	setIsReadyToPublish
+}: Props) {
 	const [progress, setProgress] = useState(0)
 
 	//* working version, but not optimal
@@ -36,7 +41,7 @@ export function ProgressVideoProcessing({ fileName, setIsReadyToPublish }: Props
 			const queryProgress = query.state.data?.data
 			return queryProgress !== undefined && queryProgress.status < 100 ? 3500 : false
 		},
-		enabled: !!fileName
+		enabled: !!fileName && !isReadyToPublish
 	})
 
 	useEffect(() => {
