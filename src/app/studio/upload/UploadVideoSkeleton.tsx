@@ -3,7 +3,7 @@ import { SkeletonLoader } from '@/ui/SkeletonLoader'
 export function UploadVideoSkeleton() {
 	return (
 		<>
-			<div>
+			<div className='flex flex-col gap-8'>
 				<SkeletonLoader
 					count={1}
 					className='bg-gray-700 h-[66]'
@@ -14,25 +14,27 @@ export function UploadVideoSkeleton() {
 				/>
 				<SkeletonLoader
 					count={1}
-					className='bg-gray-700'
-				/>
-				<SkeletonLoader
-					count={1}
 					className='bg-gray-700 h-[66]'
 				/>
-				<SkeletonLoader
+				{/* <SkeletonLoader
 					count={1}
 					className='bg-gray-700 h-[66]'
-				/>
+				/> */}
 			</div>
-			<div>
+			<div className='flex flex-col justify-between'>
+				<div className='flex flex-col gap-8'>
+					<SkeletonLoader
+						count={1}
+						className='bg-gray-700  h-[66]'
+					/>
+					<SkeletonLoader
+						count={1}
+						className='bg-gray-700 w-[288] h-[140]'
+					/>
+				</div>
 				<SkeletonLoader
 					count={1}
-					className='bg-gray-700 w-[288] h-[140]'
-				/>
-				<SkeletonLoader
-					count={2}
-					className='bg-gray-700'
+					className='bg-gray-700 h-[66]'
 				/>
 			</div>
 		</>

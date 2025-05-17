@@ -1,6 +1,7 @@
 import { UploadCloud } from 'lucide-react'
 import { useId } from 'react'
 import type { FieldError } from 'react-hook-form'
+import { twMerge } from 'tailwind-merge'
 import { ImagePreview } from './ImagePreview'
 import { useUpload } from './useUpload'
 
@@ -14,6 +15,7 @@ interface Props {
 	isImage?: boolean
 	overlay?: string
 	sizePreview?: [number, number]
+	classNameButton?: string
 }
 
 export function UploadField({
@@ -25,7 +27,8 @@ export function UploadField({
 	className,
 	isImage = true,
 	overlay,
-	sizePreview
+	sizePreview,
+	classNameButton
 }: Props) {
 	const { isLoading, uploadFile } = useUpload({
 		folder,
@@ -43,7 +46,10 @@ export function UploadField({
 			</label>
 			<label
 				htmlFor={inputId}
-				className='flex items-center px-[1rem] py-2 bg-field border border-primary text-white text-xs rounded cursor-pointer hover:bg-primary hover:text-field font-bold transition-colors duration-300 w-max'
+				className={twMerge(
+					'flex items-center px-[1rem] py-2 bg-field border border-primary text-white text-xs rounded cursor-pointer hover:bg-primary hover:text-field font-bold transition-colors duration-300 w-max',
+					classNameButton
+				)}
 			>
 				<UploadCloud
 					className='mr-2'
@@ -51,7 +57,6 @@ export function UploadField({
 				/>
 				Upload
 			</label>
-
 			<input
 				id={inputId}
 				type='file'

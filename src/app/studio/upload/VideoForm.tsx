@@ -1,5 +1,4 @@
 import { useMutation } from '@tanstack/react-query'
-import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { Controller, type SubmitHandler, type UseFormReturn } from 'react-hook-form'
 import toast from 'react-hot-toast'
@@ -52,13 +51,12 @@ export function VideoForm({
 			onSubmit={handleSubmit(onSubmit)}
 			name='videoUpload'
 		>
-			<div className='grid grid-cols-[2fr_1fr] gap-8'>
-				{/* {true ? ( */}
+			<div className='grid grid-cols-[2fr_1fr] gap-10'>
 				{isPending ? (
 					<UploadVideoSkeleton />
 				) : (
 					<>
-						<div className='border-border border-r pr-8'>
+						<div>
 							{/* ---------------------------------- Title --------------------------------- */}
 							<Field
 								label='Title:'
@@ -73,27 +71,10 @@ export function VideoForm({
 								label='Description:'
 								placeholder='Enter description'
 								name='description'
-								rows={7}
+								rows={6}
 								registration={register('description', { required: 'Description is required' })}
 								error={errors.description?.message}
 								className='mt-5'
-							/>
-
-							{/* -------------------------------- Thumbnail ------------------------------- */}
-							<Controller
-								control={control}
-								name='thumbnailUrl'
-								render={({ field: { onChange, value }, fieldState: { error } }) => (
-									<UploadField
-										label='Thumbnail: '
-										onChange={onChange}
-										value={value}
-										error={error}
-										folder='thumbnails'
-										className='mb-4'
-										sizePreview={[151, 82]}
-									/>
-								)}
 							/>
 
 							{/* ---------------------------------- Tags ---------------------------------- */}
@@ -110,24 +91,29 @@ export function VideoForm({
 								)}
 							/>
 						</div>
-						<div>
-							<div className='bg-gray-700 rounded-md overflow-hidden border border-border/0'>
-								{watch('thumbnailUrl') ? (
-									<Image
-										alt='Uploaded thumbnail'
-										src={watch('thumbnailUrl')}
-										width={250}
-										height={140}
-										style={{ objectFit: 'cover' }}
+						<div className='flex flex-col justify-between'>
+							{/* -------------------------------- Thumbnail ------------------------------- */}
+							<Controller
+								control={control}
+								name='thumbnailUrl'
+								render={({ field: { onChange, value }, fieldState: { error } }) => (
+									<UploadField
+										label='Thumbnail: '
+										onChange={onChange}
+										value={value}
+										error={error}
+										folder='thumbnails'
+										classNameButton=' border-border'
+										sizePreview={[288, 162]}
 									/>
-								) : (
-									<div className='w-full h-[140] bg-field font-medium text-sm flex items-center justify-center'>
-										Waiting for thumbnail...
-									</div>
 								)}
-								<div className='text-sm p-2'>
-									<span className='text-gray-400 text-[0.9rem] block mb-0.5'>File name:</span>
-									<span>{watch('videoFileName')}</span>
+							/>
+
+							{/* -------------------------------- File Name ------------------------------- */}
+							<div className='w-full mb-4'>
+								<span className='block text-gray-200 font-medium mb-2'>File name:</span>
+								<div className='text-xs p-2 bg-field rounded border border-border'>
+									{watch('videoFileName')}
 								</div>
 							</div>
 						</div>
