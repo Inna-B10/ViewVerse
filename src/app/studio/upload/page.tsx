@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { NO_INDEX_PAGE } from '@/constants/seo.constants'
-import { UploadVideoForm } from './UploadVideoForm'
+import { UploadVideoMain } from './UploadVideoMain'
 
 export const metadata: Metadata = {
 	title: 'Upload video',
@@ -8,5 +8,5 @@ export const metadata: Metadata = {
 }
 
 export default function UploadVideoPage() {
-	return <UploadVideoForm />
+	return <UploadVideoMain />
 }

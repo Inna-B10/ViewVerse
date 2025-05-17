@@ -12,7 +12,7 @@ export function Textarea({ label, error, registration, ...props }: Props) {
 	return (
 		<div className='mb-4'>
 			<label>
-				{label && <span className='block text-grey-400 font-medium mb-2'>{label}</span>}
+				{label && <span className='block text-gray-200 font-medium mb-2'>{label}</span>}
 				<textarea
 					className={cn(
 						'w-full px-3 py-3 bg-field text-xs border rounded shadow-sm transition-colors  resize-y overflow-hidden focus:outline-none focus:ring-0 focus:border-primary',

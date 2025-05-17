@@ -37,7 +37,7 @@ export function UploadField({
 		<div className={className}>
 			<label
 				htmlFor={inputId}
-				className='block text-grey-400 font-medium mb-2'
+				className='block text-gray-200 font-medium mb-2'
 			>
 				{label}
 			</label>

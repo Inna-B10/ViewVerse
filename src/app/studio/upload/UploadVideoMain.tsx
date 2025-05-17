@@ -9,7 +9,7 @@ import { ProgressVideoProcessing } from './ProgressVideoProcessing'
 import { VideoForm } from './VideoForm'
 import type { IVideoFormData } from '@/types/studio-videos.types'
 
-export function UploadVideoForm() {
+export function UploadVideoMain() {
 	const form = useForm<IVideoFormData>({
 		mode: 'onChange'
 	})
@@ -17,7 +17,6 @@ export function UploadVideoForm() {
 	const fileName = form.watch('videoFileName')
 
 	const [isReadyToPublish, setIsReadyToPublish] = useState(false)
-	const [progress, setProgress] = useState(0)
 
 	return (
 		<div className='absolute inset-0 flex items-center justify-center bg-black/50 z-50'>
@@ -37,7 +36,7 @@ export function UploadVideoForm() {
 						Upload a video
 					</Heading>
 
-					<DragDropVideo reset={form.reset} />
+					{!fileName && <DragDropVideo reset={form.reset} />}
 
 					<ProgressVideoProcessing
 						setIsReadyToPublish={setIsReadyToPublish}

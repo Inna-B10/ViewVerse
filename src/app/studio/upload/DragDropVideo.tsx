@@ -1,5 +1,3 @@
-'use client'
-
 import * as m from 'framer-motion/m'
 import { Upload } from 'lucide-react'
 import { type ChangeEvent, type DragEvent, useState } from 'react'
@@ -31,7 +29,7 @@ export function DragDropVideo({ reset }: Props) {
 				title: file.name,
 				maxResolution: file.maxResolution
 			})
-			toast.success('The video file has been uploaded successfully!')
+			toast.success('The video uploaded successfully!')
 		},
 		onError() {
 			toast.error('Failed to upload the video!')
@@ -75,14 +73,14 @@ export function DragDropVideo({ reset }: Props) {
 	) : (
 		<label
 			className={twMerge(
-				'flex flex-col items-center justify-center h-72 p-2 gap-4 rounded-md bg-field border-2 border-border border-dashed cursor-pointer transition-all duration-200  mb-8 text-sm text-gray-300 hover:text-white hover:border-gray-400',
+				'flex flex-col items-center justify-center h-72 p-2 gap-4 rounded-md bg-field border-2 border-border border-dashed cursor-pointer transition-all duration-200  mb-8 text-sm text-gray-200 hover:text-white hover:border-gray-400',
 				isDragging && 'border-primary text-white border-solid'
 			)}
 			onDragOver={handleDragOver}
 			onDragLeave={handleDragLeave}
 			onDrop={handleDrop}
 		>
-			<span>Supported file formats: .mp4 and .av</span>
+			<span>Supported file formats: .mp4 and .avi</span>
 			<Upload size={40} />
 			<span>
 				{isDragging ? 'Drop file here' : 'Drag and drop your video file here, or click to select'}

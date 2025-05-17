@@ -12,7 +12,7 @@ export function Field({ label, error, registration, ...props }: Props) {
 	return (
 		<div className='mb-4'>
 			<label>
-				<span className='block text-grey-400 font-medium mb-2'>{label}</span>
+				<span className='block text-gray-200 font-medium mb-2'>{label}</span>
 				<input
 					className={cn(
 						'w-full px-3 py-2 bg-field text-xs border rounded shadow-sm transition-colors focus:outline-none focus:ring-0 focus:border-primary',

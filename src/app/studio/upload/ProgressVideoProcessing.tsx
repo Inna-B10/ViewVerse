@@ -1,10 +1,7 @@
-'use client'
-
 import { useQuery } from '@tanstack/react-query'
-import * as m from 'framer-motion/m'
+import cn from 'clsx'
 import { type Dispatch, type SetStateAction, useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
-import { COLORS } from '@/constants/colors.constants'
 import { fileService } from '@/services/studio/file.service'
 
 interface Props {
@@ -37,7 +34,7 @@ export function ProgressVideoProcessing({ fileName, setIsReadyToPublish }: Props
 		},
 		refetchInterval: query => {
 			const queryProgress = query.state.data?.data
-			return queryProgress !== undefined && queryProgress.status < 100 ? 5000 : false
+			return queryProgress !== undefined && queryProgress.status < 100 ? 3500 : false
 		},
 		enabled: !!fileName
 	})
@@ -56,19 +53,37 @@ export function ProgressVideoProcessing({ fileName, setIsReadyToPublish }: Props
 		}
 	}, [isSuccess, processingData, setIsReadyToPublish])
 
-	console.log('processingData: ', processingData)
 	return (
 		progress > 0 && (
-			<m.div
-				initial={{ width: 0 }}
-				animate={{ width: `${progress}%` }}
-				style={{
-					height: '0.5rem',
-					backgroundColor: COLORS.primary,
-					borderRadius: 10,
-					transition: 'all 0.4s easy'
-				}}
-			/>
+			<div
+				className='flex items-center justify-center w-full py-0.5 relative rounded overflow-hidden mb-8'
+				style={{ backgroundColor: 'rgba(196,196,196,0.3)' }}
+			>
+				{/* <m.div
+					initial={{ width: 0 }}
+					animate={{ width: `${progress}%` }}
+					style={{
+						height: '100%',
+						// backgroundColor: COLORS.primary,
+						backgroundImage: `linear-gradient(to right, #05DF72, #016630)`,
+						position: 'absolute',
+						inset: 0
+					}}
+				/> */}
+				<div
+					className={cn(
+						'absolute inset-0 h-full bg-gradient-to-r from-[#05df72] to-[#016630] transition-all',
+						progress < 100 && 'animate-pulse'
+					)}
+					style={{
+						width: progress ? `${progress}%` : 0
+					}}
+				/>
+
+				<div className='relative tracking-wider text-xs font-medium'>
+					Processing video ({Math.round(progress)}%)
+				</div>
+			</div>
 		)
 	)
 }
