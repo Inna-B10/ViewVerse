@@ -1,17 +1,24 @@
-import { type Dispatch, type RefObject, type SetStateAction, useState } from 'react'
+import { type Dispatch, type RefObject, type SetStateAction, useEffect, useState } from 'react'
 import { EnumVideoPlayerQuality, type HTMLCustomVideoElement } from '@/types/video-player.types'
 
 interface Props {
 	setIsPlaying: Dispatch<SetStateAction<boolean>>
 	fileName: string
 	currentTime: number
+	mainQuality: string | null
 }
 
 export function useVideoQuality(
 	playerRef: RefObject<HTMLCustomVideoElement | null>,
-	{ currentTime, fileName, setIsPlaying }: Props
+	{ currentTime, fileName, setIsPlaying, mainQuality }: Props
 ) {
-	const [quality, setQuality] = useState(EnumVideoPlayerQuality['1080p'])
+	const [quality, setQuality] = useState(mainQuality)
+
+	useEffect(() => {
+		if (mainQuality && mainQuality !== quality) {
+			setQuality(mainQuality)
+		}
+	}, [mainQuality, quality])
 
 	const changeQuality = (quality: EnumVideoPlayerQuality) => {
 		if (!playerRef.current) return
