@@ -4,7 +4,7 @@ import dynamicNext from 'next/dynamic'
 import Image from 'next/image'
 import { Heading } from '@/ui/Heading'
 import { SkeletonLoader } from '@/ui/SkeletonLoader'
-import { VerifiedBadge } from '@/ui/video-card/VerifiedBadge'
+import { VerifiedBadge } from '@/ui/VerifiedBadge'
 import { transformCount } from '@/utils/transform-count'
 import type { IChannel } from '@/types/channel.types'
 
