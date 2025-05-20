@@ -29,7 +29,7 @@ export function DragDropVideo({ reset }: Props) {
 				title: file.name,
 				maxResolution: file.maxResolution
 			})
-			toast.success('File uploaded to server successfully!')
+			toast.success('File successfully uploaded to server!')
 		},
 		onError() {
 			toast.error('Failed to upload file to the server!')

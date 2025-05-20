@@ -90,6 +90,9 @@ export function SettingsForm() {
 						/>
 						<Controller
 							control={control}
+							rules={{
+								validate: value => !!value || 'Banner is required!'
+							}}
 							name='channel.bannerUrl'
 							render={({ field: { onChange, value }, fieldState: { error } }) => (
 								<UploadField

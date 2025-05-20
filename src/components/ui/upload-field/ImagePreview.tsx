@@ -42,7 +42,7 @@ export function ImagePreview({ isLoading, value, overlay, sizePreview = [100, 10
 					className=' bg-slate-700 font-medium text-sm flex items-center justify-center text-center rounded-md'
 					style={{ width: `${width}px`, height: `${height}px` }}
 				>
-					Waiting for image...
+					No image uploaded
 				</div>
 			)}
 		</div>

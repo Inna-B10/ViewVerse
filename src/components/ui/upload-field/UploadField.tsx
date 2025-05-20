@@ -60,6 +60,7 @@ export function UploadField({
 			<input
 				id={inputId}
 				type='file'
+				name='uploadImage'
 				onChange={uploadFile}
 				accept='image/*'
 				className='hidden'

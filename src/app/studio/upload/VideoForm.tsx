@@ -95,6 +95,9 @@ export function VideoForm({
 							{/* -------------------------------- Thumbnail ------------------------------- */}
 							<Controller
 								control={control}
+								rules={{
+									validate: value => !!value || 'Thumbnail is required!'
+								}}
 								name='thumbnailUrl'
 								render={({ field: { onChange, value }, fieldState: { error } }) => (
 									<UploadField
