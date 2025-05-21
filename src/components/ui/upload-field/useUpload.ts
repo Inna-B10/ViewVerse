@@ -2,6 +2,7 @@ import { useMutation } from '@tanstack/react-query'
 import { isAxiosError } from 'axios'
 import { type ChangeEvent, useCallback } from 'react'
 import toast from 'react-hot-toast'
+import { cropThumbnail } from '@/utils/cropThumbnail'
 import { validateFileSize } from './validate-file-size'
 import { fileService } from '@/services/studio/file.service'
 import type { IFileResponse } from '@/types/file.types'
@@ -45,20 +46,31 @@ export const useUpload: TUseUpload = ({ onChange, folder, onSuccess, onError, ma
 	})
 
 	const uploadFile = useCallback(
-		(e: ChangeEvent<HTMLInputElement>) => {
+		async (e: ChangeEvent<HTMLInputElement>) => {
 			const files = e.target.files
 			if (!files?.length) return
 
 			const file = files[0]
-			if (!validateFileSize(file, maxFileSize)) {
-				return
-			}
-			const formData = new FormData()
-			formData.append('file', file)
 
-			mutate(formData)
+			if (!validateFileSize(file, maxFileSize)) return
+
+			if (file.type.startsWith('image/') && folder === 'thumbnails') {
+				const imageUrl = URL.createObjectURL(file)
+				const croppedBlob = await cropThumbnail(imageUrl, 16 / 9)
+				if (!croppedBlob) return
+
+				const formData = new FormData()
+				formData.append('file', croppedBlob, file.name)
+
+				mutate(formData)
+			} else {
+				const formData = new FormData()
+				formData.append('file', file)
+
+				mutate(formData)
+			}
 		},
-		[mutate, maxFileSize]
+		[mutate, maxFileSize, folder]
 	)
 
 	return {
