@@ -1,7 +1,7 @@
 import Cookies from 'js-cookie'
 import { clearAuthData, setAuthData, setAuthReady } from '@/store/auth.slice'
 import { axiosClassic } from '@/api/axios'
-import { userService } from './user.service'
+import { userService } from './studio/user.service'
 import { store } from '@/store'
 import type { IAuthData } from '@/types/auth-form.types'
 import { EnumTokens } from '@/types/auth.types'

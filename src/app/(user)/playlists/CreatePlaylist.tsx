@@ -6,7 +6,7 @@ import toast from 'react-hot-toast'
 import { useHotkeys } from 'react-hotkeys-hook'
 import { Heading } from '@/ui/Heading'
 import { SkeletonLoader } from '@/ui/SkeletonLoader'
-import { Field } from '@/ui/field/Field'
+import { Field } from '@/ui/fields/Field'
 import { playlistService } from '@/services/playlist.service'
 import type { IPlaylistData } from '@/types/playlist.types'
 

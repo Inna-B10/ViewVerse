@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { twMerge } from 'tailwind-merge'
 import { PAGE } from '@/config/public-page.config'
-import { VerifiedBadge } from './VerifiedBadge'
+import { VerifiedBadge } from '../VerifiedBadge'
 import type { IChannel } from '@/types/channel.types'
 
 interface IVideoChannelName {

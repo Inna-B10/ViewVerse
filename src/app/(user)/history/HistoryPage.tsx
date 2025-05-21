@@ -58,7 +58,7 @@ export function HistoryPage() {
 					data?.map(item => (
 						<div
 							key={item.video.id}
-							className='flex items-start gap-4 mb-8'
+							className='flex items-start gap-4 mb-6 border-b border-b-border last:border-none pr-6'
 						>
 							<VideoCardHorizontal
 								key={item.video.id}
@@ -67,9 +67,9 @@ export function HistoryPage() {
 							<button
 								title='Remove from history'
 								onClick={() => remove(item.video.id)}
-								className='ml-4 text-gray-400 transition-colors duration-200 hover:text-gray-300'
+								className='ml-4 text-red-600 transition-opacity opacity-80 hover:opacity-100'
 							>
-								<Trash2 size={19} />
+								<Trash2 size={22} />
 							</button>
 						</div>
 					))

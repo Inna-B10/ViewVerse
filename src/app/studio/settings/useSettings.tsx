@@ -2,7 +2,7 @@ import { useMutation } from '@tanstack/react-query'
 import { useEffect } from 'react'
 import { type SubmitHandler, useForm } from 'react-hook-form'
 import { useProfile } from '@/hooks/useProfile'
-import { userService } from '@/services/user.service'
+import { userService } from '@/services/studio/user.service'
 import type { ISettingsData } from '@/types/settings.types'
 
 export function useSettings() {

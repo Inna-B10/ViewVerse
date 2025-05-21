@@ -5,40 +5,45 @@ interface Props {
 	isLoading: boolean
 	value?: string
 	overlay?: string
-	aspectRation?: '16:9' | '1:1'
+	sizePreview?: [number, number]
 }
 
-export function ImagePreview({ isLoading, value, overlay, aspectRation }: Props) {
-	const isWideScreen = aspectRation === '16:9'
-	const width = isWideScreen ? 446 : 100
-	const height = isWideScreen ? 250 : 100
+export function ImagePreview({ isLoading, value, overlay, sizePreview = [100, 100] }: Props) {
+	const [width, height] = sizePreview
+
 	return (
 		<div className='mt-3'>
 			{isLoading ? (
 				<SkeletonLoader style={{ width, height }} />
-			) : (
-				!!value && (
-					<div className='relative'>
-						{!!overlay && (
-							<Image
-								alt='overlay'
-								className='rounded-md absolute top-0 left-0 w-full h-full'
-								src={overlay}
-								width={width}
-								height={height}
-								priority
-							/>
-						)}
+			) : !!value ? (
+				<div className='relative'>
+					{!!overlay && (
 						<Image
-							alt='uploaded file'
-							className='rounded-md'
-							src={value}
+							alt='overlay'
+							className='rounded-md absolute top-0 left-0 w-full h-full'
+							src={overlay}
 							width={width}
 							height={height}
 							priority
 						/>
-					</div>
-				)
+					)}
+					<Image
+						alt='uploaded file'
+						className='rounded-md'
+						src={value}
+						width={width}
+						height={height}
+						priority
+						style={{ maxHeight: '162px' }}
+					/>
+				</div>
+			) : (
+				<div
+					className=' bg-slate-700 font-medium text-sm flex items-center justify-center text-center rounded-md'
+					style={{ width: `${width}px`, height: `${height}px` }}
+				>
+					No image uploaded
+				</div>
 			)}
 		</div>
 	)

@@ -15,7 +15,7 @@ interface Props {
 export function VideoCardHorizontal({ video }: Props) {
 	return (
 		<m.div
-			className='rounded-md w-full mb-8'
+			className='rounded-md w-full mb-6'
 			whileHover={{ scale: 1.01, y: -3 }}
 			transition={{ type: 'spring', stiffness: 500, damping: 30 }}
 		>

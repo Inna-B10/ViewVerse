@@ -7,7 +7,7 @@ import { VIDEO_QUALITIES } from './quality.data'
 import { EnumVideoPlayerQuality } from '@/types/video-player.types'
 
 interface Props {
-	currentValue: EnumVideoPlayerQuality
+	currentValue: EnumVideoPlayerQuality | null
 	onChange: (quality: EnumVideoPlayerQuality) => void
 	maxResolution: EnumVideoPlayerQuality
 }

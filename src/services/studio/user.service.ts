@@ -10,11 +10,13 @@ class UserService {
 		const { data } = await instance.get<IProfileResponse>(`${this._USERS}/profile`)
 		return data
 	}
+
 	/* ------------------------------ UpdateProfile ----------------------------- */
 	async updateProfile(settings: ISettingsData) {
 		const { data } = await instance.put<boolean>(`${this._USERS}/profile`, settings)
 		return data
 	}
+
 	/* ------------------------------- ToggleLike ------------------------------- */
 	async toggleLike(videoId: string) {
 		const { data } = await instance.put(`${this._USERS}/profile/likes`, { videoId })

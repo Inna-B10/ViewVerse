@@ -12,9 +12,10 @@ import { type HTMLCustomVideoElement } from '@/types/video-player.types'
 interface Props {
 	fileName: string
 	toggleTheaterMode: () => void
+	mainQuality: string | null
 }
 
-export function useVideoPlayer({ fileName, toggleTheaterMode }: Props) {
+export function useVideoPlayer({ fileName, toggleTheaterMode, mainQuality }: Props) {
 	const playerRef = useRef<HTMLCustomVideoElement>(null)
 	const bgRef = useRef<HTMLCustomVideoElement>(null)
 
@@ -24,7 +25,8 @@ export function useVideoPlayer({ fileName, toggleTheaterMode }: Props) {
 	const { quality, changeQuality } = useVideoQuality(playerRef, {
 		fileName,
 		currentTime,
-		setIsPlaying
+		setIsPlaying,
+		mainQuality
 	})
 	const { toggleFullScreen } = useFullScreen(playerRef)
 	const { skipTime } = useSkipTime(playerRef, bgRef)

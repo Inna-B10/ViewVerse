@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Heading } from '@/ui/Heading'
 import { SkeletonLoader } from '@/ui/SkeletonLoader'
-import { VerifiedBadge } from '@/ui/video-card/VerifiedBadge'
+import { VerifiedBadge } from '@/ui/VerifiedBadge'
 import { PAGE } from '@/config/public-page.config'
 import { transformCount } from '@/utils/transform-count'
 import type { ISingleVideoResponse } from '@/types/video.types'
@@ -26,7 +26,7 @@ export function VideoChannel({ video }: { video: ISingleVideoResponse }) {
 				>
 					<Image
 						alt={video.channel.user.name || ''}
-						src={video.channel.avatarUrl}
+						src={video.channel.avatarUrl || '/default-avatar.png'}
 						width={55}
 						height={55}
 						priority

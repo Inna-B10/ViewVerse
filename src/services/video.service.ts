@@ -1,4 +1,5 @@
 import { axiosClassic } from '@/api/axios'
+import type { IPaginationParams } from '@/types/pagination.types'
 import type { ISingleVideoResponse, IVideo, IVideosPagination } from '@/types/video.types'
 
 class VideoService {
@@ -38,11 +39,16 @@ class VideoService {
 	}
 
 	/* --------------------------------- Explore -------------------------------- */
-	async getExploreVideos(userId?: string) {
+	async getExploreVideos(userId?: string, params?: IPaginationParams, excludeIds?: string[]) {
+		const excludeIdsString = excludeIds?.join(',') || ''
 		const { data } = await axiosClassic.get<IVideosPagination>(`${this._VIDEOS}/explore`, {
-			params: {
-				userId
-			}
+			params: userId
+				? {
+						userId,
+						...params,
+						excludeIds: excludeIdsString
+					}
+				: params
 		})
 		return data
 	}

@@ -1,6 +1,7 @@
 'use client'
 
-import { AnimatePresence, m } from 'framer-motion'
+import { AnimatePresence } from 'framer-motion'
+import * as m from 'framer-motion/m'
 import parse from 'html-react-parser'
 import { useState } from 'react'
 import { processHtmlContent } from '@/utils/process-html-content'
@@ -20,21 +21,24 @@ export function VideoDescription({ description }: { description: string }) {
 				{parse(initialContent)}
 				{isShouldShowToggle && (
 					<>
-						<AnimatePresence initial={false}>
-							<m.span
-								key={isExpanded ? 'expanded' : 'collapsed'}
-								initial={{ height: 0, opacity: 1 }}
-								animate={{ height: 'auto' }}
-								exit={{ height: 0, opacity: 1 }}
-								transition={{ duration: 0.3, ease: [0.04, 0.62, 0.23, 0.98] }}
-							>
-								{isExpanded ? parse(remainingContent) : ''}
-							</m.span>
-						</AnimatePresence>
+						{isExpanded && (
+							<AnimatePresence initial={false}>
+								<m.div
+									key={isExpanded ? 'expanded' : 'collapsed'}
+									initial={{ height: '0', opacity: 0.4 }}
+									animate={{ height: '100%', opacity: 1 }}
+									exit={{ height: '0', opacity: 0.4 }}
+									transition={{ duration: 0.3, ease: [0.04, 0.62, 0.23, 0.98] }}
+									style={{ overflow: 'hidden', display: 'inline' }}
+								>
+									<div>{parse(remainingContent)}</div>
+								</m.div>
+							</AnimatePresence>
+						)}
 
 						<button
 							onClick={() => setIsExpanded(prev => !prev)}
-							className='text-sm text-primary transition-colors duration-200 hover:text-gray-200'
+							className='text-sm text-primary transition-opacity duration-200 opacity-85 hover:opacity-100'
 						>
 							{isExpanded ? '[Hide]' : '[Show more]'}
 						</button>

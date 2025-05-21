@@ -4,7 +4,7 @@ import dynamicNext from 'next/dynamic'
 import Image from 'next/image'
 import { Heading } from '@/ui/Heading'
 import { SkeletonLoader } from '@/ui/SkeletonLoader'
-import { VerifiedBadge } from '@/ui/video-card/VerifiedBadge'
+import { VerifiedBadge } from '@/ui/VerifiedBadge'
 import { transformCount } from '@/utils/transform-count'
 import type { IChannel } from '@/types/channel.types'
 
@@ -35,7 +35,7 @@ export function ChannelSubPage({ channel }: { channel: IChannel }) {
 			<div className='flex gap-5 mt-7 mb-12 w-1/2'>
 				<Image
 					alt={channel.slug}
-					src={channel.avatarUrl}
+					src={channel.avatarUrl || '/default-avatar.png'}
 					width={100}
 					height={100}
 					quality={90}

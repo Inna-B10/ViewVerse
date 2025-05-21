@@ -8,9 +8,9 @@ class StudioPage {
 	EDIT_VIDEO(path: string) {
 		return `/edit/v/${path}`
 	}
-	EDIT_CHANNEL(path: string) {
-		return `/edit/c/${path}`
-	}
+	//? EDIT_CHANNEL(path: string) {
+	// 	return `/edit/c/${path}`
+	// }
 }
 
 export const STUDIO_PAGE = new StudioPage()

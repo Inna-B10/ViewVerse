@@ -2,8 +2,8 @@
 
 import { Controller } from 'react-hook-form'
 import { Button } from '@/ui/button/Button'
-import { Field } from '@/ui/field/Field'
-import { Textarea } from '@/ui/field/Textarea'
+import { Field } from '@/ui/fields/Field'
+import { Textarea } from '@/ui/fields/Textarea'
 import { UploadField } from '@/ui/upload-field/UploadField'
 import { useSettings } from './useSettings'
 
@@ -68,7 +68,7 @@ export function SettingsForm() {
 							label='Description'
 							placeholder='Enter description'
 							name='description'
-							rows={4}
+							rows={9}
 							registration={register('channel.description')}
 							error={errors.channel?.description?.message}
 						/>
@@ -90,6 +90,9 @@ export function SettingsForm() {
 						/>
 						<Controller
 							control={control}
+							rules={{
+								validate: value => !!value || 'Banner is required!'
+							}}
 							name='channel.bannerUrl'
 							render={({ field: { onChange, value }, fieldState: { error } }) => (
 								<UploadField
@@ -98,7 +101,7 @@ export function SettingsForm() {
 									value={value}
 									error={error}
 									folder='banners'
-									aspectRation='16:9'
+									sizePreview={[458, 258]}
 									overlay='/overlay.png'
 								/>
 							)}
