@@ -110,18 +110,30 @@ bun add rc-tooltip
   - [x] rename playlist
   - [x] delete playlist
 - [x] Subscribe btn should be disabled if channel owner
+- [x] views updating (on refresh/play?)
+- [x] history updating (on play?)
+- [x] disable like and views updating for video owner
+- [x] message if video not found
+- [x] page with a list of user's videos
+- [x] pagination
+- [x] delete video functional
 
 ---
 
-- [ ] views updating (on refresh/play?)
-- [ ] history updating (on play?)
-- [ ] disable like and views updating for video owner
+- [ ] ? delete video in common upload folder
+- [ ] ? картинки (аватар,банер,превью), которые не используются/заменяются остаются на сервере!!!
+- [ ] ? crop images (thumbnail)
+- [ ] ? вспомогательный текст загрузки картинок (формат,размер,вес)
+- [ ] ? skeleton for player
 - [ ] found videos with user's comment
-
+- [ ] TODO default banner
 - [ ] button colors
-- [ ] replace Skeleton on Dynamic pages to <Loading /> or review style code (cols)
 - [ ] password reset option
-- [ ] video player styles for @media
+- [ ] @media:
+  - [ ] video player styles
+  - [ ] images
+  - [ ] grid
+- [ ] ? replace Skeleton on Dynamic pages to <Loading /> or review style code (cols)
 - [ ] UI block's heading/loader
   - [x] heading
   - [ ] SkeletonLoader:
