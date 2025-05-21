@@ -1,6 +1,6 @@
 'use client'
 
-import { Video } from 'lucide-react'
+import { FileCog } from 'lucide-react'
 import dynamic from 'next/dynamic'
 import { Heading } from '@/ui/Heading'
 import { SkeletonLoader } from '@/ui/SkeletonLoader'
@@ -23,12 +23,15 @@ const DynamicStudioVideoList = dynamic(
 export function StudioVideoListPage() {
 	return (
 		<section className='pb-5'>
-			<Heading
-				Icon={Video}
-				isPageHeading
-			>
-				Content
-			</Heading>
+			<div className='mb-14'>
+				<Heading
+					Icon={FileCog}
+					isPageHeading
+					className='mb-0'
+				>
+					File management
+				</Heading>
+			</div>
 			<DynamicStudioVideoList />
 		</section>
 	)

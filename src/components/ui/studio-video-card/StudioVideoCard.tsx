@@ -34,17 +34,17 @@ export function StudioVideoCard({ video }: Props) {
 			<div>
 				<Link
 					href={STUDIO_PAGE.EDIT_VIDEO(video.id)}
-					className='line-clamp-1 text-lg mb-1'
+					className='line-clamp-1 text-xl mb-1'
 				>
 					{video.title}
 				</Link>
 
-				<div className='opacity-50'>{parse(initialContent)}</div>
+				<div className='opacity-50 text-sm'>{parse(initialContent)}</div>
 			</div>
 
 			<div>
 				<div className='text-gray-400'>{dayjs(video.createdAt).format('DD MMM YYYY')}</div>
-				<div className='text-gray-600'>Published</div>
+				<div className='text-gray-600 text-sm'>Published</div>
 			</div>
 
 			<div>

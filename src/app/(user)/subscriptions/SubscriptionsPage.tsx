@@ -35,7 +35,7 @@ export function SubscriptionsPage() {
 			{isLoading ? (
 				<div className='grid-cols'>
 					<SkeletonLoader
-						count={4}
+						count={5}
 						className='h-36 rounded-md'
 					/>
 				</div>

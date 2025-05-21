@@ -35,7 +35,7 @@ export function StudioVideoList() {
 			{isLoading && !allVideos.length ? (
 				<SkeletonLoader
 					count={3}
-					className='h-32 rounded-md mb-8'
+					className='h-36 rounded-md mb-8'
 				/>
 			) : (
 				allVideos.map(video => (
@@ -49,7 +49,7 @@ export function StudioVideoList() {
 			{isFetchingNextPage && (
 				<SkeletonLoader
 					count={3}
-					className='h-32 rounded-md mb-8'
+					className='h-36 rounded-md mb-8'
 				/>
 			)}
 		</section>

@@ -15,7 +15,7 @@ export function Button({ children, isLoading, variant = 'primary', ...props }: P
 				{
 					'bg-primary hover:bg-primaryDark text-field': variant === 'primary',
 					'bg-gray-600 hover:bg-gray-500 text-white': variant === 'secondary',
-					'bg-field border border-border font-medium h-fit text-gray-500 hover:text-gray-400':
+					'bg-field border border-border font-medium h-fit text-gray-300 hover:text-white hover:bg-gray-700':
 						variant === 'simple'
 				}
 			)}

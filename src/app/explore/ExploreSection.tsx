@@ -2,16 +2,15 @@
 
 import { Compass } from 'lucide-react'
 import dynamic from 'next/dynamic'
-
 import { Heading } from '@/ui/Heading'
 import { SkeletonLoader } from '@/ui/SkeletonLoader'
 
 const DynamicExplore = dynamic(() => import('./Explore').then(mod => mod.Explore), {
 	ssr: false,
 	loading: () => (
-		<div className='grid-6-cols'>
+		<div className='grid-cols'>
 			<SkeletonLoader
-				count={6}
+				count={5}
 				className='h-36 rounded-md'
 			/>
 		</div>

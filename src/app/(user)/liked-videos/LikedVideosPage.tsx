@@ -43,15 +43,15 @@ export function LikedVideosPage() {
 					profile.likes.map(item => (
 						<div
 							key={item.video.id}
-							className='flex items-start gap-4 mb-8'
+							className='flex items-start gap-4 mb-6 border-b border-b-border last:border-none pr-6'
 						>
 							<VideoCardHorizontal video={item.video} />
 							<button
 								title='Remove from liked videos'
 								onClick={() => mutate(item.video.id)}
-								className='ml-4 text-gray-400 transition-colors duration-300 hover:text-gray-200'
+								className='ml-4 text-red-600 transition-opacity opacity-80 hover:opacity-100'
 							>
-								<Trash2 size={19} />
+								<Trash2 size={22} />
 							</button>
 						</div>
 					))

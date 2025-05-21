@@ -28,22 +28,22 @@ export function StudioActions({ video }: Props) {
 	})
 
 	const handleDelete = () => {
-		toast((t: Toast) => (
-			<div>
+		toast.custom((t: Toast) => (
+			<div className='whitespace-nowrap bg-white text-black rounded-md p-4'>
 				<p>Are you sure you want to delete this video?</p>
-				<div className='flex justify-end gap-4 mt-2'>
+				<div className='flex justify-end gap-4 mt-2 transition-all duration-300'>
 					<button
 						onClick={() => {
 							deleteVideo()
 							toast.dismiss(t.id)
 						}}
-						className='text-red-600'
+						className='text-red-600 hover:underline'
 					>
 						Delete
 					</button>
 					<button
 						onClick={() => toast.dismiss(t.id)}
-						className='text-gray-400'
+						className='text-gray-400 hover:underline'
 					>
 						Cancel
 					</button>
@@ -56,7 +56,7 @@ export function StudioActions({ video }: Props) {
 		<div className='flex justify-center items-start gap-5'>
 			<Link
 				href={PAGE.VIDEO(video.publicId)}
-				className='text-blue-600 transition-opacity opacity-70 hover:opacity-100'
+				className='text-blue-600 transition-opacity opacity-80 hover:opacity-100'
 				target='_blank'
 				title='Open in a new tab'
 			>
@@ -64,14 +64,14 @@ export function StudioActions({ video }: Props) {
 			</Link>
 			<Link
 				href={STUDIO_PAGE.EDIT_VIDEO(video.id)}
-				className='text-orange-500 transition-opacity opacity-70 hover:opacity-100'
+				className='text-primary transition-opacity opacity-80 hover:opacity-100'
 				title='Edit a video'
 			>
 				<Edit size={22} />
 			</Link>
 			<button
 				onClick={handleDelete}
-				className='text-red-600 transition-opacity opacity-70 hover:opacity-100'
+				className='text-red-500 transition-opacity opacity-80 hover:opacity-100'
 				title='Delete a video'
 				disabled={isDeletePending}
 			>

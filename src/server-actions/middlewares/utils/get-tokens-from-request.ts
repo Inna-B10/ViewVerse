@@ -23,7 +23,6 @@ export async function getTokensFromRequest(request: NextRequest) {
 					return null
 				}
 			}
-			//[TODO] ? error message/notification
 			return null
 		}
 	}
