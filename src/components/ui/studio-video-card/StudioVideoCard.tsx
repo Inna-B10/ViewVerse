@@ -21,6 +21,7 @@ export function StudioVideoCard({ video }: Props) {
 				href={PAGE.VIDEO(video.publicId)}
 				target='_blank'
 				className='flex-shrink-0'
+				title={`Open the video: ${video.title} `}
 			>
 				<Image
 					src={video.thumbnailUrl}
@@ -35,6 +36,7 @@ export function StudioVideoCard({ video }: Props) {
 				<Link
 					href={STUDIO_PAGE.EDIT_VIDEO(video.id)}
 					className='line-clamp-1 text-xl mb-1'
+					title='Open the video for editing'
 				>
 					{video.title}
 				</Link>
@@ -48,17 +50,17 @@ export function StudioVideoCard({ video }: Props) {
 			</div>
 
 			<div>
-				<div className='text-gray-400'>{video.viewsCount.toLocaleString('ru-RU')} views</div>
+				<div className='text-gray-400'>{video.viewsCount.toLocaleString('no-NO')} views</div>
 			</div>
 
 			<div>
 				<div className='text-gray-400'>
-					{video.comments.length.toLocaleString('ru-RU')} comments
+					{video.comments.length.toLocaleString('no-NO')} comments
 				</div>
 			</div>
 
 			<div>
-				<div className='text-gray-400'>{video.likes.length.toLocaleString('ru-RU')} likes</div>
+				<div className='text-gray-400'>{video.likes.length.toLocaleString('no-NO')} likes</div>
 			</div>
 
 			<StudioActions video={video} />
