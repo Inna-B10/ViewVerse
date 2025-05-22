@@ -6,7 +6,7 @@ import { twMerge } from 'tailwind-merge'
 interface Props extends TextareaHTMLAttributes<HTMLTextAreaElement> {
 	label?: string
 	error?: string
-	registration: UseFormRegisterReturn
+	registration?: UseFormRegisterReturn
 	className?: string
 }
 
