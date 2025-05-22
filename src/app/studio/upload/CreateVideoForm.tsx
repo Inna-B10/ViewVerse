@@ -30,6 +30,7 @@ export function CreateVideoForm({ form, isReadyToPublish }: Props) {
 		}
 	})
 
+	//[TODO] обработать теги/перенос строк description: stripHtmlWithBreak(data.description).trim()
 	const onSubmit: SubmitHandler<IVideoFormData> = data => {
 		mutate({
 			...data,

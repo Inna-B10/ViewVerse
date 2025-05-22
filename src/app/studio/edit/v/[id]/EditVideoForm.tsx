@@ -58,6 +58,7 @@ export function EditVideoForm() {
 		}
 	})
 
+	//[TODO] обработать теги/перенос строк description: stripHtmlWithBreak(data.description).trim()
 	const onSubmit: SubmitHandler<IVideoFormData> = data => {
 		mutate({
 			...data,
