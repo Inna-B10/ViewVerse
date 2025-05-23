@@ -29,7 +29,7 @@ export function StudioActions({ video }: Props) {
 
 	const handleDelete = () => {
 		toast.custom((t: Toast) => (
-			<div className='whitespace-nowrap text-white bg-[#202937] border border-border shadow-lg rounded-md p-4'>
+			<div className='whitespace-nowrap text-white bg-zinc-700 border border-white/20 shadow-lg rounded-md p-4'>
 				<p>Are you sure you want to delete this video?</p>
 				<div className='flex justify-end gap-4 mt-2 transition-all duration-300'>
 					<button
@@ -37,14 +37,14 @@ export function StudioActions({ video }: Props) {
 							deleteVideo()
 							toast.dismiss(t.id)
 						}}
-						className='text-red-500 hover:underline hover:underline-offset-4'
+						className='text-red-500 font-bold hover:underline hover:underline-offset-4'
 						title='Delete the video'
 					>
 						Delete
 					</button>
 					<button
 						onClick={() => toast.dismiss(t.id)}
-						className='text-gray-400 hover:underline hover:underline-offset-4'
+						className='text-gray-300 font-bold hover:underline hover:underline-offset-4'
 						title='Cancel deleting'
 					>
 						Cancel

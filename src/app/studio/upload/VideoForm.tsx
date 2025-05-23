@@ -88,7 +88,7 @@ export function VideoForm({
 									error={error}
 									folder='thumbnails'
 									classNameButton=' border-border'
-									sizePreview={[288, 162]}
+									sizePreview={[288, 161]}
 								/>
 							)}
 						/>

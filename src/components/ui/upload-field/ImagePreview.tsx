@@ -34,7 +34,7 @@ export function ImagePreview({ isLoading, value, overlay, sizePreview = [100, 10
 						width={width}
 						height={height}
 						priority
-						style={{ maxHeight: '162px' }}
+						style={{ maxHeight: '161px' }}
 					/>
 				</div>
 			) : (
