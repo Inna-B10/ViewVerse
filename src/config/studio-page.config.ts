@@ -6,11 +6,8 @@ class StudioPage {
 	UPLOAD_VIDEO = `${this.STUDIO_HOME}/upload`
 
 	EDIT_VIDEO(path: string) {
-		return `/edit/v/${path}`
+		return `${this.STUDIO_HOME}/edit/v/${path}`
 	}
-	//? EDIT_CHANNEL(path: string) {
-	// 	return `/edit/c/${path}`
-	// }
 }
 
 export const STUDIO_PAGE = new StudioPage()

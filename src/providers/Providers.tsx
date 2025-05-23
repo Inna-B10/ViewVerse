@@ -28,7 +28,15 @@ export function Providers({ children }: { children: ReactNode }) {
 			<Provider store={store}>
 				<LazyMotion features={domAnimation}>
 					<SidebarProvider>{children}</SidebarProvider>
-					<Toaster />
+					<Toaster
+						toastOptions={{
+							style: {
+								backgroundColor: '#202937',
+								color: 'white'
+							},
+							className: 'border border-border shadow-lg'
+						}}
+					/>
 				</LazyMotion>
 			</Provider>
 		</QueryClientProvider>

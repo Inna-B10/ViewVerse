@@ -29,7 +29,7 @@ export function StudioVideoListPage() {
 					isPageHeading
 					className='mb-0'
 				>
-					File management
+					Video Management
 				</Heading>
 			</div>
 			<DynamicStudioVideoList />

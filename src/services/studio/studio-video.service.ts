@@ -1,7 +1,7 @@
 import { instance } from '@/api/axios'
 import type { IPaginationParams } from '@/types/pagination.types'
 import type { IVideoFormData } from '@/types/studio-videos.types'
-import type { IVideo, IVideosPagination } from '@/types/video.types'
+import type { IStudioVideoResponse, IVideosPagination } from '@/types/video.types'
 
 class StudioVideoService {
 	private _VIDEOS = '/studio/videos'
@@ -16,7 +16,7 @@ class StudioVideoService {
 
 	/* ----------------------------- Get Video By Id ---------------------------- */
 	async byId(id: string) {
-		const { data } = await instance.get<IVideo>(`${this._VIDEOS}/${id}`)
+		const { data } = await instance.get<IStudioVideoResponse>(`${this._VIDEOS}/${id}`)
 		return data
 	}
 

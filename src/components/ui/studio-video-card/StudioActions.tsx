@@ -29,7 +29,7 @@ export function StudioActions({ video }: Props) {
 
 	const handleDelete = () => {
 		toast.custom((t: Toast) => (
-			<div className='whitespace-nowrap bg-white text-black rounded-md p-4'>
+			<div className='whitespace-nowrap text-white bg-[#202937] border border-border shadow-lg rounded-md p-4'>
 				<p>Are you sure you want to delete this video?</p>
 				<div className='flex justify-end gap-4 mt-2 transition-all duration-300'>
 					<button
@@ -37,13 +37,15 @@ export function StudioActions({ video }: Props) {
 							deleteVideo()
 							toast.dismiss(t.id)
 						}}
-						className='text-red-600 hover:underline'
+						className='text-red-500 hover:underline hover:underline-offset-4'
+						title='Delete the video'
 					>
 						Delete
 					</button>
 					<button
 						onClick={() => toast.dismiss(t.id)}
-						className='text-gray-400 hover:underline'
+						className='text-gray-400 hover:underline hover:underline-offset-4'
+						title='Cancel deleting'
 					>
 						Cancel
 					</button>
@@ -65,14 +67,14 @@ export function StudioActions({ video }: Props) {
 			<Link
 				href={STUDIO_PAGE.EDIT_VIDEO(video.id)}
 				className='text-primary transition-opacity opacity-80 hover:opacity-100'
-				title='Edit a video'
+				title='Edit the video'
 			>
 				<Edit size={22} />
 			</Link>
 			<button
 				onClick={handleDelete}
 				className='text-red-500 transition-opacity opacity-80 hover:opacity-100'
-				title='Delete a video'
+				title='Delete the video'
 				disabled={isDeletePending}
 			>
 				<Trash2 size={22} />
