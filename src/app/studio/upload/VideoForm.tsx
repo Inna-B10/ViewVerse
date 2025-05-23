@@ -41,7 +41,7 @@ export function VideoForm({
 						<Controller
 							control={control}
 							rules={{
-								validate: value => !!value.trim() || 'Description is required!'
+								validate: value => !!value?.trim() || 'Description is required!'
 							}}
 							name='description'
 							render={({ field: { onChange, value }, fieldState: { error } }) => (

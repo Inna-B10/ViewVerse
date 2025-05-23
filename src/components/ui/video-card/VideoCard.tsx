@@ -12,9 +12,10 @@ import type { IVideo } from '@/types/video.types'
 interface Props {
 	video: IVideo
 	Icon?: LucideIcon
+	isImagePriority: boolean
 }
 
-export function VideoCard({ video, Icon }: Props) {
+export function VideoCard({ video, Icon, isImagePriority }: Props) {
 	//if channel name is too long
 	let channelName = video?.channel?.user?.name || ''
 	if (channelName.length >= 25) {
@@ -33,14 +34,16 @@ export function VideoCard({ video, Icon }: Props) {
 					href={PAGE.VIDEO(video.publicId)}
 					title={video.title}
 				>
+					{/* //[FIXME] default video thumbnail for server component */}
 					<Image
-						src={video.thumbnailUrl}
+						src={video.thumbnailUrl || '/default-video.jpg'}
 						width={250}
 						height={140}
 						quality={90}
 						//? sizes='100vw, (min-width: 768px) 50vw, (min-width: 1024px) 33vw, (min-width:1440) 25vw'
 						alt={video.title}
-						className='rounded-md w-dvw object-cover'
+						className='rounded-md w-svw object-cover'
+						priority={isImagePriority}
 					/>
 				</Link>
 
@@ -57,6 +60,7 @@ export function VideoCard({ video, Icon }: Props) {
 						alt={channelName}
 						quality={90}
 						className='rounded-full shadow-orange h-auto'
+						priority={isImagePriority}
 					/>
 				</Link>
 			</div>

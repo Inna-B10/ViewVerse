@@ -29,7 +29,7 @@ export function VideoCardHorizontal({ video }: Props) {
 					<Image
 						src={video.thumbnailUrl}
 						width={250}
-						height={140}
+						height={141}
 						quality={90}
 						//?sizes='100vw, (min-width: 768px) 50vw, (min-width: 1024px) 33vw, (min-width:1440) 25vw'
 						alt={video.title}

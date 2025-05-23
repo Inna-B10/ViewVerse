@@ -44,7 +44,7 @@ export function PlaylistItem({ playlist }: Props) {
 						height={140}
 						quality={100}
 						alt={playlist.title}
-						className='rounded-md shadow-lg object-cover w-dvw relative z-0 border-t border-r border-[#191B28]'
+						className='rounded-md shadow-lg object-cover w-svw relative z-0 border-t border-r border-[#191B28]'
 					/>
 
 					{/* ------------------------------- Count Badge ------------------------------ */}

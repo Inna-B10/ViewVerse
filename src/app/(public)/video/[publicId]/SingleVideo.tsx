@@ -34,7 +34,7 @@ export function SingleVideo({ video }: Props) {
 							? 'absolute top-0 left-0 max-h-screen z-50 mx-8'
 							: isShowedSidebar
 								? 'relative '
-								: 'relative max-h-[90%]'
+								: 'relative max-h-[90svh]'
 					)}
 				>
 					<VideoPlayer
