@@ -5,10 +5,10 @@ class PublicPage {
 	TRENDING = '/trending'
 	GAME_VIDEOS = '/game-videos'
 
-	LIKED_VIDEOS = '/liked-videos'
-	SUBSCRIPTIONS = '/subscriptions'
+	LIKED_VIDEOS = '/user/liked-videos'
+	SUBSCRIPTIONS = '/user/subscriptions'
 	MY_CHANNEL = '/my-channel'
-	HISTORY = '/history'
+	HISTORY = '/user/history'
 
 	FEEDBACK = '/feedback'
 
@@ -19,7 +19,7 @@ class PublicPage {
 		return `/channel/${path}`
 	}
 	PLAYLISTS(path?: string) {
-		return `/playlists${path ? `/${path}` : ''}`
+		return `/user/playlists${path ? `/${path}` : ''}`
 	}
 
 	SEARCH(searchTerm: string) {
