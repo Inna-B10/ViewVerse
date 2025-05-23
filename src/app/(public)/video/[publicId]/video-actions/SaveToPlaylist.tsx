@@ -8,7 +8,7 @@ import toast from 'react-hot-toast'
 import { PAGE } from '@/config/public-page.config'
 import { useOutside } from '@/hooks/useOutside'
 import { useUserPlaylists } from '@/hooks/useUserPlaylists'
-import { CreatePlaylist } from '@/app/(user)/playlists/CreatePlaylist'
+import { CreatePlaylist } from '@/app/user/playlists/CreatePlaylist'
 import { playlistService } from '@/services/playlist.service'
 import type { ISingleVideoResponse } from '@/types/video.types'
 
