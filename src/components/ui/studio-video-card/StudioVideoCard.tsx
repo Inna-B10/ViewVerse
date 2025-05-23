@@ -24,7 +24,7 @@ export function StudioVideoCard({ video }: Props) {
 				title={`Open the video: ${video.title} `}
 			>
 				<Image
-					src={video.thumbnailUrl}
+					src={video.thumbnailUrl || '/default-thumbnail.jpg'}
 					width={206}
 					height={116}
 					alt={video.title}

@@ -12,7 +12,7 @@ import type { IVideo } from '@/types/video.types'
 interface Props {
 	video: IVideo
 	Icon?: LucideIcon
-	isImagePriority: boolean
+	isImagePriority?: boolean
 }
 
 export function VideoCard({ video, Icon, isImagePriority }: Props) {
@@ -36,7 +36,7 @@ export function VideoCard({ video, Icon, isImagePriority }: Props) {
 				>
 					{/* //[FIXME] default video thumbnail for server component */}
 					<Image
-						src={video.thumbnailUrl || '/default-video.jpg'}
+						src={video.thumbnailUrl || '/default-thumbnail.jpg'}
 						width={250}
 						height={140}
 						quality={90}
