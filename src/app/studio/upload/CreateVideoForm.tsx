@@ -52,6 +52,8 @@ export function CreateVideoForm({ form, isReadyToPublish }: Props) {
 					type='submit'
 					disabled={!isReadyToPublish}
 					isLoading={isPending}
+					title='Publish video'
+					aria-label='Publish video'
 				>
 					{isReadyToPublish ? 'Publish' : 'Processing video...'}
 				</Button>

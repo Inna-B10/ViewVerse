@@ -24,6 +24,7 @@ export function VideoCardHorizontal({ video }: Props) {
 				<Link
 					href={PAGE.VIDEO(video.publicId)}
 					title={video.title}
+					aria-label={video.title}
 					className='flex-shrink-0'
 				>
 					<Image

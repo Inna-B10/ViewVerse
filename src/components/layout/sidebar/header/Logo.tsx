@@ -12,6 +12,8 @@ export function Logo({ isSidebar = true }: LogoProps) {
 		<Link
 			href={PAGE.HOME}
 			className='inline-flex items-center gap-1.5'
+			title='ViewVerse - home page'
+			aria-label='ViewVerse - home page'
 		>
 			<SquarePlay
 				color={COLORS.primary}

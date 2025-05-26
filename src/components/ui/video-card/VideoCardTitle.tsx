@@ -12,6 +12,7 @@ export function VideoCardTitle({ video }: IVideoCardTitle) {
 			href={PAGE.VIDEO(video.publicId)}
 			className='line-clamp-2 leading-[1.3]'
 			title={video.title}
+			aria-label={video.title}
 		>
 			{video.title}
 		</Link>

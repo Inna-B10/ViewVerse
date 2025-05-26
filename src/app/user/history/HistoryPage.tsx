@@ -44,6 +44,8 @@ export function HistoryPage() {
 					isLoading={isPending}
 					onClick={() => mutate()}
 					variant='simple'
+					title='Clear history'
+					aria-label='Clear history'
 				>
 					Clear history
 				</Button>

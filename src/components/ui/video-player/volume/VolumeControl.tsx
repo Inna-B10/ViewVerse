@@ -13,6 +13,7 @@ export function VolumeControl({ changeVolume, isMuted, toggleMute, value }: IVol
 			<button
 				name='volume'
 				title={isMuted ? 'Unmute' : 'Mute'}
+				aria-label={isMuted ? 'Unmute' : 'Mute'}
 				onClick={toggleMute}
 				className='transition-colors hover:text-primary'
 			>

@@ -46,6 +46,7 @@ export function SubscribeButton({
 			onClick={clickHandler}
 			variant={isSubscribed ? 'secondary' : 'primary'}
 			title={isSubscribed ? 'Unsubscribe' : 'Subscribe'}
+			aria-label={isSubscribed ? 'Unsubscribe' : 'Subscribe'}
 			disabled={isOwner}
 		>
 			{isSubscribed ? (

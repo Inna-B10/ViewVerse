@@ -119,7 +119,8 @@ export function VideoPlayer({ video, isVideoOwner, toggleTheaterMode, maxResolut
 							<button
 								onClick={fn.togglePlayPause}
 								className='transition-colors hover:text-primary'
-								title='Play/pause'
+								title={state.isPlaying ? 'Pause' : 'Play'}
+								aria-label={state.isPlaying ? 'Pause' : 'Play'}
 							>
 								{state.isPlaying ? <Pause /> : <Play />}
 							</button>
@@ -153,6 +154,7 @@ export function VideoPlayer({ video, isVideoOwner, toggleTheaterMode, maxResolut
 								className='transition-colors hover:text-primary'
 								onClick={fn.toggleBacklightMode}
 								title={state.isBacklightMode ? 'Lightning off' : 'Lightning on'}
+								aria-label={state.isBacklightMode ? 'Lightning off' : 'Lightning on'}
 							>
 								{state.isBacklightMode ? <Lightbulb /> : <LightbulbOff />}
 							</button>
@@ -161,6 +163,7 @@ export function VideoPlayer({ video, isVideoOwner, toggleTheaterMode, maxResolut
 								className='transition-colors hover:text-primary'
 								onClick={toggleTheaterMode}
 								title='Theater mode'
+								aria-label='Theater mode'
 							>
 								<RectangleHorizontal />
 							</button>
@@ -169,6 +172,7 @@ export function VideoPlayer({ video, isVideoOwner, toggleTheaterMode, maxResolut
 								onClick={fn.toggleFullScreen}
 								className='transition-colors hover:text-primary'
 								title='Full screen'
+								aria-label='Full screen'
 							>
 								<Maximize />
 							</button>

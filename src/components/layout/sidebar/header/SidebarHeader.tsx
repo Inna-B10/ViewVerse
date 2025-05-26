@@ -9,6 +9,7 @@ export function SidebarHeader({ toggleSidebar }: { toggleSidebar: () => void }) 
 				className='hover:text-primary transition-colors duration-200'
 				onClick={toggleSidebar}
 				title='Toggle sidebar'
+				aria-label='Toggle sidebar'
 			>
 				<Menu />
 			</button>

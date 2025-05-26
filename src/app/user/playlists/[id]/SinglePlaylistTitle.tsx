@@ -133,6 +133,7 @@ export function SinglePlaylistTitle({ playlist, Icon, refetch }: Props) {
 				{!isEditing && (
 					<button
 						title='Rename playlist'
+						aria-label='Rename playlist'
 						onClick={() => setIsEditing(true)}
 						className='opacity-70 hover:opacity-100 hover:text-primary transition-all duration-300'
 					>
@@ -141,6 +142,7 @@ export function SinglePlaylistTitle({ playlist, Icon, refetch }: Props) {
 				)}
 				<button
 					title='Delete playlist'
+					aria-label='Delete playlist'
 					onClick={() => setIsShowDelete(true)}
 					className='opacity-70 hover:opacity-100 hover:text-primary transition-all duration-300'
 				>
@@ -164,6 +166,7 @@ export function SinglePlaylistTitle({ playlist, Icon, refetch }: Props) {
 						<div className='bg-bgSecondary flex flex-col items-center justify-center gap-4 rounded-lg p-4 pb-7'>
 							<button
 								title='Close the form'
+								aria-label='Close the form'
 								onClick={() => setIsShowDelete(false)}
 								className='absolute top-2 right-2 text-gray-500 hover:text-white transition-colors'
 							>
@@ -173,7 +176,13 @@ export function SinglePlaylistTitle({ playlist, Icon, refetch }: Props) {
 								Are you sure you want to delete this playlist?
 							</p>
 							<p className='text-sm mb-3'>If it contains any videos, they will also be deleted.</p>
-							<Button onClick={() => deletePlaylist()}>Delete</Button>
+							<Button
+								onClick={() => deletePlaylist()}
+								title='Delete playlist'
+								aria-label='Delete playlist'
+							>
+								Delete
+							</Button>
 						</div>
 					</m.div>
 				</div>

@@ -39,6 +39,7 @@ export function StudioActions({ video }: Props) {
 						}}
 						className='text-red-500 font-bold hover:underline hover:underline-offset-4'
 						title='Delete the video'
+						aria-label='Delete the video'
 					>
 						Delete
 					</button>
@@ -46,6 +47,7 @@ export function StudioActions({ video }: Props) {
 						onClick={() => toast.dismiss(t.id)}
 						className='text-gray-300 font-bold hover:underline hover:underline-offset-4'
 						title='Cancel deleting'
+						aria-label='Cancel deleting'
 					>
 						Cancel
 					</button>
@@ -61,6 +63,7 @@ export function StudioActions({ video }: Props) {
 				className='text-blue-600 transition-opacity opacity-80 hover:opacity-100'
 				target='_blank'
 				title='Open in a new tab'
+				aria-label='Open in a new tab'
 			>
 				<ExternalLink size={22} />
 			</Link>
@@ -68,6 +71,7 @@ export function StudioActions({ video }: Props) {
 				href={STUDIO_PAGE.EDIT_VIDEO(video.id)}
 				className='text-primary transition-opacity opacity-80 hover:opacity-100'
 				title='Edit the video'
+				aria-label='Edit the video'
 			>
 				<Edit size={22} />
 			</Link>
@@ -75,6 +79,7 @@ export function StudioActions({ video }: Props) {
 				onClick={handleDelete}
 				className='text-red-500 transition-opacity opacity-80 hover:opacity-100'
 				title='Delete the video'
+				aria-label='Delete the video'
 				disabled={isDeletePending}
 			>
 				<Trash2 size={22} />

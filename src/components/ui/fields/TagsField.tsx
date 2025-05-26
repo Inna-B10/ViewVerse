@@ -65,6 +65,8 @@ export function TagsField({
 							<span>{tag}</span>
 							<button
 								type='button'
+								title='Remove tag'
+								aria-label='Remove tag'
 								onClick={e => {
 									e.preventDefault()
 									removeTag(tag.trim())

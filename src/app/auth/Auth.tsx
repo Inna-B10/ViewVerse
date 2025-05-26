@@ -107,6 +107,8 @@ export function Auth() {
 						<Button
 							type='submit'
 							isLoading={isLoading}
+							title={isLogin ? 'Login' : 'Registration'}
+							aria-label={isLogin ? 'Login' : 'Registration'}
 						>
 							{isLogin ? 'Login' : 'Registration'}
 						</Button>

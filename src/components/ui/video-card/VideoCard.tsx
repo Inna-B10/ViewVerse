@@ -33,6 +33,7 @@ export function VideoCard({ video, Icon, isImagePriority }: Props) {
 				<Link
 					href={PAGE.VIDEO(video.publicId)}
 					title={video.title}
+					aria-label={video.title}
 				>
 					<Image
 						src={video.thumbnailUrl || '/default-thumbnail.jpg'}
@@ -50,6 +51,7 @@ export function VideoCard({ video, Icon, isImagePriority }: Props) {
 				<Link
 					href={PAGE.CHANNEL(video.channel.slug)}
 					title={video.channel.slug}
+					aria-label={video.channel.slug}
 					className='absolute left-1.5 bottom-2'
 				>
 					<Image

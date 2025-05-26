@@ -41,6 +41,7 @@ export function Logout() {
 				'group flex items-center gap-5 py-2 hover:text-primary transition-colors duration-200'
 			}
 			title='Logout'
+			aria-label='Logout'
 		>
 			<LogOut className={cn('min-w-6 pb-[3px] group-hover:rotate-6')} />
 			<span>{isPending ? 'Please wait...' : 'Logout'}</span>

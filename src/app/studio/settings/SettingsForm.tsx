@@ -112,6 +112,8 @@ export function SettingsForm() {
 					<Button
 						type='submit'
 						isLoading={isLoading}
+						title='Update settings'
+						aria-label='Update settings'
 					>
 						Update
 					</Button>

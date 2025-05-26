@@ -89,6 +89,8 @@ export function EditVideoForm() {
 						type='submit'
 						disabled={isPending}
 						isLoading={isPending}
+						title='Update video'
+						aria-label='Update video'
 					>
 						Update
 					</Button>
