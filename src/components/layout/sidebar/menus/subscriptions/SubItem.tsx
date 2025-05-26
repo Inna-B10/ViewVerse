@@ -14,7 +14,7 @@ export function SubItem({ item }: Props) {
 				{item.avatar && (
 					<Image
 						alt={item.label}
-						src={item.avatar}
+						src={item.avatar || '/default-avatar.png'}
 						width={30}
 						height={30}
 					/>

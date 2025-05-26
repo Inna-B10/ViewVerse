@@ -34,7 +34,6 @@ export function VideoCard({ video, Icon, isImagePriority }: Props) {
 					href={PAGE.VIDEO(video.publicId)}
 					title={video.title}
 				>
-					{/* //[FIXME] default video thumbnail for server component */}
 					<Image
 						src={video.thumbnailUrl || '/default-thumbnail.jpg'}
 						width={250}

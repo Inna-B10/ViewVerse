@@ -9,7 +9,7 @@ import type { IVideoFormData } from '@/types/studio-videos.types'
 
 interface Props {
 	isPending?: boolean
-	form: UseFormReturn<IVideoFormData, any, undefined>
+	form: UseFormReturn<IVideoFormData, any, IVideoFormData>
 }
 
 export function VideoForm({

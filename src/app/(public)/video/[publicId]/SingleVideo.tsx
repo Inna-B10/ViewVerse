@@ -8,11 +8,10 @@ import { useSidebar } from '@/providers/SidebarContext'
 import { useProfile } from '@/hooks/useProfile'
 import { SimilarVideos } from './SimilarVideos'
 import { Comments } from './comments/Comments'
+import { VideoDescription } from './description/VideoDescription'
 import { VideoActions } from './video-actions/VideoActions'
 import { VideoChannel } from './video-channel/VideoChannel'
-// import { VideoDescription } from './description/VideoDescription'
 import type { ISingleVideoResponse } from '@/types/video.types'
-import styles from './description/VideoDescription.module.scss'
 
 interface Props {
 	video: ISingleVideoResponse
@@ -79,13 +78,9 @@ export function SingleVideo({ video }: Props) {
 
 				{/*  ----------------------------- Channel Details ----------------------------  */}
 				<VideoChannel video={video} />
-				{/* ---------------------------- Video Description --------------------------- */}
-				{/* //[TODO] обработать теги/перенос строк */}
 
-				{/* <VideoDescription description={video.description} /> */}
-				<div className='relative mb-4 bg-gray-800 px-3  py-2.5 rounded whitespace-pre-line'>
-					<article className={styles.article}>{video.description}</article>
-				</div>
+				{/* ---------------------------- Video Description --------------------------- */}
+				<VideoDescription description={video.description} />
 
 				{/* -------------------------------- Comments -------------------------------- */}
 				<Comments video={video} />

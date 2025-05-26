@@ -10,7 +10,7 @@ import { studioVideoService } from '@/services/studio/studio-video.service'
 import type { IVideoFormData } from '@/types/studio-videos.types'
 
 interface Props {
-	form: UseFormReturn<IVideoFormData, any, undefined>
+	form: UseFormReturn<IVideoFormData, any, IVideoFormData>
 	isReadyToPublish: boolean
 }
 
@@ -30,7 +30,6 @@ export function CreateVideoForm({ form, isReadyToPublish }: Props) {
 		}
 	})
 
-	//[TODO] обработать теги/перенос строк description: stripHtmlWithBreak(data.description).trim()
 	const onSubmit: SubmitHandler<IVideoFormData> = data => {
 		mutate({
 			...data,

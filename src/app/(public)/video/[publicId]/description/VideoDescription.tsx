@@ -16,7 +16,7 @@ export function VideoDescription({ description }: { description: string }) {
 	)
 
 	return (
-		<div className='relative mb-4 bg-gray-800 px-3  py-2.5 rounded'>
+		<div className='relative mb-4 bg-gray-800 px-3  py-2.5 rounded whitespace-pre-line'>
 			<article className={styles.article}>
 				{parse(initialContent)}
 				{isShouldShowToggle && (
