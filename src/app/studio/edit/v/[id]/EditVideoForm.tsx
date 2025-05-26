@@ -6,7 +6,6 @@ import { useParams, useRouter } from 'next/navigation'
 import { useEffect } from 'react'
 import type { SubmitHandler } from 'react-hook-form'
 import { useForm } from 'react-hook-form'
-import toast from 'react-hot-toast'
 import { Heading } from '@/ui/Heading'
 import { Button } from '@/ui/button/Button'
 import { STUDIO_PAGE } from '@/config/studio-page.config'
@@ -46,14 +45,17 @@ export function EditVideoForm() {
 	const { mutate, isPending } = useMutation({
 		mutationKey: ['edit the video'],
 		mutationFn: (data: IVideoFormData) => studioVideoService.update(id as string, data),
-		onSuccess: () => {
+		onSuccess: async () => {
 			queryClient.invalidateQueries({
 				queryKey: ['studioVideoList']
 			})
+			const { toast } = await import('react-hot-toast')
 			toast.success('Video successfully updated!')
+
 			router.push(STUDIO_PAGE.STUDIO_HOME)
 		},
-		onError() {
+		async onError() {
+			const { toast } = await import('react-hot-toast')
 			toast.error('Updating video failed!')
 		}
 	})

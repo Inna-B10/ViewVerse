@@ -2,7 +2,6 @@ import { useMutation } from '@tanstack/react-query'
 import { useRouter } from 'next/navigation'
 import type { SubmitHandler } from 'react-hook-form'
 import { type UseFormReturn } from 'react-hook-form'
-import toast from 'react-hot-toast'
 import { Button } from '@/ui/button/Button'
 import { STUDIO_PAGE } from '@/config/studio-page.config'
 import { VideoForm } from './VideoForm'
@@ -20,12 +19,15 @@ export function CreateVideoForm({ form, isReadyToPublish }: Props) {
 	const { mutate, isPending } = useMutation({
 		mutationKey: ['create a video'],
 		mutationFn: (data: IVideoFormData) => studioVideoService.create(data),
-		onSuccess: () => {
+		onSuccess: async () => {
 			form.reset()
+			const { toast } = await import('react-hot-toast')
 			toast.success('Video successfully published!')
+
 			router.push(STUDIO_PAGE.STUDIO_HOME)
 		},
-		onError() {
+		async onError() {
+			const { toast } = await import('react-hot-toast')
 			toast.error('Publishing video failed!')
 		}
 	})

@@ -5,7 +5,6 @@ import * as m from 'framer-motion/m'
 import { PenBox, Trash2, X } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import { type ReactElement, useEffect, useRef, useState } from 'react'
-import toast from 'react-hot-toast'
 import { useHotkeys } from 'react-hotkeys-hook'
 import { Button } from '@/ui/button/Button'
 import { PAGE } from '@/config/public-page.config'
@@ -67,19 +66,22 @@ export function SinglePlaylistTitle({ playlist, Icon, refetch }: Props) {
 	const { mutate: updateTitle } = useMutation({
 		mutationKey: ['update playlist title'],
 		mutationFn: () => playlistService.renamePlaylist(playlist.id, title),
-		onSuccess: () => {
+		onSuccess: async () => {
 			setTimeout(() => {
 				setIsEditing(false)
 				refetch()
 			}, 1000)
+			const { toast } = await import('react-hot-toast')
 			toast.success('Playlist renamed successfully!')
 		}
 	})
 
-	const handleChangeTitle = (text: string) => {
+	const handleChangeTitle = async (text: string) => {
 		const trimmed = text.trim()
 		if (trimmed === '') {
+			const { toast } = await import('react-hot-toast')
 			toast.error('Title cannot be empty!')
+
 			setTitle(playlist.title)
 			setIsEditing(false)
 			return
@@ -97,12 +99,16 @@ export function SinglePlaylistTitle({ playlist, Icon, refetch }: Props) {
 	const { mutate: deletePlaylist } = useMutation({
 		mutationKey: ['delete playlist'],
 		mutationFn: () => playlistService.deletePlaylist(playlist.id),
-		onSuccess: () => {
+		onSuccess: async () => {
 			setIsShowDelete(false)
+			const { toast } = await import('react-hot-toast')
 			toast.success('Playlist successfully deleted!')
 			router.push(PAGE.PLAYLISTS())
 		},
-		onError: () => toast.error('Could not delete playlist!')
+		onError: async () => {
+			const { toast } = await import('react-hot-toast')
+			toast.error('Could not delete playlist!')
+		}
 	})
 
 	// ----------------------------------------

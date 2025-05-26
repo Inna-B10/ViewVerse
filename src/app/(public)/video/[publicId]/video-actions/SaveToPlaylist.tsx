@@ -4,7 +4,6 @@ import { AnimatePresence } from 'framer-motion'
 import * as m from 'framer-motion/m'
 import { Bookmark, CheckSquare, ListPlus, PlusSquare, Square } from 'lucide-react'
 import { useRouter } from 'next/navigation'
-import toast from 'react-hot-toast'
 import { PAGE } from '@/config/public-page.config'
 import { useOutside } from '@/hooks/useOutside'
 import { useUserPlaylists } from '@/hooks/useUserPlaylists'
@@ -26,7 +25,8 @@ export function SaveToPlaylist({ video, refetchSinglePlaylist }: ISaveToPlaylist
 	const { mutate: togglePlaylist, isPending } = useMutation({
 		mutationKey: ['toggle video in playlist'],
 		mutationFn: (playlistId: string) => playlistService.toggleVideoInPlaylist(playlistId, video.id),
-		onSuccess: (_, playlistId) => {
+		onSuccess: async (_, playlistId) => {
+			const { toast } = await import('react-hot-toast')
 			const playlist = data?.find(p => p.id === playlistId)
 			const wasInPlaylist = data
 				?.find(p => p.id === playlistId)
@@ -36,7 +36,7 @@ export function SaveToPlaylist({ video, refetchSinglePlaylist }: ISaveToPlaylist
 			} else {
 				toast.success(`Video added to "${playlist?.title}"`, { id: 'playlist' })
 			}
-			// setIsShow(false)
+
 			refetchPlaylistsList()
 			refetchSinglePlaylist?.()
 		}
