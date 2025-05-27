@@ -6,6 +6,7 @@ import { Heading } from '@/ui/Heading'
 import { SkeletonLoader } from '@/ui/SkeletonLoader'
 import { VerifiedBadge } from '@/ui/VerifiedBadge'
 import { transformCount } from '@/utils/transform-count'
+import { ChannelBanner } from './ChannelBanner'
 import type { IChannel } from '@/types/channel.types'
 
 const DynamicSubscribeButton = dynamicNext(
@@ -19,19 +20,7 @@ const DynamicSubscribeButton = dynamicNext(
 export function ChannelSubPage({ channel }: { channel: IChannel }) {
 	return (
 		<>
-			<div>
-				<div className='relative w-full h-[249px] rounded-lg overflow-hidden shadow-md'>
-					<Image
-						alt={channel.user.name || ''}
-						//[TODO] default banner
-						src={channel.bannerUrl || '/overlay.png'}
-						fill
-						className='object-cover'
-						quality={90}
-						priority
-					/>
-				</div>
-			</div>
+			<ChannelBanner channel={channel} />
 			<div className='flex gap-5 mt-7 mb-12 w-1/2'>
 				<Image
 					alt={channel.slug}

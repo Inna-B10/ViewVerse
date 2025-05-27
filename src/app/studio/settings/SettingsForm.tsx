@@ -1,11 +1,14 @@
 'use client'
 
-import { Controller } from 'react-hook-form'
+import dynamic from 'next/dynamic'
 import { Button } from '@/ui/button/Button'
 import { Field } from '@/ui/fields/Field'
 import { Textarea } from '@/ui/fields/Textarea'
-import { UploadField } from '@/ui/upload-field/UploadField'
 import { useSettings } from './useSettings'
+
+const DynamicSettingsMediaFields = dynamic(() =>
+	import('./SettingsMediaFields').then(mod => mod.SettingsMediaFields)
+)
 
 export function SettingsForm() {
 	//NB in case without destructuring: const { formObject, isLoading, onSubmit } = useSettings()
@@ -73,43 +76,8 @@ export function SettingsForm() {
 							error={errors.channel?.description?.message}
 						/>
 					</div>
-					<div>
-						<Controller
-							control={control}
-							name='channel.avatarUrl'
-							render={({ field: { onChange, value }, fieldState: { error } }) => (
-								<UploadField
-									label='Avatar: '
-									help='preferred image dimensions 240 x 240'
-									onChange={onChange}
-									value={value}
-									error={error}
-									folder='avatars'
-									className='mb-4'
-								/>
-							)}
-						/>
-						<Controller
-							control={control}
-							rules={{
-								validate: value => !!value || 'Banner is required!'
-							}}
-							name='channel.bannerUrl'
-							render={({ field: { onChange, value }, fieldState: { error } }) => (
-								//[FIXME] banner dimensions
-								<UploadField
-									label='Banner: '
-									help='preferred image dimensions 2120 x 1192'
-									onChange={onChange}
-									value={value}
-									error={error}
-									folder='banners'
-									sizePreview={[458, 258]}
-									overlay='/overlay.png'
-								/>
-							)}
-						/>
-					</div>
+					{/* ------------------------------ Avatar/banner ----------------------------- */}
+					<DynamicSettingsMediaFields control={control} />
 				</div>
 				<div className='text-center mt-12'>
 					<Button

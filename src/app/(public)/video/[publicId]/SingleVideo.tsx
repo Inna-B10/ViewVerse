@@ -8,10 +8,13 @@ import { VideoPlayer } from '@/ui/video-player/VideoPlayer'
 import { useSidebar } from '@/providers/SidebarContext'
 import { useProfile } from '@/hooks/useProfile'
 import { SimilarVideos } from './SimilarVideos'
-import { VideoDescription } from './description/VideoDescription'
 import { VideoActions } from './video-actions/VideoActions'
 import { VideoChannel } from './video-channel/VideoChannel'
 import type { ISingleVideoResponse } from '@/types/video.types'
+
+const DynamicVideoDescription = dynamic(() =>
+	import('./description/VideoDescription').then(mod => mod.VideoDescription)
+)
 
 const DynamicComments = dynamic(() => import('./comments/Comments').then(mod => mod.Comments))
 
@@ -82,7 +85,7 @@ export function SingleVideo({ video }: Props) {
 				<VideoChannel video={video} />
 
 				{/* ---------------------------- Video Description --------------------------- */}
-				<VideoDescription description={video.description} />
+				<DynamicVideoDescription description={video.description} />
 
 				{/* -------------------------------- Comments -------------------------------- */}
 				<DynamicComments video={video} />

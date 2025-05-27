@@ -41,11 +41,11 @@ export function Auth() {
 				border-border
 				rounded'
 			>
+				{/* ------------------------- Login/register Buttons ------------------------- */}
 				<SwitchAuth
 					isLogin={isLogin}
 					setIsLogin={setIsLogin}
 				/>
-
 				<form
 					onSubmit={handleSubmit(onSubmit)}
 					name='auth'
