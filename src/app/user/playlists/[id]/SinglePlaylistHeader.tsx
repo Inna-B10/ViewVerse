@@ -18,7 +18,7 @@ interface Props {
 	refetch: () => void
 }
 
-export function SinglePlaylistTitle({ playlist, Icon, refetch }: Props) {
+export function SinglePlaylistHeader({ playlist, Icon, refetch }: Props) {
 	const { ref: refTitleInput, setIsShow: setIsEditingOutside } = useOutside(false)
 	const { ref: refDelete } = useOutside(false, () => setIsShowDelete(false))
 

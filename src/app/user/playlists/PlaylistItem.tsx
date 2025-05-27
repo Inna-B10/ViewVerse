@@ -20,7 +20,8 @@ export function PlaylistItem({ playlist }: Props) {
 			<div>
 				<Link
 					href={PAGE.PLAYLISTS(playlist.id)}
-					title={playlist.title}
+					title={`Open playlist: ${playlist.title}`}
+					aria-label={`Open playlist: ${playlist.title}`}
 					className='relative block group'
 				>
 					{/* ------------------------------ Dark Overlay ------------------------------ */}
@@ -59,7 +60,8 @@ export function PlaylistItem({ playlist }: Props) {
 					<Link
 						href={PAGE.PLAYLISTS(playlist.id)}
 						className='line-clamp-2 leading-[1.3]'
-						title={playlist.title}
+						title={`Open playlist: ${playlist.title}`}
+						aria-label={`Open playlist: ${playlist.title}`}
 					>
 						{playlist.title}
 					</Link>

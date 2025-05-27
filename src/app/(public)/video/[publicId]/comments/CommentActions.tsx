@@ -56,6 +56,8 @@ export function CommentActions({
 				className='relative text-gray-500 text-xs whitespace-nowrap transition-all duration-200 hover:text-gray-300'
 				disabled={isDeletePending}
 				onClick={() => deleteComment()}
+				title='Delete comment'
+				aria-label='Delete comment'
 			>
 				Delete
 			</button>
@@ -76,6 +78,8 @@ export function CommentActions({
 						}
 					}
 				}}
+				title={isEditing ? 'Save comment' : 'Edit comment'}
+				aria-label={isEditing ? 'Save comment' : 'Edit comment'}
 			>
 				{isEditing ? 'Save' : 'Edit'}
 			</button>

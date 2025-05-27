@@ -23,8 +23,8 @@ export function StudioVideoCard({ video }: Props) {
 				href={PAGE.VIDEO(video.publicId)}
 				target='_blank'
 				className='flex-shrink-0'
-				title={`View video: ${video.title} `}
-				aria-label={`View video: ${video.title} `}
+				title='Open the video in a new tab'
+				aria-label='Open the video in a new tab'
 			>
 				<Image
 					src={video.thumbnailUrl || '/default-thumbnail.jpg'}
@@ -39,8 +39,8 @@ export function StudioVideoCard({ video }: Props) {
 				<Link
 					href={STUDIO_PAGE.EDIT_VIDEO(video.id)}
 					className='line-clamp-1 text-xl mb-1'
-					title='Open the video for editing'
-					aria-label='Open the video for editing'
+					title='Edit the video'
+					aria-label='Edit the video'
 				>
 					{video.title}
 				</Link>

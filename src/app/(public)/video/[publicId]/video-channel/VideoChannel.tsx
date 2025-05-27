@@ -22,7 +22,8 @@ export function VideoChannel({ video }: { video: ISingleVideoResponse }) {
 			<div className='flex gap-4 items-end'>
 				<Link
 					href={PAGE.CHANNEL(video.channel.slug)}
-					title={`${video.channel.user.name} channel`}
+					title={`Open ${video.channel.user.name} channel`}
+					aria-label={`Open ${video.channel.user.name} channel`}
 				>
 					<Image
 						alt={video.channel.user.name || ''}
@@ -36,7 +37,8 @@ export function VideoChannel({ video }: { video: ISingleVideoResponse }) {
 				<div>
 					<Link
 						href={PAGE.CHANNEL(video.channel.slug)}
-						title={`${video.channel.user.name} channel`}
+						title={`Open ${video.channel.user.name} channel`}
+						aria-label={`Open ${video.channel.user.name} channel`}
 					>
 						<Heading
 							hTag='h3'

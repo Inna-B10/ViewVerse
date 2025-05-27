@@ -16,6 +16,7 @@ interface Props {
 	overlay?: string
 	sizePreview?: [number, number]
 	classNameButton?: string
+	help?: string
 }
 
 export function UploadField({
@@ -28,7 +29,8 @@ export function UploadField({
 	isImage = true,
 	overlay,
 	sizePreview,
-	classNameButton
+	classNameButton,
+	help
 }: Props) {
 	const { isLoading, uploadFile } = useUpload({
 		folder,
@@ -42,7 +44,7 @@ export function UploadField({
 				htmlFor={inputId}
 				className='block text-gray-200 font-medium mb-2'
 			>
-				{label}
+				{label} <span className='text-xs font-normal tracking-wider'>{help}</span>
 			</label>
 			<label
 				htmlFor={inputId}

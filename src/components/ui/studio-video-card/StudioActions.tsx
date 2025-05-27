@@ -64,8 +64,8 @@ export function StudioActions({ video }: Props) {
 				href={PAGE.VIDEO(video.publicId)}
 				className='text-blue-600 transition-opacity opacity-80 hover:opacity-100'
 				target='_blank'
-				title='Open in a new tab'
-				aria-label='Open in a new tab'
+				title='Open the video in a new tab'
+				aria-label='Open the video in a new tab'
 			>
 				<ExternalLink size={22} />
 			</Link>

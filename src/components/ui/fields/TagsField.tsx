@@ -13,7 +13,7 @@ interface Props {
 
 export function TagsField({
 	label,
-	placeholder = 'Enter tags, separated by commas.',
+	placeholder = 'Enter tags, separated by commas or Enter',
 	error,
 	tags = [],
 	onTagsChange,

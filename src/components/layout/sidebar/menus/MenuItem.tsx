@@ -9,6 +9,7 @@ export function MenuItem({ item, isActive, isShowedSidebar }: IMenuItemProps) {
 			<Link
 				href={item.link}
 				title={item.label}
+				aria-label={`Go to ${item.label} page`}
 				className={cn('group flex items-center gap-5 py-2 ', {
 					'hover:text-primary transition-colors duration-200': !isActive,
 					'hover: cursor-default': isActive

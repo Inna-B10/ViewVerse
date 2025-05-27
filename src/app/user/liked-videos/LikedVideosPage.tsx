@@ -48,6 +48,7 @@ export function LikedVideosPage() {
 							<VideoCardHorizontal video={item.video} />
 							<button
 								title='Remove from liked videos'
+								aria-label='Remove from liked videos'
 								onClick={() => mutate(item.video.id)}
 								className='ml-4 text-red-600 transition-opacity opacity-80 hover:opacity-100'
 							>

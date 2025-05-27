@@ -45,6 +45,8 @@ export function Auth() {
 						type='button'
 						className={`px-4 py-2 font-semibold ${isLogin ? 'text-primary border-b-2 border-primary' : 'text-gray-600'}`}
 						onClick={() => setIsLogin(true)}
+						title='Login'
+						aria-label='Login'
 					>
 						Login
 					</button>
@@ -52,6 +54,8 @@ export function Auth() {
 						type='button'
 						className={`px-4 py-2 font-semibold ${!isLogin ? 'text-primary border-b-2 border-primary' : 'text-gray-600'}`}
 						onClick={() => setIsLogin(false)}
+						title='Registration'
+						aria-label='Registration'
 					>
 						Registration
 					</button>

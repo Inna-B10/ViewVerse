@@ -32,8 +32,8 @@ export function VideoCard({ video, Icon, isImagePriority }: Props) {
 				{/* ------------------------------- Video Img ------------------------------- */}
 				<Link
 					href={PAGE.VIDEO(video.publicId)}
-					title={video.title}
-					aria-label={video.title}
+					title={`Open video: ${video.title}`}
+					aria-label={`Open video: ${video.title}`}
 				>
 					<Image
 						src={video.thumbnailUrl || '/default-thumbnail.jpg'}
@@ -41,7 +41,7 @@ export function VideoCard({ video, Icon, isImagePriority }: Props) {
 						height={140}
 						quality={90}
 						//? sizes='100vw, (min-width: 768px) 50vw, (min-width: 1024px) 33vw, (min-width:1440) 25vw'
-						alt={video.title}
+						alt={`Thumbnail for video: ${video.title}`}
 						className='rounded-md w-svw object-cover'
 						priority={isImagePriority}
 					/>
@@ -50,15 +50,15 @@ export function VideoCard({ video, Icon, isImagePriority }: Props) {
 				{/* ------------------------------ Channel Img ------------------------------ */}
 				<Link
 					href={PAGE.CHANNEL(video.channel.slug)}
-					title={video.channel.slug}
-					aria-label={video.channel.slug}
+					title={`Open ${video.channel.slug} channel homepage`}
+					aria-label={`Open ${video.channel.slug} channel homepage`}
 					className='absolute left-1.5 bottom-2'
 				>
 					<Image
 						src={video.channel.avatarUrl || '/default-avatar.png'}
 						width={32}
 						height={32}
-						alt={channelName}
+						alt={`Thumbnail for channel: ${channelName}`}
 						quality={90}
 						className='rounded-full shadow-orange h-auto'
 						priority={isImagePriority}

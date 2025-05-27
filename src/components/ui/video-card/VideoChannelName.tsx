@@ -14,8 +14,8 @@ export function VideoChannelName({ channel, spanClassName }: IVideoChannelName) 
 		<Link
 			href={PAGE.CHANNEL(channel?.slug || '')}
 			className='flex items-center gap-1 w-fit'
-			title={`channel: ${channel?.user.name}` || ''}
-			aria-label={`channel: ${channel?.user.name}` || ''}
+			title={`Go to ${channel?.user.name} channel homepage` || ''}
+			aria-label={`Go to ${channel?.user.name} channel homepage` || ''}
 		>
 			<span className={twMerge('text-gray-400 text-sm', spanClassName)}>
 				{channel?.user?.name || ''}

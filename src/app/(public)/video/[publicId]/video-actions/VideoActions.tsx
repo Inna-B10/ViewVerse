@@ -71,6 +71,7 @@ export function VideoActions({
 						onClick={() => router.push(PAGE.AUTH)}
 						className='flex items-center gap-1 transition-all duration-200 opacity-80 hover:opacity-100 hover:text-primary'
 						title='Please log in to use this feature'
+						aria-label='Please log in to use this feature'
 					>
 						<ListPlus size={20} /> Playlists
 					</button>
@@ -82,6 +83,13 @@ export function VideoActions({
 					isVideoOwner ? 'opacity-40' : 'hover:text-primary'
 				)}
 				title={
+					profile
+						? isLiked
+							? 'Remove from liked'
+							: 'Add to liked'
+						: 'Please log in to use this feature'
+				}
+				aria-label={
 					profile
 						? isLiked
 							? 'Remove from liked'

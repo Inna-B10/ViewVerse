@@ -39,6 +39,8 @@ export function VideoDescription({ description }: { description: string }) {
 						<button
 							onClick={() => setIsExpanded(prev => !prev)}
 							className='text-sm text-primary transition-opacity duration-200 opacity-85 hover:opacity-100'
+							title={isExpanded ? 'Hide' : 'Show more'}
+							aria-label={isExpanded ? 'Hide' : 'Show more'}
 						>
 							{isExpanded ? '[Hide]' : '[Show more]'}
 						</button>

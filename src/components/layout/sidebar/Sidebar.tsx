@@ -36,8 +36,6 @@ export function Sidebar() {
 						isShowedSidebar={isShowedSidebar}
 						isLoggedIn={isLoggedIn}
 					/>
-					{/* ------------------------------ Subscriptions ----------------------------- */}
-					{/* <SidebarSubscriptions /> */}
 					{/* --------------------------------- Studio --------------------------------- */}
 					{/* !!pathname.includes(STUDIO_PAGE.STUDIO_HOME) && ( */}
 					<SidebarMenu

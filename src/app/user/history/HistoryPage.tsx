@@ -68,6 +68,7 @@ export function HistoryPage() {
 							/>
 							<button
 								title='Remove from history'
+								aria-label='Remove from history'
 								onClick={() => remove(item.video.id)}
 								className='ml-4 text-red-600 transition-opacity opacity-80 hover:opacity-100'
 							>

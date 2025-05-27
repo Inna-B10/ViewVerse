@@ -66,6 +66,7 @@ export function CreatePlaylist({ refetch, onClose, ref, videoPublicId }: ICreate
 				>
 					<button
 						title='Close the form'
+						aria-label='Close the form'
 						onClick={onClose}
 						className='absolute top-2 right-4 text-gray-500 hover:text-white transition-colors'
 					>
@@ -98,6 +99,8 @@ export function CreatePlaylist({ refetch, onClose, ref, videoPublicId }: ICreate
 						<div className='text-center mt-[1.1rem]'>
 							<button
 								type='submit'
+								title='Create a playlist'
+								aria-label='Create a playlist'
 								disabled={isPending}
 								className='py-1 px-3 w-fit font-semibold rounded duration-300 transition-all disabled:bg-gray-400	bg-primary hover:bg-primaryDark text-field'
 							>
