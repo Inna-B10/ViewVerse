@@ -44,7 +44,7 @@ export function UploadField({
 				htmlFor={inputId}
 				className='block text-gray-200 font-medium mb-2'
 			>
-				{label} <span className='text-xs font-normal tracking-wider'>{help}</span>
+				{label} <span className='text-xs font-normal tracking-wide'>{help}</span>
 			</label>
 			<label
 				htmlFor={inputId}

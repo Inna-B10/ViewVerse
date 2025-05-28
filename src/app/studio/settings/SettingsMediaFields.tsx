@@ -8,7 +8,7 @@ interface Props {
 
 export function SettingsMediaFields({ control }: Props) {
 	return (
-		<div>
+		<div className='flex flex-col justify-between mb-4'>
 			<Controller
 				control={control}
 				name='channel.avatarUrl'

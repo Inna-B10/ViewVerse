@@ -83,7 +83,7 @@ export function VideoForm({
 							render={({ field: { onChange, value }, fieldState: { error } }) => (
 								<UploadField
 									label='Thumbnail: '
-									help='preferred image dimensions 320 x 180'
+									help='preferred image dim. 320 x 180'
 									onChange={onChange}
 									value={value}
 									error={error}
