@@ -5,7 +5,7 @@ import { List } from 'lucide-react'
 import { useParams } from 'next/navigation'
 import { SkeletonLoader } from '@/ui/SkeletonLoader'
 import { VideoCardHorizontal } from '@/ui/video-card/VideoCardHorizontal'
-import { SinglePlaylistHeader } from './SinglePlaylistHeader'
+import { SinglePlaylistHeader } from './playlist-header/SinglePlaylistHeader'
 import { SaveToPlaylist } from '@/app/(public)/video/[publicId]/video-actions/SaveToPlaylist'
 import { playlistService } from '@/services/playlist.service'
 

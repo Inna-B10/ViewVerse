@@ -9,7 +9,7 @@ interface Props {
 	playlist: IPlaylist
 }
 
-export function PlaylistItem({ playlist }: Props) {
+export function PlaylistCard({ playlist }: Props) {
 	return (
 		<m.div
 			className='mb-5 w-fit'
