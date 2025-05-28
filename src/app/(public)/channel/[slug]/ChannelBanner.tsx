@@ -11,7 +11,7 @@ export function ChannelBanner({ channel }: Props) {
 			<Image
 				alt={channel.user.name || ''}
 				//[TODO] default banner
-				src={channel.bannerUrl || '/overlay.png'}
+				src={channel.bannerUrl || '/images/overlay.png'}
 				fill
 				className='object-cover'
 				quality={90}

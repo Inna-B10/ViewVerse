@@ -60,8 +60,6 @@ export function SinglePlaylistHeader({ playlist, Icon, refetch }: Props) {
 				isEditing={isEditing}
 				setIsEditing={setIsEditing}
 				setIsShowDelete={setIsShowDelete}
-				handleChangeTitle={handleChangeTitle}
-				title={title}
 			/>
 
 			{/* ------------------------ Delete Confirmation Modal ----------------------- */}

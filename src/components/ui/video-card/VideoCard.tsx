@@ -36,7 +36,7 @@ export function VideoCard({ video, Icon, isImagePriority }: Props) {
 					aria-label={`Open video: ${video.title}`}
 				>
 					<Image
-						src={video.thumbnailUrl || '/default-thumbnail.jpg'}
+						src={video.thumbnailUrl || '/images/default-thumbnail.jpg'}
 						width={250}
 						height={140}
 						quality={90}
@@ -55,7 +55,7 @@ export function VideoCard({ video, Icon, isImagePriority }: Props) {
 					className='absolute left-1.5 bottom-2'
 				>
 					<Image
-						src={video.channel.avatarUrl || '/default-avatar.png'}
+						src={video.channel.avatarUrl || '/images/default-avatar.png'}
 						width={32}
 						height={32}
 						alt={`Thumbnail for channel: ${channelName}`}
