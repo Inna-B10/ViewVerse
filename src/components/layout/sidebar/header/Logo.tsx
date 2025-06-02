@@ -1,5 +1,5 @@
 import cn from 'clsx'
-import { SquarePlay } from 'lucide-react'
+import { TvMinimalPlay } from 'lucide-react'
 import Link from 'next/link'
 import { COLORS } from '@/constants/colors.constants'
 import { PAGE } from '@/config/public-page.config'
@@ -15,10 +15,11 @@ export function Logo({ isSidebar = true }: LogoProps) {
 			title='ViewVerse - home page'
 			aria-label='ViewVerse - home page'
 		>
-			<SquarePlay
+			<TvMinimalPlay
 				color={COLORS.primary}
 				size={isSidebar ? 26 : 34}
 			/>
+			&nbsp;
 			<h1
 				className={cn('font-philosopher text-2xl font-bold  text-primary', {
 					'text-[2.5rem]': !isSidebar
