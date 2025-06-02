@@ -22,6 +22,7 @@
 		"linkify-html": "^4.3.1",
 		"lucide-react": "^0.469.0",
 		"next": "^15.3.1",
+		"next-sitemap": "^4.2.3",
 		"path-to-regexp": "^8.2.0",
 		"rc-slider": "^11.1.8",
 		"rc-tooltip": "^6.4.0",

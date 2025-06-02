@@ -1,0 +1,39 @@
+User-Agent: Yandex
+Host: https://viewverse.com
+Disallow: /auth
+Disallow: /recover
+Disallow: *?
+Disallow: /docs/*
+Disallow: *utm_
+Disallow: *?query=
+Disallow: /media/*?PAGEN_1=
+Disallow: *?keyword=
+Disallow: *?sub
+
+Sitemap: https://viewverse.com/sitemap.xml
+
+User-Agent: Googlebot
+Disallow: /auth
+Disallow: /recover
+Disallow: *?
+Disallow: /docs/*
+Disallow: *utm_
+Disallow: *?query=
+Disallow: /media/*?PAGEN_1=
+Disallow: *?keyword=
+Disallow: *?sub
+
+Sitemap: https://viewverse.com/sitemap.xml
+
+User-Agent: *
+Disallow: /auth
+Disallow: /recover
+Disallow: *?
+Disallow: /docs/*
+Disallow: *utm_
+Disallow: *?query=
+Disallow: /media/*?PAGEN_1=
+Disallow: *?keyword=
+Disallow: *?sub
+
+Sitemap: https://viewverse.com/sitemap.xml
