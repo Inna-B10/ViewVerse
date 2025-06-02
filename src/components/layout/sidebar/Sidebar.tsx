@@ -37,14 +37,12 @@ export function Sidebar() {
 						isLoggedIn={isLoggedIn}
 					/>
 					{/* --------------------------------- Studio --------------------------------- */}
-					{/* !!pathname.includes(STUDIO_PAGE.STUDIO_HOME) && ( */}
 					<SidebarMenu
 						title='Studio'
 						menu={STUDIO_SIDEBAR_DATA}
 						isShowedSidebar={isShowedSidebar}
 						isLoggedIn={isLoggedIn}
 					/>
-					{/* )} */}
 				</>
 			)}
 			{/* ---------------------------- More From Youtube --------------------------- */}

@@ -14,18 +14,14 @@ export function Logout() {
 	const { mutate, isPending } = useMutation({
 		mutationKey: ['logout'],
 		mutationFn: () => authService.logout(),
-		onSuccess: () => {
-			const isPrivatePage =
-				pathname.includes(STUDIO_PAGE.STUDIO_HOME) ||
-				pathname.includes(STUDIO_PAGE.SETTINGS) ||
-				pathname.includes(PAGE.LIKED_VIDEOS) ||
-				pathname.includes(PAGE.PLAYLISTS()) ||
-				pathname.includes(PAGE.SUBSCRIPTIONS) ||
-				pathname.includes(PAGE.HISTORY)
+		onSuccess: (_: unknown, cachedUser: { email?: string } | undefined) => {
+			const isPrivatePage = pathname.includes(STUDIO_PAGE.STUDIO_HOME) || pathname.includes('/user')
 
-			const isChannelPage = pathname.startsWith('/channel/')
+			const currentChannel = pathname.startsWith('/channel/') ? pathname.split('/')[2] : null
 
-			if (isPrivatePage || isChannelPage) {
+			const isUserChannel = currentChannel?.trim() === cachedUser?.email?.split('@')[0]?.trim()
+
+			if (isPrivatePage || isUserChannel) {
 				router.push(PAGE.HOME)
 			}
 		}
@@ -36,7 +32,7 @@ export function Logout() {
 
 	return (
 		<button
-			onClick={() => mutate()}
+			onClick={() => mutate(undefined)}
 			className={
 				'group flex items-center gap-5 py-2 hover:text-primary transition-colors duration-200'
 			}

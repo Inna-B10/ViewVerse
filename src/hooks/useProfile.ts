@@ -5,7 +5,7 @@ import { useTypedSelector } from '@/store'
 export function useProfile() {
 	const { isLoggedIn, authReady } = useTypedSelector(state => state.auth)
 
-	const { data, isLoading, isSuccess, refetch } = useQuery({
+	const query = useQuery({
 		queryKey: ['profile'],
 		queryFn: () => userService.getProfile(),
 		enabled: isLoggedIn && authReady,
@@ -13,9 +13,9 @@ export function useProfile() {
 	})
 
 	return {
-		profile: data,
-		isLoading,
-		isSuccess,
-		refetch
+		profile: isLoggedIn ? query.data : undefined, // <<< reset on logout
+		isLoading: query.isLoading,
+		isSuccess: query.isSuccess,
+		refetch: query.refetch
 	}
 }
