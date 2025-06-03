@@ -71,6 +71,7 @@ export function VideoPlayer({ video, isVideoOwner, toggleTheaterMode, maxResolut
 				/>
 
 				{isVideoReady && (
+					/* ----------------------------- PlayerControls  */
 					<PlayerControls
 						state={state}
 						fn={fn}

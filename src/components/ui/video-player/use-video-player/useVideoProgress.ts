@@ -31,23 +31,38 @@ export function useVideoProgress(playerRef: RefObject<HTMLCustomVideoElement | n
 		}
 	}, [playerRef, playerRef?.current?.duration])
 
-	useEffect(() => {
-		const player = playerRef?.current
+	//NB обязательно зависимость от playerRef.current иначе при первой загрузке, видео может не быть не готово, а без .current  Progress больше не перерисуется и не будет показывать прогресс воспроизведения  */
+	// 	useEffect(() => {
+	// 		const player = playerRef?.current
+	//
+	// 		const updateProgress = () => {
+	// 			if (!player) return
+	//
+	// 			const { currentTime, progress } = getVideoInfo(player)
+	//
+	// 			setCurrentTime(currentTime)
+	// 			setProgress(progress)
+	// 		}
+	//
+	// 		player?.addEventListener('timeupdate', updateProgress)
+	//
+	// 		return () => {
+	// 			player?.removeEventListener('timeupdate', updateProgress)
+	// 		}
+	// 	}, [playerRef, playerRef.current])
 
-		const updateProgress = () => {
+	// NB Этот вариант не так эффективен, как timeupdate, но помогает избежать зависимости от .current в массиве зависимостей
+	useEffect(() => {
+		const interval = setInterval(() => {
+			const player = playerRef.current
 			if (!player) return
 
 			const { currentTime, progress } = getVideoInfo(player)
-
 			setCurrentTime(currentTime)
 			setProgress(progress)
-		}
+		}, 500) // update every 0.5sec
 
-		player?.addEventListener('timeupdate', updateProgress)
-
-		return () => {
-			player?.removeEventListener('timeupdate', updateProgress)
-		}
+		return () => clearInterval(interval)
 	}, [playerRef])
 
 	return {
