@@ -44,7 +44,7 @@ export function CommentItem({ comment, refetch }: Props) {
 					>
 						<Image
 							alt={comment.user.name || ''}
-							src={comment.user.channel?.avatarUrl || '/images/default-avatar.png'}
+							src={comment.user.channel?.avatarUrl || '/images/default/default-avatar.png'}
 							width={40}
 							height={40}
 							className='rounded flex-shrink-0 shadow-md'
@@ -54,7 +54,7 @@ export function CommentItem({ comment, refetch }: Props) {
 					<div className='min-w-max h-10 pt-1'>
 						<Image
 							alt='Guest avatar'
-							src='/images/default-avatar.png'
+							src='/images/default/default-avatar.png'
 							width={40}
 							height={40}
 							className='rounded flex-shrink-0 shadow-md'

@@ -27,7 +27,7 @@ export function StudioVideoCard({ video }: Props) {
 				aria-label='Open the video in a new tab'
 			>
 				<Image
-					src={video.thumbnailUrl || '/images/default-thumbnail.jpg'}
+					src={video.thumbnailUrl || '/images/default/default-thumbnail.jpg'}
 					width={206}
 					height={116}
 					alt={video.title}

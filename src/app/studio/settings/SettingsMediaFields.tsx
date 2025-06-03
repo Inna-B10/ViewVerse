@@ -8,7 +8,7 @@ interface Props {
 
 export function SettingsMediaFields({ control }: Props) {
 	return (
-		<div className='flex flex-col justify-between mb-4'>
+		<div className='flex flex-col justify-between mb-6'>
 			<Controller
 				control={control}
 				name='channel.avatarUrl'
@@ -31,16 +31,15 @@ export function SettingsMediaFields({ control }: Props) {
 				}}
 				name='channel.bannerUrl'
 				render={({ field: { onChange, value }, fieldState: { error } }) => (
-					//[FIXME] banner dimensions
 					<UploadField
 						label='Banner: '
-						help='preferred image dimensions 2120 x 1192'
+						help='The overlay in the middle displays the content that will be visible on the site.'
 						onChange={onChange}
 						value={value}
 						error={error}
 						folder='banners'
 						sizePreview={[458, 258]}
-						overlay='/images/overlay.png'
+						overlay='/images/default/overlay.png'
 					/>
 				)}
 			/>

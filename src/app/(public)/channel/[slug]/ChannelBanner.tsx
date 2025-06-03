@@ -10,8 +10,7 @@ export function ChannelBanner({ channel }: Props) {
 		<div className='relative w-full h-[249px] rounded-lg overflow-hidden shadow-md'>
 			<Image
 				alt={channel.user.name || ''}
-				//[TODO] default banner
-				src={channel.bannerUrl || '/images/overlay.png'}
+				src={channel.bannerUrl || '/images/default/default-banner.jpg'}
 				fill
 				className='object-cover'
 				quality={90}

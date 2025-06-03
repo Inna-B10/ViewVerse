@@ -33,8 +33,10 @@ export function useSettings() {
 	const { mutate, isPending } = useMutation({
 		mutationKey: ['update-settings'],
 		mutationFn: (data: ISettingsData) => userService.updateProfile(data),
-		onSuccess() {
+		onSuccess: async () => {
 			refetch()
+			const { toast } = await import('react-hot-toast')
+			toast.success('Settings successfully edited!')
 		}
 	})
 

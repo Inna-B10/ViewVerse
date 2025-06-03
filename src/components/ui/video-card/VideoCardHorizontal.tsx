@@ -28,7 +28,7 @@ export function VideoCardHorizontal({ video }: Props) {
 					className='flex-shrink-0'
 				>
 					<Image
-						src={video.thumbnailUrl || '/images/default-thumbnail.jpg'}
+						src={video.thumbnailUrl || '/images/default/default-thumbnail.jpg'}
 						width={250}
 						height={141}
 						quality={90}

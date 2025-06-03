@@ -16,7 +16,7 @@ export function ProgressVideoProcessing({
 }: Props) {
 	const [progress, setProgress] = useState(0)
 
-	//* working version, but not optimal
+	//NB working version, but not optimal
 	// const trackProcessingStatus = (fileName: string) => {
 	// 	const intervalId = setInterval(async () => {
 	// 		const { data } = await fileService.getProcessingStatus(fileName)
@@ -29,7 +29,7 @@ export function ProgressVideoProcessing({
 	// 	}, 2000)
 	// }
 
-	//* more optimal versional to get processing progress
+	//NB more optimal versional to get processing progress
 	const { data: processingData, isSuccess } = useQuery({
 		queryKey: ['processing video', fileName],
 		queryFn: () => fileService.getProcessingStatus(fileName),

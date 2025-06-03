@@ -34,12 +34,12 @@ export function ImagePreview({ isLoading, value, overlay, sizePreview = [100, 10
 						width={width}
 						height={height}
 						priority
-						style={{ maxHeight: '161px' }}
+						style={{ maxHeight: '170px' }}
 					/>
 				</div>
 			) : (
 				<div
-					className=' bg-slate-700 font-medium text-sm flex items-center justify-center text-center rounded-md'
+					className=' bg-slate-700 font-medium text-sm flex max-h-[170px] items-center justify-center text-center rounded-md'
 					style={{ width: `${width}px`, height: `${height}px` }}
 				>
 					No image uploaded
