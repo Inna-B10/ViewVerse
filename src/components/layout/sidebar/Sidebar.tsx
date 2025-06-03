@@ -21,8 +21,11 @@ export function Sidebar() {
 	const { isLoggedIn } = useTypedSelector(state => state.auth)
 
 	return (
-		<aside className=' p-layout border-r border-border whitespace-nowrap overflow-hidden'>
-			<SidebarHeader toggleSidebar={toggleSidebar} />
+		<aside className='p-layout border-r border-border whitespace-nowrap overflow-hidden'>
+			<SidebarHeader
+				toggleSidebar={toggleSidebar}
+				isShowedSidebar={isShowedSidebar}
+			/>
 			{/*----------------------------------- Nav ---------------------------------- */}
 			<SidebarMenu
 				menu={SIDEBAR_DATA}
