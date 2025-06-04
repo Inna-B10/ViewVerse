@@ -2,7 +2,7 @@
 
 import { useQuery } from '@tanstack/react-query'
 import dynamic from 'next/dynamic'
-import { CommentItem } from './CommentItem'
+import { CommentItem } from './comment-item/CommentItem'
 import { commentService } from '@/services/comment.service'
 import type { ISingleVideoResponse } from '@/types/video.types'
 
