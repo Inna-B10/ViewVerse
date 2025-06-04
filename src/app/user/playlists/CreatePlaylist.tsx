@@ -2,7 +2,6 @@ import { useMutation } from '@tanstack/react-query'
 import * as m from 'framer-motion/m'
 import { X } from 'lucide-react'
 import { type SubmitHandler, useForm } from 'react-hook-form'
-import toast from 'react-hot-toast'
 import { useHotkeys } from 'react-hotkeys-hook'
 import { Heading } from '@/ui/Heading'
 import { SkeletonLoader } from '@/ui/SkeletonLoader'
@@ -35,13 +34,15 @@ export function CreatePlaylist({ refetch, onClose, ref, videoPublicId }: ICreate
 	const { mutate, isPending } = useMutation({
 		mutationKey: ['create playlist'],
 		mutationFn: (data: IPlaylistData) => playlistService.createPlaylist(data),
-		onSuccess: () => {
+		onSuccess: async () => {
 			refetch()
 			reset()
 			onClose()
+			const { toast } = await import('react-hot-toast')
 			toast.success('Playlist successfully created!')
 		},
-		onError() {
+		async onError() {
+			const { toast } = await import('react-hot-toast')
 			toast.error('Playlist creation failed!')
 		}
 	})
@@ -65,6 +66,7 @@ export function CreatePlaylist({ refetch, onClose, ref, videoPublicId }: ICreate
 				>
 					<button
 						title='Close the form'
+						aria-label='Close the form'
 						onClick={onClose}
 						className='absolute top-2 right-4 text-gray-500 hover:text-white transition-colors'
 					>
@@ -97,6 +99,8 @@ export function CreatePlaylist({ refetch, onClose, ref, videoPublicId }: ICreate
 						<div className='text-center mt-[1.1rem]'>
 							<button
 								type='submit'
+								title='Create a playlist'
+								aria-label='Create a playlist'
 								disabled={isPending}
 								className='py-1 px-3 w-fit font-semibold rounded duration-300 transition-all disabled:bg-gray-400	bg-primary hover:bg-primaryDark text-field'
 							>

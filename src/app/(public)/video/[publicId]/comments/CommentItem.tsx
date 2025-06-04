@@ -39,14 +39,14 @@ export function CommentItem({ comment, refetch }: Props) {
 				{comment.user?.channel ? (
 					<Link
 						href={PAGE.CHANNEL(comment.user.channel?.slug || '')}
-						title={`${comment.user.name} channel` || ''}
+						title={`Open ${comment.user.name} channel` || ''}
+						aria-label={`Open ${comment.user.name} channel` || ''}
 					>
 						<Image
 							alt={comment.user.name || ''}
-							src={comment.user.channel?.avatarUrl || '/default-avatar.png'}
+							src={comment.user.channel?.avatarUrl || '/images/default/default-avatar.png'}
 							width={40}
 							height={40}
-							title={comment.user.name}
 							className='rounded flex-shrink-0 shadow-md'
 						/>
 					</Link>
@@ -54,7 +54,7 @@ export function CommentItem({ comment, refetch }: Props) {
 					<div className='min-w-max h-10 pt-1'>
 						<Image
 							alt='Guest avatar'
-							src='/default-avatar.png'
+							src='/images/default/default-avatar.png'
 							width={40}
 							height={40}
 							className='rounded flex-shrink-0 shadow-md'

@@ -2,7 +2,7 @@
 
 import { useMutation } from '@tanstack/react-query'
 import cn from 'clsx'
-import { Heart } from 'lucide-react'
+import { Heart, ListPlus } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import { startTransition, useEffect, useState } from 'react'
 import { PAGE } from '@/config/public-page.config'
@@ -63,13 +63,39 @@ export function VideoActions({
 
 	return (
 		<div className='flex justify-end items-center gap-5'>
-			<SaveToPlaylist video={video} />
+			{profile ? (
+				<SaveToPlaylist video={video} />
+			) : (
+				<div className='relative z-10'>
+					<button
+						onClick={() => router.push(PAGE.AUTH)}
+						className='flex items-center gap-1 transition-all duration-200 opacity-80 hover:opacity-100 hover:text-primary'
+						title='Please log in to use this feature'
+						aria-label='Please log in to use this feature'
+					>
+						<ListPlus size={20} /> Playlists
+					</button>
+				</div>
+			)}
 			<button
 				className={cn(
-					'text-lg flex items-center gap-1.5 transition-colors duration-300 opacity-100',
+					'text-lg flex items-center gap-1.5  opacity-100',
 					isVideoOwner ? 'opacity-40' : 'hover:text-primary'
 				)}
-				title='Likes'
+				title={
+					profile
+						? isLiked
+							? 'Remove from liked'
+							: 'Add to liked'
+						: 'Please log in to use this feature'
+				}
+				aria-label={
+					profile
+						? isLiked
+							? 'Remove from liked'
+							: 'Add to liked'
+						: 'Please log in to use this feature'
+				}
 				onClick={clickHandler}
 				disabled={isVideoOwner}
 			>

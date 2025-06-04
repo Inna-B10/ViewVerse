@@ -1,6 +1,4 @@
-import toast from 'react-hot-toast'
-
-export const validateFileSize = (file: File, maxFileSize = 1024 * 1024 * 2) => {
+export const validateFileSize = async (file: File, maxFileSize = 1024 * 1024 * 2) => {
 	//default 2mb
 	let maxSizeFormatted: string
 	if (maxFileSize >= 1024 * 1024 * 1024) {
@@ -9,6 +7,7 @@ export const validateFileSize = (file: File, maxFileSize = 1024 * 1024 * 2) => {
 		maxSizeFormatted = (maxFileSize / (1024 * 1024)).toFixed(0) + ' MB'
 	}
 	if (file.size > maxFileSize) {
+		const { toast } = await import('react-hot-toast')
 		toast.error(`File is too big! (max ${maxSizeFormatted})`)
 		return false
 	}

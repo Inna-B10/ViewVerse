@@ -23,16 +23,17 @@ export function VideoCardHorizontal({ video }: Props) {
 				{/* ------------------------------- Video Img ------------------------------- */}
 				<Link
 					href={PAGE.VIDEO(video.publicId)}
-					title={video.title}
+					title={`View video ${video.title}`}
+					aria-label={`View video ${video.title}`}
 					className='flex-shrink-0'
 				>
 					<Image
-						src={video.thumbnailUrl}
+						src={video.thumbnailUrl || '/images/default/default-thumbnail.jpg'}
 						width={250}
-						height={140}
+						height={141}
 						quality={90}
 						//?sizes='100vw, (min-width: 768px) 50vw, (min-width: 1024px) 33vw, (min-width:1440) 25vw'
-						alt={video.title}
+						alt={`Thumbnail for video: ${video.title}`}
 						className='rounded-md object-cover'
 					/>
 				</Link>

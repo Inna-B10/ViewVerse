@@ -2,7 +2,6 @@ import * as m from 'framer-motion/m'
 import { Upload } from 'lucide-react'
 import { type ChangeEvent, type DragEvent, useState } from 'react'
 import type { UseFormReset } from 'react-hook-form'
-import toast from 'react-hot-toast'
 import { twMerge } from 'tailwind-merge'
 import { SkeletonLoader } from '@/ui/SkeletonLoader'
 import { useUpload } from '@/ui/upload-field/useUpload'
@@ -16,7 +15,7 @@ export function DragDropVideo({ reset }: Props) {
 	const { uploadFile, isLoading: isUploading } = useUpload({
 		maxFileSize: 3 * 1024 * 1024 * 1024, //3gb
 		folder: 'videos',
-		onSuccess(data) {
+		async onSuccess(data) {
 			const file = data[0]
 			if (!file) {
 				if (process.env.NODE_ENV === 'development') {
@@ -29,9 +28,11 @@ export function DragDropVideo({ reset }: Props) {
 				title: file.name,
 				maxResolution: file.maxResolution
 			})
+			const { toast } = await import('react-hot-toast')
 			toast.success('File successfully uploaded to server!')
 		},
-		onError() {
+		async onError() {
+			const { toast } = await import('react-hot-toast')
 			toast.error('Failed to upload file to the server!')
 		}
 	})

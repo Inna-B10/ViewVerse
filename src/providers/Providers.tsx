@@ -14,7 +14,8 @@ export function Providers({ children }: { children: ReactNode }) {
 			new QueryClient({
 				defaultOptions: {
 					queries: {
-						retry: 1
+						retry: 1,
+						refetchOnWindowFocus: false
 					},
 					mutations: {
 						retry: 1
@@ -31,10 +32,11 @@ export function Providers({ children }: { children: ReactNode }) {
 					<Toaster
 						toastOptions={{
 							style: {
-								backgroundColor: '#202937',
+								backgroundColor: '#3f3f46',
+								// backgroundColor: '#202937',
 								color: 'white'
 							},
-							className: 'border border-border shadow-lg'
+							className: 'border border-white/20  shadow-lg'
 						}}
 					/>
 				</LazyMotion>

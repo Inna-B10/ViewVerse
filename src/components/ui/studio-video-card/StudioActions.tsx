@@ -3,7 +3,7 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { Edit, ExternalLink, Trash2 } from 'lucide-react'
 import Link from 'next/link'
-import { type Toast, toast } from 'react-hot-toast'
+import { type Toast } from 'react-hot-toast'
 import { PAGE } from '@/config/public-page.config'
 import { STUDIO_PAGE } from '@/config/studio-page.config'
 import { studioVideoService } from '@/services/studio/studio-video.service'
@@ -19,17 +19,19 @@ export function StudioActions({ video }: Props) {
 	const { mutate: deleteVideo, isPending: isDeletePending } = useMutation({
 		mutationKey: ['delete a video'],
 		mutationFn: () => studioVideoService.delete(video.id),
-		onSuccess: () => {
+		onSuccess: async () => {
 			queryClient.invalidateQueries({
 				queryKey: ['studioVideoList']
 			})
+			const { toast } = await import('react-hot-toast')
 			toast.success('Successfully deleted!')
 		}
 	})
 
-	const handleDelete = () => {
+	const handleDelete = async () => {
+		const { toast } = await import('react-hot-toast')
 		toast.custom((t: Toast) => (
-			<div className='whitespace-nowrap text-white bg-[#202937] border border-border shadow-lg rounded-md p-4'>
+			<div className='whitespace-nowrap text-white bg-zinc-700 border border-white/20 shadow-lg rounded-md p-4'>
 				<p>Are you sure you want to delete this video?</p>
 				<div className='flex justify-end gap-4 mt-2 transition-all duration-300'>
 					<button
@@ -37,15 +39,17 @@ export function StudioActions({ video }: Props) {
 							deleteVideo()
 							toast.dismiss(t.id)
 						}}
-						className='text-red-500 hover:underline hover:underline-offset-4'
+						className='text-red-500 font-bold hover:underline hover:underline-offset-4'
 						title='Delete the video'
+						aria-label='Delete the video'
 					>
 						Delete
 					</button>
 					<button
 						onClick={() => toast.dismiss(t.id)}
-						className='text-gray-400 hover:underline hover:underline-offset-4'
+						className='text-gray-300 font-bold hover:underline hover:underline-offset-4'
 						title='Cancel deleting'
+						aria-label='Cancel deleting'
 					>
 						Cancel
 					</button>
@@ -60,7 +64,8 @@ export function StudioActions({ video }: Props) {
 				href={PAGE.VIDEO(video.publicId)}
 				className='text-blue-600 transition-opacity opacity-80 hover:opacity-100'
 				target='_blank'
-				title='Open in a new tab'
+				title='Open the video in a new tab'
+				aria-label='Open the video in a new tab'
 			>
 				<ExternalLink size={22} />
 			</Link>
@@ -68,6 +73,7 @@ export function StudioActions({ video }: Props) {
 				href={STUDIO_PAGE.EDIT_VIDEO(video.id)}
 				className='text-primary transition-opacity opacity-80 hover:opacity-100'
 				title='Edit the video'
+				aria-label='Edit the video'
 			>
 				<Edit size={22} />
 			</Link>
@@ -75,6 +81,7 @@ export function StudioActions({ video }: Props) {
 				onClick={handleDelete}
 				className='text-red-500 transition-opacity opacity-80 hover:opacity-100'
 				title='Delete the video'
+				aria-label='Delete the video'
 				disabled={isDeletePending}
 			>
 				<Trash2 size={22} />

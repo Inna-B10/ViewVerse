@@ -27,6 +27,8 @@ export function SelectQuality({ currentValue, onChange, maxResolution }: Props) 
 			ref={ref}
 		>
 			<button
+				title='Change video quality'
+				aria-label='Change video quality'
 				onClick={() => setIsShow(!isShow)}
 				className='transition-colors hover:text-primary'
 			>
@@ -48,6 +50,8 @@ export function SelectQuality({ currentValue, onChange, maxResolution }: Props) 
 								className='mb-1'
 							>
 								<button
+									title='Select this quality'
+									aria-label='Select this quality'
 									onClick={() => {
 										onChange(quality)
 										setIsShow(false)

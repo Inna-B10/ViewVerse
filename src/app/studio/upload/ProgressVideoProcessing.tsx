@@ -1,7 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 import cn from 'clsx'
 import { type Dispatch, type SetStateAction, useEffect, useState } from 'react'
-import toast from 'react-hot-toast'
 import { fileService } from '@/services/studio/file.service'
 
 interface Props {
@@ -17,7 +16,7 @@ export function ProgressVideoProcessing({
 }: Props) {
 	const [progress, setProgress] = useState(0)
 
-	//* working version, but not optimal
+	//NB working version, but not optimal
 	// const trackProcessingStatus = (fileName: string) => {
 	// 	const intervalId = setInterval(async () => {
 	// 		const { data } = await fileService.getProcessingStatus(fileName)
@@ -30,7 +29,7 @@ export function ProgressVideoProcessing({
 	// 	}, 2000)
 	// }
 
-	//* more optimal versional to get processing progress
+	//NB more optimal versional to get processing progress
 	const { data: processingData, isSuccess } = useQuery({
 		queryKey: ['processing video', fileName],
 		queryFn: () => fileService.getProcessingStatus(fileName),
@@ -54,7 +53,11 @@ export function ProgressVideoProcessing({
 		setProgress(processingData)
 		if (processingData === 100) {
 			setIsReadyToPublish(true)
-			toast.success('Video processing completed.')
+			const toastSuccess = async () => {
+				const { toast } = await import('react-hot-toast')
+				toast.success('Video processing completed.')
+			}
+			toastSuccess()
 		}
 	}, [isSuccess, processingData, setIsReadyToPublish])
 

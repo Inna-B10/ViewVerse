@@ -12,9 +12,10 @@ import type { IVideo } from '@/types/video.types'
 interface Props {
 	video: IVideo
 	Icon?: LucideIcon
+	isImagePriority?: boolean
 }
 
-export function VideoCard({ video, Icon }: Props) {
+export function VideoCard({ video, Icon, isImagePriority }: Props) {
 	//if channel name is too long
 	let channelName = video?.channel?.user?.name || ''
 	if (channelName.length >= 25) {
@@ -31,32 +32,36 @@ export function VideoCard({ video, Icon }: Props) {
 				{/* ------------------------------- Video Img ------------------------------- */}
 				<Link
 					href={PAGE.VIDEO(video.publicId)}
-					title={video.title}
+					title={`Open video: ${video.title}`}
+					aria-label={`Open video: ${video.title}`}
 				>
 					<Image
-						src={video.thumbnailUrl}
+						src={video.thumbnailUrl || '/images/default/default-thumbnail.jpg'}
 						width={250}
 						height={140}
 						quality={90}
 						//? sizes='100vw, (min-width: 768px) 50vw, (min-width: 1024px) 33vw, (min-width:1440) 25vw'
-						alt={video.title}
-						className='rounded-md w-dvw object-cover'
+						alt={`Thumbnail for video: ${video.title}`}
+						className='rounded-md w-svw object-cover'
+						priority={isImagePriority}
 					/>
 				</Link>
 
 				{/* ------------------------------ Channel Img ------------------------------ */}
 				<Link
 					href={PAGE.CHANNEL(video.channel.slug)}
-					title={video.channel.slug}
+					title={`Open ${video.channel.slug} channel homepage`}
+					aria-label={`Open ${video.channel.slug} channel homepage`}
 					className='absolute left-1.5 bottom-2'
 				>
 					<Image
-						src={video.channel.avatarUrl || '/default-avatar.png'}
+						src={video.channel.avatarUrl || '/images/default/default-avatar.png'}
 						width={32}
 						height={32}
-						alt={channelName}
+						alt={`Thumbnail for channel: ${channelName}`}
 						quality={90}
 						className='rounded-full shadow-orange h-auto'
+						priority={isImagePriority}
 					/>
 				</Link>
 			</div>

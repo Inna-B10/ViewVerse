@@ -56,6 +56,8 @@ export function AddCommentsForm({ refetch, videoId }: IAddComments) {
 				<Button
 					variant='simple'
 					disabled={isPending}
+					title='Add comment'
+					aria-label='Add comment'
 				>
 					{isPending ? 'Saving...' : 'Comment'}
 				</Button>

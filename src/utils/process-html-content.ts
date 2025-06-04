@@ -1,52 +1,26 @@
-export function processHtmlContent(htmlContent: string, limit: number) {
-	let initialContent = htmlContent
+import linkifyHtml from 'linkify-html'
+
+export function processHtmlContent(text: string, limit: number) {
+	let initialContent = text
 	let remainingContent = ''
 	let isShouldShowToggle = false
 
-	// Check if there are </p> tags in the content
-	const hasPTags = /<\/p>/i.test(htmlContent)
+	// Split by double line breaks (equivalent to </p>)
+	const paragraphs = text.split(/\n{2,}/)
 
-	if (hasPTags) {
-		// Break content into tags </p>
-		const contentParts = htmlContent.split(/(<\/p>)/i)
-
-		let count = 0
-		let index = 0
-		for (let i = 0; i < contentParts.length; i++) {
-			if (contentParts[i].toLowerCase() === '</p>') {
-				count++
-			}
-			if (count === limit) {
-				index = i + 1 // Include the closing tag </p>
-				break
-			}
-		}
-
-		initialContent = contentParts.slice(0, index).join('')
-		remainingContent = contentParts.slice(index).join('')
-		isShouldShowToggle = remainingContent.trim().length > 0
-	} else {
-		// If there are no <p> tags, we limit the number of characters
-		const charLimit = 200
-		if (htmlContent.length <= charLimit || htmlContent.length - charLimit <= 50) {
-			initialContent = htmlContent
-		} else {
-			const truncated = htmlContent.slice(0, charLimit + 1)
-
-			const lastSpaceIndex = truncated.lastIndexOf(' ')
-
-			if (lastSpaceIndex === -1) {
-				initialContent = truncated.slice(0, charLimit)
-				remainingContent = truncated.slice(charLimit + 1)
-			} else {
-				initialContent = truncated.slice(0, lastSpaceIndex + 1)
-				remainingContent =
-					truncated.slice(lastSpaceIndex + 1).concat(htmlContent.slice(charLimit + 1)) + ' '
-			}
-
-			isShouldShowToggle = true
-		}
+	if (paragraphs.length > limit) {
+		initialContent = paragraphs.slice(0, limit).join('\n\n')
+		remainingContent = paragraphs.slice(limit).join('\n\n')
+		isShouldShowToggle = true
+	}
+	const options = {
+		target: '_blank',
+		rel: 'noopener noreferrer'
 	}
 
-	return { initialContent, remainingContent, isShouldShowToggle }
+	// Transforming links
+	initialContent = linkifyHtml(initialContent, options)
+	remainingContent = linkifyHtml(remainingContent, options)
+
+	return { initialContent: initialContent, remainingContent, isShouldShowToggle }
 }

@@ -7,6 +7,7 @@ import { Logo } from '@/components/layout/sidebar/header/Logo'
 import { SkeletonLoader } from '@/ui/SkeletonLoader'
 import { Button } from '@/ui/button/Button'
 import { Field } from '@/ui/fields/Field'
+import { SwitchAuth } from './SwitchAuth'
 import { useAuthForm } from './useAuthForm'
 import type { IAuthForm } from '@/types/auth-form.types'
 import styles from './captcha.module.scss'
@@ -40,23 +41,11 @@ export function Auth() {
 				border-border
 				rounded'
 			>
-				<div className='flex justify-center mb-6'>
-					<button
-						type='button'
-						className={`px-4 py-2 font-semibold ${isLogin ? 'text-primary border-b-2 border-primary' : 'text-gray-600'}`}
-						onClick={() => setIsLogin(true)}
-					>
-						Login
-					</button>
-					<button
-						type='button'
-						className={`px-4 py-2 font-semibold ${!isLogin ? 'text-primary border-b-2 border-primary' : 'text-gray-600'}`}
-						onClick={() => setIsLogin(false)}
-					>
-						Registration
-					</button>
-				</div>
-
+				{/* ------------------------- Login/register Buttons ------------------------- */}
+				<SwitchAuth
+					isLogin={isLogin}
+					setIsLogin={setIsLogin}
+				/>
 				<form
 					onSubmit={handleSubmit(onSubmit)}
 					name='auth'
@@ -107,6 +96,8 @@ export function Auth() {
 						<Button
 							type='submit'
 							isLoading={isLoading}
+							title={isLogin ? 'Login' : 'Registration'}
+							aria-label={isLogin ? 'Login' : 'Registration'}
 						>
 							{isLogin ? 'Login' : 'Registration'}
 						</Button>

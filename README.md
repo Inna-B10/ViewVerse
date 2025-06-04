@@ -43,6 +43,8 @@ bun add html-react-parser
 bun add react-hotkeys-hook
 bun add rc-slider
 bun add rc-tooltip
+bun add linkify-html
+bun add next-sitemap
 ```
 
 ### ToDo
@@ -117,67 +119,55 @@ bun add rc-tooltip
 - [x] page with a list of user's videos
 - [x] pagination
 - [x] delete video functional
+- [x] обработать описание видео (теги и перенос строк)
+- [x] ? crop images (thumbnail)
+- [x] metadata, SEO
+- [x] skeleton for player
+- [x] вспомогательный текст загрузки картинок и видео (формат,размер,вес). Аватар, баннер,
+- [x] после редактирования профиля, нужно сообщение об успехе
+- [x] доработать загрузку плеера на VideoPlayer
+- [x] TODO default banner
 
 ---
 
-- [ ] доработать загрузку плеера на VideoPlayer
-- [ ] обработать описание видео (теги и перенос строк)
-- [ ] после редактирования профиля, нужно сообщение об успехе
-- [ ] имя файла банера/аватара на сервере должно совпадать с пользователем/каналом
-- [ ] имя файла привью на сервере должно совпадать с именем файла видео
+- [ ] безопасная обработка тегов в комментах
 - [ ] ? если видео неподходящего разрешения, оно загружается на сервер и фейково "обрабатывается".
-      Нужно сообщение пользователю
-- [ ] ? после обработки, удалить файл видео из общей папки загрузки
-- [ ] ? после удаления видео из БД, файлы остаются на сервере (видео во всех папках + привью)
-- [ ] ? картинки (аватар,банер,превью), которые не используются/заменяются остаются на сервере!!!
-- [ ] ? crop images (thumbnail)
-- [ ] ? вспомогательный текст загрузки картинок и видео (формат,размер,вес). Аватар, баннер,
       привью + видео
-- [ ] ? skeleton for player
-- [ ] found videos with user's comment
-- [ ] TODO default banner
+- [ ] ? change rc-slider and rc-tooltip to native input? (lesson 40)
+
+<br />
+
+      STYLES:
+
 - [ ] button colors
-- [ ] password reset option
 - [ ] @media:
   - [ ] video player styles
   - [ ] images
   - [ ] grid
+- [ ] media query:sideBar на мобилах изначально скрыт, при открытии - поверх контента
 - [ ] ? replace Skeleton on Dynamic pages to <Loading /> or review style code (cols)
 - [ ] UI block's heading/loader
   - [x] heading
-  - [ ] SkeletonLoader:
-    - [x] static count
-    - [ ] count depends on @media
-- [ ] media query:sideBar на мобилах изначально скрыт, при открытии - поверх контента
-<!-- - [ ] меню кнопка?, 1 колонка
+  - [ ] SkeletonLoader: - [x] static count - [ ] count depends on @media
+  <!-- - [ ] меню кнопка?, 1 колонка
 - [ ] xs 540 - меню скрыто, 2 колонки
 - [ ] sm 640
 - [ ] md 768 - меню скрыто, 3 колонки
 - [ ] lg 1024 - меню открыто, 3 колонки
 - [ ] xl 1280 - меню открыто, 4 колонки
 - [ ] 2xl 1536 -->
-- [?] change rc-slider and rc-tooltip to native input? (lesson 40)
-- [?] component SidebarSubscriptions is needed?
-- [?] getTrendingVideos (2раза, на главной + трендинг). Так это серверный компонент?
 
-<!--
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+<br />
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+      New/Server functions:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details. -->
+- [ ] ? found videos with user's comment
+- [ ] ? password reset option
+- [ ] [!] change domain for production
+- [ ] SERVER: имя файла банера/аватара на сервере должно совпадать с пользователем/каналом
+- [ ] SERVER: имя файла привью на сервере должно совпадать с именем файла видео Нужно сообщение
+      пользователю
+- [ ] SERVER: после обработки, удалить файл видео из общей папки загрузки
+- [ ] SERVER: после удаления видео из БД, файлы остаются на сервере (видео во всех папках + привью)
+- [ ] SERVER: картинки (аватар,банер,превью), которые не используются/заменяются остаются на
+      сервере!!!

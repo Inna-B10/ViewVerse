@@ -9,7 +9,7 @@ interface Props {
 	playlist: IPlaylist
 }
 
-export function PlaylistItem({ playlist }: Props) {
+export function PlaylistCard({ playlist }: Props) {
 	return (
 		<m.div
 			className='mb-5 w-fit'
@@ -20,7 +20,8 @@ export function PlaylistItem({ playlist }: Props) {
 			<div>
 				<Link
 					href={PAGE.PLAYLISTS(playlist.id)}
-					title={playlist.title}
+					title={`Open playlist: ${playlist.title}`}
+					aria-label={`Open playlist: ${playlist.title}`}
 					className='relative block group'
 				>
 					{/* ------------------------------ Dark Overlay ------------------------------ */}
@@ -39,12 +40,12 @@ export function PlaylistItem({ playlist }: Props) {
 
 					{/* ------------------------------- Main Image ------------------------------- */}
 					<Image
-						src={playlist?.videos[0]?.thumbnailUrl || '/default-video.jpg'}
+						src={playlist?.videos[0]?.thumbnailUrl || '/images/default/default-thumbnail.jpg'}
 						width={250}
 						height={140}
 						quality={100}
 						alt={playlist.title}
-						className='rounded-md shadow-lg object-cover w-dvw relative z-0 border-t border-r border-[#191B28]'
+						className='rounded-md shadow-lg object-cover w-svw relative z-0 border-t border-r border-[#191B28]'
 					/>
 
 					{/* ------------------------------- Count Badge ------------------------------ */}
@@ -59,7 +60,8 @@ export function PlaylistItem({ playlist }: Props) {
 					<Link
 						href={PAGE.PLAYLISTS(playlist.id)}
 						className='line-clamp-2 leading-[1.3]'
-						title={playlist.title}
+						title={`Open playlist: ${playlist.title}`}
+						aria-label={`Open playlist: ${playlist.title}`}
 					>
 						{playlist.title}
 					</Link>

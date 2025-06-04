@@ -21,8 +21,11 @@ export function Sidebar() {
 	const { isLoggedIn } = useTypedSelector(state => state.auth)
 
 	return (
-		<aside className=' p-layout border-r border-border whitespace-nowrap overflow-hidden'>
-			<SidebarHeader toggleSidebar={toggleSidebar} />
+		<aside className='p-layout border-r border-border whitespace-nowrap overflow-hidden'>
+			<SidebarHeader
+				toggleSidebar={toggleSidebar}
+				isShowedSidebar={isShowedSidebar}
+			/>
 			{/*----------------------------------- Nav ---------------------------------- */}
 			<SidebarMenu
 				menu={SIDEBAR_DATA}
@@ -36,17 +39,13 @@ export function Sidebar() {
 						isShowedSidebar={isShowedSidebar}
 						isLoggedIn={isLoggedIn}
 					/>
-					{/* ------------------------------ Subscriptions ----------------------------- */}
-					{/* <SidebarSubscriptions /> */}
 					{/* --------------------------------- Studio --------------------------------- */}
-					{/* !!pathname.includes(STUDIO_PAGE.STUDIO_HOME) && ( */}
 					<SidebarMenu
 						title='Studio'
 						menu={STUDIO_SIDEBAR_DATA}
 						isShowedSidebar={isShowedSidebar}
 						isLoggedIn={isLoggedIn}
 					/>
-					{/* )} */}
 				</>
 			)}
 			{/* ---------------------------- More From Youtube --------------------------- */}

@@ -46,7 +46,8 @@ export function SubscribeButton({
 			onClick={clickHandler}
 			variant={isSubscribed ? 'secondary' : 'primary'}
 			title={isSubscribed ? 'Unsubscribe' : 'Subscribe'}
-			disabled={isOwner}
+			aria-label={isSubscribed ? 'Unsubscribe' : 'Subscribe'}
+			disabled={isOwner || !profile}
 		>
 			{isSubscribed ? (
 				<div className='fill-[#fff] transition-colors duration-200'>

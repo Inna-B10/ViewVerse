@@ -13,7 +13,7 @@ interface Props {
 
 export function TagsField({
 	label,
-	placeholder = 'Enter tags, separated by commas.',
+	placeholder = 'Enter tags, separated by commas or Enter',
 	error,
 	tags = [],
 	onTagsChange,
@@ -65,6 +65,8 @@ export function TagsField({
 							<span>{tag}</span>
 							<button
 								type='button'
+								title='Remove tag'
+								aria-label='Remove tag'
 								onClick={e => {
 									e.preventDefault()
 									removeTag(tag.trim())

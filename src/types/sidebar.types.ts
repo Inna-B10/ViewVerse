@@ -6,11 +6,3 @@ export interface ISidebarItem {
 	link: string
 	isBottomBorder?: boolean
 }
-
-export interface ISidebarSubItem {
-	avatar: string
-	label: string
-	link: string
-	isLiveNow?: boolean
-	isRecentUpload?: boolean
-}

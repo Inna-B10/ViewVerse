@@ -22,11 +22,12 @@ export function VideoChannel({ video }: { video: ISingleVideoResponse }) {
 			<div className='flex gap-4 items-end'>
 				<Link
 					href={PAGE.CHANNEL(video.channel.slug)}
-					title={`${video.channel.user.name} channel`}
+					title={`Open ${video.channel.user.name} channel`}
+					aria-label={`Open ${video.channel.user.name} channel`}
 				>
 					<Image
 						alt={video.channel.user.name || ''}
-						src={video.channel.avatarUrl || '/default-avatar.png'}
+						src={video.channel.avatarUrl || '/images/default/default-avatar.png'}
 						width={55}
 						height={55}
 						priority
@@ -36,7 +37,8 @@ export function VideoChannel({ video }: { video: ISingleVideoResponse }) {
 				<div>
 					<Link
 						href={PAGE.CHANNEL(video.channel.slug)}
-						title={`${video.channel.user.name} channel`}
+						title={`Open ${video.channel.user.name} channel`}
+						aria-label={`Open ${video.channel.user.name} channel`}
 					>
 						<Heading
 							hTag='h3'

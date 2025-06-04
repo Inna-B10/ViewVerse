@@ -1,3 +1,4 @@
+import cn from 'clsx'
 import dayjs from 'dayjs'
 import parse from 'html-react-parser'
 import Image from 'next/image'
@@ -7,6 +8,7 @@ import { STUDIO_PAGE } from '@/config/studio-page.config'
 import { processHtmlContent } from '@/utils/process-html-content'
 import { StudioActions } from './StudioActions'
 import type { IFullVideo } from '@/types/video.types'
+import styles from '@/app/(public)/video/[publicId]/description/VideoDescription.module.scss'
 
 interface Props {
 	video: IFullVideo
@@ -21,10 +23,11 @@ export function StudioVideoCard({ video }: Props) {
 				href={PAGE.VIDEO(video.publicId)}
 				target='_blank'
 				className='flex-shrink-0'
-				title={`Open the video: ${video.title} `}
+				title='Open the video in a new tab'
+				aria-label='Open the video in a new tab'
 			>
 				<Image
-					src={video.thumbnailUrl}
+					src={video.thumbnailUrl || '/images/default/default-thumbnail.jpg'}
 					width={206}
 					height={116}
 					alt={video.title}
@@ -36,12 +39,13 @@ export function StudioVideoCard({ video }: Props) {
 				<Link
 					href={STUDIO_PAGE.EDIT_VIDEO(video.id)}
 					className='line-clamp-1 text-xl mb-1'
-					title='Open the video for editing'
+					title='Edit the video'
+					aria-label='Edit the video'
 				>
 					{video.title}
 				</Link>
 
-				<div className='opacity-50 text-sm'>{parse(initialContent)}</div>
+				<div className={cn('opacity-70 text-sm', styles.article)}>{parse(initialContent)}</div>
 			</div>
 
 			<div>

@@ -16,7 +16,7 @@ export function VideoDescription({ description }: { description: string }) {
 	)
 
 	return (
-		<div className='relative mb-4 bg-gray-800 px-3  py-2.5 rounded'>
+		<div className='relative mb-4 bg-gray-800 px-3  py-2.5 rounded whitespace-pre-line'>
 			<article className={styles.article}>
 				{parse(initialContent)}
 				{isShouldShowToggle && (
@@ -39,6 +39,8 @@ export function VideoDescription({ description }: { description: string }) {
 						<button
 							onClick={() => setIsExpanded(prev => !prev)}
 							className='text-sm text-primary transition-opacity duration-200 opacity-85 hover:opacity-100'
+							title={isExpanded ? 'Hide' : 'Show more'}
+							aria-label={isExpanded ? 'Hide' : 'Show more'}
 						>
 							{isExpanded ? '[Hide]' : '[Show more]'}
 						</button>

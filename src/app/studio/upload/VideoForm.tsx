@@ -9,7 +9,7 @@ import type { IVideoFormData } from '@/types/studio-videos.types'
 
 interface Props {
 	isPending?: boolean
-	form: UseFormReturn<IVideoFormData, any, undefined>
+	form: UseFormReturn<IVideoFormData, any, IVideoFormData>
 }
 
 export function VideoForm({
@@ -41,7 +41,7 @@ export function VideoForm({
 						<Controller
 							control={control}
 							rules={{
-								validate: value => !!value.trim() || 'Description is required!'
+								validate: value => !!value?.trim() || 'Description is required!'
 							}}
 							name='description'
 							render={({ field: { onChange, value }, fieldState: { error } }) => (
@@ -83,12 +83,13 @@ export function VideoForm({
 							render={({ field: { onChange, value }, fieldState: { error } }) => (
 								<UploadField
 									label='Thumbnail: '
+									help='preferred image dim. 320 x 180'
 									onChange={onChange}
 									value={value}
 									error={error}
 									folder='thumbnails'
 									classNameButton=' border-border'
-									sizePreview={[288, 162]}
+									sizePreview={[288, 161]}
 								/>
 							)}
 						/>

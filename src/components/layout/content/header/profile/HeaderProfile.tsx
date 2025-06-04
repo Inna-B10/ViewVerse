@@ -12,7 +12,8 @@ export function HeaderProfile() {
 	) : (
 		<LinkButton
 			href={PAGE.AUTH}
-			title='Please authorize first!'
+			title='Go to authorization page'
+			aria-label='Go to authorization page'
 		>
 			<LogIn size={20} />
 			Auth

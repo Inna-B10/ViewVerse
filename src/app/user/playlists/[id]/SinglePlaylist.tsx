@@ -5,7 +5,7 @@ import { List } from 'lucide-react'
 import { useParams } from 'next/navigation'
 import { SkeletonLoader } from '@/ui/SkeletonLoader'
 import { VideoCardHorizontal } from '@/ui/video-card/VideoCardHorizontal'
-import { SinglePlaylistTitle } from './SinglePlaylistTitle'
+import { SinglePlaylistHeader } from './playlist-header/SinglePlaylistHeader'
 import { SaveToPlaylist } from '@/app/(public)/video/[publicId]/video-actions/SaveToPlaylist'
 import { playlistService } from '@/services/playlist.service'
 
@@ -21,7 +21,8 @@ export function SinglePlaylist() {
 
 	return (
 		<section className='w-3/4'>
-			<SinglePlaylistTitle
+			{/* ----------------------------- Playlist Header ---------------------------- */}
+			<SinglePlaylistHeader
 				Icon={
 					<List
 						size={24}
@@ -44,7 +45,10 @@ export function SinglePlaylist() {
 							key={video.id}
 							className='flex items-start gap-4 mb-8 justify-between rounded-md'
 						>
+							{/* ----------------------------- Horizontal Card ---------------------------- */}
 							<VideoCardHorizontal video={video} />
+
+							{/* ------------------------------ Video Actions ----------------------------- */}
 							<SaveToPlaylist
 								video={video}
 								refetchSinglePlaylist={refetch}

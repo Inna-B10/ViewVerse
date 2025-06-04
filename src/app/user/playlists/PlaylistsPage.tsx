@@ -4,7 +4,7 @@ import { ListVideo } from 'lucide-react'
 import { Heading } from '@/ui/Heading'
 import { SkeletonLoader } from '@/ui/SkeletonLoader'
 import { useUserPlaylists } from '@/hooks/useUserPlaylists'
-import { PlaylistItem } from './PlaylistItem'
+import { PlaylistCard } from './PlaylistCard'
 
 export function PlaylistsPage() {
 	const { data, isLoading } = useUserPlaylists()
@@ -29,7 +29,7 @@ export function PlaylistsPage() {
 					/>
 				) : data?.length ? (
 					data?.map(item => (
-						<PlaylistItem
+						<PlaylistCard
 							key={item.id}
 							playlist={item}
 						/>
