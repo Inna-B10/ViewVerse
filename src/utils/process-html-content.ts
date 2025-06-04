@@ -18,6 +18,9 @@ export function processHtmlContent(text: string, limit: number) {
 		rel: 'noopener noreferrer'
 	}
 
+	initialContent = initialContent.replace(/\n/g, '<br>')
+	remainingContent = remainingContent.replace(/\n/g, '<br>')
+
 	// Transforming links
 	initialContent = linkifyHtml(initialContent, options)
 	remainingContent = linkifyHtml(remainingContent, options)

@@ -3,6 +3,7 @@ import { type SubmitHandler, useForm } from 'react-hook-form'
 import { Button } from '@/ui/button/Button'
 import { Textarea } from '@/ui/fields/Textarea'
 import { useAuth } from '@/hooks/useAuth'
+import { stripHtmlWithBreak } from '@/utils/strip-html'
 import { commentService } from '@/services/comment.service'
 import type { ICommentData } from '@/types/comment.types'
 
@@ -33,6 +34,9 @@ export function AddCommentsForm({ refetch, videoId }: IAddComments) {
 	})
 
 	const onSubmit: SubmitHandler<ICommentData> = ({ text }) => {
+		text = stripHtmlWithBreak(text).trim()
+
+		if (!text) return
 		mutate({
 			text,
 			videoId

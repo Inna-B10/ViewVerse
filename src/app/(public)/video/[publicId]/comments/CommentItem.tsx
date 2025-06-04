@@ -1,5 +1,11 @@
 'use client'
 
+import parse, {
+	type DOMNode,
+	Element,
+	type HTMLReactParserOptions,
+	domToReact
+} from 'html-react-parser'
 import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -9,6 +15,8 @@ import { VerifiedBadge } from '@/ui/VerifiedBadge'
 import AutoResizeTextarea from '@/ui/fields/AutoResizeTextarea'
 import { PAGE } from '@/config/public-page.config'
 import { useAuth } from '@/hooks/useAuth'
+import { processHtmlContent } from '@/utils/process-html-content'
+import { stripHtmlWithBreak } from '@/utils/strip-html'
 import { transformDate } from '@/utils/transform-date'
 import type { ISingleVideoResponse } from '@/types/video.types'
 
@@ -16,7 +24,6 @@ const DynamicCommentActions = dynamic(
 	() => import('./CommentActions').then(mod => mod.CommentActions),
 	{ ssr: false }
 )
-
 interface Props {
 	comment: ISingleVideoResponse['comments'][0]
 	refetch: () => void
@@ -32,6 +39,24 @@ export function CommentItem({ comment, refetch }: Props) {
 	useEffect(() => {
 		setIsEdited(text.trim() !== comment.text.trim())
 	}, [text, comment.text])
+
+	const options: HTMLReactParserOptions = {
+		replace: domNode => {
+			if (domNode instanceof Element && domNode.name === 'a') {
+				const props = domNode.attribs
+				return (
+					<a
+						{...props}
+						className='transition-colors duration-200 text-blue-400 hover:border-b-blue-400 border-b border-b-transparent break-all'
+						target='_blank'
+						rel='noopener noreferrer'
+					>
+						{domToReact(domNode.children as DOMNode[], options)}
+					</a>
+				)
+			}
+		}
+	}
 
 	return (
 		<div className='even:bg-bgSecondary px-4  pt-7 even:pt-5 pb-5 rounded-md'>
@@ -91,12 +116,14 @@ export function CommentItem({ comment, refetch }: Props) {
 								onBlur={(e: React.FocusEvent<HTMLTextAreaElement>) =>
 									setText(e.target.value.trim())
 								}
-								value={text}
+								value={stripHtmlWithBreak(text)}
 								className='w-full text-gray-300 text-sm leading-snug rounded resize-none bg-transparent outline-none border border-transparent py-1 focus:border-border  focus:bg-field'
 							/>
 						) : (
 							/* ------------------------- If Unchangeable Comment  */
-							<div className='text-gray-200 text-[0.9rem]  leading-normal'>{text.trim()}</div>
+							<div className='text-gray-200 text-[0.9rem]  leading-normal'>
+								{parse(processHtmlContent(text, 10).initialContent, options)}
+							</div>
 						)}
 					</div>
 

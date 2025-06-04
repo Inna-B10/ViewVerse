@@ -29,9 +29,8 @@ const AutoResizeTextarea = forwardRef<HTMLTextAreaElement, Props>(
 					internalRef.current = el
 					if (typeof ref === 'function') {
 						ref(el)
-					} else if (ref && typeof ref === 'object') {
-						;(ref as React.RefObject<HTMLTextAreaElement | null>).current = el
-					}
+					} else if (ref && typeof ref === 'object')
+						(ref as React.RefObject<HTMLTextAreaElement | null>).current = el
 				}}
 				className={`overflow-hidden resize-none ${className}`}
 				value={value}
