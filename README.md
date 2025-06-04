@@ -149,13 +149,14 @@ bun add next-sitemap
 - [ ] UI block's heading/loader
   - [x] heading
   - [ ] SkeletonLoader: - [x] static count - [ ] count depends on @media
-  <!-- - [ ] меню кнопка?, 1 колонка
+
+<!-- - [ ] меню кнопка?, 1 колонка
 - [ ] xs 540 - меню скрыто, 2 колонки
 - [ ] sm 640
 - [ ] md 768 - меню скрыто, 3 колонки
 - [ ] lg 1024 - меню открыто, 3 колонки
 - [ ] xl 1280 - меню открыто, 4 колонки
-- [ ] 2xl 1536 -->
+- [ ] 2xl 1536  -->
 
 <br />
 

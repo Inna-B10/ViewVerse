@@ -56,7 +56,7 @@ export function PlayerProgressBar({ currentTime, duration, onSeek }: Props) {
 				ariaLabelledByForHandle='Progress-slider'
 				styles={{
 					track: { backgroundColor: COLORS.primary, height: 5 },
-					rail: { backgroundColor: 'rgb(200 200 200 /60%)', height: 5 },
+					rail: { backgroundColor: 'rgb(255 255 255 /60%)', height: 5 },
 					handle: {
 						borderColor: 'transparent',
 						height: 16,
