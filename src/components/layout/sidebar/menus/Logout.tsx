@@ -19,7 +19,10 @@ export function Logout() {
 
 			const currentChannel = pathname.startsWith('/channel/') ? pathname.split('/')[2] : null
 
-			const isUserChannel = currentChannel?.trim() === cachedUser?.email?.split('@')[0]?.trim()
+			const isUserChannel =
+				currentChannel?.trim() &&
+				cachedUser?.email &&
+				currentChannel.trim() === cachedUser.email.split('@')[0].trim()
 
 			if (isPrivatePage || isUserChannel) {
 				router.push(PAGE.HOME)

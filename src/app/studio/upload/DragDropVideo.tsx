@@ -5,6 +5,7 @@ import type { UseFormReset } from 'react-hook-form'
 import { twMerge } from 'tailwind-merge'
 import { SkeletonLoader } from '@/ui/SkeletonLoader'
 import { useUpload } from '@/ui/upload-field/useUpload'
+import { validateVideoResolution } from '@/utils/validateVideoResolution'
 import type { IVideoFormData } from '@/types/studio-videos.types'
 
 interface Props {
@@ -23,6 +24,7 @@ export function DragDropVideo({ reset }: Props) {
 				}
 				return
 			}
+
 			reset({
 				videoFileName: file.name,
 				title: file.name,
@@ -47,11 +49,17 @@ export function DragDropVideo({ reset }: Props) {
 		setIsDragging(false)
 	}
 
-	const handleDrop = (event: DragEvent) => {
+	const handleDrop = async (event: DragEvent) => {
 		event.preventDefault()
 		setIsDragging(false)
 		const file = event.dataTransfer?.files?.[0]
 		if (file) {
+			const isValid = await validateVideoResolution(file)
+			if (!isValid) {
+				const { toast } = await import('react-hot-toast')
+				toast.error(`Video resolution too low.\nMinimum: w640 x h360`)
+				return
+			}
 			uploadFile({ target: { files: [file] } } as unknown as ChangeEvent<HTMLInputElement>)
 		}
 	}
@@ -90,7 +98,18 @@ export function DragDropVideo({ reset }: Props) {
 				type='file'
 				accept='video/mp4, video/avi'
 				className='hidden'
-				onChange={uploadFile}
+				onChange={async event => {
+					const file = event.target.files?.[0]
+					if (file) {
+						const isValid = await validateVideoResolution(file)
+						if (!isValid) {
+							const { toast } = await import('react-hot-toast')
+							toast.error('Video resolution too low.\nMinimum: w640 x h360')
+							return
+						}
+						uploadFile(event)
+					}
+				}}
 			/>
 		</label>
 	)

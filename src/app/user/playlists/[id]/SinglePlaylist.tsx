@@ -7,6 +7,7 @@ import { SkeletonLoader } from '@/ui/SkeletonLoader'
 import { VideoCardHorizontal } from '@/ui/video-card/VideoCardHorizontal'
 import { SinglePlaylistHeader } from './playlist-header/SinglePlaylistHeader'
 import { SaveToPlaylist } from '@/app/(public)/video/[publicId]/video-actions/SaveToPlaylist'
+import NotFoundPage from '@/app/not-found'
 import { playlistService } from '@/services/playlist.service'
 
 export function SinglePlaylist() {
@@ -17,7 +18,9 @@ export function SinglePlaylist() {
 		enabled: !!id
 	})
 
-	if (!data) return null
+	if (!data) {
+		return NotFoundPage(false, 'Playlist')
+	}
 
 	return (
 		<section className='w-3/4'>
@@ -56,7 +59,7 @@ export function SinglePlaylist() {
 						</div>
 					))
 				) : (
-					<p>No videos found!</p>
+					<p>This playlist is empty!</p>
 				)}
 			</div>
 		</section>

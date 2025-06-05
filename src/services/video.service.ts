@@ -1,3 +1,4 @@
+import axios from 'axios'
 import { axiosClassic } from '@/api/axios'
 import type { IPaginationParams } from '@/types/pagination.types'
 import type { ISingleVideoResponse, IVideo, IVideosPagination } from '@/types/video.types'
@@ -21,9 +22,22 @@ class VideoService {
 	}
 
 	/* ------------------------- Get Video By PublicId -------------------------- */
-	byPublicId(publicId?: string | null) {
-		const data = axiosClassic.get<ISingleVideoResponse>(`${this._VIDEOS}/by-publicId/${publicId}`)
-		return data
+	async byPublicId(publicId?: string | null) {
+		try {
+			const response = await axiosClassic.get<ISingleVideoResponse>(
+				`${this._VIDEOS}/by-publicId/${publicId}`
+			)
+			return response.data
+		} catch (error) {
+			if (axios.isAxiosError(error)) {
+				if (error.response?.status === 404) {
+					return null
+				}
+			}
+
+			console.error('Error fetching video by publicId:', error)
+			throw error
+		}
 	}
 
 	/* ------------------------------- Game Videos ------------------------------ */

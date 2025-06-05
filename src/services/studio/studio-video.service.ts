@@ -1,3 +1,4 @@
+import axios from 'axios'
 import { instance } from '@/api/axios'
 import type { IPaginationParams } from '@/types/pagination.types'
 import type { IVideoFormData } from '@/types/studio-videos.types'
@@ -16,8 +17,18 @@ class StudioVideoService {
 
 	/* ----------------------------- Get Video By Id ---------------------------- */
 	async byId(id: string) {
-		const { data } = await instance.get<IStudioVideoResponse>(`${this._VIDEOS}/${id}`)
-		return data
+		try {
+			const { data } = await instance.get<IStudioVideoResponse>(`${this._VIDEOS}/${id}`)
+			return data
+		} catch (error) {
+			if (axios.isAxiosError(error)) {
+				if (error.response?.status === 404) {
+					return null
+				}
+			}
+			console.error('Failed to fetch video by id:', error)
+			throw error
+		}
 	}
 
 	/* --------------------------------- Create --------------------------------- */

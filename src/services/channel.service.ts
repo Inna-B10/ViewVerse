@@ -1,3 +1,4 @@
+import axios from 'axios'
 import { axiosClassic, instance } from '@/api/axios'
 import type { IChannel } from '@/types/channel.types'
 
@@ -11,9 +12,20 @@ class ChannelService {
 	}
 
 	/* ------------------------------- Get By Slug ------------------------------ */
-	bySlug(slug?: string | null) {
-		const data = axiosClassic.get<IChannel>(`${this._CHANNELS}/by-slug/${slug}`)
-		return data
+	async bySlug(slug?: string | null): Promise<IChannel | null> {
+		try {
+			const response = await axiosClassic.get<IChannel>(`${this._CHANNELS}/by-slug/${slug}`)
+			return response.data
+		} catch (error: any) {
+			if (axios.isAxiosError(error)) {
+				if (error.response?.status === 404) {
+					return null
+				}
+			}
+
+			console.error('Error getting channel:', error)
+			throw error
+		}
 	}
 
 	/* -------------------------- (un)Subscribe Channel ------------------------- */
