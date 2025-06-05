@@ -37,13 +37,17 @@ export function StudioVideoList() {
 					count={3}
 					className='h-36 rounded-md mb-8'
 				/>
-			) : (
+			) : allVideos?.length ? (
 				allVideos.map(video => (
 					<StudioVideoCard
 						key={video.id}
 						video={video}
 					/>
 				))
+			) : (
+				<div>
+					<p>You have no uploaded videos.</p>
+				</div>
 			)}
 
 			{isFetchingNextPage && (

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { stripHtml } from '@/utils/strip-html'
 import { SingleVideo } from './SingleVideo'
+import NotFoundPage from '@/app/not-found'
 import { videoService } from '@/services/video.service'
 import type { TPagePublicIdProp } from '@/types/page.types'
 
@@ -8,8 +9,11 @@ export const revalidate = 100
 
 export async function generateMetadata(props: TPagePublicIdProp): Promise<Metadata> {
 	const { publicId } = await props.params
-	const data = await videoService.byPublicId(publicId)
-	const video = data.data
+	const video = await videoService.byPublicId(publicId)
+
+	if (!video) {
+		return {}
+	}
 
 	return {
 		title: video.title,
@@ -35,8 +39,11 @@ export async function generateStaticParams() {
 
 export default async function VideoPage(props: TPagePublicIdProp) {
 	const { publicId } = await props.params
-	const data = await videoService.byPublicId(publicId)
-	const video = data.data
+	const video = await videoService.byPublicId(publicId)
+
+	if (!video) {
+		return NotFoundPage(false, 'Video')
+	}
 
 	return <SingleVideo video={video} />
 }

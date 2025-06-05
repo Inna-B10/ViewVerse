@@ -9,6 +9,7 @@ import { useForm } from 'react-hook-form'
 import { Heading } from '@/ui/Heading'
 import { Button } from '@/ui/button/Button'
 import { STUDIO_PAGE } from '@/config/studio-page.config'
+import NotFoundPage from '@/app/not-found'
 import { VideoForm } from '@/app/studio/upload/VideoForm'
 import { studioVideoService } from '@/services/studio/studio-video.service'
 import type { IVideoFormData } from '@/types/studio-videos.types'
@@ -27,17 +28,17 @@ export function EditVideoForm() {
 	})
 
 	useEffect(() => {
-		if (!isSuccess) return
-
-		const initialVideoData = data
-		form.reset({
-			title: initialVideoData.title,
-			description: initialVideoData.description,
-			maxResolution: initialVideoData.maxResolution,
-			thumbnailUrl: initialVideoData.thumbnailUrl,
-			tags: initialVideoData.tags.map(tag => tag.name),
-			videoFileName: initialVideoData.videoFileName
-		})
+		if (isSuccess && data) {
+			const initialVideoData = data
+			form.reset({
+				title: initialVideoData.title,
+				description: initialVideoData.description,
+				maxResolution: initialVideoData.maxResolution,
+				thumbnailUrl: initialVideoData.thumbnailUrl,
+				tags: initialVideoData.tags.map(tag => tag.name),
+				videoFileName: initialVideoData.videoFileName
+			})
+		}
 	}, [data, form, isSuccess])
 
 	const queryClient = useQueryClient()
@@ -66,6 +67,10 @@ export function EditVideoForm() {
 			title: data.title.trim(),
 			description: data.description.trim()
 		})
+	}
+
+	if (!isLoading && (!isSuccess || !data)) {
+		return NotFoundPage(false, 'Video')
 	}
 
 	return (

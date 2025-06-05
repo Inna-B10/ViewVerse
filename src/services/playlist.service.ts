@@ -1,3 +1,4 @@
+import axios from 'axios'
 import { instance } from '@/api/axios'
 import type { IPlaylist, IPlaylistData } from '@/types/playlist.types'
 
@@ -12,8 +13,19 @@ class PlaylistService {
 
 	/* -------------------------- Get Playlist Details -------------------------- */
 	async getPlaylistById(playlistId: string) {
-		const { data } = await instance.get<IPlaylist>(`${this._PLAYLISTS}/${playlistId}`)
-		return data
+		try {
+			const response = await instance.get<IPlaylist>(`${this._PLAYLISTS}/${playlistId}`)
+			return response.data
+		} catch (error) {
+			if (axios.isAxiosError(error)) {
+				if (error.response?.status === 404) {
+					return null
+				}
+			}
+
+			console.error('Failed to fetch playlist by ID:', error)
+			throw error
+		}
 	}
 
 	/* ----------------------- Toggle Video In Playlist(s) ---------------------- */
