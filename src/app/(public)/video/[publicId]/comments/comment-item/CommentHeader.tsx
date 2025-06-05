@@ -17,7 +17,7 @@ export function CommentHeader({ user, createdAt }: Props) {
 				hTag='h3'
 				className='m-0 text-base'
 			>
-				{user.name}{' '}
+				{user.name ? user.name : 'Anonymous'}{' '}
 				{user.channel?.isVerified && (
 					<sup>
 						<VerifiedBadge size={12} />

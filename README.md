@@ -134,9 +134,9 @@ bun add next-sitemap
 
 ---
 
-<br />
+- [ ] [FIXME] user without channelId cannot upload video <br />
 
-      STYLES:
+        STYLES:
 
 - [ ] button colors
 - [ ] @media:
