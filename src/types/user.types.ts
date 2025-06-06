@@ -6,7 +6,7 @@ export interface IUser {
 	id: string
 	name?: string
 	email: string
-	avatar_url?: string
+	avatarUrl?: string
 }
 
 export interface IFullUser extends IUser {

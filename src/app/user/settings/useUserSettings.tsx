@@ -27,7 +27,7 @@ export function useUserSettings() {
 		form.reset({
 			email: profile?.email,
 			name: name,
-			avatar_url: profile?.avatar_url
+			avatarUrl: profile?.avatarUrl
 		})
 	}, [form, isSuccess, profile, name])
 

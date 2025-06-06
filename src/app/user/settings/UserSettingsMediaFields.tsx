@@ -11,7 +11,7 @@ export function UserSettingsMediaFields({ control }: Props) {
 		<div className='flex flex-col justify-between mb-6'>
 			<Controller
 				control={control}
-				name='avatar_url'
+				name='avatarUrl'
 				render={({ field: { onChange, value }, fieldState: { error } }) => (
 					<UploadField
 						label='Avatar: '

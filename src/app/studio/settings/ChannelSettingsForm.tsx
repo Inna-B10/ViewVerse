@@ -4,13 +4,13 @@ import dynamic from 'next/dynamic'
 import { Button } from '@/ui/button/Button'
 import { Field } from '@/ui/fields/Field'
 import { Textarea } from '@/ui/fields/Textarea'
-import { useSettings } from './useSettings'
+import { useChannelSettings } from './useChannelSettings'
 
-const DynamicSettingsMediaFields = dynamic(() =>
-	import('./SettingsMediaFields').then(mod => mod.SettingsMediaFields)
+const DynamicChannelSettingsMediaFields = dynamic(() =>
+	import('./ChannelSettingsMediaFields').then(mod => mod.ChannelSettingsMediaFields)
 )
 
-export function SettingsForm() {
+export function ChannelSettingsForm({ isExistChannel }: { isExistChannel: boolean }) {
 	//NB in case without destructuring: const { formObject, isLoading, onSubmit } = useSettings()
 	const {
 		formObject: {
@@ -22,7 +22,7 @@ export function SettingsForm() {
 		isLoading,
 		isProfileLoading,
 		onSubmit
-	} = useSettings()
+	} = useChannelSettings()
 
 	if (isProfileLoading) return <div>Loading...</div>
 
@@ -40,20 +40,20 @@ export function SettingsForm() {
 							placeholder='Your slug'
 							type='text'
 							name='slug.slug'
-							registration={register('slug.slug', { required: 'Slug is required!' })}
+							registration={register('slug', { required: 'Slug is required!' })}
 							error={errors.slug?.message}
 						/>
 						<Textarea
 							label='Description'
 							placeholder='Enter text about your channel'
-							name='channel.description'
+							name='description'
 							rows={9}
-							registration={register('channel.description')}
-							error={errors.channel?.description?.message}
+							registration={register('description')}
+							error={errors.description?.message}
 						/>
 					</div>
 					{/* ------------------------------ banner ----------------------------- */}
-					<DynamicSettingsMediaFields control={control} />
+					<DynamicChannelSettingsMediaFields control={control} />
 				</div>
 				<div className='text-center mt-12'>
 					<Button
@@ -62,7 +62,7 @@ export function SettingsForm() {
 						title='Update settings'
 						aria-label='Update settings'
 					>
-						Update
+						{isExistChannel ? 'Update' : 'Create'}
 					</Button>
 				</div>
 			</form>

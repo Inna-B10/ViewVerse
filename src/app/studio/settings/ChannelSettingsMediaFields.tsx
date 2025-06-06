@@ -6,7 +6,7 @@ interface Props {
 	control: Control<IChannelSettingsData>
 }
 
-export function SettingsMediaFields({ control }: Props) {
+export function ChannelSettingsMediaFields({ control }: Props) {
 	return (
 		<div className='flex flex-col justify-between mb-6'>
 			<Controller

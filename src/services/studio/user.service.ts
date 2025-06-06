@@ -1,5 +1,5 @@
 import { instance } from '@/api/axios'
-import type { IChannelSettingsData, IUserSettingsData } from '@/types/settings.types'
+import type { IUserSettingsData } from '@/types/settings.types'
 import type { IProfileResponse } from '@/types/user.types'
 
 class UserService {
@@ -14,16 +14,18 @@ class UserService {
 
 	/* ------------------------------ UpdateUserSettings ----------------------------- */
 	async updateProfile(settings: IUserSettingsData) {
-		console.log('settings: ', settings)
+		// console.log('settings: ', settings)
 		const { data } = await instance.put<boolean>(`${this._USERS}/profile`, settings)
 		return data
 	}
 	/* ------------------------------ UpdateChannelSettings ----------------------------- */
-	async updateChannel(settings: IChannelSettingsData) {
-		console.log('settings: ', settings)
-		const { data } = await instance.put<boolean>(`${this._USERS}/profile`, settings)
-		return data
-	}
+	// 	async updateChannel(settings: IChannelSettingsData) {
+	// 		console.log('settings: ', settings)
+	//
+	// 		const { data } = await instance.put<boolean>(`${this._USERS}/profile`, settings)
+	// 		console.log('data: ', data)
+	// 		return data
+	// 	}
 
 	/* ------------------------------- ToggleLike ------------------------------- */
 	async toggleLike(videoId: string) {

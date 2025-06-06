@@ -1,25 +1,34 @@
+'use client'
+
 import { Cog } from 'lucide-react'
-import type { Metadata } from 'next'
+import { useState } from 'react'
 import { Heading } from '@/ui/Heading'
-import { NO_INDEX_PAGE } from '@/constants/seo.constants'
-import { SettingsForm } from './SettingsForm'
+import { Button } from '@/ui/button/Button'
+import { useProfile } from '@/hooks/useProfile'
+import { ChannelSettingsForm } from './ChannelSettingsForm'
 
-export const metadata: Metadata = {
-	title: 'Settings',
-	...NO_INDEX_PAGE
-}
+// export const metadata: Metadata = {
+// 	title: 'Settings',
+// 	...NO_INDEX_PAGE
+// }
 
-export default function SettingsPage() {
+export default function ChannelSettingsPage() {
+	const { profile } = useProfile()
+	const isExistChannel = !!profile?.channel?.slug
+	const [isShowForm, setIsShowForm] = useState(isExistChannel)
 	return (
 		<div>
 			<Heading
 				Icon={Cog}
 				isPageHeading
 			>
-				Channel settings
+				{isExistChannel ? 'Channel settings' : 'Create channel'}
 			</Heading>
-
-			<SettingsForm />
+			{isShowForm ? (
+				<ChannelSettingsForm isExistChannel={isExistChannel} />
+			) : (
+				<Button onClick={() => setIsShowForm(true)}>Create</Button>
+			)}
 		</div>
 	)
 }
