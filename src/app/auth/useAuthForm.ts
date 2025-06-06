@@ -34,12 +34,24 @@ export function useAuthForm(type: 'login' | 'register', reset: UseFormReset<IAut
 					reset()
 					router.push(PAGE.HOME)
 				})
+				// Показываем отдельный toast после выполнения
+				if (type === 'register') {
+					setTimeout(() => {
+						toast.success(
+							'You have successfully registered.\nPlease check your email to verify your account.',
+							{ duration: 6000 }
+						)
+					}, 0) // в следующем тике, чтобы не конфликтовало с promise-toast
+
+					return '' // не показывать встроенный success-toast
+				}
 				return 'Success! You are logged in.'
 			},
 			error: (e: unknown) => {
 				if (axios.isAxiosError(e)) {
-					return e.response?.data?.message
+					return e.response?.data?.message || 'An Axios error occurred'
 				}
+				return 'Something went wrong'
 			}
 		})
 	}

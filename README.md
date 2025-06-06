@@ -134,7 +134,11 @@ bun add next-sitemap
 
 ---
 
-- [ ] [FIXME] user without channelId cannot upload video <br />
+- [ ] разделить settings на пользовательские и для канала
+- [ ] после регистрации перенаправлять на userSettings
+- [ ] если пользователь не подтвердил регистрацию, скрывать студию
+- [ ] переместить НЕ ПОДТВЕРЖДЕНО в оповещения, а также отображать сообщение в userSettings
+- [ ]  <br />
 
         STYLES:
 
@@ -164,6 +168,7 @@ bun add next-sitemap
 - [ ] ? found videos with user's comment
 - [ ] ? password reset option
 - [ ] [!] change domain for production
+- [ ] SERVER: у "новых" пользователей нет channelId и не могут заливать видео
 - [ ] SERVER: имя файла банера/аватара на сервере должно совпадать с пользователем/каналом
 - [ ] SERVER: имя файла привью на сервере должно совпадать с именем файла видео Нужно сообщение
       пользователю
