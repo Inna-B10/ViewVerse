@@ -1,14 +1,11 @@
 'use client'
 
-import dynamic from 'next/dynamic'
+import { Controller } from 'react-hook-form'
 import { Button } from '@/ui/button/Button'
 import { Field } from '@/ui/fields/Field'
 import { Textarea } from '@/ui/fields/Textarea'
+import { UploadField } from '@/ui/upload-field/UploadField'
 import { useChannelSettings } from './useChannelSettings'
-
-const DynamicChannelSettingsMediaFields = dynamic(() =>
-	import('./ChannelSettingsMediaFields').then(mod => mod.ChannelSettingsMediaFields)
-)
 
 export function ChannelSettingsForm({ isExistChannel }: { isExistChannel: boolean }) {
 	//NB in case without destructuring: const { formObject, isLoading, onSubmit } = useSettings()
@@ -52,15 +49,33 @@ export function ChannelSettingsForm({ isExistChannel }: { isExistChannel: boolea
 							error={errors.description?.message}
 						/>
 					</div>
-					{/* ------------------------------ banner ----------------------------- */}
-					<DynamicChannelSettingsMediaFields control={control} />
+
+					{/* --------------------------------- Banner --------------------------------- */}
+					<div className='flex flex-col justify-between mb-6'>
+						<Controller
+							control={control}
+							name='bannerUrl'
+							render={({ field: { onChange, value }, fieldState: { error } }) => (
+								<UploadField
+									label='Banner: '
+									help='The overlay in the middle displays the content that will be visible on the site.'
+									onChange={onChange}
+									value={value}
+									error={error}
+									folder='banners'
+									sizePreview={[458, 258]}
+									overlay='/images/default/overlay.png'
+								/>
+							)}
+						/>
+					</div>
 				</div>
 				<div className='text-center mt-12'>
 					<Button
 						type='submit'
 						isLoading={isLoading}
-						title='Update settings'
-						aria-label='Update settings'
+						title={isExistChannel ? 'Update channel settings' : 'Create channel'}
+						aria-label={isExistChannel ? 'Update channel settings' : 'Create channel'}
 					>
 						{isExistChannel ? 'Update' : 'Create'}
 					</Button>

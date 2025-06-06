@@ -11,17 +11,9 @@ export function useChannelSettings() {
 	})
 
 	const { profile, isSuccess, isLoading, refetch } = useProfile()
-	// const slug = profile?.channel?.slug ? profile?.channel?.slug : profile?.email.split('@')[0].trim()
 
 	useEffect(() => {
 		if (!isSuccess) return
-
-		// const channel = profile?.channel
-		// 	? {
-		// 			bannerUrl: profile?.channel?.bannerUrl,
-		// 			description: profile?.channel?.description
-		// 		}
-		// 	: {}
 
 		form.reset({
 			slug: profile?.channel?.slug || profile?.email.split('@')[0].trim(),
