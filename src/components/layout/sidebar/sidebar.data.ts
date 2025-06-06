@@ -9,6 +9,7 @@ import {
 	History,
 	LayoutGrid,
 	ListVideo,
+	SquareUserRound,
 	TvMinimalPlay,
 	Upload
 } from 'lucide-react'
@@ -58,7 +59,12 @@ export const AUTH_USER_SIDEBAR_DATA: ISidebarItem[] = [
 	{
 		icon: History,
 		label: 'History',
-		link: PAGE.HISTORY,
+		link: PAGE.HISTORY
+	},
+	{
+		icon: SquareUserRound,
+		label: 'User settings',
+		link: PAGE.USER_SETTINGS,
 		isBottomBorder: true
 	}
 ]

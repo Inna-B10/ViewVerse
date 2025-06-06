@@ -1,8 +1,8 @@
-import { Cog } from 'lucide-react'
+import { SquareUserRound } from 'lucide-react'
 import type { Metadata } from 'next'
 import { Heading } from '@/ui/Heading'
 import { NO_INDEX_PAGE } from '@/constants/seo.constants'
-import { SettingsForm } from './SettingsForm'
+import { UserSettingsForm } from './UserSettingsForm'
 
 export const metadata: Metadata = {
 	title: 'Settings',
@@ -13,13 +13,13 @@ export default function SettingsPage() {
 	return (
 		<div>
 			<Heading
-				Icon={Cog}
+				Icon={SquareUserRound}
 				isPageHeading
 			>
-				Channel settings
+				User settings
 			</Heading>
 
-			<SettingsForm />
+			<UserSettingsForm />
 		</div>
 	)
 }

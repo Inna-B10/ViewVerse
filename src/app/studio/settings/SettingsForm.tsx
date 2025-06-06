@@ -36,47 +36,23 @@ export function SettingsForm() {
 				<div className='grid grid-cols-2 gap-10'>
 					<div>
 						<Field
-							label='Email'
-							placeholder='Your email'
-							type='email'
-							name='email'
-							registration={register('email', { required: 'Email is required!' })}
-							error={errors.email?.message}
-						/>
-						<Field
-							label='Password'
-							placeholder='Your password'
-							type='password'
-							name='password'
-							registration={register('password')}
-							error={errors.password?.message}
-						/>
-						<Field
-							label='Name'
-							placeholder='Your name'
-							type='text'
-							name='name'
-							registration={register('name')}
-							error={errors.name?.message}
-						/>
-						<Field
 							label='Slug (alias)'
 							placeholder='Your slug'
 							type='text'
-							name='slug'
-							registration={register('channel.slug')}
-							error={errors.channel?.slug?.message}
+							name='slug.slug'
+							registration={register('slug.slug', { required: 'Slug is required!' })}
+							error={errors.slug?.message}
 						/>
 						<Textarea
 							label='Description'
 							placeholder='Enter text about your channel'
-							name='description'
+							name='channel.description'
 							rows={9}
 							registration={register('channel.description')}
 							error={errors.channel?.description?.message}
 						/>
 					</div>
-					{/* ------------------------------ Avatar/banner ----------------------------- */}
+					{/* ------------------------------ banner ----------------------------- */}
 					<DynamicSettingsMediaFields control={control} />
 				</div>
 				<div className='text-center mt-12'>

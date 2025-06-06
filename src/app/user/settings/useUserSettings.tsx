@@ -3,35 +3,37 @@ import { useEffect } from 'react'
 import { type SubmitHandler, useForm } from 'react-hook-form'
 import { useProfile } from '@/hooks/useProfile'
 import { userService } from '@/services/studio/user.service'
-import type { IChannelSettingsData } from '@/types/settings.types'
+import type { IUserSettingsData } from '@/types/settings.types'
 
-export function useSettings() {
-	const form = useForm<IChannelSettingsData>({
+export function useUserSettings() {
+	const form = useForm<IUserSettingsData>({
 		mode: 'onChange'
 	})
 
 	const { profile, isSuccess, isLoading, refetch } = useProfile()
-	const slug = profile?.channel?.slug ? profile?.channel?.slug : profile?.email.split('@')[0].trim()
+	const name = profile?.name ? profile.name : profile?.email.split('@')[0].trim()
 
 	useEffect(() => {
 		if (!isSuccess) return
 
-		const channel = profile?.channel
-			? {
-					bannerUrl: profile?.channel?.bannerUrl,
-					description: profile?.channel?.description
-				}
-			: {}
-
+		// const channel = profile?.channel
+		// 	? {
+		// 			avatarUrl: profile?.channel?.avatarUrl,
+		// 			bannerUrl: profile?.channel?.bannerUrl,
+		// 			description: profile?.channel?.description,
+		// 			slug: profile?.channel?.slug
+		// 		}
+		// 	: {}
 		form.reset({
-			channel,
-			slug: slug ? { slug } : undefined
+			email: profile?.email,
+			name: name,
+			avatar_url: profile?.avatar_url
 		})
-	}, [form, isSuccess, profile, slug])
+	}, [form, isSuccess, profile, name])
 
 	const { mutate, isPending } = useMutation({
 		mutationKey: ['update-settings'],
-		mutationFn: (data: IChannelSettingsData) => userService.updateChannel(data),
+		mutationFn: (data: IUserSettingsData) => userService.updateProfile(data),
 		onSuccess: async () => {
 			refetch()
 			const { toast } = await import('react-hot-toast')
@@ -39,7 +41,7 @@ export function useSettings() {
 		}
 	})
 
-	const onSubmit: SubmitHandler<IChannelSettingsData> = data => {
+	const onSubmit: SubmitHandler<IUserSettingsData> = data => {
 		mutate(data)
 	}
 

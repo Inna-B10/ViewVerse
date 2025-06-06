@@ -1,19 +1,34 @@
 import { type Control, Controller } from 'react-hook-form'
 import { UploadField } from '@/ui/upload-field/UploadField'
-import type { IChannelSettingsData } from '@/types/settings.types'
+import type { IUserSettingsData } from '@/types/settings.types'
 
 interface Props {
-	control: Control<IChannelSettingsData>
+	control: Control<IUserSettingsData>
 }
 
-export function SettingsMediaFields({ control }: Props) {
+export function UserSettingsMediaFields({ control }: Props) {
 	return (
 		<div className='flex flex-col justify-between mb-6'>
 			<Controller
 				control={control}
-				// rules={{
-				// 	validate: value => !!value || 'Banner is required!'
-				// }}
+				name='avatar_url'
+				render={({ field: { onChange, value }, fieldState: { error } }) => (
+					<UploadField
+						label='Avatar: '
+						help='preferred image dimensions 240 x 240'
+						onChange={onChange}
+						value={value as string | undefined}
+						error={error}
+						folder='avatars'
+						className='mb-4'
+					/>
+				)}
+			/>
+			{/* <Controller
+				control={control}
+				rules={{
+					validate: value => !!value || 'Banner is required!'
+				}}
 				name='channel.bannerUrl'
 				render={({ field: { onChange, value }, fieldState: { error } }) => (
 					<UploadField
@@ -27,7 +42,7 @@ export function SettingsMediaFields({ control }: Props) {
 						overlay='/images/default/overlay.png'
 					/>
 				)}
-			/>
+			/> */}
 		</div>
 	)
 }

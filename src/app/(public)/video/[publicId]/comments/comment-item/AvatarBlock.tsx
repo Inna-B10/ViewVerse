@@ -14,11 +14,11 @@ export function AvatarBlock({ user }: Props) {
 		return (
 			<Link
 				href={PAGE.CHANNEL(user.channel.slug || '')}
-				title={`Open ${user.name} channel` || ''}
-				aria-label={`Open ${user.name} channel` || ''}
+				title={`Open channel: ${user.channel.slug}` || ''}
+				aria-label={`Open channel: ${user.channel.slug}` || ''}
 			>
 				<Image
-					alt={user.name || ''}
+					alt={`${user.name}'s avatar` || ''}
 					src={user.channel?.avatarUrl || '/images/default/default-avatar.png'}
 					width={40}
 					height={40}
@@ -30,7 +30,7 @@ export function AvatarBlock({ user }: Props) {
 	return (
 		<div className='min-w-max h-10 pt-1'>
 			<Image
-				alt='Guest avatar'
+				alt="Guest's avatar"
 				src='/images/default/default-avatar.png'
 				width={40}
 				height={40}
