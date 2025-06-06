@@ -1,7 +1,7 @@
 'use client'
 
 import { Cog } from 'lucide-react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Heading } from '@/ui/Heading'
 import { Button } from '@/ui/button/Button'
 import { useProfile } from '@/hooks/useProfile'
@@ -16,6 +16,13 @@ export default function ChannelSettingsPage() {
 	const { profile } = useProfile()
 	const isExistChannel = !!profile?.channel?.slug
 	const [isShowForm, setIsShowForm] = useState(isExistChannel)
+
+	useEffect(() => {
+		return () => {
+			setIsShowForm(isExistChannel)
+		}
+	}, [isExistChannel])
+
 	return (
 		<div>
 			<Heading

@@ -16,14 +16,6 @@ export function useUserSettings() {
 	useEffect(() => {
 		if (!isSuccess) return
 
-		// const channel = profile?.channel
-		// 	? {
-		// 			avatarUrl: profile?.channel?.avatarUrl,
-		// 			bannerUrl: profile?.channel?.bannerUrl,
-		// 			description: profile?.channel?.description,
-		// 			slug: profile?.channel?.slug
-		// 		}
-		// 	: {}
 		form.reset({
 			email: profile?.email,
 			name: name,

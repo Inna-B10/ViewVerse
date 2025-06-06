@@ -5,7 +5,6 @@ import type { IChannel } from '@/types/channel.types'
 import type { IUser } from '@/types/user.types'
 
 interface Props {
-	// user: ISingleVideoResponse['comments'][0]['user']
 	user: IUser & { channel?: IChannel }
 }
 
@@ -19,7 +18,7 @@ export function AvatarBlock({ user }: Props) {
 			>
 				<Image
 					alt={`${user.name}'s avatar` || ''}
-					src={user.channel?.avatarUrl || '/images/default/default-avatar.png'}
+					src={user.avatarUrl || '/images/default/default-avatar.png'}
 					width={40}
 					height={40}
 					className='rounded flex-shrink-0 shadow-md'

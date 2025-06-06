@@ -39,7 +39,7 @@ export function ChannelSettingsForm({ isExistChannel }: { isExistChannel: boolea
 							label='Slug (alias)'
 							placeholder='Your slug'
 							type='text'
-							name='slug.slug'
+							name='slug'
 							registration={register('slug', { required: 'Slug is required!' })}
 							error={errors.slug?.message}
 						/>

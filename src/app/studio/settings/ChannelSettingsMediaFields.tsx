@@ -11,10 +11,7 @@ export function ChannelSettingsMediaFields({ control }: Props) {
 		<div className='flex flex-col justify-between mb-6'>
 			<Controller
 				control={control}
-				// rules={{
-				// 	validate: value => !!value || 'Banner is required!'
-				// }}
-				name='channel.bannerUrl'
+				name='bannerUrl'
 				render={({ field: { onChange, value }, fieldState: { error } }) => (
 					<UploadField
 						label='Banner: '

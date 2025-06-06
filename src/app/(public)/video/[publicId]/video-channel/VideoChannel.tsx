@@ -27,7 +27,7 @@ export function VideoChannel({ video }: { video: ISingleVideoResponse }) {
 				>
 					<Image
 						alt={video.channel.user.name || ''}
-						src={video.channel.avatarUrl || '/images/default/default-avatar.png'}
+						src={video.channel.user.avatarUrl || '/images/default/default-avatar.png'}
 						width={55}
 						height={55}
 						priority
