@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { error } from 'console'
 import { axiosClassic, instance } from '@/api/axios'
 import type { IChannel } from '@/types/channel.types'
 import type { IChannelSettingsData } from '@/types/settings.types'
@@ -39,10 +40,10 @@ class ChannelService {
 		console.log('settings: ', settings)
 		try {
 			const { data } = await instance.put<boolean>(`${this._CHANNELS}/channel-settings`, settings)
-			console.log('data: ', data)
 			return data
 		} catch (e: any) {
-			console.error('🔥 API ERROR: ', e?.response?.data || e)
+			console.error('API ERROR: ', e?.response?.data || e)
+			throw error
 		}
 	}
 }

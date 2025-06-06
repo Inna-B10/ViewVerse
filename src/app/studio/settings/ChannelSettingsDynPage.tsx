@@ -7,7 +7,6 @@ import { Heading } from '@/ui/Heading'
 import { SkeletonLoader } from '@/ui/SkeletonLoader'
 import { Button } from '@/ui/button/Button'
 import { useProfile } from '@/hooks/useProfile'
-import { ChannelSettingsForm } from './ChannelSettingsForm'
 
 const DynamicChannelSettingsForm = dynamic(
 	() => import('./ChannelSettingsForm').then(mod => mod.ChannelSettingsForm),
@@ -44,11 +43,10 @@ export function ChannelSettingsDynPage() {
 				{isExistChannel ? 'Channel settings' : 'Create channel'}
 			</Heading>
 			{isShowForm ? (
-				<ChannelSettingsForm isExistChannel={isExistChannel} />
+				<DynamicChannelSettingsForm isExistChannel={isExistChannel} />
 			) : (
 				<Button onClick={() => setIsShowForm(true)}>Create</Button>
 			)}
 		</div>
 	)
-	return <DynamicChannelSettingsForm isExistChannel={isExistChannel} />
 }
