@@ -2,6 +2,7 @@
 
 import dynamic from 'next/dynamic'
 import { useSidebar } from '@/providers/SidebarContext'
+import { useVerificationStatus } from '@/hooks/useVerificationStatus'
 import { SidebarHeader } from './header/SidebarHeader'
 import { SidebarMenu } from './menus/SidebarMenu'
 import {
@@ -19,6 +20,8 @@ const DynamicLogout = dynamic(() => import('./menus/Logout').then(mod => mod.Log
 export function Sidebar() {
 	const { isShowedSidebar, toggleSidebar } = useSidebar()
 	const { isLoggedIn } = useTypedSelector(state => state.auth)
+	const hasVerificationToken = useVerificationStatus()
+	const isUserVerified = !hasVerificationToken
 
 	return (
 		<aside className='p-layout border-r border-border whitespace-nowrap overflow-hidden'>
@@ -40,12 +43,14 @@ export function Sidebar() {
 						isLoggedIn={isLoggedIn}
 					/>
 					{/* --------------------------------- Studio --------------------------------- */}
-					<SidebarMenu
-						title='Studio'
-						menu={STUDIO_SIDEBAR_DATA}
-						isShowedSidebar={isShowedSidebar}
-						isLoggedIn={isLoggedIn}
-					/>
+					{isUserVerified && (
+						<SidebarMenu
+							title='Studio'
+							menu={STUDIO_SIDEBAR_DATA}
+							isShowedSidebar={isShowedSidebar}
+							isLoggedIn={isLoggedIn}
+						/>
+					)}
 				</>
 			)}
 			{/* ---------------------------- More From Youtube --------------------------- */}
