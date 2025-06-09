@@ -1,6 +1,6 @@
 import Cookies from 'js-cookie'
 import { clearAuthData, setAuthData, setAuthReady } from '@/store/auth.slice'
-import { axiosClassic } from '@/api/axios'
+import { axiosClassic, instance } from '@/api/axios'
 import { userService } from './studio/user.service'
 import { store } from '@/store'
 import type { IAuthData } from '@/types/auth-form.types'
@@ -106,6 +106,11 @@ class AuthService {
 	removeTokenFromStorage() {
 		Cookies.remove(EnumTokens.ACCESS_TOKEN)
 		store.dispatch(clearAuthData())
+	}
+
+	/* --------------------------- Verification Email --------------------------- */
+	async resendVerificationEmail() {
+		return await instance.post(`${this._AUTH}/resend-verification`)
 	}
 }
 
