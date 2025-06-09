@@ -1,5 +1,3 @@
-'use client'
-
 import { type Ref, type TextareaHTMLAttributes, forwardRef, useEffect, useRef } from 'react'
 
 interface Props extends TextareaHTMLAttributes<HTMLTextAreaElement> {

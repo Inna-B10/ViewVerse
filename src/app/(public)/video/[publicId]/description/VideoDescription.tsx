@@ -1,5 +1,3 @@
-'use client'
-
 import { AnimatePresence } from 'framer-motion'
 import * as m from 'framer-motion/m'
 import parse from 'html-react-parser'

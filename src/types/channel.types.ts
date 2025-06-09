@@ -6,7 +6,6 @@ export interface IChannel {
 	slug: string
 	description: string
 	isVerified: boolean
-	avatarUrl: string
 	bannerUrl: string
 	user: IUser
 	videos: IVideo[]

@@ -1,5 +1,3 @@
-'use client'
-
 import { useInfiniteQuery } from '@tanstack/react-query'
 import { SkeletonLoader } from '@/ui/SkeletonLoader'
 import { StudioVideoCard } from '@/ui/studio-video-card/StudioVideoCard'

@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { axiosClassic, instance } from '@/api/axios'
 import type { IChannel } from '@/types/channel.types'
+import type { IChannelSettingsData } from '@/types/settings.types'
 
 class ChannelService {
 	private _CHANNELS = '/channels'
@@ -31,6 +32,18 @@ class ChannelService {
 	/* -------------------------- (un)Subscribe Channel ------------------------- */
 	toggleSubscribe(channelSlug: string) {
 		return instance.patch(`${this._CHANNELS}/toggle-subscribe/${channelSlug}`)
+	}
+
+	/* ------------------------------ UpdateChannelSettings ----------------------------- */
+	async updateChannel(settings: IChannelSettingsData) {
+		console.log('settings: ', settings)
+		try {
+			const { data } = await instance.put<boolean>(`${this._CHANNELS}/channel-settings`, settings)
+			return data
+		} catch (error: any) {
+			console.error('API ERROR: ', error?.response?.data || error)
+			throw error
+		}
 	}
 }
 

@@ -9,6 +9,7 @@ class PublicPage {
 	SUBSCRIPTIONS = '/user/subscriptions'
 	MY_CHANNEL = '/my-channel'
 	HISTORY = '/user/history'
+	USER_SETTINGS = '/user/settings'
 
 	FEEDBACK = '/feedback'
 

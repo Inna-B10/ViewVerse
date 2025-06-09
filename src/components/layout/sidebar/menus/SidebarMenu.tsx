@@ -1,5 +1,3 @@
-'use client'
-
 import { usePathname } from 'next/navigation'
 import { match } from 'path-to-regexp'
 import { PAGE } from '@/config/public-page.config'

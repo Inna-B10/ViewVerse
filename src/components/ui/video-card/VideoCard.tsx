@@ -55,7 +55,7 @@ export function VideoCard({ video, Icon, isImagePriority }: Props) {
 					className='absolute left-1.5 bottom-2'
 				>
 					<Image
-						src={video.channel.avatarUrl || '/images/default/default-avatar.png'}
+						src={video.channel.user.avatarUrl || '/images/default/default-avatar.png'}
 						width={32}
 						height={32}
 						alt={`Thumbnail for channel: ${channelName}`}

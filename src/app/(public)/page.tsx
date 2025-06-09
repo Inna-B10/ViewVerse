@@ -1,8 +1,8 @@
-import { Compass, Flame } from 'lucide-react'
+import { Flame } from 'lucide-react'
 import type { Metadata } from 'next'
 import { Heading } from '@/ui/Heading'
 import { VideoCard } from '@/ui/video-card/VideoCard'
-import { Explore } from '../explore/Explore'
+import { ExploreSection } from '../explore/ExploreSection'
 import { videoService } from '@/services/video.service'
 
 export const revalidate = 100
@@ -43,9 +43,8 @@ export default async function Home() {
 				</section>
 			)}
 			{/* --------------------------------- Explore videos -------------------------------- */}
-			<section>
-				<Heading Icon={Compass}>Explore</Heading>
-				<Explore />
+			<section className='pb-5'>
+				<ExploreSection />
 			</section>
 		</>
 	)

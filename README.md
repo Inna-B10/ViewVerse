@@ -45,6 +45,10 @@ bun add rc-slider
 bun add rc-tooltip
 bun add linkify-html
 bun add next-sitemap
+
+# bundle analyzer
+npm install --save-dev @next/bundle-analyzer
+npm install --save-dev cross-env
 ```
 
 ### ToDo

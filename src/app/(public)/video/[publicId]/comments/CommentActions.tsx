@@ -1,5 +1,3 @@
-'use client'
-
 import { useMutation } from '@tanstack/react-query'
 import cn from 'clsx'
 import { useAuth } from '@/hooks/useAuth'

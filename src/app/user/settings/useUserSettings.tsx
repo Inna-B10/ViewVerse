@@ -3,36 +3,29 @@ import { useEffect } from 'react'
 import { type SubmitHandler, useForm } from 'react-hook-form'
 import { useProfile } from '@/hooks/useProfile'
 import { userService } from '@/services/studio/user.service'
-import type { ISettingsData } from '@/types/settings.types'
+import type { IUserSettingsData } from '@/types/settings.types'
 
-export function useSettings() {
-	const form = useForm<ISettingsData>({
+export function useUserSettings() {
+	const form = useForm<IUserSettingsData>({
 		mode: 'onChange'
 	})
 
 	const { profile, isSuccess, isLoading, refetch } = useProfile()
+	const name = profile?.name ? profile.name : profile?.email.split('@')[0].trim()
 
 	useEffect(() => {
 		if (!isSuccess) return
 
-		const channel = profile?.channel
-			? {
-					avatarUrl: profile?.channel?.avatarUrl,
-					bannerUrl: profile?.channel?.bannerUrl,
-					description: profile?.channel?.description,
-					slug: profile?.channel?.slug
-				}
-			: {}
 		form.reset({
-			channel,
 			email: profile?.email,
-			name: profile?.name
+			name: name,
+			avatarUrl: profile?.avatarUrl
 		})
-	}, [form, isSuccess, profile])
+	}, [form, isSuccess, profile, name])
 
 	const { mutate, isPending } = useMutation({
 		mutationKey: ['update-settings'],
-		mutationFn: (data: ISettingsData) => userService.updateProfile(data),
+		mutationFn: (data: IUserSettingsData) => userService.updateProfile(data),
 		onSuccess: async () => {
 			refetch()
 			const { toast } = await import('react-hot-toast')
@@ -40,7 +33,7 @@ export function useSettings() {
 		}
 	})
 
-	const onSubmit: SubmitHandler<ISettingsData> = data => {
+	const onSubmit: SubmitHandler<IUserSettingsData> = data => {
 		mutate(data)
 	}
 

@@ -1,5 +1,3 @@
-'use client'
-
 import { type ReactElement, useEffect, useState } from 'react'
 import { DeleteConfirmModal } from './DeleteConfirmModal'
 import { PlaylistHeaderActions } from './PlaylistHeaderActions'

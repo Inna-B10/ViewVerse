@@ -1,5 +1,3 @@
-'use client'
-
 import { AnimatePresence, m } from 'framer-motion'
 import { twMerge } from 'tailwind-merge'
 import { useOutside } from '@/hooks/useOutside'
