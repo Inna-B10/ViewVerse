@@ -5,7 +5,7 @@ export function Content({ children }: PropsWithChildren<unknown>) {
 	return (
 		<div className='flex-1 relative'>
 			<Header />
-			<section className='p-layout'>{children}</section>
+			<div className='p-layout'>{children}</div>
 		</div>
 	)
 }

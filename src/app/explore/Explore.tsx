@@ -1,5 +1,3 @@
-'use client'
-
 import { useInfiniteQuery } from '@tanstack/react-query'
 import { SkeletonLoader } from '@/ui/SkeletonLoader'
 import { VideoCard } from '@/ui/video-card/VideoCard'
@@ -39,7 +37,7 @@ export function Explore() {
 	const allVideos = data?.pages.flatMap(page => page.videos) || []
 
 	return (
-		<section className='grid-cols'>
+		<div className='grid-cols'>
 			{isLoading && !allVideos.length ? (
 				<SkeletonLoader
 					count={5}
@@ -64,6 +62,6 @@ export function Explore() {
 					className='h-36 rounded-md'
 				/>
 			)}
-		</section>
+		</div>
 	)
 }

@@ -19,9 +19,9 @@ const DynamicExplore = dynamic(() => import('./Explore').then(mod => mod.Explore
 
 export function ExploreSection() {
 	return (
-		<section className='pb-5'>
+		<>
 			<Heading Icon={Compass}>Explore</Heading>
 			<DynamicExplore />
-		</section>
+		</>
 	)
 }

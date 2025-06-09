@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { SkeletonLoader } from '@/ui/SkeletonLoader'
-import { STUDIO_PAGE } from '@/config/studio-page.config'
+import { PAGE } from '@/config/public-page.config'
 import { useProfile } from '@/hooks/useProfile'
 
 export function HeaderAvatar() {
@@ -12,10 +12,10 @@ export function HeaderAvatar() {
 	return (
 		<div className='relative'>
 			<Link
-				href={STUDIO_PAGE.SETTINGS}
+				href={PAGE.USER_SETTINGS}
 				className='shrink-0'
-				title='Open settings'
-				aria-label='Open settings'
+				title='User settings'
+				aria-label='Open user settings'
 			>
 				<Image
 					src={profile?.avatarUrl || '/images/default/default-avatar.png'}
