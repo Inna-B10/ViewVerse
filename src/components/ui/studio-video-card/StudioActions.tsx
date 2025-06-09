@@ -1,5 +1,3 @@
-'use client'
-
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { Edit, ExternalLink, Trash2 } from 'lucide-react'
 import Link from 'next/link'

@@ -1,5 +1,3 @@
-'use client'
-
 import { Bell } from 'lucide-react'
 import { Heading } from '@/ui/Heading'
 import { SkeletonLoader } from '@/ui/SkeletonLoader'

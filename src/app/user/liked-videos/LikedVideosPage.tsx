@@ -1,5 +1,3 @@
-'use client'
-
 import { useMutation } from '@tanstack/react-query'
 import { FolderHeart, Trash2 } from 'lucide-react'
 import { Heading } from '@/ui/Heading'

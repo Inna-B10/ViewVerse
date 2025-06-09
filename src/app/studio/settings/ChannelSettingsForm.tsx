@@ -1,5 +1,3 @@
-'use client'
-
 import { Controller } from 'react-hook-form'
 import { Button } from '@/ui/button/Button'
 import { Field } from '@/ui/fields/Field'

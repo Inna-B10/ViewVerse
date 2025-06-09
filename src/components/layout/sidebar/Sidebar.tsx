@@ -1,5 +1,3 @@
-'use client'
-
 import dynamic from 'next/dynamic'
 import { useSidebar } from '@/providers/SidebarContext'
 import { useVerificationStatus } from '@/hooks/useVerificationStatus'
