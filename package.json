@@ -1,5 +1,9 @@
 {
-	"name": "video-next15-client",
+	"name": "ViewVerse",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Inna-B10/ViewVerse"
+	},
 	"version": "0.1.0",
 	"private": true,
 	"scripts": {

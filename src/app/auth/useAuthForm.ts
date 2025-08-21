@@ -32,7 +32,11 @@ export function useAuthForm(type: 'login' | 'register', reset: UseFormReset<IAut
 			success: () => {
 				startTransition(() => {
 					reset()
-					router.push(PAGE.HOME)
+					if (type === 'register') {
+						router.push(PAGE.USER_SETTINGS)
+					} else {
+						router.push(PAGE.HOME)
+					}
 				})
 				// Показываем отдельный toast после выполнения
 				if (type === 'register') {
