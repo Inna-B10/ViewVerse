@@ -1,13 +1,64 @@
 # Project name: ViewVerse
 
-<!--VideoVibe (ViewVibe), VideoVerse (ViewVerse), StreamSpark, Tubex, Vidberry  -->
+### About
 
-The video platform (kind of like YouTube).
+"ViewVerse" is a video platform similar to YouTube, built with **Next.js v15**, **React v19**,
+**TypeScript** and **Tailwind**.
 
-Uses Next.js v15, React+React-dom v19, tailwind, sass, typescript.
+It provides a modern, responsive interface for browsing, watching, and engaging with video content,
+showcasing a scalable and feature-rich web application.
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with
-[`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+[<img src="preview.png" height="250" align="right"/>](preview.png)
+
+### 🧩 Tech Stack
+
+**Framework**
+
+![next](https://img.shields.io/badge/next_15.3.1-424242?&logo=next.js&logoColor=white&logoSize=auto)
+![react](https://img.shields.io/badge/react_19.0.0-424242?&logo=react&logoColor=61DAFB&logoSize=auto)
+![react-dom](https://img.shields.io/badge/react--dom_19.0.0-424242?&logo=react&logoColor=61DAFB&logoSize=auto)
+![typescript](https://img.shields.io/badge/typescript_5-424242?&logo=typescript&logoColor=3178C6&logoSize=auto)
+
+**State & Data**
+
+![@reduxjs/toolkit](https://img.shields.io/badge/%40reduxjs%2Ftoolkit_2.5.0-424242?)
+![react-redux](https://img.shields.io/badge/react--redux_9.2.0-424242?)
+![@tanstack/react-query](https://img.shields.io/badge/%40tanstack%2Freact--query_5.63.0-424242?)
+![axios](https://img.shields.io/badge/axios_1.7.9-424242?)
+![js-cookie](https://img.shields.io/badge/js--cookie_3.0.5-424242?)
+![jose](https://img.shields.io/badge/jose_5.9.6-424242?)
+
+**UI & Animations**
+
+![framer-motion](https://img.shields.io/badge/framer--motion_11.18.0-424242?&logo=framer&logoColor=white&logoSize=auto)
+![lucide-react](https://img.shields.io/badge/lucide--react_0.469.0-424242?)
+![rc-slider](https://img.shields.io/badge/rc--slider_11.1.8-424242?)
+![rc-tooltip](https://img.shields.io/badge/rc--tooltip_6.4.0-424242?)
+
+**Forms & UX**
+
+![react-hook-form](https://img.shields.io/badge/react--hook--form_7.54.2-424242?)
+![react-hot-toast](https://img.shields.io/badge/react--hot--toast_2.5.1-424242?)
+![react-hotkeys-hook](https://img.shields.io/badge/react--hotkeys--hook_4.6.1-424242?)
+![react-google-recaptcha](https://img.shields.io/badge/react--google--recaptcha_3.1.0-424242?)
+
+**Utilities**
+
+![clsx](https://img.shields.io/badge/clsx_2.1.1-424242?)
+![dayjs](https://img.shields.io/badge/dayjs_1.11.13-424242?)
+![html-react-parser](https://img.shields.io/badge/html--react--parser_5.2.2-424242?)
+![linkify-html](https://img.shields.io/badge/linkify--html_4.3.1-424242?)
+![path-to-regexp](https://img.shields.io/badge/path--to--regexp_8.2.0-424242?)
+
+**Styling**
+
+![tailwindcss](https://img.shields.io/badge/tailwindcss_3.4.1-424242?&logo=tailwindcss&logoColor=06B6D4&logoSize=auto)
+![tailwind-merge](https://img.shields.io/badge/tailwind--merge_2.6.0-424242?)
+![sass](https://img.shields.io/badge/sass_1.83.1-424242?&logo=sass&logoColor=CC6699&logoSize=auto)
+
+**Infrastructure**
+
+![next-sitemap](https://img.shields.io/badge/next--sitemap_4.2.3-424242?)
 
 ### Start
 
@@ -18,9 +69,10 @@ powershell -c "irm bun.sh/install.ps1|iex"
 bun dev
 ```
 
-### Dependencies
+<details style="border:1px solid #d4d4d4; border-radius:2px; padding:1rem;">
+<summary><h4 style="display:inline; padding-left:6px;">Dependencies:</h4></summary>
 
-```
+```bash
 bun add sass
 bun add -D @trivago/prettier-plugin-sort-imports prettier
 bun add lucide-react
@@ -51,9 +103,50 @@ npm install --save-dev @next/bundle-analyzer
 npm install --save-dev cross-env
 ```
 
-### ToDo
+</details>
 
----
+## 📋 ToDo:
+
+- [ ] переместить НЕ ПОДТВЕРЖДЕНО в оповещения, а также отображать сообщение в userSettings
+
+  ### Design:
+
+- [ ] button colors
+- [ ] @media:
+  - [ ] video player styles
+  - [ ] images
+  - [ ] grid
+- [ ] media query:sideBar на мобилах изначально скрыт, при открытии - поверх контента
+- [ ] ? replace Skeleton on Dynamic pages to <Loading /> or review style code (cols)
+- [ ] UI block's heading/loader
+
+  - [x] heading
+  - [ ] SkeletonLoader: - [x] static count - [ ] count depends on @media
+
+  ### New/Server functions:
+
+- [ ] ? found videos with user's comment
+- [ ] ? password reset option
+- [ ] [!] change domain for production
+- [ ] SERVER: у "новых" пользователей нет channelId и не могут заливать видео
+- [ ] SERVER: имя файла банера/аватара на сервере должно совпадать с пользователем/каналом
+- [ ] SERVER: имя файла привью на сервере должно совпадать с именем файла видео Нужно сообщение
+      пользователю
+- [ ] SERVER: после обработки, удалить файл видео из общей папки загрузки
+- [ ] SERVER: после удаления видео из БД, файлы остаются на сервере (видео во всех папках + привью)
+- [ ] SERVER: картинки (аватар,банер,превью), которые не используются/заменяются остаются на
+      сервере!!!
+
+<!-- - [ ] меню кнопка?, 1 колонка
+- [ ] xs 540 - меню скрыто, 2 колонки
+- [ ] sm 640
+- [ ] md 768 - меню скрыто, 3 колонки
+- [ ] lg 1024 - меню открыто, 3 колонки
+- [ ] xl 1280 - меню открыто, 4 колонки
+- [ ] 2xl 1536  -->
+
+<details style="border:1px solid #d4d4d4; border-radius:2px; padding:1rem;">
+<summary><h3 style="display:inline; padding-left:6px;">✅ Done:</h3></summary>
 
 - [x] root layout
 - [x] UI menu/nav/sidebar
@@ -139,50 +232,8 @@ npm install --save-dev cross-env
 - [x] после регистрации перенаправлять на userSettings
 - [x] если пользователь не подтвердил регистрацию, скрывать студию
 
----
-
-- [ ] переместить НЕ ПОДТВЕРЖДЕНО в оповещения, а также отображать сообщение в userSettings
-- [ ]  <br />
-
-        STYLES:
-
-- [ ] button colors
-- [ ] @media:
-  - [ ] video player styles
-  - [ ] images
-  - [ ] grid
-- [ ] media query:sideBar на мобилах изначально скрыт, при открытии - поверх контента
-- [ ] ? replace Skeleton on Dynamic pages to <Loading /> or review style code (cols)
-- [ ] UI block's heading/loader
-  - [x] heading
-  - [ ] SkeletonLoader: - [x] static count - [ ] count depends on @media
-
-<!-- - [ ] меню кнопка?, 1 колонка
-- [ ] xs 540 - меню скрыто, 2 колонки
-- [ ] sm 640
-- [ ] md 768 - меню скрыто, 3 колонки
-- [ ] lg 1024 - меню открыто, 3 колонки
-- [ ] xl 1280 - меню открыто, 4 колонки
-- [ ] 2xl 1536  -->
-
-<br />
-
-      New/Server functions:
-
-- [ ] ? found videos with user's comment
-- [ ] ? password reset option
-- [ ] [!] change domain for production
-- [ ] SERVER: у "новых" пользователей нет channelId и не могут заливать видео
-- [ ] SERVER: имя файла банера/аватара на сервере должно совпадать с пользователем/каналом
-- [ ] SERVER: имя файла привью на сервере должно совпадать с именем файла видео Нужно сообщение
-      пользователю
-- [ ] SERVER: после обработки, удалить файл видео из общей папки загрузки
-- [ ] SERVER: после удаления видео из БД, файлы остаются на сервере (видео во всех папках + привью)
-- [ ] SERVER: картинки (аватар,банер,превью), которые не используются/заменяются остаются на
-      сервере!!!
-
-<br />
+</details>
 
 ---
 
-- [ ] to use rc-slider and rc-tooltip as native input see lesson 40 / branch inputSlider
+> [!NOTE] To use rc-slider and rc-tooltip as native input see lesson 40 / branch inputSlider
