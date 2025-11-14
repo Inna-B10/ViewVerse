@@ -1,6 +1,8 @@
 # Project name: ViewVerse
 
-### About
+### 💎 Description
+
+[<img src="preview.png" height="250" align="right" style="margin-left:20px" />](preview.png)
 
 "ViewVerse" is a video platform similar to YouTube, built with **Next.js v15**, **React v19**,
 **TypeScript** and **Tailwind**.
@@ -8,57 +10,61 @@
 It provides a modern, responsive interface for browsing, watching, and engaging with video content,
 showcasing a scalable and feature-rich web application.
 
-[<img src="preview.png" height="250" align="right"/>](preview.png)
+The focus of the online-course was on frontend development — the backend came pre-built.
 
 ### 🧩 Tech Stack
 
 **Framework**
 
-![next](https://img.shields.io/badge/next_15.3.1-424242?&logo=next.js&logoColor=white&logoSize=auto)
-![react](https://img.shields.io/badge/react_19.0.0-424242?&logo=react&logoColor=61DAFB&logoSize=auto)
-![react-dom](https://img.shields.io/badge/react--dom_19.0.0-424242?&logo=react&logoColor=61DAFB&logoSize=auto)
-![typescript](https://img.shields.io/badge/typescript_5-424242?&logo=typescript&logoColor=3178C6&logoSize=auto)
+![Next.js](https://img.shields.io/badge/Next.js_15.3.1-424242?logo=nextdotjs)
+![React](https://img.shields.io/badge/React_19.0.0-424242?logo=react&logoColor=61DAFB)
+![TypeScript](https://img.shields.io/badge/TypeScript_5-424242?logo=typescript&logoColor=3178C6)
+![react-dom](https://img.shields.io/badge/react--dom_19.0.0-424242?logo=react&logoColor=61DAFB)
 
 **State & Data**
 
-![@reduxjs/toolkit](https://img.shields.io/badge/%40reduxjs%2Ftoolkit_2.5.0-424242?)
-![react-redux](https://img.shields.io/badge/react--redux_9.2.0-424242?)
-![@tanstack/react-query](https://img.shields.io/badge/%40tanstack%2Freact--query_5.63.0-424242?)
-![axios](https://img.shields.io/badge/axios_1.7.9-424242?)
-![js-cookie](https://img.shields.io/badge/js--cookie_3.0.5-424242?)
-![jose](https://img.shields.io/badge/jose_5.9.6-424242?)
+![@reduxjs/toolkit](https://img.shields.io/badge/%40reduxjs%2Ftoolkit_2.5.0-424242)
+![react-redux](https://img.shields.io/badge/react--redux_9.2.0-424242)
+![@tanstack/react-query](https://img.shields.io/badge/%40tanstack%2Freact--query_5.63.0-424242?logo=reactquery)
+![axios](https://img.shields.io/badge/axios_1.7.9-424242)
+![js-cookie](https://img.shields.io/badge/js--cookie_3.0.5-424242)
+![jose](https://img.shields.io/badge/jose_5.9.6-424242)
 
 **UI & Animations**
 
-![framer-motion](https://img.shields.io/badge/framer--motion_11.18.0-424242?&logo=framer&logoColor=white&logoSize=auto)
-![lucide-react](https://img.shields.io/badge/lucide--react_0.469.0-424242?)
-![rc-slider](https://img.shields.io/badge/rc--slider_11.1.8-424242?)
-![rc-tooltip](https://img.shields.io/badge/rc--tooltip_6.4.0-424242?)
+![framer-motion](https://img.shields.io/badge/framer--motion_11.18.0-424242?logo=framer)
+![lucide-react](https://img.shields.io/badge/lucide--react_0.469.0-424242?logo=lucide)
+![rc-slider](https://img.shields.io/badge/rc--slider_11.1.8-424242)
+![rc-tooltip](https://img.shields.io/badge/rc--tooltip_6.4.0-424242)
 
 **Forms & UX**
 
-![react-hook-form](https://img.shields.io/badge/react--hook--form_7.54.2-424242?)
-![react-hot-toast](https://img.shields.io/badge/react--hot--toast_2.5.1-424242?)
-![react-hotkeys-hook](https://img.shields.io/badge/react--hotkeys--hook_4.6.1-424242?)
-![react-google-recaptcha](https://img.shields.io/badge/react--google--recaptcha_3.1.0-424242?)
+![react-hook-form](https://img.shields.io/badge/react--hook--form_7.54.2-424242?logo=reacthookform&logoColor=white)
+![react-hot-toast](https://img.shields.io/badge/react--hot--toast_2.5.1-424242)
+![react-hotkeys-hook](https://img.shields.io/badge/react--hotkeys--hook_4.6.1-424242)
+![react-google-recaptcha](https://img.shields.io/badge/react--google--recaptcha_3.1.0-424242)
 
 **Utilities**
 
-![clsx](https://img.shields.io/badge/clsx_2.1.1-424242?)
-![dayjs](https://img.shields.io/badge/dayjs_1.11.13-424242?)
-![html-react-parser](https://img.shields.io/badge/html--react--parser_5.2.2-424242?)
-![linkify-html](https://img.shields.io/badge/linkify--html_4.3.1-424242?)
-![path-to-regexp](https://img.shields.io/badge/path--to--regexp_8.2.0-424242?)
+![clsx](https://img.shields.io/badge/clsx_2.1.1-424242)
+![dayjs](https://img.shields.io/badge/dayjs_1.11.13-424242)
+![html-react-parser](https://img.shields.io/badge/html--react--parser_5.2.2-424242)
+![linkify-html](https://img.shields.io/badge/linkify--html_4.3.1-424242)
+![path-to-regexp](https://img.shields.io/badge/path--to--regexp_8.2.0-424242)
 
 **Styling**
 
-![tailwindcss](https://img.shields.io/badge/tailwindcss_3.4.1-424242?&logo=tailwindcss&logoColor=06B6D4&logoSize=auto)
-![tailwind-merge](https://img.shields.io/badge/tailwind--merge_2.6.0-424242?)
-![sass](https://img.shields.io/badge/sass_1.83.1-424242?&logo=sass&logoColor=CC6699&logoSize=auto)
+![tailwindcss](https://img.shields.io/badge/tailwindcss_3.4.1-424242?logo=tailwindcss&logoColor=06B6D4)
+![tailwind-merge](https://img.shields.io/badge/tailwind--merge_2.6.0-424242)
+![sass](https://img.shields.io/badge/sass_1.83.1-424242?logo=sass&logoColor=CC6699)
+
+<!-- end:tech-stack -->
 
 **Infrastructure**
 
-![next-sitemap](https://img.shields.io/badge/next--sitemap_4.2.3-424242?)
+![next-sitemap](https://img.shields.io/badge/next--sitemap_4.2.3-424242)
+
+---
 
 ### Start
 
@@ -70,7 +76,7 @@ bun dev
 ```
 
 <details style="border:1px solid #d4d4d4; border-radius:2px; padding:1rem;">
-<summary><h4 style="display:inline; padding-left:6px;">Dependencies:</h4></summary>
+<summary><h4 style="display:inline; padding-left:6px;">🗃 Dependencies</h4></summary>
 
 ```bash
 bun add sass
@@ -105,7 +111,9 @@ npm install --save-dev cross-env
 
 </details>
 
-## 📋 ToDo:
+---
+
+### 📋 TODO:
 
 - [ ] переместить НЕ ПОДТВЕРЖДЕНО в оповещения, а также отображать сообщение в userSettings
 
@@ -146,7 +154,7 @@ npm install --save-dev cross-env
 - [ ] 2xl 1536  -->
 
 <details style="border:1px solid #d4d4d4; border-radius:2px; padding:1rem;">
-<summary><h3 style="display:inline; padding-left:6px;">✅ Done:</h3></summary>
+<summary><h4 style="display:inline; padding-left:6px;">✅ Done</h4></summary>
 
 - [x] root layout
 - [x] UI menu/nav/sidebar
